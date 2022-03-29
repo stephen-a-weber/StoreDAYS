@@ -16,6 +16,7 @@
 		D08622EE27F3AC3C00BFE986 /* StoreDAYSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08622ED27F3AC3C00BFE986 /* StoreDAYSTests.swift */; };
 		D08622F827F3AC3C00BFE986 /* StoreDAYSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08622F727F3AC3C00BFE986 /* StoreDAYSUITests.swift */; };
 		D08622FA27F3AC3C00BFE986 /* StoreDAYSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08622F927F3AC3C00BFE986 /* StoreDAYSUITestsLaunchTests.swift */; };
+		D086230B27F3AECF00BFE986 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086230A27F3AECF00BFE986 /* ModelData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		D08622F327F3AC3C00BFE986 /* StoreDAYSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoreDAYSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08622F727F3AC3C00BFE986 /* StoreDAYSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDAYSUITests.swift; sourceTree = "<group>"; };
 		D08622F927F3AC3C00BFE986 /* StoreDAYSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDAYSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D086230A27F3AECF00BFE986 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				D08622D727F3AC3A00BFE986 /* StoreDAYSApp.swift */,
-				D08622D927F3AC3A00BFE986 /* ContentView.swift */,
 				D08622DB27F3AC3C00BFE986 /* Assets.xcassets */,
-				D08622E027F3AC3C00BFE986 /* Persistence.swift */,
+				D086230927F3AEA200BFE986 /* DataModel */,
+				D086230727F3AE4600BFE986 /* Views */,
+				D086230827F3AE5C00BFE986 /* Controllers */,
 				D08622E227F3AC3C00BFE986 /* StoreDAYS.xcdatamodeld */,
 				D08622DD27F3AC3C00BFE986 /* Preview Content */,
 			);
@@ -131,6 +134,30 @@
 				D08622F927F3AC3C00BFE986 /* StoreDAYSUITestsLaunchTests.swift */,
 			);
 			path = StoreDAYSUITests;
+			sourceTree = "<group>";
+		};
+		D086230727F3AE4600BFE986 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D08622D927F3AC3A00BFE986 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D086230827F3AE5C00BFE986 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D08622E027F3AC3C00BFE986 /* Persistence.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D086230927F3AEA200BFE986 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				D086230A27F3AECF00BFE986 /* ModelData.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +292,7 @@
 			files = (
 				D08622E427F3AC3C00BFE986 /* StoreDAYS.xcdatamodeld in Sources */,
 				D08622E127F3AC3C00BFE986 /* Persistence.swift in Sources */,
+				D086230B27F3AECF00BFE986 /* ModelData.swift in Sources */,
 				D08622DA27F3AC3A00BFE986 /* ContentView.swift in Sources */,
 				D08622D827F3AC3A00BFE986 /* StoreDAYSApp.swift in Sources */,
 			);
