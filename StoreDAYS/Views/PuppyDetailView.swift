@@ -1,5 +1,5 @@
 //
-//  KittenDetalView.swift
+//  PuppyDetailView.swift
 //  StoreDAYS
 //
 //  Created by stephen weber on 3/30/22.
@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct KittenDetalView: View {
-    var kittenName = "Bob"
+struct PuppyDetailView: View {
+    var puppyName = "Bob"
     var body: some View {
-        Image("kitten1")
+        Image(puppyName)
             .resizable()
             .scaledToFit()
     }
 }
 
-struct KittenDetalView_Previews: PreviewProvider {
+struct PuppyDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        KittenDetalView(kittenName: "kitten1")
+        PuppyDetailView()
     }
 }

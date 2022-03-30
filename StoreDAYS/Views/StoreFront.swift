@@ -18,7 +18,7 @@ struct StoreFront: View {
                
                 ForEach (data.kittenNames.indices) { item in
                         
-                    NavigationLink{  KittenDetalView(kittenName:data.kittenNames[item])  }
+                    NavigationLink{  KittenDetailView(kittenName:data.kittenNames[item])  }
                         //put a detail view in for each item of each section
                         // replace stuff in {} of NavigationLink
                         // label below can be another more complex view w/ pic price
@@ -35,7 +35,7 @@ struct StoreFront: View {
                  
                 ForEach (data.puppyNames.indices) { item in
                         
-                        NavigationLink{ Text("TheDetails of a View2 : \(item)")  }
+                        NavigationLink{ PuppyDetailView(puppyName:data.puppyNames[item])  }
                         // The NavigationLink works like a button , the closure above
                         // is the next view.
                         //
@@ -63,7 +63,7 @@ struct StoreFront: View {
                        
                 ForEach (data.exoticNames.indices) { item in
                                 
-                                NavigationLink { Text("hello world \(item)!")  }// separate swiftUI file
+                                NavigationLink {ExoticDetailView(exoticName:data.exoticNames[item])   }// separate swiftUI file
                     label : {
                         ItemCell3(exoticName:data.exoticNames[item],exoticLitter:data.exoticLitterCount[item],exoticPrice:data.exoticPrice[item])
                     }
