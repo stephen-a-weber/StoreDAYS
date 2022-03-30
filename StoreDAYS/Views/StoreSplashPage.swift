@@ -11,16 +11,18 @@ struct StoreSplashPage: View {
     @ObservedObject var data : Data
     
     var body: some View {
-        VStack {
-            Text("\(data.name) ")
+        
         NavigationView {
             NavigationLink {StoreFront(data:data)}
         label : {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                .frame(width: 250, height: 30)
+                .background(.gray)
         }
         .navigationTitle("Store DAYS")
+        
         }
-    }
+    
     }
 }
 
