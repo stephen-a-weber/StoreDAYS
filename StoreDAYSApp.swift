@@ -10,11 +10,14 @@ import SwiftUI
 @main
 struct StoreDAYSApp: App {
     let persistenceController = PersistenceController.shared
-
+    @StateObject var data = Data()
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+      
+            
+            StoreSplashPage(data:data)
+//            ContentView()
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
