@@ -17,6 +17,10 @@
 		D08622F827F3AC3C00BFE986 /* StoreDAYSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08622F727F3AC3C00BFE986 /* StoreDAYSUITests.swift */; };
 		D08622FA27F3AC3C00BFE986 /* StoreDAYSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08622F927F3AC3C00BFE986 /* StoreDAYSUITestsLaunchTests.swift */; };
 		D086230B27F3AECF00BFE986 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086230A27F3AECF00BFE986 /* ModelData.swift */; };
+		D086230D27F3EC7D00BFE986 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086230C27F3EC7D00BFE986 /* UserData.swift */; };
+		D086231127F3F13600BFE986 /* StoreFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086231027F3F13600BFE986 /* StoreFront.swift */; };
+		D086231327F3F77400BFE986 /* StoreSplashPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086231227F3F77400BFE986 /* StoreSplashPage.swift */; };
+		D086231527F406A800BFE986 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086231427F406A800BFE986 /* Data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,10 @@
 		D08622F727F3AC3C00BFE986 /* StoreDAYSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDAYSUITests.swift; sourceTree = "<group>"; };
 		D08622F927F3AC3C00BFE986 /* StoreDAYSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDAYSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D086230A27F3AECF00BFE986 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		D086230C27F3EC7D00BFE986 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		D086231027F3F13600BFE986 /* StoreFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFront.swift; sourceTree = "<group>"; };
+		D086231227F3F77400BFE986 /* StoreSplashPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSplashPage.swift; sourceTree = "<group>"; };
+		D086231427F406A800BFE986 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +88,7 @@
 		D08622CB27F3AC3A00BFE986 = {
 			isa = PBXGroup;
 			children = (
+				D08622D727F3AC3A00BFE986 /* StoreDAYSApp.swift */,
 				D08622D627F3AC3A00BFE986 /* StoreDAYS */,
 				D08622EC27F3AC3C00BFE986 /* StoreDAYSTests */,
 				D08622F627F3AC3C00BFE986 /* StoreDAYSUITests */,
@@ -100,7 +109,6 @@
 		D08622D627F3AC3A00BFE986 /* StoreDAYS */ = {
 			isa = PBXGroup;
 			children = (
-				D08622D727F3AC3A00BFE986 /* StoreDAYSApp.swift */,
 				D08622DB27F3AC3C00BFE986 /* Assets.xcassets */,
 				D086230927F3AEA200BFE986 /* DataModel */,
 				D086230727F3AE4600BFE986 /* Views */,
@@ -140,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				D08622D927F3AC3A00BFE986 /* ContentView.swift */,
+				D086231027F3F13600BFE986 /* StoreFront.swift */,
+				D086231227F3F77400BFE986 /* StoreSplashPage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				D086230A27F3AECF00BFE986 /* ModelData.swift */,
+				D086230C27F3EC7D00BFE986 /* UserData.swift */,
+				D086231427F406A800BFE986 /* Data.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -290,10 +302,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D086230D27F3EC7D00BFE986 /* UserData.swift in Sources */,
 				D08622E427F3AC3C00BFE986 /* StoreDAYS.xcdatamodeld in Sources */,
 				D08622E127F3AC3C00BFE986 /* Persistence.swift in Sources */,
 				D086230B27F3AECF00BFE986 /* ModelData.swift in Sources */,
+				D086231127F3F13600BFE986 /* StoreFront.swift in Sources */,
+				D086231327F3F77400BFE986 /* StoreSplashPage.swift in Sources */,
 				D08622DA27F3AC3A00BFE986 /* ContentView.swift in Sources */,
+				D086231527F406A800BFE986 /* Data.swift in Sources */,
 				D08622D827F3AC3A00BFE986 /* StoreDAYSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
