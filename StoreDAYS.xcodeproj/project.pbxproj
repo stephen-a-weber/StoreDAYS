@@ -24,7 +24,9 @@
 		D0E2B31527F4ECEB007DABE6 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2B31427F4ECEB007DABE6 /* ItemCell.swift */; };
 		D0E2B31727F4F101007DABE6 /* ItemCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2B31627F4F101007DABE6 /* ItemCell2.swift */; };
 		D0E2B31927F4F1AB007DABE6 /* ItemCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2B31827F4F1AB007DABE6 /* ItemCell3.swift */; };
-		D0E2B31B27F4FDFB007DABE6 /* KittenDetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2B31A27F4FDFB007DABE6 /* KittenDetalView.swift */; };
+		D0E2B31D27F502FE007DABE6 /* PuppyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2B31C27F502FE007DABE6 /* PuppyDetailView.swift */; };
+		D0E2B31F27F50311007DABE6 /* KittenDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2B31E27F50311007DABE6 /* KittenDetailView.swift */; };
+		D0E2B32127F503F1007DABE6 /* ExoticDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2B32027F503F1007DABE6 /* ExoticDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +67,9 @@
 		D0E2B31427F4ECEB007DABE6 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		D0E2B31627F4F101007DABE6 /* ItemCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell2.swift; sourceTree = "<group>"; };
 		D0E2B31827F4F1AB007DABE6 /* ItemCell3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell3.swift; sourceTree = "<group>"; };
-		D0E2B31A27F4FDFB007DABE6 /* KittenDetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KittenDetalView.swift; sourceTree = "<group>"; };
+		D0E2B31C27F502FE007DABE6 /* PuppyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuppyDetailView.swift; sourceTree = "<group>"; };
+		D0E2B31E27F50311007DABE6 /* KittenDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KittenDetailView.swift; sourceTree = "<group>"; };
+		D0E2B32027F503F1007DABE6 /* ExoticDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExoticDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,11 +161,13 @@
 			children = (
 				D08622D927F3AC3A00BFE986 /* ContentView.swift */,
 				D086231027F3F13600BFE986 /* StoreFront.swift */,
+				D0E2B32027F503F1007DABE6 /* ExoticDetailView.swift */,
 				D086231227F3F77400BFE986 /* StoreSplashPage.swift */,
 				D0E2B31427F4ECEB007DABE6 /* ItemCell.swift */,
 				D0E2B31627F4F101007DABE6 /* ItemCell2.swift */,
 				D0E2B31827F4F1AB007DABE6 /* ItemCell3.swift */,
-				D0E2B31A27F4FDFB007DABE6 /* KittenDetalView.swift */,
+				D0E2B31C27F502FE007DABE6 /* PuppyDetailView.swift */,
+				D0E2B31E27F50311007DABE6 /* KittenDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -316,17 +322,19 @@
 			files = (
 				D086230D27F3EC7D00BFE986 /* UserData.swift in Sources */,
 				D08622E427F3AC3C00BFE986 /* StoreDAYS.xcdatamodeld in Sources */,
+				D0E2B31F27F50311007DABE6 /* KittenDetailView.swift in Sources */,
 				D08622E127F3AC3C00BFE986 /* Persistence.swift in Sources */,
 				D0E2B31727F4F101007DABE6 /* ItemCell2.swift in Sources */,
 				D0E2B31927F4F1AB007DABE6 /* ItemCell3.swift in Sources */,
 				D086230B27F3AECF00BFE986 /* ModelData.swift in Sources */,
+				D0E2B31D27F502FE007DABE6 /* PuppyDetailView.swift in Sources */,
 				D0E2B31527F4ECEB007DABE6 /* ItemCell.swift in Sources */,
+				D0E2B32127F503F1007DABE6 /* ExoticDetailView.swift in Sources */,
 				D086231127F3F13600BFE986 /* StoreFront.swift in Sources */,
 				D086231327F3F77400BFE986 /* StoreSplashPage.swift in Sources */,
 				D08622DA27F3AC3A00BFE986 /* ContentView.swift in Sources */,
 				D086231527F406A800BFE986 /* Data.swift in Sources */,
 				D08622D827F3AC3A00BFE986 /* StoreDAYSApp.swift in Sources */,
-				D0E2B31B27F4FDFB007DABE6 /* KittenDetalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
