@@ -11,14 +11,14 @@ struct StoreFront: View {
     @ObservedObject var data : Data
     var body: some View {
         
-        NavigationView {
+      //  NavigationView {
             List{
             Section("KITTENS") {
                 
                
                 ForEach (data.kittenNames.indices) { item in
                         
-                    NavigationLink{  KittenDetailView(kittenName:data.kittenNames[item])  }
+                    NavigationLink{  KittenDetailView(data: data, kittenName:data.kittenNames[item])  }
                         //put a detail view in for each item of each section
                         // replace stuff in {} of NavigationLink
                         // label below can be another more complex view w/ pic price
@@ -35,7 +35,7 @@ struct StoreFront: View {
                  
                 ForEach (data.puppyNames.indices) { item in
                         
-                        NavigationLink{ PuppyDetailView(puppyName:data.puppyNames[item])  }
+                    NavigationLink{ PuppyDetailView(data: data,puppyName:data.puppyNames[item])  }
                         // The NavigationLink works like a button , the closure above
                         // is the next view.
                         //
@@ -63,7 +63,7 @@ struct StoreFront: View {
                        
                 ForEach (data.exoticNames.indices) { item in
                                 
-                                NavigationLink {ExoticDetailView(exoticName:data.exoticNames[item])   }// separate swiftUI file
+                    NavigationLink {ExoticDetailView(data: data,exoticName:data.exoticNames[item])   }// separate swiftUI file
                     label : {
                         ItemCell3(exoticName:data.exoticNames[item],exoticLitter:data.exoticLitterCount[item],exoticPrice:data.exoticPrice[item])
                     }
@@ -71,14 +71,15 @@ struct StoreFront: View {
                  
                             }
            
-            }
+           }
             
         
         
         }
             .navigationTitle("HEre In the \(data.name)")
+            .navigationBarTitleDisplayMode(.inline)
     }
-}
+//}
 }
     
 struct StoreFront_Previews: PreviewProvider {

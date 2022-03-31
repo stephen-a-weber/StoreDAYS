@@ -9,22 +9,30 @@ import SwiftUI
 
 struct StoreSplashPage: View {
     @ObservedObject var data : Data
+   @State private var enterStore = false
     
     var body: some View {
-        
         NavigationView {
-            NavigationLink {StoreFront(data:data)}
-        label : {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                .frame(width: 250, height: 30)
-                .background(.gray)
+        ZStack {
+           
+            Image("pet-image")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+                .onTapGesture {
+                    enterStore.toggle()
+                }
+            
+                NavigationLink("",  destination: TabbedMainView(data:data),isActive: $enterStore)
+        Spacer()
+            
+            }
         }
-        .navigationTitle("Store DAYS")
+        }
         
-        }
-    
     }
-}
+
 
 struct StoreSplashPage_Previews: PreviewProvider {
     @ObservedObject var data : Data

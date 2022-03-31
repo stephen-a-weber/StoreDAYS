@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 class Data: ObservableObject {
     
+    @Published var order : [String] = []
+    
     @Published var name = "STOREDAY!"
     @Published var kitten : [Int] = [1,2,3,4]
     @Published var kittenNames : [String] = ["kitten1","kitten2","kitten3","kitten4"]
@@ -22,4 +24,17 @@ class Data: ObservableObject {
     @Published var exoticNames: [String] = ["animal1","animal2","animal3","animal4","animal5","animal6","animal7","animal8","animal9"]
     @Published var exoticLitterCount = [2,2,2,3,2,1,2,1,1]
     @Published var exoticPrice = ["$1200","$1100","$2300","$4500","$5200","$3666","$2567","$9765","$12000"]
+    
+    
+    
+    
+    
+    func addToCart(item : String) {
+        order.append(item)
+        
+    }
+    
+    
+    
+    
 }
