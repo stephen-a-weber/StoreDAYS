@@ -1,4 +1,4 @@
-<?php 
+<?php
 class ReviewModel implements JsonSerializable{
 
     private int $ID;
@@ -17,7 +17,7 @@ class ReviewModel implements JsonSerializable{
         $this->Catagory_ID=$Catagory_ID;
 
     }
-    
+
     public function jsonSerialize(): mixed
     {
         return array(
@@ -26,7 +26,7 @@ class ReviewModel implements JsonSerializable{
         'User_ID'=>$this->User_ID,
         'Rate'=>$this->Rate,
         'Items_ID'=>$this->Items_ID,
-        'Catagory_ID'=>$this->Catagory_ID
+        'Catagory_ID'=>$this->Catagory_ID,
         );
     }
 }
