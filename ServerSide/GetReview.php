@@ -1,5 +1,6 @@
 <?php
 require_once "config.php";
+require_once "ReviewModel";
 if(isset($_GET['ID'])&isset($_GET['Body']) && isset($_GET['User_ID'])&& isset($_GET['Rate'])&& isset($_GET['Items_ID'])&& isset($_GET['Catagory_ID']) ){
     $ID= $_GET['ID'];
         $Body= $_GET['Body'];
