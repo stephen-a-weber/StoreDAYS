@@ -13,7 +13,7 @@ struct StoreDAYSApp: App {
     @StateObject var data = Data()
     var body: some Scene {
         WindowGroup {
-      
+          //  SignInView()
             LoginSwiftUIView()
         //    StoreSplashPage(data:data)
 //            ContentView()

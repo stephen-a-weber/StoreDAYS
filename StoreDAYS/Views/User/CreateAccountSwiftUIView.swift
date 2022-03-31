@@ -1,28 +1,44 @@
 //
-//  LoginSwiftUIView.swift
+//  CreateAccountSwiftUIView.swift
 //  StoreDAYS
 //
-//  Created by David Gonzalez on 3/30/22.
+//  Created by David Gonzalez on 3/31/22.
 //
 
 import SwiftUI
 
-struct LoginSwiftUIView: View {
-    
+struct CreateAccountSwiftUIView: View {
     struct LoginSessionView:View{
         
+        
+        @State var firstName = ""
+        @State var lastName = ""
         @State var email = ""
         @State var password = ""
-        @State var appGetUserFromAWS = GetUserFromAWS()
+        @State var passwordConfirm = ""
         @State var myColor = "myBlue"
+        
+        
         var body: some View{
             ScrollView {
                 VStack (alignment:.leading){
-                    // MARK: EMAIL
+                    // MARK: Last Name
+                    Text("Full Name").foregroundColor(Color(myColor))
+                    ZStack(alignment:.leading){
+                        if  lastName.isEmpty {
+                            Text("Robison Cruzo").font(.caption)
+                                .foregroundColor(.gray)
+                        }
+                        TextField("", text: $lastName)
+                    }
+                    Divider().frame(height: 1).background(Color(myColor))
+                        .padding(.bottom)
+                    
+                    // MARK: Email
                     Text("Email").foregroundColor(Color(myColor))
                     ZStack(alignment:.leading){
                         if  email.isEmpty {
-                            Text("example@gmail.com").font(.caption)
+                            Text("example@revature.net").font(.caption)
                                 .foregroundColor(.gray)
                         }
                         TextField("", text: $email)
@@ -42,9 +58,7 @@ struct LoginSwiftUIView: View {
                     Divider().frame(height: 1).background(Color(myColor))
                         .padding(.bottom)
                     
-                    Text("Forgot your password?").font(.footnote)
-                        .frame(width: 300, alignment: .trailing).foregroundColor(Color(myColor))
-                        .padding(.bottom, 40.0)
+                    
                     // MARK: BUTTONS
                     Button(action: initSession, label: {
                         Text("CONTINUE")
@@ -57,29 +71,22 @@ struct LoginSwiftUIView: View {
                     })
                         .padding(.bottom, 25.0)
                     
-                    Button(action: initSession, label: {
-                        Text("CONTINUE AS GUEST")
-                            .fontWeight(.bold)
-                            .foregroundColor(Color(myColor))
-                            .frame( maxWidth: .infinity,  alignment: .center)
-                            .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
-                            .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
-                                                                                lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
-                    })
                     
                     
-                }.padding(.horizontal, 77.0).frame(width: nil)
+                    
+                }.padding(.horizontal, 77.0)
             }
             .padding(.top, 50.0)
         }
         
         //MARK: initSession
         func initSession(){
-            print("init session")
+            print("Create User")
             //   readUser()
-            appGetUserFromAWS.read()
+            //app.read()
         }
     }
+    
     
     
     struct CreateSessionView:View{
@@ -89,31 +96,12 @@ struct LoginSwiftUIView: View {
     }
     
     
-    struct LoginAndCreateView:View{
+    struct CreateAccountView:View{
         @State var typeLoginSession = true
         var body: some View{
             VStack{
                 //MARK: BUTTON
                 HStack {
-                    Spacer()
-                    Button("LOGIN"){
-                        typeLoginSession = true
-                        print("login")
-                    }.foregroundColor(typeLoginSession ? .blue : .gray)
-                    
-                    Spacer()
-                    
-                    //   NavigationLink("",  destination: CreateAccountSwiftUIView())
-                    
-                    
-                    //NavigationLink(LocalizedStringKey) {CreateAccountSwiftUIView()   }
-                    Button("CREATE ACCOUNT"){
-                        
-                        typeLoginSession = false
-                        //  CreateAccountSwiftUIView()
-                        print("CREATE ACCOUNT")
-                    }.foregroundColor(typeLoginSession ? .gray : .blue)
-                    
                     
                     Spacer()
                     
@@ -124,8 +112,7 @@ struct LoginSwiftUIView: View {
                 if typeLoginSession == true {
                     LoginSessionView()
                 }else{
-                    CreateAccountSwiftUIView()
-                    //CreateSessionView()
+                    CreateSessionView()
                 }
             }
         }
@@ -135,19 +122,15 @@ struct LoginSwiftUIView: View {
             Spacer()
             Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 1.0)
             VStack{
-                Image("logo1").resizable().aspectRatio(contentMode: .fit)
-                    .padding(.bottom)
-                    .frame(width: 250, height: 89, alignment: .center)
-                LoginAndCreateView()
+                
+                CreateAccountView()
             }
         }
     }
 }
 
-struct LoginSwiftUIView_Previews: PreviewProvider {
+struct CreateAccountSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginSwiftUIView()
+        CreateAccountSwiftUIView()
     }
 }
-
-
