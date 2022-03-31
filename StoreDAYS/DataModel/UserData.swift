@@ -13,17 +13,24 @@ import SwiftUI
 
 class UserData: ObservableObject, Codable {
     enum CodingKeys: CodingKey {
-        case name
-        case address
+        case ID
+        case UserName
+        case FirstName
+        case LastName
+        case DateOfBirth
+        case Password
+        case Email
     }
     
     //example data using example enum instead of stringy calls
     
-    @Published var name = "STOREDAYS!"
-    @Published var address = ""
-    
-    
-    
+    @Published var ID = 0
+    @Published var UserName = ""
+    @Published var FirstName = ""
+    @Published var LastName = ""
+    @Published var DateOfBirth = ""
+    @Published var Password = ""
+    @Published var Email = ""
     
     init() {}
     // These are the required functions to conform to  Codable Protocol
@@ -31,18 +38,26 @@ class UserData: ObservableObject, Codable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        name = try container.decode(String.self, forKey: .name)
-        address = try container.decode(String.self, forKey: .address)
-        
+        ID = try container.decode(Int.self, forKey: .ID)
+        UserName = try container.decode(String.self, forKey: .UserName)
+        FirstName = try container.decode(String.self, forKey: .FirstName)
+        LastName = try container.decode(String.self, forKey: .LastName)
+        DateOfBirth = try container.decode(String.self, forKey: .DateOfBirth)
+        Password = try container.decode(String.self, forKey: .Password)
+        Email = try container.decode(String.self, forKey: .Email)
     }
     
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
-        try container.encode(name, forKey: .name)
-        try container.encode(address, forKey: .address)
-        
+        try container.encode(ID, forKey: .ID)
+        try container.encode(UserName, forKey: .UserName)
+        try container.encode(FirstName, forKey: .FirstName)
+        try container.encode(LastName, forKey: .LastName)
+        try container.encode(DateOfBirth, forKey: .DateOfBirth)
+        try container.encode(Password, forKey: .Password)
+        try container.encode(Email, forKey: .Email)
         
     }
     
