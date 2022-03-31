@@ -3,6 +3,10 @@
 -- Model: New Model    Version: 1.0
 -- MySQL Workbench Forward Engineering
 
+-- Create the Schema if it doesnt exist
+CREATE SCHEMA IF NOT EXISTS StoreDAYS DEFAULT CHARACTER SET utf8;
+USE StoreDAYS;
+
 
 -- -----------------------------------------------------
 -- Schema mydb
@@ -33,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `Address` (
   `State` TEXT NULL,
   `Zip` TEXT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `fk_Address_User1_idx` (`User_ID` ASC) VISIBLE,
+  INDEX `fk_Address_User1_idx` (`User_ID` ASC) ,
   CONSTRAINT `fk_Address_User1`
     FOREIGN KEY (`User_ID`)
     REFERENCES `User` (`ID`)
@@ -53,8 +57,8 @@ CREATE TABLE IF NOT EXISTS `Shipping` (
   `Status` VARCHAR(45) NULL,
   `Address_ID` INT NOT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `fk_Shipping_User1_idx` (`User_ID` ASC) VISIBLE,
-  INDEX `fk_Shipping_Address1_idx` (`Address_ID` ASC) VISIBLE,
+  INDEX `fk_Shipping_User1_idx` (`User_ID` ASC) ,
+  INDEX `fk_Shipping_Address1_idx` (`Address_ID` ASC) ,
   CONSTRAINT `fk_Shipping_User1`
     FOREIGN KEY (`User_ID`)
     REFERENCES `User` (`ID`)
@@ -76,8 +80,8 @@ CREATE TABLE IF NOT EXISTS `Invoice` (
   `User_ID` INT NOT NULL,
   `Shipping_ID` INT NOT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `fk_Invoice_User1_idx` (`User_ID` ASC) VISIBLE,
-  INDEX `fk_Invoice_Shipping1_idx` (`Shipping_ID` ASC) VISIBLE,
+  INDEX `fk_Invoice_User1_idx` (`User_ID` ASC) ,
+  INDEX `fk_Invoice_Shipping1_idx` (`Shipping_ID` ASC) ,
   CONSTRAINT `fk_Invoice_User1`
     FOREIGN KEY (`User_ID`)
     REFERENCES `User` (`ID`)
@@ -100,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `Order` (
   `Description` TEXT NULL,
   `Invoice_ID` INT NOT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `fk_Order_Invoice1_idx` (`Invoice_ID` ASC) VISIBLE,
+  INDEX `fk_Order_Invoice1_idx` (`Invoice_ID` ASC) ,
   CONSTRAINT `fk_Order_Invoice1`
     FOREIGN KEY (`Invoice_ID`)
     REFERENCES `Invoice` (`ID`)
@@ -129,8 +133,8 @@ CREATE TABLE IF NOT EXISTS `Payment_Methods` (
   `User_ID` INT NOT NULL,
   `Address_ID` INT NOT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `fk_PaymentMethods_User1_idx` (`User_ID` ASC) VISIBLE,
-  INDEX `fk_PaymentMethods_Address1_idx` (`Address_ID` ASC) VISIBLE,
+  INDEX `fk_PaymentMethods_User1_idx` (`User_ID` ASC) ,
+  INDEX `fk_PaymentMethods_Address1_idx` (`Address_ID` ASC) ,
   CONSTRAINT `fk_PaymentMethods_User1`
     FOREIGN KEY (`User_ID`)
     REFERENCES `User` (`ID`)
@@ -154,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `Items` (
   `Catagory_ID` INT NOT NULL,
   `Stock` INT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `fk_Items_Catagory_idx` (`Catagory_ID` ASC) VISIBLE,
+  INDEX `fk_Items_Catagory_idx` (`Catagory_ID` ASC) ,
   CONSTRAINT `fk_Items_Catagory`
     FOREIGN KEY (`Catagory_ID`)
     REFERENCES `Catagory` (`ID`)
@@ -173,9 +177,9 @@ CREATE TABLE IF NOT EXISTS `Review` (
   `Items_ID` INT NULL,
   `Catagory_ID` INT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `fk_Review_User1_idx` (`User_ID` ASC) VISIBLE,
-  INDEX `fk_Review_Items1_idx` (`Items_ID` ASC) VISIBLE,
-  INDEX `fk_Review_Catagory1_idx` (`Catagory_ID` ASC) VISIBLE,
+  INDEX `fk_Review_User1_idx` (`User_ID` ASC) ,
+  INDEX `fk_Review_Items1_idx` (`Items_ID` ASC) ,
+  INDEX `fk_Review_Catagory1_idx` (`Catagory_ID` ASC) ,
   CONSTRAINT `fk_Review_User1`
     FOREIGN KEY (`User_ID`)
     REFERENCES `User` (`ID`)
@@ -192,14 +196,6 @@ CREATE TABLE IF NOT EXISTS `Review` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-
--- -----------------------------------------------------
--- Table `Invetory`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Invetory` (
-);
-
-
 -- -----------------------------------------------------
 -- Table `Order_Details`
 -- -----------------------------------------------------
@@ -208,8 +204,8 @@ CREATE TABLE IF NOT EXISTS `Order_Details` (
   `Order_ID` INT NOT NULL,
   `Quantity` INT NULL,
   `ID` INT NOT NULL AUTO_INCREMENT,
-  INDEX `fk_Items_has_Order_Order1_idx` (`Order_ID` ASC) VISIBLE,
-  INDEX `fk_Items_has_Order_Items1_idx` (`Items_ID` ASC) VISIBLE,
+  INDEX `fk_Items_has_Order_Order1_idx` (`Order_ID` ASC) ,
+  INDEX `fk_Items_has_Order_Items1_idx` (`Items_ID` ASC) ,
   PRIMARY KEY (`ID`),
   CONSTRAINT `fk_Items_has_Order_Items1`
     FOREIGN KEY (`Items_ID`)
