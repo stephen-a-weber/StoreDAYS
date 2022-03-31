@@ -95,7 +95,6 @@ CREATE TABLE IF NOT EXISTS `Invoice` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Order` (
   `ID` INT NOT NULL,
-  `Name` TEXT NULL,
   `Cost` DECIMAL NULL,
   `Description` TEXT NULL,
   `Invoice_ID` INT NOT NULL,
@@ -120,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `Catagory` (
 -- -----------------------------------------------------
 -- Table `Payment_Methods`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Payment_Methods` (
+CREATE TABLE IF NOT EXISTS `PaymentMethods` (
   `ID` INT NOT NULL,
   `CardNumber` INT NULL,
   `CVC` INT NULL,
@@ -166,8 +165,8 @@ CREATE TABLE IF NOT EXISTS `Items` (
 -- Table `Review`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Review` (
-  `Body` TEXT NULL,
   `ID` INT NOT NULL AUTO_INCREMENT,
+  `Body` TEXT NULL,
   `User_ID` INT NOT NULL,
   `Rate` INT NULL,
   `Items_ID` INT NULL,
@@ -191,13 +190,6 @@ CREATE TABLE IF NOT EXISTS `Review` (
     REFERENCES `Catagory` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-
-
--- -----------------------------------------------------
--- Table `Invetory`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Invetory` (
-);
 
 
 -- -----------------------------------------------------

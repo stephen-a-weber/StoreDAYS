@@ -51,7 +51,7 @@ INSERT INTO Order (Name, Cost, Description, Invoice_ID) VALUES (?,?,?,?)
 SELECT * FROM Order WHERE ID = ?
 SELECT * FROM Order WHERE Invoice_ID = ?
 --Update
-UPDATE Order set Name = ?, Cost = ?, Description = ?, Invoice_ID = ? WHERE ID = ?
+UPDATE Order set Cost = ?, Description = ?, Invoice_ID = ? WHERE ID = ?
 --Delete
 DELETE FROM Order Where ID = ?
 
