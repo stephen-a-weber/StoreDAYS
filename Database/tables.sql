@@ -95,7 +95,6 @@ CREATE TABLE IF NOT EXISTS `Invoice` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Order` (
   `ID` INT NOT NULL,
-  `Name` TEXT NULL,
   `Cost` DECIMAL NULL,
   `Description` TEXT NULL,
   `Invoice_ID` INT NOT NULL,
@@ -120,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `Catagory` (
 -- -----------------------------------------------------
 -- Table `Payment_Methods`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Payment_Methods` (
+CREATE TABLE IF NOT EXISTS `PaymentMethods` (
   `ID` INT NOT NULL,
   `CardNumber` INT NULL,
   `CVC` INT NULL,
@@ -166,8 +165,8 @@ CREATE TABLE IF NOT EXISTS `Items` (
 -- Table `Review`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Review` (
-  `Body` TEXT NULL,
   `ID` INT NOT NULL AUTO_INCREMENT,
+  `Body` TEXT NULL,
   `User_ID` INT NOT NULL,
   `Rate` INT NULL,
   `Items_ID` INT NULL,
@@ -194,20 +193,13 @@ CREATE TABLE IF NOT EXISTS `Review` (
 
 
 -- -----------------------------------------------------
--- Table `Invetory`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Invetory` (
-);
-
-
--- -----------------------------------------------------
 -- Table `Order_Details`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Order_Details` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
   `Items_ID` INT NOT NULL,
   `Order_ID` INT NOT NULL,
   `Quantity` INT NULL,
-  `ID` INT NOT NULL AUTO_INCREMENT,
   INDEX `fk_Items_has_Order_Order1_idx` (`Order_ID` ASC) VISIBLE,
   INDEX `fk_Items_has_Order_Items1_idx` (`Items_ID` ASC) VISIBLE,
   PRIMARY KEY (`ID`),
