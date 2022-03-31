@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PuppyDetailView: View {
     @ObservedObject var data: Data
+    @State var isPurchased = false
     var puppyName = "Bob"
     var body: some View {
         
@@ -19,8 +20,30 @@ struct PuppyDetailView: View {
             .scaledToFit()
         
     Button("Adopt this Puppy") {
-        data.addToCart(item: puppyName) }
+        data.addToCart(item: puppyName)
+        isPurchased.toggle()
+    }
     .frame(width: 155.0, height: 60.0)
+            
+            Spacer()
+            Spacer()
+            if isPurchased {
+                Text("Adding to Cart")
+                    .font(.title)
+                    .multilineTextAlignment(.center)
+                    .background(.yellow)
+                Text("You will be very happy")
+                    .multilineTextAlignment(.center)
+                Text("with this puppy")
+                    .fontWeight(.heavy)
+                    .multilineTextAlignment(.center)
+            }
+            Spacer()
+            
+            
+            
+            
+            
 }
         }
     
