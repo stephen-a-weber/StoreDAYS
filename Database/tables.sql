@@ -196,10 +196,10 @@ CREATE TABLE IF NOT EXISTS `Review` (
 -- Table `Order_Details`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Order_Details` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
   `Items_ID` INT NOT NULL,
   `Order_ID` INT NOT NULL,
   `Quantity` INT NULL,
-  `ID` INT NOT NULL AUTO_INCREMENT,
   INDEX `fk_Items_has_Order_Order1_idx` (`Order_ID` ASC) VISIBLE,
   INDEX `fk_Items_has_Order_Items1_idx` (`Items_ID` ASC) VISIBLE,
   PRIMARY KEY (`ID`),
