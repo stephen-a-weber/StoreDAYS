@@ -70,6 +70,6 @@ INSERT INTO Review (Body, User_ID, Rate, Items_ID, Catagory_ID) VALUES ('It was 
 
 
 --Order_Details
-INSERT INTO Order_Details (Items_ID, Order_ID, Quantity) VALUES (3,10,1)
-INSERT INTO Order_Details (Items_ID, Order_ID, Quantity) VALUES (4,20,1)
-INSERT INTO Order_Details (Items_ID, Order_ID, Quantity) VALUES (2,29,1)
+INSERT INTO Order_Details (Items_ID, Order_ID, Quantity) VALUES (10,1,1)
+INSERT INTO Order_Details (Items_ID, Order_ID, Quantity) VALUES (20,2,1)
+INSERT INTO Order_Details (Items_ID, Order_ID, Quantity) VALUES (29,3,1)
