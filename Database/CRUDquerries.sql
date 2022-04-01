@@ -1,6 +1,6 @@
 ---Table:User
 --Create
-INSERT INTO User (UserName, FirstName, LastName, DateOfBirth, Password, Email) VALUES (?,?,?,?,?,?)
+INSERT INTO User (UserName, FirstName, LastName, DateOfBirth, Password, Email, Admin) VALUES (?,?,?,?,?,?,?)
 --Read
 SELECT * FROM User WHERE ID = ?
 SELECT Password FROM User Where Email = ? 

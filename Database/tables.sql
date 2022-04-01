@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `DateOfBirth` DATE NULL,
   `Password` TEXT NULL,
   `Email` TEXT NULL,
+  `Admin` INT NULL,
   PRIMARY KEY (`ID`));
 
 
@@ -156,7 +157,6 @@ CREATE TABLE IF NOT EXISTS `Items` (
   `Description` TEXT NULL,
   `Cost` TEXT NULL,
   `Catagory_ID` INT NOT NULL,
-  `Stock` INT NULL,
   PRIMARY KEY (`ID`),
   INDEX `fk_Items_Catagory_idx` (`Catagory_ID` ASC) ,
   CONSTRAINT `fk_Items_Catagory`
