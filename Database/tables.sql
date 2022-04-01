@@ -170,8 +170,8 @@ CREATE TABLE IF NOT EXISTS `Items` (
 -- Table `Review`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Review` (
-  `Body` TEXT NULL,
   `ID` INT NOT NULL AUTO_INCREMENT,
+  `Body` TEXT NULL,
   `User_ID` INT NOT NULL,
   `Rate` INT NULL,
   `Items_ID` INT NULL,
