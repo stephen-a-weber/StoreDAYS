@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `Shipping` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PaymentMethods` (
   `ID` INT NOT NULL AUTO_INCREMENT,
-  `CardNumber` BIGINT NULL,
+  `CardNumber` BIGINT(20) NULL,
   `CVC` INT NULL,
   `Expiration` TEXT NULL,
   `Name` VARCHAR(45) NULL,
