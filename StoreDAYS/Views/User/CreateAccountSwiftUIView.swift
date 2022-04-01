@@ -9,30 +9,44 @@ import SwiftUI
 
 struct CreateAccountSwiftUIView: View {
     struct LoginSessionView:View{
-        
-        
         @State var firstName = ""
         @State var lastName = ""
         @State var email = ""
         @State var password = ""
         @State var passwordConfirm = ""
         @State var myColor = "myBlue"
+        @State var animFlagLogin = false
         
         
         var body: some View{
             ScrollView {
                 VStack (alignment:.leading){
+                    Group{
+                        // MARK: Last Name
+                        Text("First Name").foregroundColor(Color(myColor))
+                        ZStack(alignment:.leading){
+                            if  firstName.isEmpty {
+                                Text("Robison").font(.caption)
+                                    .foregroundColor(.gray)
+                            }
+                            TextField("", text: $firstName)
+                        }
+                        Divider().frame(height: 1).background(Color(myColor))
+                            .padding(.bottom)
                     // MARK: Last Name
-                    Text("Full Name").foregroundColor(Color(myColor))
+                    Text("Last Name").foregroundColor(Color(myColor))
                     ZStack(alignment:.leading){
                         if  lastName.isEmpty {
-                            Text("Robison Cruzo").font(.caption)
+                            Text("Cruzo").font(.caption)
                                 .foregroundColor(.gray)
                         }
                         TextField("", text: $lastName)
                     }
                     Divider().frame(height: 1).background(Color(myColor))
                         .padding(.bottom)
+                    
+                
+             
                     
                     // MARK: Email
                     Text("Email").foregroundColor(Color(myColor))
@@ -45,6 +59,7 @@ struct CreateAccountSwiftUIView: View {
                     }
                     Divider().frame(height: 1).background(Color(myColor))
                         .padding(.bottom)
+                    }
                     // MARK: PASSWORD
                     Text("Password").foregroundColor(Color(myColor))
                     ZStack(alignment:.leading){
@@ -60,7 +75,10 @@ struct CreateAccountSwiftUIView: View {
                     
                     
                     // MARK: BUTTONS
-                    Button(action: initSession, label: {
+                    // MARK: BUTTONS
+                    Button(action: {
+                        animFlagLogin = initSession()
+                    }) {
                         Text("CONTINUE")
                             .fontWeight(.bold)
                             .foregroundColor(Color(myColor))
@@ -68,11 +86,20 @@ struct CreateAccountSwiftUIView: View {
                             .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
                             .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
-                    })
+                        
+//                            .fullScreenCover(isPresented: $animFlag, content: {
+//                                PaySwiftUIView()
+//                              .edgesIgnoringSafeArea(.all)
+//                              .animation(.easeInOut)
+//                              .transition(.move(edge: .bottom))
+//                        })
+                        
+                        
+                            .sheet(isPresented: $animFlagLogin, content: {
+                                PaySwiftUIView()
+                            })
+                    }
                         .padding(.bottom, 25.0)
-                    
-                    
-                    
                     
                 }.padding(.horizontal, 77.0)
             }
@@ -80,11 +107,12 @@ struct CreateAccountSwiftUIView: View {
         }
         
         //MARK: initSession
-        func initSession(){
-            print("Create User")
-            //   readUser()
-            //app.read()
-        }
+        
+         //MARK: initSession
+         func initSession() -> Bool {
+             print(" Into ")
+             return true
+         }
     }
     
     

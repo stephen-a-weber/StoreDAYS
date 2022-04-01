@@ -13,10 +13,10 @@ struct StoreDAYSApp: App {
     @StateObject var data = Data()
     var body: some Scene {
         WindowGroup {
-
+        //    CheckOutView(data:data)
       
-   //    LoginSwiftUIView()
-        StoreSplashPage(data:data)
+       LoginSwiftUIView()
+     //   StoreSplashPage(data:data)
 
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
