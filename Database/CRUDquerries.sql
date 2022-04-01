@@ -44,16 +44,16 @@ UPDATE Invoice set Sum = ?, User_ID = ?, Shipping_ID = ?, PaymentMethods_ID = ? 
 --Delete
 DELETE FROM Invoice Where ID = ?
 
----Table:Order
+---Table:Orders
 --Create
-INSERT INTO Order (Cost, Description, Invoice_ID) VALUES (?,?,?,?)
+INSERT INTO Orders (Cost, Description, Invoice_ID) VALUES (?,?,?,?)
 --Read
-SELECT * FROM Order WHERE ID = ?
-SELECT * FROM Order WHERE Invoice_ID = ?
+SELECT * FROM Orders WHERE ID = ?
+SELECT * FROM Orders WHERE Invoice_ID = ?
 --Update
-UPDATE Order set  Cost = ?, Description = ?, Invoice_ID = ? WHERE ID = ?
+UPDATE Orders set  Cost = ?, Description = ?, Invoice_ID = ? WHERE ID = ?
 --Delete
-DELETE FROM Order Where ID = ?
+DELETE FROM Orders Where ID = ?
 
 ---Table:Catagory
 --Create
@@ -105,10 +105,10 @@ DELETE FROM Review Where User_ID = ?
 
 ---Table:Order_Details
 --Create
-INSERT INTO Order_Details (Items_ID, Order_ID, Quantity) VALUES (?,?,?)
+INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (?,?,?)
 --Read
-SELECT * FROM Order_Details WHERE ID =
+SELECT * FROM Orders_Details WHERE ID =
 --Update
-UPDATE Order_Details set Items_ID = ?, Order_ID = ?, Quantity = ? WHERE ID = ?
+UPDATE Orders_Details set Items_ID = ?, Orders_ID = ?, Quantity = ? WHERE ID = ?
 --Delete
-DELETE FROM Order_Details Where ID = ?
+DELETE FROM Orders_Details Where ID = ?
