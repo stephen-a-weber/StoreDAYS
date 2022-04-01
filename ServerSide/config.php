@@ -6,8 +6,8 @@ $_SERVER["dbconnection"] = getConnection();
 function getConnection() {
     // CHANGE TO YOUR LOCAL DB CONFIGURATION //
     $hostname = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "user12";
+    $password = "123";
     $database = "StoreDAYS";
     $conn = mysqli_connect($hostname, $username, $password, $database);
     if(!$conn) die("Connection Failed: " . mysqli_connect_error());
