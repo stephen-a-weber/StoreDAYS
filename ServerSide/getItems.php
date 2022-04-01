@@ -9,7 +9,7 @@ require_once "ReviewModel.php";
       $stmt = $_SERVER['dbconnection']->prepare($sql);
       $stmt -> bind_param("i",$ID);
       $stmt->execute();
-    $rows=$stmt->get_result()->fetch_assoc();
+    $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
       echo json_encode($rows);
     }else{
 $sql = "SELECT * FROM Items";
