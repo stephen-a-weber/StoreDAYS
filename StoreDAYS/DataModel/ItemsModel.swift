@@ -13,7 +13,7 @@ class ItemsModel: ObservableObject, Codable{
         case Description
         case Cost
         case Catagory_ID
-        case IMG
+        case Img
         case Availability
      
     }
@@ -25,7 +25,7 @@ class ItemsModel: ObservableObject, Codable{
     @Published var Description = ""
     @Published var Cost = 0.0
     @Published var Catagory_ID = 0
-    @Published var IMG = ""
+    @Published var Img = ""
     @Published var Availability = 0
     
     init() {}
@@ -39,7 +39,7 @@ class ItemsModel: ObservableObject, Codable{
         Description = try container.decode(String.self, forKey: .Description)
         Cost = try container.decode(Double.self, forKey: .Cost)
         Catagory_ID = try container.decode(Int.self, forKey: .Catagory_ID)
-        IMG = try container.decode(String.self, forKey: .IMG)
+        Img = try container.decode(String.self, forKey: .Img)
         Availability = try container.decode(Int.self, forKey: .Availability)
     }
     
@@ -52,7 +52,7 @@ class ItemsModel: ObservableObject, Codable{
         try container.encode(Description, forKey: .Description)
         try container.encode(Cost, forKey: .Cost)
         try container.encode(Catagory_ID, forKey: .Catagory_ID)
-        try container.encode(IMG, forKey: .IMG)
+        try container.encode(Img, forKey: .Img)
         try container.encode(Availability, forKey: .Availability)
         
     }
