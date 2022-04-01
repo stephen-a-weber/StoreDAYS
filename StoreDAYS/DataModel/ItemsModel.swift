@@ -13,7 +13,8 @@ class ItemsModel: ObservableObject, Codable{
         case Description
         case Cost
         case Catagory_ID
-        case Stock
+        case IMG
+        case Availability
      
     }
     
@@ -24,7 +25,8 @@ class ItemsModel: ObservableObject, Codable{
     @Published var Description = ""
     @Published var Cost = 0.0
     @Published var Catagory_ID = 0
-    @Published var Stock = 0
+    @Published var IMG = ""
+    @Published var Availability = 0
     
     init() {}
     // These are the required functions to conform to  Codable Protocol
@@ -37,7 +39,8 @@ class ItemsModel: ObservableObject, Codable{
         Description = try container.decode(String.self, forKey: .Description)
         Cost = try container.decode(Double.self, forKey: .Cost)
         Catagory_ID = try container.decode(Int.self, forKey: .Catagory_ID)
-        Stock = try container.decode(Int.self, forKey: .Stock)
+        IMG = try container.decode(String.self, forKey: .IMG)
+        Availability = try container.decode(Int.self, forKey: .Availability)
     }
     
     
@@ -49,7 +52,8 @@ class ItemsModel: ObservableObject, Codable{
         try container.encode(Description, forKey: .Description)
         try container.encode(Cost, forKey: .Cost)
         try container.encode(Catagory_ID, forKey: .Catagory_ID)
-        try container.encode(Stock, forKey: .Stock)
+        try container.encode(IMG, forKey: .IMG)
+        try container.encode(Availability, forKey: .Availability)
         
     }
 }

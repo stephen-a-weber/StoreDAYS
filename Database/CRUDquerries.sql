@@ -80,13 +80,13 @@ DELETE FROM Payment_Methods Where User_ID = ?
 
 ---Table:Items
 --Create
-INSERT INTO Items (Name, Description, Cost, Catagory_ID, Stock ) VALUES (?,?,?,?,?)
+INSERT INTO Items (Name, Description, Cost, Catagory_ID, IMG ) VALUES (?,?,?,?,?)
 --Read
 SELECT * FROM Items WHERE ID = ?
 SELECT * FROM Items WHERE Catagory_ID = ?
 SELECT * FROM Items WHERE Name = ?
 --Update
-UPDATE Items set Name  = ?, Description = ?, Cost = ?, Catagory_ID = ?, Stock = ?  WHERE ID  = ?
+UPDATE Items set Name  = ?, Description = ?, Cost = ?, Catagory_ID = ?, Stock = ?, IMG = ?, Availability = ?  WHERE ID  = ?
 --Delete
 DELETE FROM Items Where ID = ?
 

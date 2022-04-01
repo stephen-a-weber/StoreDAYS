@@ -157,6 +157,8 @@ CREATE TABLE IF NOT EXISTS `Items` (
   `Description` TEXT NULL,
   `Cost` TEXT NULL,
   `Catagory_ID` INT NOT NULL,
+  `Img` TEXT NULL,
+  `Availability` INT NOT NULL,
   PRIMARY KEY (`ID`),
   INDEX `fk_Items_Catagory_idx` (`Catagory_ID` ASC) ,
   CONSTRAINT `fk_Items_Catagory`
