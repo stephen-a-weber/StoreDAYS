@@ -35,23 +35,23 @@ DELETE FROM Shipping Where ID = ?
 
 ---Table:Invoice
 --Create
-INSERT INTO Invoice (Sum, User_ID, Shipping_ID) VALUES (?,?,?)
+INSERT INTO Invoice (Sum, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (?,?,?,?)
 --Read
 SELECT * FROM Invoice WHERE ID = ?
 SELECT * FROM Invoice WHERE User_ID = ?
 --Update
-UPDATE Invoice set Sum = ?, User_ID = ?, Shipping_ID = ? WHERE ID = ?
+UPDATE Invoice set Sum = ?, User_ID = ?, Shipping_ID = ?, PaymentMethods_ID = ? WHERE ID = ?
 --Delete
 DELETE FROM Invoice Where ID = ?
 
 ---Table:Order
 --Create
-INSERT INTO Order (Name, Cost, Description, Invoice_ID) VALUES (?,?,?,?)
+INSERT INTO Order (Cost, Description, Invoice_ID) VALUES (?,?,?,?)
 --Read
 SELECT * FROM Order WHERE ID = ?
 SELECT * FROM Order WHERE Invoice_ID = ?
 --Update
-UPDATE Order set Name = ?, Cost = ?, Description = ?, Invoice_ID = ? WHERE ID = ?
+UPDATE Order set  Cost = ?, Description = ?, Invoice_ID = ? WHERE ID = ?
 --Delete
 DELETE FROM Order Where ID = ?
 
@@ -68,15 +68,15 @@ DELETE FROM Catagory Where ID = ?
 
 ---Table:Payment Methods
 --Create
-INSERT INTO Payment_Methods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (?,?,?,?,?,?)
+INSERT INTO PayMentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (?,?,?,?,?,?)
 --Read
-SELECT * FROM Payment_Methods WHERE User_ID = ?
-SELECT * FROM Payment_Methods WHERE ID = ?
+SELECT * FROM PayMentMethods WHERE User_ID = ?
+SELECT * FROM PayMentMethods WHERE ID = ?
 --Update
-UPDATE Payment_Methods set CardNumber = ?, CVC = ?, Expiration = ?, Name = ?, User_ID = ?, Address_ID = ?  WHERE ID = ?
+UPDATE PayMentMethods set CardNumber = ?, CVC = ?, Expiration = ?, Name = ?, User_ID = ?, Address_ID = ?  WHERE ID = ?
 --Delete
-DELETE FROM Payment_Methods Where ID = ?
-DELETE FROM Payment_Methods Where User_ID = ?
+DELETE FROM PayMentMethods Where ID = ?
+DELETE FROM PayMentMethods Where User_ID = ?
 
 ---Table:Items
 --Create
