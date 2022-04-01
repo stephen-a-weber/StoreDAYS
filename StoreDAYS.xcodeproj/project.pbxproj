@@ -13,11 +13,11 @@
 		22FFCD0727F7434700B22DE3 /* PaySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFCD0627F7434700B22DE3 /* PaySwiftUIView.swift */; };
 		78E969F527F76FCF0005EB67 /* PaymentAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E969ED27F76FCE0005EB67 /* PaymentAssistant.swift */; };
 		78E969F627F76FCF0005EB67 /* UserDefaultsExpander.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E969EE27F76FCE0005EB67 /* UserDefaultsExpander.swift */; };
-		78E969F727F76FCF0005EB67 /* shopDAYS.db in Resources */ = {isa = PBXBuildFile; fileRef = 78E969EF27F76FCE0005EB67 /* shopDAYS.db */; };
+		78E969F727F76FCF0005EB67 /* shopDAYS(nousefornow).db in Resources */ = {isa = PBXBuildFile; fileRef = 78E969EF27F76FCE0005EB67 /* shopDAYS(nousefornow).db */; };
 		78E969F827F76FCF0005EB67 /* AddPaymentCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E969F027F76FCE0005EB67 /* AddPaymentCardButton.swift */; };
 		78E969F927F76FCF0005EB67 /* DefaultPaymentMethodConvoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E969F127F76FCE0005EB67 /* DefaultPaymentMethodConvoy.swift */; };
 		78E969FA27F76FCF0005EB67 /* MKCoordinateRegion+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E969F227F76FCE0005EB67 /* MKCoordinateRegion+Extensions.swift */; };
-		78E969FB27F76FCF0005EB67 /* DBConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E969F327F76FCF0005EB67 /* DBConnector.swift */; };
+		78E969FB27F76FCF0005EB67 /* DBConnector(nousefornow).swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E969F327F76FCF0005EB67 /* DBConnector(nousefornow).swift */; };
 		78E969FC27F76FCF0005EB67 /* LocationAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E969F427F76FCF0005EB67 /* LocationAssistant.swift */; };
 		84C837FA27F51F6900815C63 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C837F927F51F6900815C63 /* AddressModel.swift */; };
 		84C837FC27F520E200815C63 /* ShippingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C837FB27F520E200815C63 /* ShippingModel.swift */; };
@@ -78,11 +78,11 @@
 		22FFCD0627F7434700B22DE3 /* PaySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaySwiftUIView.swift; sourceTree = "<group>"; };
 		78E969ED27F76FCE0005EB67 /* PaymentAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentAssistant.swift; sourceTree = "<group>"; };
 		78E969EE27F76FCE0005EB67 /* UserDefaultsExpander.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExpander.swift; sourceTree = "<group>"; };
-		78E969EF27F76FCE0005EB67 /* shopDAYS.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = shopDAYS.db; sourceTree = "<group>"; };
+		78E969EF27F76FCE0005EB67 /* shopDAYS(nousefornow).db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "shopDAYS(nousefornow).db"; sourceTree = "<group>"; };
 		78E969F027F76FCE0005EB67 /* AddPaymentCardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPaymentCardButton.swift; sourceTree = "<group>"; };
 		78E969F127F76FCE0005EB67 /* DefaultPaymentMethodConvoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultPaymentMethodConvoy.swift; sourceTree = "<group>"; };
 		78E969F227F76FCE0005EB67 /* MKCoordinateRegion+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+Extensions.swift"; sourceTree = "<group>"; };
-		78E969F327F76FCF0005EB67 /* DBConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBConnector.swift; sourceTree = "<group>"; };
+		78E969F327F76FCF0005EB67 /* DBConnector(nousefornow).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DBConnector(nousefornow).swift"; sourceTree = "<group>"; };
 		78E969F427F76FCF0005EB67 /* LocationAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAssistant.swift; sourceTree = "<group>"; };
 		84C837F927F51F6900815C63 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		84C837FB27F520E200815C63 /* ShippingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingModel.swift; sourceTree = "<group>"; };
@@ -185,14 +185,6 @@
 				D086230927F3AEA200BFE986 /* DataModel */,
 				D086230727F3AE4600BFE986 /* Views */,
 				D086230827F3AE5C00BFE986 /* Controllers */,
-				78E969F027F76FCE0005EB67 /* AddPaymentCardButton.swift */,
-				78E969F327F76FCF0005EB67 /* DBConnector.swift */,
-				78E969F127F76FCE0005EB67 /* DefaultPaymentMethodConvoy.swift */,
-				78E969F427F76FCF0005EB67 /* LocationAssistant.swift */,
-				78E969F227F76FCE0005EB67 /* MKCoordinateRegion+Extensions.swift */,
-				78E969ED27F76FCE0005EB67 /* PaymentAssistant.swift */,
-				78E969EF27F76FCE0005EB67 /* shopDAYS.db */,
-				78E969EE27F76FCE0005EB67 /* UserDefaultsExpander.swift */,
 				D08622E227F3AC3C00BFE986 /* StoreDAYS.xcdatamodeld */,
 				D08622DD27F3AC3C00BFE986 /* Preview Content */,
 			);
@@ -243,6 +235,8 @@
 			isa = PBXGroup;
 			children = (
 				D08622E027F3AC3C00BFE986 /* Persistence.swift */,
+				78E969ED27F76FCE0005EB67 /* PaymentAssistant.swift */,
+				78E969F427F76FCF0005EB67 /* LocationAssistant.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -252,6 +246,7 @@
 			children = (
 				D086230A27F3AECF00BFE986 /* ModelData.swift */,
 				D086231427F406A800BFE986 /* Data.swift */,
+				78E969F227F76FCE0005EB67 /* MKCoordinateRegion+Extensions.swift */,
 				D086230C27F3EC7D00BFE986 /* UserData.swift */,
 				84C837F927F51F6900815C63 /* AddressModel.swift */,
 				84C837FB27F520E200815C63 /* ShippingModel.swift */,
@@ -262,6 +257,10 @@
 				84C8380927F5224500815C63 /* ItemsModel.swift */,
 				84C8380727F5223000815C63 /* ReviewModel.swift */,
 				84C8380B27F5227500815C63 /* OrderDetailModel.swift */,
+				78E969F127F76FCE0005EB67 /* DefaultPaymentMethodConvoy.swift */,
+				78E969EE27F76FCE0005EB67 /* UserDefaultsExpander.swift */,
+				78E969F327F76FCF0005EB67 /* DBConnector(nousefornow).swift */,
+				78E969EF27F76FCE0005EB67 /* shopDAYS(nousefornow).db */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -282,6 +281,7 @@
 		D0E2B32927F52ED9007DABE6 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				78E969F027F76FCE0005EB67 /* AddPaymentCardButton.swift */,
 				D0E2B31827F4F1AB007DABE6 /* ItemCell3.swift */,
 				D0E2B31627F4F101007DABE6 /* ItemCell2.swift */,
 				D0E2B31427F4ECEB007DABE6 /* ItemCell.swift */,
@@ -394,7 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D08622DF27F3AC3C00BFE986 /* Preview Assets.xcassets in Resources */,
-				78E969F727F76FCF0005EB67 /* shopDAYS.db in Resources */,
+				78E969F727F76FCF0005EB67 /* shopDAYS(nousefornow).db in Resources */,
 				D08622DC27F3AC3C00BFE986 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,7 +454,7 @@
 				D086231527F406A800BFE986 /* Data.swift in Sources */,
 				D0E2B32427F51770007DABE6 /* SignInView.swift in Sources */,
 				D08622D827F3AC3A00BFE986 /* StoreDAYSApp.swift in Sources */,
-				78E969FB27F76FCF0005EB67 /* DBConnector.swift in Sources */,
+				78E969FB27F76FCF0005EB67 /* DBConnector(nousefornow).swift in Sources */,
 				84C8380827F5223000815C63 /* ReviewModel.swift in Sources */,
 				84C8380227F5217900815C63 /* OrderModel.swift in Sources */,
 				84C8380027F5215500815C63 /* InvoiceModel.swift in Sources */,
