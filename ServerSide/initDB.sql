@@ -12,15 +12,15 @@ INSERT INTO Address (Street, City, User_ID, State, Zip) VALUES ('72 Surrey Rd','
 INSERT INTO Shipping (Type, Cost, ETA, User_ID, Status, Address_ID) VALUES ('Priority',5.00,'2022-4-05',2,'Delevered',1);
 INSERT INTO Shipping (Type, Cost, ETA, User_ID, Status, Address_ID) VALUES ('Normal',20.00,'2022-12-20',3,'OnGoing',2);
 INSERT INTO Shipping (Type, Cost, ETA, User_ID, Status, Address_ID) VALUES ('NextDay',6.00,'2021-11-20',4,'Preparing',3);
--- PayMentMethods
-INSERT INTO PayMentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (1234567891234567,'25/12',123,"Chase",2,1);
-INSERT INTO PayMentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (1234567891234567,'26/2',123,"WellsFargo",3,2);
-INSERT INTO PayMentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (1234567891234567,'23/9',123,"Bank Of America",4,3);
+-- PaymentMethods
+INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (1234567891234567,'25/12',123,"Chase",2,1);
+INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (1234567891234567,'26/2',123,"WellsFargo",3,2);
+INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (1234567891234567,'23/9',123,"Bank Of America",4,3);
 
 -- Invoice
-INSERT INTO Invoice (Sum, User_ID, Shipping_ID, PayMentMethods_ID) VALUES (84.65,2,1,1);
-INSERT INTO Invoice (Sum, User_ID, Shipping_ID, PayMentMethods_ID) VALUES (114.20,3,2,2);
-INSERT INTO Invoice (Sum, User_ID, Shipping_ID, PayMentMethods_ID) VALUES (52.20,4,3,3);
+INSERT INTO Invoice (Sum, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (84.65,2,1,1);
+INSERT INTO Invoice (Sum, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (114.20,3,2,2);
+INSERT INTO Invoice (Sum, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (52.20,4,3,3);
 -- Orders
 INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (79.65,'Description',1);
 INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (94.20,'Description',2);
