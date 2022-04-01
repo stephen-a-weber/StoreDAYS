@@ -13,7 +13,7 @@ class GetUserFromAWS{
     func read(){
         
         let usersURL = URL(string: "https://or5aucdxxc.execute-api.us-east-1.amazonaws.com/v1/users")!
-        
+//        let usersURL = URL(string: "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/login.php?Email=DavidG@gmail.com&Password=123Password!")!
         var createUserRequest = URLRequest(url: usersURL)
         
         // serialize HTTP Body data as JSON
