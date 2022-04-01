@@ -11,6 +11,7 @@
 		22DD029327F644C0004D0144 /* CreateAccountSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */; };
 		22EDDAF227F52FE20075F49C /* LoginSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDDAF127F52FE20075F49C /* LoginSwiftUIView.swift */; };
 		22FFCD0727F7434700B22DE3 /* PaySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFCD0627F7434700B22DE3 /* PaySwiftUIView.swift */; };
+		22FFCD0C27F7C62E00B22DE3 /* KeyChainManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFCD0B27F7C62E00B22DE3 /* KeyChainManage.swift */; };
 		78E969F527F76FCF0005EB67 /* PaymentAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E969ED27F76FCE0005EB67 /* PaymentAssistant.swift */; };
 		78E969F627F76FCF0005EB67 /* UserDefaultsExpander.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E969EE27F76FCE0005EB67 /* UserDefaultsExpander.swift */; };
 		78E969F727F76FCF0005EB67 /* shopDAYS(nousefornow).db in Resources */ = {isa = PBXBuildFile; fileRef = 78E969EF27F76FCE0005EB67 /* shopDAYS(nousefornow).db */; };
@@ -76,6 +77,7 @@
 		22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountSwiftUIView.swift; sourceTree = "<group>"; };
 		22EDDAF127F52FE20075F49C /* LoginSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSwiftUIView.swift; sourceTree = "<group>"; };
 		22FFCD0627F7434700B22DE3 /* PaySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaySwiftUIView.swift; sourceTree = "<group>"; };
+		22FFCD0B27F7C62E00B22DE3 /* KeyChainManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManage.swift; sourceTree = "<group>"; };
 		78E969ED27F76FCE0005EB67 /* PaymentAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentAssistant.swift; sourceTree = "<group>"; };
 		78E969EE27F76FCE0005EB67 /* UserDefaultsExpander.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExpander.swift; sourceTree = "<group>"; };
 		78E969EF27F76FCE0005EB67 /* shopDAYS(nousefornow).db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "shopDAYS(nousefornow).db"; sourceTree = "<group>"; };
@@ -155,6 +157,14 @@
 				22DD029027F63C68004D0144 /* GetUserFromAWS.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		22FFCD0A27F7C61A00B22DE3 /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				22FFCD0B27F7C62E00B22DE3 /* KeyChainManage.swift */,
+			);
+			path = KeyChain;
 			sourceTree = "<group>";
 		};
 		D08622CB27F3AC3A00BFE986 = {
@@ -244,6 +254,7 @@
 		D086230927F3AEA200BFE986 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				22FFCD0A27F7C61A00B22DE3 /* KeyChain */,
 				D086230A27F3AECF00BFE986 /* ModelData.swift */,
 				D086231427F406A800BFE986 /* Data.swift */,
 				78E969F227F76FCE0005EB67 /* MKCoordinateRegion+Extensions.swift */,
@@ -424,6 +435,7 @@
 				D086230D27F3EC7D00BFE986 /* UserData.swift in Sources */,
 				84C837FC27F520E200815C63 /* ShippingModel.swift in Sources */,
 				78E969FC27F76FCF0005EB67 /* LocationAssistant.swift in Sources */,
+				22FFCD0C27F7C62E00B22DE3 /* KeyChainManage.swift in Sources */,
 				22DD029127F63C68004D0144 /* GetUserFromAWS.swift in Sources */,
 				D08622E427F3AC3C00BFE986 /* StoreDAYS.xcdatamodeld in Sources */,
 				D0E2B31F27F50311007DABE6 /* KittenDetailView.swift in Sources */,
