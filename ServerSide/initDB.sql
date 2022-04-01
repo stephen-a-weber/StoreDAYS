@@ -2,8 +2,8 @@ USE StoreDAYS;
 -- User
 INSERT INTO User (UserName, FirstName, LastName, DateOfBirth, Password, Email, Admin) VALUES ('S','Steven','Monroe','1994-06-02','123Password!','Steven@gmail.com',1);
 INSERT INTO User (UserName, FirstName, LastName, DateOfBirth, Password, Email, Admin) VALUES ('A','Andrew','Malmstead','1994-06-02','123Password!','malmsteadaa@gmail.com',0);
-INSERT INTO User (UserName, FirstName, LastName, DateOfBirth, Password, Email, Admin) VALUES ('D','David','Gonzalez','','123Password!','DavidG@gmail.com',0);
-INSERT INTO User (UserName, FirstName, LastName, DateOfBirth, Password, Email, Admin) VALUES ('Y','Young','','','123Password!','Young@gmail.com',0);
+INSERT INTO User (UserName, FirstName, LastName, DateOfBirth, Password, Email, Admin) VALUES ('D','David','Gonzalez','2021-11-20','123Password!','DavidG@gmail.com',0);
+INSERT INTO User (UserName, FirstName, LastName, DateOfBirth, Password, Email, Admin) VALUES ('Y','Young','','2021-11-20','123Password!','Young@gmail.com',0);
 -- Address
 INSERT INTO Address (Street, City, User_ID, State, Zip) VALUES ('2155 Corte Vista apt 147','Chula Vista',2,'CA','91915');
 INSERT INTO Address (Street, City, User_ID, State, Zip) VALUES ('905 Ivy Ave','Amityville',3,'NY','11701');
@@ -11,7 +11,7 @@ INSERT INTO Address (Street, City, User_ID, State, Zip) VALUES ('72 Surrey Rd','
 -- Shipping
 INSERT INTO Shipping (Type, Cost, ETA, User_ID, Status, Address_ID) VALUES ('Priority',5.00,'2022-4-05',2,'Delevered',1);
 INSERT INTO Shipping (Type, Cost, ETA, User_ID, Status, Address_ID) VALUES ('Normal',20.00,'2022-12-20',3,'OnGoing',2);
-INSERT INTO Shipping (Type, Cost, ETA, User_ID, Status, Address_ID) VALUES ('NextDay',6.00,'',4,'Preparing',3);
+INSERT INTO Shipping (Type, Cost, ETA, User_ID, Status, Address_ID) VALUES ('NextDay',6.00,'2021-11-20',4,'Preparing',3);
 -- PayMentMethods
 INSERT INTO PayMentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (1234567891234567,'25/12',123,"Chase",2,1);
 INSERT INTO PayMentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (1234567891234567,'26/2',123,"WellsFargo",3,2);

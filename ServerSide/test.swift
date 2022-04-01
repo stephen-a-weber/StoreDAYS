@@ -54,4 +54,4 @@ let baseUrl = "http://localhost/PHP/ReviewModel.php"
             }
             
         }
-        task.resume(
+        task.resume()

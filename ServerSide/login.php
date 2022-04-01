@@ -10,6 +10,10 @@ require_once "UserModel.php";
         echo "Blank Password"; 
         return;         
       };
+      if ($ID == ""){
+        echo "No User Given"; 
+        return;         
+      };
       $sql = "SELECT * FROM User WHERE Email = ? AND Password = ?";
       $stmt = $_SERVER['dbconnection']->prepare($sql);
       $stmt -> bind_param("ss",$ID,$Password);
