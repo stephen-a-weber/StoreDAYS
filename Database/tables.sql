@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `Shipping` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PaymentMethods` (
   `ID` INT NOT NULL AUTO_INCREMENT,
-  `CardNumber` INT NULL,
+  `CardNumber` BIGINT NULL,
   `CVC` INT NULL,
   `Expiration` TEXT NULL,
   `Name` VARCHAR(45) NULL,
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `PaymentMethods` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Invoice` (
   `ID` INT NOT NULL AUTO_INCREMENT,
-  `Sum` INT NULL,
+  `Sum` DECIMAL  NULL,
   `User_ID` INT NOT NULL,
   `Shipping_ID` INT NOT NULL,
   `PaymentMethods_ID` INT NOT NULL,
@@ -153,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `Items` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `Name` TEXT NULL,
   `Description` TEXT NULL,
-  `Cost` TEXT NULL,
+  `Cost` DECIMAL NULL,
   `Catagory_ID` INT NOT NULL,
   `Img` TEXT NULL,
   `Availability` INT NULL,
