@@ -17,12 +17,19 @@ struct TabbedMainView: View {
                     Label("Animals",systemImage:"pawprint.fill")
                 }
             
+            Tracking(data:data)
+                .tabItem{
+                    Label("Locations", systemImage:"globe.americas.fill")
+                }
+            
+            
+            
             CheckOutView(data:data)
                 .tabItem{
             Label("Cart",systemImage:"cart.fill")
                 
                 }
-            
+         
         }
         }
 }
