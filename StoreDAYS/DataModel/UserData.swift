@@ -25,12 +25,12 @@ class UserData: ObservableObject, Codable {
     //example data using example enum instead of stringy calls
     
     @Published var ID = 0
-    @Published var UserName = ""
-    @Published var FirstName = ""
-    @Published var LastName = ""
-    @Published var DateOfBirth = ""
-    @Published var Password = ""
-    @Published var Email = ""
+    @Published var UserName = "davisgon@gmail.com"
+    @Published var FirstName = "David"
+    @Published var LastName = "Gonzalez"
+    @Published var DateOfBirth = "06/25/1000"
+    @Published var Password = "123"
+    @Published var Email = "davisgon@gmail.com"
     
     init() {}
     // These are the required functions to conform to  Codable Protocol

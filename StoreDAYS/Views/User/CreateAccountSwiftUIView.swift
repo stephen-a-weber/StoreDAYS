@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CreateAccountSwiftUIView: View {
+    @ObservedObject var userData: UserData
     struct LoginSessionView:View{
         @State var firstName = ""
         @State var lastName = ""
@@ -15,14 +16,23 @@ struct CreateAccountSwiftUIView: View {
         @State var password = ""
         @State var passwordConfirm = ""
         @State var myColor = "myBlue"
+        @State var dataValidate = true
         @State var animFlagLogin = false
-        
+        @State var db: DBHelper = DBHelper()
+        @State var keyChainManage = KeyChainManage()
         
         var body: some View{
             ScrollView {
                 VStack (alignment:.leading){
+//                    Text("\(userData.Email)")
+//                        .font(.system(size:40, weight: .bold))
+                    if dataValidate == false {
+                        Text("Please enter your name, email and password")
+                            .foregroundColor(Color(.red))
+                            .frame(width: 300, height: 20, alignment: .center)
+                    }
                     Group{
-                        // MARK: Last Name
+                        // MARK: First Name
                         Text("First Name").foregroundColor(Color(myColor))
                         ZStack(alignment:.leading){
                             if  firstName.isEmpty {
@@ -60,6 +70,8 @@ struct CreateAccountSwiftUIView: View {
                     Divider().frame(height: 1).background(Color(myColor))
                         .padding(.bottom)
                     }
+                    
+                
                     // MARK: PASSWORD
                     Text("Password").foregroundColor(Color(myColor))
                     ZStack(alignment:.leading){
@@ -73,8 +85,18 @@ struct CreateAccountSwiftUIView: View {
                     Divider().frame(height: 1).background(Color(myColor))
                         .padding(.bottom)
                     
-                    
-                    // MARK: BUTTONS
+                    Text("Confirm Password").foregroundColor(Color(myColor))
+                    ZStack(alignment:.leading){
+                        if  passwordConfirm.isEmpty {
+                            Text("Confirm your password").font(.caption)
+                                .foregroundColor(.gray)
+                        }
+                        
+                        SecureField("", text: $passwordConfirm)
+                    }
+                    Divider().frame(height: 1).background(Color(myColor))
+                        .padding(.bottom)
+              
                     // MARK: BUTTONS
                     Button(action: {
                         animFlagLogin = initSession()
@@ -104,15 +126,41 @@ struct CreateAccountSwiftUIView: View {
                 }.padding(.horizontal, 77.0)
             }
             .padding(.top, 50.0)
+ 
         }
         
         //MARK: initSession
         
          //MARK: initSession
-         func initSession() -> Bool {
-             print(" Into ")
-             return true
-         }
+        func initSession() -> Bool {
+            print(" Email ", email, "Pass", password )
+           
+            if (firstName == "" || lastName == "" || email == "" || password == ""){
+                dataValidate = false
+                return false
+            }else{
+                print(" Data save ")
+                saveUserDB()
+                dataValidate = true
+                return true
+            }
+        }
+        
+      
+        
+        func saveUserKeyChain() {
+              keyChainManage.SaveData(email: email, password: password)
+        }
+        
+        func saveUserDB() {
+         //   db.insertUsers(UserName: "davisgon@gmail.com", FirstName: "David", LastName:  "Gonzalez" , DateOfBirth: <#T##String#>, Password: <#T##String#>, Email: <#T##String#>)
+            db.insertUsers(UserName: email,FirstName: firstName, LastName: lastName , DateOfBirth: "01-01-1980" , Password: password, Email: email)
+        }
+        
+        
+        
+        
+        
     }
     
     
@@ -159,6 +207,6 @@ struct CreateAccountSwiftUIView: View {
 
 struct CreateAccountSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateAccountSwiftUIView()
+        CreateAccountSwiftUIView(userData: UserData())
     }
 }

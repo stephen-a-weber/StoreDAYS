@@ -118,16 +118,16 @@ struct LoginSwiftUIView: View {
         //MARK: initSession
         func initSession() -> Bool {
             print(" Email ", email, "Pass", password )
-            //    appGetUserFromAWS.read()
-         //  keyChainManage.SaveData(email: "davisgon2@gmail.com", password: "1234")
-                 keyChainManage.ViewData(email: "davisgon@gmail.com")
+            appGetUserFromAWS.read()
+            
+            keyChainManage.ViewData(email: "davisgon@gmail.com")
             
             if (email == "" || password == ""){
                 dataValidate = false
                 return false
             }else{
                 dataValidate = true
-                return false
+                return true
             }
         }
         
@@ -166,7 +166,7 @@ struct LoginSwiftUIView: View {
                 if typeLoginSession == true {
                     LoginSessionView()
                 }else{
-                    CreateAccountSwiftUIView()
+                    CreateAccountSwiftUIView(userData: UserData())
                 }
             }
         }

@@ -12,17 +12,17 @@ import Foundation
 class ModelData : ObservableObject {
     
     struct typeInventory {
-                            var drugs : String
-                            var alchohol : String
-                            var eVapes : String
+        var dinosaur  : String
+        var ants  : String
+        var eVTortoise : String
         
     }
     struct Account {
-      var   id = UUID()
+        var   id = UUID()
         
     }
     
- 
+    
     
     
 }

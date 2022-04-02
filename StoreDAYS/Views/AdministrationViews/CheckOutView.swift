@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CheckOutView: View {
     @ObservedObject var data: Data
-     var order : [String] = []
+   //  var order : [String] = []
     var body: some View {
     //    NavigationView {
             Section{

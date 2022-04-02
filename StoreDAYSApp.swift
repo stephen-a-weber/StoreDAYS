@@ -11,11 +11,12 @@ import SwiftUI
 struct StoreDAYSApp: App {
     let persistenceController = PersistenceController.shared
     @StateObject var data = Data()
+    @StateObject var userData = UserData()
     var body: some Scene {
         WindowGroup {
         //    CheckOutView(data:data)
-      
-     //  LoginSwiftUIView()
+       //  CreateAccountSwiftUIView(userData:userData)
+    //   LoginSwiftUIView()
         StoreSplashPage(data:data)
 
 //            ContentView()
