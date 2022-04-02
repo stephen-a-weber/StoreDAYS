@@ -125,7 +125,7 @@ struct CreateAccountSwiftUIView: View {
                     
                 }.padding(.horizontal, 77.0)
             }
-            .padding(.top, 50.0)
+            .padding(.top, 10.0)
  
         }
         
