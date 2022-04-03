@@ -21,7 +21,7 @@ require_once "UserModel.php";
     $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
       echo json_encode($rows);
     }else{
-echo "Incorrect Crodentials";
+echo "Incorrect Crodentials given:"+$_POST['Email']+ $_POST['Password'];;
     }
 
 
