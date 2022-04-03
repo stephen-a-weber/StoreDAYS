@@ -31,7 +31,9 @@ struct CheckOutView: View {
             }
             Spacer()
                Spacer()
-                    NavigationLink { LoginSwiftUIView()}
+                    NavigationLink {
+                        
+                        LoginSwiftUIView()}
                 label: {
                         Text("Continue To Payment")
                             .fontWeight(.bold)
