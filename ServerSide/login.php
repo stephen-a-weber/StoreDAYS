@@ -1,8 +1,8 @@
 <?php
 require_once "config.php";
 require_once "UserModel.php";
-$ID = $_POST['Email'];
-$Password = $_POST['Password'];
+$ID = $_POST["Email"];
+$Password = $_POST["Password"];
 
     if(isset($_POST['Email'])&&isset($_POST['Password'])){
      
