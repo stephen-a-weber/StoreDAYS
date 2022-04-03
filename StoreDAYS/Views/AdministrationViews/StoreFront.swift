@@ -20,8 +20,8 @@ struct StoreFront: View {
                         
                     NavigationLink{  KittenDetailView(data: data, kittenName:data.kittenNames[item])  }
                         //put a detail view in for each item of each section
-                        // replace stuff in {} of NavigationLink
-                        // label below can be another more complex view w/ pic price
+                        // with NavigationLink to KittenDetailView()
+                        
                         label : {
                             ItemCell(kittenName: data.kittenNames[item],litter:data.kittenLitterCount[item],price:data.kittenPrice[item])
                         }
@@ -37,7 +37,7 @@ struct StoreFront: View {
                         
                     NavigationLink{ PuppyDetailView(data: data,puppyName:data.puppyNames[item])  }
                         // The NavigationLink works like a button , the closure above
-                        // is the next view.
+                        // is the next view. called PuppyDetailView
                         //
                         // below is just a label for NavigationLink
                         // in the {} of NavigationLink shows like protocol cell
@@ -47,11 +47,6 @@ struct StoreFront: View {
                         }
                         
                         
-                        //                        label : {
-//                            Text("Stock items \(item)")
-//                        }
-
-                        // this creates a dynamical list  for Stock type 2 with ForEach
                     
                     }
                     
@@ -59,11 +54,15 @@ struct StoreFront: View {
             }
             
             Section("EXOTIC ANIMALS") {
-                
+                //Like the other two sections above. This one makes a row for each
+                //exotic animal.
+                // these rows are wrapped in a NavigationLink
+                // which if you tap on the row takes you to a Detailed View of the row chosen
+                // ExoticDetailView
                        
                 ForEach (data.exoticNames.indices) { item in
                                 
-                    NavigationLink {ExoticDetailView(data: data,exoticName:data.exoticNames[item])   }// separate swiftUI file
+                    NavigationLink {ExoticDetailView(data: data,exoticName:data.exoticNames[item])   }
                     label : {
                         ItemCell3(exoticName:data.exoticNames[item],exoticLitter:data.exoticLitterCount[item],exoticPrice:data.exoticPrice[item])
                     }
