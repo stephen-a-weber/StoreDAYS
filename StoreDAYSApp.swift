@@ -14,13 +14,13 @@ struct StoreDAYSApp: App {
     @StateObject var userData = UserData()
     var body: some Scene {
         WindowGroup {
-        //    CheckOutView(data:data)
-      //   CreateAccountSwiftUIView(userData:userData)
-    //  LoginSwiftUIView()
-        StoreSplashPage(data:data)
-
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            //    CheckOutView(data:data)
+            //   CreateAccountSwiftUIView(userData:userData)
+            //  LoginSwiftUIView()
+            StoreSplashPage(data:data)
+            
+            //            ContentView()
+            //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

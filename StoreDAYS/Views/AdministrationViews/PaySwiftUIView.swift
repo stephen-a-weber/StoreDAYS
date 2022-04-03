@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct PaySwiftUIView: View {
+    @State var user: String = ""
     var body: some View {
-        Text( " Pay")
+        
+        VStack {
+            Text( " Pay")
+            Text(user)
+        }
+       
     }
 }
 
 struct PaySwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        PaySwiftUIView()
+        PaySwiftUIView(user: "ddt")
     }
 }

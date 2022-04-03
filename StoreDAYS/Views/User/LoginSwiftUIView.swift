@@ -78,7 +78,7 @@ struct LoginSwiftUIView: View {
                         
                         
                             .sheet(isPresented: $animFlagLogin, content: {
-                                PaySwiftUIView()
+                                PaySwiftUIView(user: email)
                             })
                     }
                     .padding(.bottom, 25.0)
@@ -103,7 +103,7 @@ struct LoginSwiftUIView: View {
                         
                         
                             .sheet(isPresented: $animFlag, content: {
-                                PaySwiftUIView()
+                                PaySwiftUIView(user: "Guest")
                             })
                     }
                     
