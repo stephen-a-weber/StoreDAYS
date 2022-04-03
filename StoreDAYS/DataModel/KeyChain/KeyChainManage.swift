@@ -43,12 +43,12 @@ class KeyChainManage{
                let uid = item[kSecAttrAccount as String] as? String,
                let password2 = item [ kSecValueData  as String] as? Foundation.Data,
                let pass = String(data: password2, encoding: .utf8){
-                print("******:Id is :", uid, " Passs is:" , pass)
+                print("KeyChain :Id is :", uid, " Passs is:" , pass)
             }
             else{
-                print("no data Found")
+                print("No data Found - KeyChain")
             }
         }
-        print("View Data")
+        print(" d - KeyChain")
     }
 }

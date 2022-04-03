@@ -16,7 +16,7 @@ struct StoreDAYSApp: App {
         WindowGroup {
             //    CheckOutView(data:data)
             //   CreateAccountSwiftUIView(userData:userData)
-            //  LoginSwiftUIView()
+       //       LoginSwiftUIView()
             StoreSplashPage(data:data)
             
             //            ContentView()
