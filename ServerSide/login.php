@@ -3,9 +3,9 @@ require_once "config.php";
 require_once "UserModel.php";
 
     
-    if(isset($_GET['Email'])&&isset($_GET['Password'])){
-      $ID = $_GET['Email'];
-      $Password = $_GET['Password'];
+    if(isset($_POST['Email'])&&isset($_POST['Password'])){
+      $ID = $_POST['Email'];
+      $Password = $_POST['Password'];
       if ($Password == ""){
         echo "Blank Password"; 
         return;         
