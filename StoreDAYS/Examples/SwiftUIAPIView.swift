@@ -9,6 +9,8 @@ import SwiftUI
 struct Course: Hashable, Codable{
     let Name:String
     let Img:String
+    let Cost:String
+    let Catagory_ID:String
 }
 class ViewModel: ObservableObject{
     @Published var courses:[Course]=[]
@@ -55,6 +57,8 @@ struct SwiftUIAPIView: View {
 
                         Text(course.Name)
                             .bold()
+                        Text(String(course.Cost))
+                        Text(String(course.Catagory_ID))
                         
 
 
