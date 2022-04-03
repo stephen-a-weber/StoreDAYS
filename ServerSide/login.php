@@ -3,6 +3,7 @@ require_once "config.php";
 require_once "UserModel.php";
 $ID = $_POST["Email"];
 $Password = $_POST["Password"];
+echo " given:".$_POST['Email'].$_POST['Password'].$_SERVER['REQUEST_METHOD'];
 
     if(isset($_POST['Email'])&&isset($_POST['Password'])){
      
@@ -22,7 +23,6 @@ $Password = $_POST["Password"];
       echo json_encode($rows);
     }else{
 echo "Incorrect Crodentials \n";
-echo " given:".$_POST['Email'].$_POST['Password'].$_SERVER['REQUEST_METHOD'];
 
     }
 
