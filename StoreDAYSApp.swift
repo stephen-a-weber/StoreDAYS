@@ -12,13 +12,22 @@ struct StoreDAYSApp: App {
     let persistenceController = PersistenceController.shared
 
     @StateObject var data = Data()
+    @StateObject var userData = UserData()
     var body: some Scene {
         WindowGroup {
+
             NavigationView{
         //        Tracking(data: data)
    //    LoginSwiftUIView()
       StoreSplashPage(data:data)
         }
+
+        //    CheckOutView(data:data)
+      //   CreateAccountSwiftUIView(userData:userData)
+    //  LoginSwiftUIView()
+      //  StoreSplashPage(data:data)
+
+
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

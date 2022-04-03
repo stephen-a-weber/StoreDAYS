@@ -14,7 +14,7 @@ struct TabbedMainView: View {
         TabView {
             StoreFront(data:data)
                 .tabItem{
-                    Label("Animals",systemImage:"pawprint.fill")
+                    Label("Animalss",systemImage:"pawprint.fill")
                 }
             
             Tracking(data:data)
