@@ -75,7 +75,6 @@ struct LoginSwiftUIView: View {
         
         //MARK: initSession
         func initSession(){
-            print("init session")
             //   readUser()
             appGetUserFromAWS.read()
         }

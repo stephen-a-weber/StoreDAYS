@@ -6,6 +6,10 @@
 //
 
 import Foundation
+struct User: Hashable, Codable{
+    let Email:String
+    let Password:String
+}
 func postMethod() {
         /*
          The following commented code is about when you want to make a POST call with parameters, like consumer key, consumer secret e.t.c
@@ -23,20 +27,19 @@ func postMethod() {
 //            print("Error: cannot create URL")
 //            return
 //        }
-        guard let url = URL(string: "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/getItems.php") else {
+        guard let url = URL(string: "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/login.php") else {
             print("Error: cannot create URL")
             return
         }
         
         // Create model
         struct UploadData: Codable {
-            let name: String
-            let salary: String
-            let age: String
+            let Email: String
+            let Password: String
         }
         
         // Add data to the model
-        let uploadDataModel = UploadData(name: "Jack", salary: "3540", age: "23")
+        let uploadDataModel = UploadData(Email: "malmsteadaa@gmail.com", Password: "123Password!")
         
         // Convert model to JSON data
         guard let jsonData = try? JSONEncoder().encode(uploadDataModel) else {
@@ -66,20 +69,7 @@ func postMethod() {
                 return
             }
             do {
-                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-                    print("Error: Cannot convert data to JSON object")
-                    return
-                }
-                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
-                    print("Error: Cannot convert JSON object to Pretty JSON data")
-                    return
-                }
-                guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
-                    print("Error: Couldn't print JSON in String")
-                    return
-                }
-                
-                print(prettyPrintedJson)
+                print(String(data:data, encoding: .utf8))
             } catch {
                 print("Error: Trying to convert JSON data to string")
                 return
@@ -104,10 +94,11 @@ func postMethod() {
 //            print("Error: cannot create URL")
 //            return
 //        }
-        guard let url = URL(string: "http://dummy.restapiexample.com/api/v1/employees") else {
+        guard let url = URL(string: "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/login.php") else {
             print("Error: cannot create URL")
             return
         }
+        var prettyPrintedJson = [User]()
         // Create the url request
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -119,33 +110,19 @@ func postMethod() {
                 print(error!)
                 return
             }
-            guard let data = data else {
-                print("Error: Did not receive data")
-                return
-            }
-            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
-                print("Error: HTTP request failed")
-                return
-            }
             do {
-                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-                    print("Error: Cannot convert data to JSON object")
-                    return
-                }
-                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
-                    print("Error: Cannot convert JSON object to Pretty JSON data")
-                    return
-                }
-                guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
-                    print("Error: Could print JSON in String")
-                    return
-                }
+                if let data = data{print(String(data: data, encoding: .utf8)!)}
+                let users = try JSONDecoder().decode([User].self, from: data!)
                 
-                print(prettyPrintedJson)
+                
+                
             } catch {
                 print("Error: Trying to convert JSON data to string")
                 return
             }
+            print(String(data:data!, encoding: .utf8))
+
+        print(prettyPrintedJson)
         }.resume()
     }
     
@@ -166,7 +143,7 @@ func postMethod() {
 //            print("Error: cannot create URL")
 //            return
 //        }
-        guard let url = URL(string: "https://reqres.in/api/users/2") else {
+        guard let url = URL(string: "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/login.php") else {
             print("Error: cannot create URL")
             return
         }
@@ -208,20 +185,8 @@ func postMethod() {
                 return
             }
             do {
-                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-                    print("Error: Cannot convert data to JSON object")
-                    return
-                }
-                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
-                    print("Error: Cannot convert JSON object to Pretty JSON data")
-                    return
-                }
-                guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
-                    print("Error: Could print JSON in String")
-                    return
-                }
-                
-                print(prettyPrintedJson)
+                print(String(data:data, encoding: .utf8))
+
             } catch {
                 print("Error: Trying to convert JSON data to string")
                 return
@@ -246,7 +211,7 @@ func postMethod() {
 //            print("Error: cannot create URL")
 //            return
 //        }
-        guard let url = URL(string: "https://my-json-server.typicode.com/typicode/demo/posts/1") else {
+        guard let url = URL(string: "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/login.php") else {
             print("Error: cannot create URL")
             return
         }
@@ -270,20 +235,8 @@ func postMethod() {
                 return
             }
             do {
-                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-                    print("Error: Cannot convert data to JSON")
-                    return
-                }
-                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
-                    print("Error: Cannot convert JSON object to Pretty JSON data")
-                    return
-                }
-                guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
-                    print("Error: Could print JSON in String")
-                    return
-                }
-                
-                print(prettyPrintedJson)
+                print(String(data:data, encoding: .utf8))
+
             } catch {
                 print("Error: Trying to convert JSON data to string")
                 return

@@ -15,9 +15,9 @@ struct StoreDAYSApp: App {
         WindowGroup {
 
       
-   //    LoginSwiftUIView()
-            //StoreSplashPage(data:data)
-            ViewControler()
+       LoginSwiftUIView()
+         //   StoreSplashPage(data:data)
+         //   ViewControler()
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

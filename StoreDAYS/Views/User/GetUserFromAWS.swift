@@ -11,35 +11,16 @@ class GetUserFromAWS{
     
     
     func read(){
-        
-        let usersURL = URL(string: "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/login.php")!
-        
-        var createUserRequest = URLRequest(url: usersURL)
-        
-        // serialize HTTP Body data as JSON
-        let body = ["Email": "testuser2", "Password": "testuser22password"]
-        let bodyData = try? JSONSerialization.data(withJSONObject: body, options: [])
-        
-        //change URLRequest to POST
-        createUserRequest.httpMethod = "POST"
-        createUserRequest.httpBody = bodyData
-        
-        // Create the HTTP request
         let session = URLSession.shared
-        let createUserTask = session.dataTask(with: createUserRequest) { (data, response, error) in
-            if let error = error {
-                // Handle HTTP request error
-            } else if let data = data {
-                // Handle HTTP request response
-                print(String(data: data, encoding: .utf8)!)
-            } else {
-                // Handle unexpected error
-            }
-        }
-        //createUserTask.resume()
-        var getUserRequest = URLRequest(url: usersURL)
+
+        let getuser = URL(string:"http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/login.php")
+        let paramas :[String:Any]=["Email":"malmsteadaa@gmail.com", "Password":"123Password!" ]
+        let para="Email=malmsteadaa@gmail.com&Password=123Password!"
+        var resquest = URLRequest(url: getuser!)
+        resquest.httpMethod="POST"
         
-        let getUsersTask = session.dataTask(with: getUserRequest) { (data, response, error) in
+        resquest.httpBody = para.data(using: String.Encoding.utf8)
+        let getUsersTask = session.dataTask(with: resquest) { (data, response, error) in
             
             if let error = error {
                 // Handle HTTP request error
