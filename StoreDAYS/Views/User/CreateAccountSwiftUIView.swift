@@ -140,6 +140,7 @@ struct CreateAccountSwiftUIView: View {
                 return false
             }else{
                 print(" Data save ")
+                saveUserKeyChain()
                 saveUserDB()
                 dataValidate = true
                 return true

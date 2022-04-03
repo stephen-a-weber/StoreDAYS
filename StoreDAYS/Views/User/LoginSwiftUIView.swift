@@ -33,7 +33,7 @@ struct LoginSwiftUIView: View {
                     Text("Email").foregroundColor(Color(myColor))
                     ZStack(alignment:.leading){
                         if  email.isEmpty {
-                            Text("example@gmail.com").font(.caption)
+                            Text("example: DavidG@gmail.com").font(.caption)
                                 .foregroundColor(.gray)
                         }
                         TextField("", text: $email)
@@ -117,16 +117,27 @@ struct LoginSwiftUIView: View {
         
         //MARK: initSession
         func initSession() -> Bool {
-            print(" Email ", email, "Pass", password )
-            appGetUserFromAWS.read()
-            
-            keyChainManage.ViewData(email: "davisgon@gmail.com")
+            var myData = ""
             
             if (email == "" || password == ""){
                 dataValidate = false
                 return false
             }else{
                 dataValidate = true
+                print(" Email ", email, "Pass", password )
+                
+                myData =  appGetUserFromAWS.getUseAWSService(email: email, password: password)
+                
+                if myData == ""{
+                    print("Dont Exist")
+                    print("Datos from WebService",myData)
+                }else{
+                    print("Exist")
+                    print("Datos from WebService",myData)
+                }
+                // appGetUserFromAWS.getUseAWSService(email: "DavidG@gmail.com", password: "123")
+                // DavidG@gmail.com
+                keyChainManage.ViewData(email: email)
                 return true
             }
         }

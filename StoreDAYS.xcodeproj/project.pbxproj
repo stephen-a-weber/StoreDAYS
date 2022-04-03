@@ -79,6 +79,7 @@
 		22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountSwiftUIView.swift; sourceTree = "<group>"; };
 		22EBA8B027F8612B006BF6D3 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		22EDDAF127F52FE20075F49C /* LoginSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSwiftUIView.swift; sourceTree = "<group>"; };
+		22F48B1927FA2D4C0044218D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		22FFCD0627F7434700B22DE3 /* PaySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaySwiftUIView.swift; sourceTree = "<group>"; };
 		22FFCD0B27F7C62E00B22DE3 /* KeyChainManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManage.swift; sourceTree = "<group>"; };
 		78E969ED27F76FCE0005EB67 /* PaymentAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentAssistant.swift; sourceTree = "<group>"; };
@@ -206,6 +207,7 @@
 		D08622D627F3AC3A00BFE986 /* StoreDAYS */ = {
 			isa = PBXGroup;
 			children = (
+				22F48B1927FA2D4C0044218D /* Info.plist */,
 				D08622DB27F3AC3C00BFE986 /* Assets.xcassets */,
 				D086230927F3AEA200BFE986 /* DataModel */,
 				D086230727F3AE4600BFE986 /* Views */,
@@ -481,11 +483,8 @@
 				D086231527F406A800BFE986 /* Data.swift in Sources */,
 				D0E2B32427F51770007DABE6 /* SignInView.swift in Sources */,
 				D08622D827F3AC3A00BFE986 /* StoreDAYSApp.swift in Sources */,
-
 				D0FCBA1027F8E6FA0004329A /* Tracking.swift in Sources */,
-
 				78E969FB27F76FCF0005EB67 /* DBConnector(nousefornow).swift in Sources */,
-
 				84C8380827F5223000815C63 /* ReviewModel.swift in Sources */,
 				84C8380227F5217900815C63 /* OrderModel.swift in Sources */,
 				84C8380027F5215500815C63 /* InvoiceModel.swift in Sources */,
@@ -653,6 +652,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StoreDAYS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -684,6 +684,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StoreDAYS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
