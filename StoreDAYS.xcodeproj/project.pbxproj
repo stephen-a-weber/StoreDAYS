@@ -54,6 +54,7 @@
 		D0E2B32627F5215E007DABE6 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2B32527F5215E007DABE6 /* CreateAccountView.swift */; };
 		D0E2B32827F52E3A007DABE6 /* CheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2B32727F52E3A007DABE6 /* CheckOutView.swift */; };
 		D0E2B32B27F52F51007DABE6 /* TabbedMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2B32A27F52F51007DABE6 /* TabbedMainView.swift */; };
+		D0FCBA1027F8E6FA0004329A /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FCBA0F27F8E6FA0004329A /* Tracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		D0E2B32527F5215E007DABE6 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		D0E2B32727F52E3A007DABE6 /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
 		D0E2B32A27F52F51007DABE6 /* TabbedMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedMainView.swift; sourceTree = "<group>"; };
+		D0FCBA0F27F8E6FA0004329A /* Tracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +294,7 @@
 		D0E2B32227F51753007DABE6 /* AdministrationViews */ = {
 			isa = PBXGroup;
 			children = (
+				D0FCBA0F27F8E6FA0004329A /* Tracking.swift */,
 				D0E2B32A27F52F51007DABE6 /* TabbedMainView.swift */,
 				D0E2B32727F52E3A007DABE6 /* CheckOutView.swift */,
 				22FFCD0627F7434700B22DE3 /* PaySwiftUIView.swift */,
@@ -478,7 +481,11 @@
 				D086231527F406A800BFE986 /* Data.swift in Sources */,
 				D0E2B32427F51770007DABE6 /* SignInView.swift in Sources */,
 				D08622D827F3AC3A00BFE986 /* StoreDAYSApp.swift in Sources */,
+
+				D0FCBA1027F8E6FA0004329A /* Tracking.swift in Sources */,
+
 				78E969FB27F76FCF0005EB67 /* DBConnector(nousefornow).swift in Sources */,
+
 				84C8380827F5223000815C63 /* ReviewModel.swift in Sources */,
 				84C8380227F5217900815C63 /* OrderModel.swift in Sources */,
 				84C8380027F5215500815C63 /* InvoiceModel.swift in Sources */,

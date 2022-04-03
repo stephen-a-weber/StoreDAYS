@@ -21,6 +21,6 @@ struct StoreDAYSApp: App {
             
             //            ContentView()
             //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-        }
+        }   
     }
 }
