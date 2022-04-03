@@ -1,11 +1,11 @@
 <?php
 require_once "config.php";
 require_once "UserModel.php";
-
+$ID = $_POST['Email'];
+$Password = $_POST['Password'];
     
     if(isset($_POST['Email'])&&isset($_POST['Password'])){
-      $ID = $_POST['Email'];
-      $Password = $_POST['Password'];
+     
       if ($Password == ""){
         echo "Blank Password"; 
         return;         
@@ -21,9 +21,10 @@ require_once "UserModel.php";
     $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
       echo json_encode($rows);
     }else{
-echo "Incorrect Crodentials given:"+$_POST['Email']+ $_POST['Password'];;
-    }
+echo "Incorrect Crodentials \n";
 
+    }
+    echo " given:"+$_POST['Email']+ $_POST['Password'];
 
 
 ?>
