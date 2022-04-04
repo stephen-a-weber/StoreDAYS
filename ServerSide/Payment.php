@@ -30,8 +30,8 @@ case "POST":
           if (isset($_POST['Address_ID'])){
             $Address_ID = (int)$_POST['Address_ID'];
           }
-    
-        $sql = "UPDATE PaymentMethods set CardNumber = ?, CVC = ?, Expiration = ?, Name = ?, User_ID = ?, Address_ID = ?  WHERE ID = ?        ";
+
+        $sql = " UPDATE PaymentMethods SET CardNumber = ?, CVC = ?, Expiration = ?, Name = ?, User_ID = ?, Address_ID = ?  WHERE ID =?;";
         $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
         $stmt -> bind_param("iissiii",$CardNumber,$CVC,$Expiration,$Name,$User_ID,$Address_ID,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
