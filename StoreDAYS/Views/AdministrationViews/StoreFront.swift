@@ -17,7 +17,7 @@ struct StoreFront: View {
                 
                
                 ForEach (data.kittenNames.indices) { item in
-                        
+               
                     NavigationLink{  KittenDetailView(data: data, kittenName:data.kittenNames[item])  }
                         //put a detail view in for each item of each section
                         // with NavigationLink to KittenDetailView()
