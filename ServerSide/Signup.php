@@ -16,10 +16,10 @@ die("There is a duplicate user");
         return;
       };
       //optional handling
-      $UserName="";
-      $FirstName="";
-      $LastName="";
-      $DateOfBirth="";
+      $UserName="User";
+      $FirstName="First";
+      $LastName="Last";
+      $DateOfBirth="2022-04-03";
       $Admin=0;
       if(isset($_POST['UserName'])){
         $UserName=$_POST['UserName'];}
