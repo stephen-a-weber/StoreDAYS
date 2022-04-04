@@ -15,23 +15,23 @@ case "POST":
         $Name=" ";
         $Address_ID=0;
         //if post is set assign the description
-        if(isset($_GET['CardNumber'])){
-          $Street=(int)$_GET['CardNumber'];
+        if(isset($_POST['CardNumber'])){
+          $CardNumber=(int)$_POST['CardNumber'];
         }
-        if(isset($_GET['CVC'])){
-          $CVC =$_GET['CVC'];
+        if(isset($_POST['CVC'])){
+          $CVC =(INT)$_POST['CVC'];
         }
-        if(isset($_GET['Expiration'])){
-          $Expiration =$_GET['Expiration'];
+        if(isset($_POST['Expiration'])){
+          $Expiration =$_POST['Expiration'];
         }
-        if(isset($_GET['Name'])){
-            $Name =$_GET['Name'];
+        if(isset($_POST['Name'])){
+            $Name =$_POST['Name'];
           }
           if (isset($_POST['Address_ID'])){
             $Address_ID = (int)$_POST['Address_ID'];
           }
-    
-        $sql = "UPDATE PayMentMethods set CardNumber = ?, CVC = ?, Expiration = ?, Name = ?, User_ID = ?, Address_ID = ?  WHERE ID = ?        ";
+
+        $sql = " UPDATE PaymentMethods SET CardNumber = ?, CVC = ?, Expiration = ?, Name = ?, User_ID = ?, Address_ID = ?  WHERE ID =?;";
         $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
         $stmt -> bind_param("iissiii",$CardNumber,$CVC,$Expiration,$Name,$User_ID,$Address_ID,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
@@ -44,24 +44,24 @@ case "POST":
         $Name=" ";
         $Address_ID=0;
         //if post is set assign the description
-        if(isset($_GET['CardNumber'])){
-            $Street=(int)$_GET['CardNumber'];
+        if(isset($_POST['CardNumber'])){
+            $Street=(int)$_POST['CardNumber'];
           }
-          if(isset($_GET['CVC'])){
-            $CVC =$_GET['CVC'];
+          if(isset($_POST['CVC'])){
+            $CVC =$_POST['CVC'];
           }
-          if(isset($_GET['Expiration'])){
-            $Expiration =$_GET['Expiration'];
+          if(isset($_POST['Expiration'])){
+            $Expiration =$_POST['Expiration'];
           }
-          if(isset($_GET['Name'])){
-              $Name =$_GET['Name'];
+          if(isset($_POST['Name'])){
+              $Name =$_POST['Name'];
             }
             if (isset($_POST['Address_ID'])){
               $Address_ID = (int)$_POST['Address_ID'];
             }
       
 
-        $sql = "INSERT INTO PayMentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (?,?,?,?,?,?)";
+        $sql = "INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (?,?,?,?,?,?)";
         $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
         $stmt -> bind_param("iissii",$CardNumber,$CVC,$Expiration,$Name,$User_ID,$Address_ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
@@ -74,16 +74,16 @@ case "GET":
   $var=0;
 //if we are looking for one 
   if(isset($_GET['ID'])){
-    $sql="SELECT * FROM PayMentMethods WHERE ID = ?    ";
+    $sql="SELECT * FROM PaymentMethods WHERE ID = ?";
     $var=(int)$_GET['ID'];
   }
 
   //if we are looking for a set
   if(isset($_GET['User_ID'])){
-    $sql="DELETE FROM PayMentMethods Where User_ID = ?";
+    $sql="SELECT *FROM PaymentMethods WHERE User_ID = ?";
     $var =(int)$_GET['User_ID'];
   }
-  
+
   $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
   $stmt -> bind_param("i",$var) or die("Couldn't bind".htmlspecialchars($stmt->error));
   $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));;
@@ -94,4 +94,5 @@ case "GET":
 
 
 }
+
 ?>
