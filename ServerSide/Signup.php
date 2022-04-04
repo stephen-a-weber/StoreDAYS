@@ -3,7 +3,7 @@ require_once "config.php";
 require_once "UserModel.php";
 
     if(isset($_POST['Email'])&&isset($_POST['Password'])){
-      $ID = $_POST["Email"];
+      $Email = $_POST["Email"];
       $Password = $_POST["Password"];
 if (checkDuplicateuser($_POST["Email"]))
 die("There is a duplicate user");
@@ -11,7 +11,7 @@ die("There is a duplicate user");
         die("Blank Password");
         return;
       };
-      if ($ID == ""){
+      if ($Email == ""){
         die( "No User Given");
         return;
       };
@@ -34,7 +34,7 @@ die("There is a duplicate user");
     $sql="INSERT INTO User (UserName, FirstName, LastName, DateOfBirth, Password, Email, Admin) VALUES (?,?,?,?,?,?,?)";
 
       $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
-      $stmt -> bind_param("ssssssi",$ID,$Password,$UserName,$FirstName,$LastName,$DateOfBirth,$Admin) or die("Couldn't bind".htmlspecialchars($stmt->error));
+      $stmt -> bind_param("ssssssi",$UserName,$FirstName,$LastName,$DateOfBirth,$Password,$Email,$Admin) or die("Couldn't bind".htmlspecialchars($stmt->error));
       $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
       echo "success";
     }else{
