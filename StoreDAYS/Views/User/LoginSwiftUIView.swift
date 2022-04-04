@@ -19,6 +19,7 @@ struct LoginSwiftUIView: View {
         @State var animFlag = false
         @State var dataValidate = true
         @State var keyChainManage = KeyChainManage()
+        @State var queue  = OperationQueue()
         
         var body: some View{
             ScrollView {
@@ -123,22 +124,45 @@ struct LoginSwiftUIView: View {
                 dataValidate = false
                 return false
             }else{
+                // If credentials = OK
                 dataValidate = true
                 print(" Email ", email, "Pass", password )
                 
-                myData =  appGetUserFromAWS.getUseAWSService(email: email, password: password)
+               
                 
-                if myData == ""{
-                    print("Dont Exist")
-                    print("Datos from WebService",myData)
-                }else{
-                    print("Exist")
-                    print("Datos from WebService",myData)
-                }
+               
+                    print("Entro")
+                  //  func testTasks(){
+                        queue.maxConcurrentOperationCount = 1
+                        let task1 = BlockOperation{
+                            print("task  1:::::::::: ")
+                            if myData == ""{
+                                print("Dont Exist")
+                                print("Datos from WebService",myData)
+                            }else{
+                                print("Exist")
+                                print("Datos from WebService",myData)
+                            }
+                            
+                        }
+               
+                        let task2 = BlockOperation{
+                            //sleep(5)
+                            print("task  2")
+                            myData =  appGetUserFromAWS.getUseAWSService(email: email, password: password)
+                          
+                        }
+                        
+                        task1.addDependency(task2)
+                        queue.addOperation(task1)
+                        queue.addOperation(task2)
+                
+    
+                
                 // appGetUserFromAWS.getUseAWSService(email: "DavidG@gmail.com", password: "123")
                 // DavidG@gmail.com
-                keyChainManage.ViewData(email: email)
-                return true
+             //   keyChainManage.ViewData(email: email)
+                return false
             }
         }
         
