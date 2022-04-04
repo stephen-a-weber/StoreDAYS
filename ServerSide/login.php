@@ -19,10 +19,11 @@ $Password = $_POST["Password"];
       $stmt -> bind_param("ss",$ID,$Password);
       $stmt->execute();
     $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    if(empty($rows))
+    die("Invalid credentials");
       echo json_encode($rows);
     }else{
-echo "Incorrect Crodentials \n";
-echo " given:".$_POST['Email'].$_POST['Password'].$_SERVER['REQUEST_METHOD'];
+      die("Post was not met");
 
     }
 
