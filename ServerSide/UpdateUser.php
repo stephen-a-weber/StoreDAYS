@@ -22,12 +22,12 @@ require_once "UserModel.php";
         $FirstName=$_POST['FirstName'];}
     if(isset($_POST['LastName'])){
         $LastName=$_POST['LastName'];}
-    if(isset($_POST[DateOfBirth])){
+    if(isset($_POST['DateOfBirth'])){
         $DateOfBirth=$_POST['DateOfBirth'];}
     if(isset($_POST['Admin'])){
         $Admin=(int)$_POST['Admin'];}
 
-      "UPDATE User set UserName = ?, FirstName = ?, LastName = ?, DateOfBirth = ?, Password = ?, Email = ? WHERE ID = ?"
+      "UPDATE User set UserName = ?, FirstName = ?, LastName = ?, DateOfBirth = ?, Password = ?, Email = ? WHERE ID = ?";
       $sql = "SELECT * FROM User WHERE Email = ? AND Password = ?";
       $stmt = $_SERVER['dbconnection']->prepare($sql);
       $stmt -> bind_param("ssssssi",$ID,$Password,$UserName,$FirstName,$LastName,$DateOfBirth,$Admin);
@@ -35,7 +35,7 @@ require_once "UserModel.php";
     $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
       echo json_encode($rows);
     }else{
-      die("Post was not met")
+      die("Post was not met");
 
     }
 

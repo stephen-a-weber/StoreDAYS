@@ -45,10 +45,10 @@ die("Post was not met");
     {
     
         $sql = "SELECT COUNT(*) FROM User WHERE Email=?";
-        $stmt = $_SERVER['dbconnection']->prepare($sql);
+        $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
     
-        $stmt->bind_param("s",$email);
-        $stmt->execute();
+        $stmt->bind_param("s",$email) or die("Couldn't bind".htmlspecialchars($stmt->error));
+        $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
         if ($stmt->get_result()->fetch_row()[0] > 0) {
             return true;
         } // If we found an entry we know there's a duplicate

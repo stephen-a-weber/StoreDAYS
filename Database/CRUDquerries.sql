@@ -95,6 +95,7 @@ DELETE FROM Items Where ID = ?
 INSERT INTO Review (Body, User_ID, Rate, Items_ID, Catagory_ID) VALUES (?,?,?,?,?)
 --Read
 SELECT * FROM Review WHERE ID = ?
+SELECT * FROM Review WHERE User_ID = ?
 SELECT * FROM Review WHERE Catagory_ID = ?
 SELECT * FROM Review WHERE Items_ID = ?
 --Update
