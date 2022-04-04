@@ -38,8 +38,8 @@ class Data: ObservableObject{
     
     
    
-    var kittenLatitude : [Double]=[44,37,24.7,25,  40.3,15.29,43.6,61.87,49.93,46.36]
-    var kittenLongitude : [Double]=[-89,-102,-102.2,-6.4,-5.03,67,23.7,13.08,10.45,41.78]
+    var kittenLatitude : [Double]=[44,37,24.7,25,  40.3,-4.097,43.6,61.87,0.6921,46.36]
+    var kittenLongitude : [Double]=[-89,-102,-102.2,-6.4,-5.03,-73.29,23.7,13.08,113.523,41.78]
     var puppyLatitude : [Double]=[29.9,31.8,48.43,22.44,-6.12,61.25,31.79,45.68,49.24,-5.51]
     var puppyLongitude : [Double]=[-108,-85.7,5.49,46.74,18.98,43.18,63.39,89.37,-120.813,-42.40]
     var animalLatitude : [Double]=[21.3,31.85,4.45,56.26,19.72,10.46,18.13,29.62,36.22]
@@ -48,7 +48,7 @@ class Data: ObservableObject{
     @Published var locations = [Location]()
     init(){
         
-        for item in 0..<4 {
+        for item in 0..<kittenNames.count {
             let coord = CLLocationCoordinate2D(latitude:kittenLatitude[item],longitude: kittenLongitude[item])
             
             let L = Location(name: kittenNames[item], coordinate: coord )
