@@ -15,17 +15,17 @@ if(isset($_POST['ID'])){
     $State=0;
     $Zip=" ";
     //if post is set assign the description
-    if(isset($_GET['Street'])){
-      $Street=$_GET['Street'];
+    if(isset($_POST['Street'])){
+      $Street=$_POST['Street'];
     }
-    if(isset($_GET['City'])){
-      $City =$_GET['City'];
+    if(isset($_POST['City'])){
+      $City =$_POST['City'];
     }
-    if(isset($_GET['State'])){
-      $State =$_GET['State'];
+    if(isset($_POST['State'])){
+      $State =$_POST['State'];
     }
-    if(isset($_GET['Zip'])){
-        $Zip =$_GET['Zip'];
+    if(isset($_POST['Zip'])){
+        $Zip =$_POST['Zip'];
       }
       if (isset($_POST['User_ID'])){
         $User_ID = (int)$_POST['User_ID'];
@@ -43,17 +43,17 @@ if(isset($_POST['ID'])){
     $State=" ";
     $Zip=" ";
     //if post is set assign the description
-    if(isset($_GET['Street'])){
-      $Street=$_GET['Street'];
+    if(isset($_POST['Street'])){
+      $Street=$_POST['Street'];
     }
-    if(isset($_GET['City'])){
-      $City =$_GET['City'];
+    if(isset($_POST['City'])){
+      $City =$_POST['City'];
     }
-    if(isset($_GET['State'])){
-      $State =$_GET['State'];
+    if(isset($_POST['State'])){
+      $State =$_POST['State'];
     }
-    if(isset($_GET['Zip'])){
-        $Zip =$_GET['Zip'];
+    if(isset($_POST['Zip'])){
+        $Zip =$_POST['Zip'];
       }
 
 
