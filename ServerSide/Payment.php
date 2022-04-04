@@ -65,7 +65,8 @@ case "POST":
         $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
         $stmt -> bind_param("iissii",$CardNumber,$CVC,$Expiration,$Name,$User_ID,$Address_ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
-}else{}
+}else{  die("Post wasn't define");  
+}
     break;
 case "GET":
   //always using a string for query
