@@ -38,7 +38,7 @@
                             .frame(height: 350)
                     }
                 label: {
-                        Text("Show me current spot of my pets?")
+                        Text("Show me current spot of my pets!")
                             .foregroundColor(Color.black)
                     }
       //              Spacer()
@@ -54,21 +54,4 @@
           }
       }
 
-      //struct PaySwiftUIView: View {
-      //    @State var user: String = ""
-      //    var body: some View {
-      //
-      //        VStack {
-      //            Text( " Pay")
-      //            Text(user)
-      //        }
-      //
-      //    }
-      //}
-      //
-      //struct PaySwiftUIView_Previews: PreviewProvider {
-      //    static var previews: some View {
-      //        PaySwiftUIView(user: "ddt")
-      //    }
-      //}
-
+ 
