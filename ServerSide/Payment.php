@@ -16,7 +16,7 @@ case "POST":
         $Address_ID=0;
         //if post is set assign the description
         if(isset($_POST['CardNumber'])){
-          $Street=(int)$_POST['CardNumber'] or die("Tooo big");
+          $CardNumber=(int)$_POST['CardNumber'];
         }
         if(isset($_POST['CVC'])){
           $CVC =(INT)$_POST['CVC'];
