@@ -4,7 +4,8 @@ require_once "config.php";
 $Method=$_SERVER['REQUEST_METHOD'];
 switch ($Method){
 case "POST":
-    if(isset($_POST['ID'])){
+  
+    if(empty($_POST['ID'])){
         $ID = (int)$_POST['ID'];
         $User_ID = (int)$_POST['User_ID'];
         
@@ -15,19 +16,19 @@ case "POST":
         $Name=" ";
         $Address_ID=0;
         //if post is set assign the description
-        if(isset($_POST['CardNumber'])){
+        if(empty($_POST['CardNumber'])){
           $CardNumber=(int)$_POST['CardNumber'];
         }
-        if(isset($_POST['CVC'])){
+        if(empty($_POST['CVC'])){
           $CVC =(INT)$_POST['CVC'];
         }
-        if(isset($_POST['Expiration'])){
+        if(empty($_POST['Expiration'])){
           $Expiration =$_POST['Expiration'];
         }
-        if(isset($_POST['Name'])){
+        if(empty($_POST['Name'])){
             $Name =$_POST['Name'];
           }
-          if (isset($_POST['Address_ID'])){
+          if (empty($_POST['Address_ID'])){
             $Address_ID = (int)$_POST['Address_ID'];
           }
 
@@ -35,7 +36,7 @@ case "POST":
         $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
         $stmt -> bind_param("iissiii",$CardNumber,$CVC,$Expiration,$Name,$User_ID,$Address_ID,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
-    }else if (isset($_POST['User_ID'])){
+    }else if (empty($_POST['User_ID'])){
         $User_ID = (int)$_POST['User_ID'];
         //initialize description in case one wasn't given
         $CardNumber=0;
@@ -44,19 +45,19 @@ case "POST":
         $Name=" ";
         $Address_ID=0;
         //if post is set assign the description
-        if(isset($_POST['CardNumber'])){
+        if(empty($_POST['CardNumber'])){
             $Street=(int)$_POST['CardNumber'];
           }
-          if(isset($_POST['CVC'])){
+          if(empty($_POST['CVC'])){
             $CVC =$_POST['CVC'];
           }
-          if(isset($_POST['Expiration'])){
+          if(empty($_POST['Expiration'])){
             $Expiration =$_POST['Expiration'];
           }
-          if(isset($_POST['Name'])){
+          if(empty($_POST['Name'])){
               $Name =$_POST['Name'];
             }
-            if (isset($_POST['Address_ID'])){
+            if (empty($_POST['Address_ID'])){
               $Address_ID = (int)$_POST['Address_ID'];
             }
       
@@ -75,13 +76,13 @@ case "GET":
   //always using an integer
   $var=0;
 //if we are looking for one 
-  if(isset($_GET['ID'])){
+  if(empty($_GET['ID'])){
     $sql="SELECT * FROM PaymentMethods WHERE ID = ?";
     $var=(int)$_GET['ID'];
   }
 
   //if we are looking for a set
- else if(isset($_GET['User_ID'])){
+ else if(empty($_GET['User_ID'])){
     $sql="SELECT *FROM PaymentMethods WHERE User_ID = ?";
     $var =(int)$_GET['User_ID'];
   } else
