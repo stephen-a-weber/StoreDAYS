@@ -33,11 +33,10 @@ die("There is a duplicate user");
         $Admin=(int)$_POST['Admin'];}
     $sql="INSERT INTO User (UserName, FirstName, LastName, DateOfBirth, Password, Email, Admin) VALUES (?,?,?,?,?,?,?)";
 
-      $stmt = $_SERVER['dbconnection']->prepare($sql);
-      $stmt -> bind_param("ssssssi",$ID,$Password,$UserName,$FirstName,$LastName,$DateOfBirth,$Admin);
+      $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
+      $stmt -> bind_param("ssssssi",$ID,$Password,$UserName,$FirstName,$LastName,$DateOfBirth,$Admin) or die("Couldn't bind".htmlspecialchars($stmt->error));
       $stmt->execute();
-    $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-      echo json_encode($rows);
+      echo "success";
     }else{
 die("Post was not met");
     }
