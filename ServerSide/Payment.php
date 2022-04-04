@@ -74,16 +74,15 @@ case "GET":
   $var=0;
 //if we are looking for one 
   if(isset($_GET['ID'])){
-    $sql="SELECT * FROM PayMentMethods WHERE ID = ?    ";
+    $sql="SELECT * FROM PayMentMethods WHERE ID = ?";
     $var=(int)$_GET['ID'];
   }
 
   //if we are looking for a set
   if(isset($_GET['User_ID'])){
-    $sql="DELETE FROM PayMentMethods Where User_ID = ?";
+    $sql="DELETE FROM PayMentMethods WHERE User_ID = ?";
     $var =(int)$_GET['User_ID'];
   }
-  
   $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
   $stmt -> bind_param("i",$var) or die("Couldn't bind".htmlspecialchars($stmt->error));
   $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));;
@@ -94,4 +93,6 @@ case "GET":
 
 
 }
+echo"Current:".$sql." MEthod at".$Method;
+
 ?>
