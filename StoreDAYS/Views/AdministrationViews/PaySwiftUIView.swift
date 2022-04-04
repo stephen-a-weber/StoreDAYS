@@ -34,11 +34,10 @@
                               .padding()
       //              NavigationLink(isActive: true) { T2View()}
                     NavigationLink {
-                          T2View()
-                            .frame(height: 350)
+                          PayTabView()
                     }
                 label: {
-                        Text("Show me current spot of my pets!")
+                        Text("For customer satisfaction!")
                             .foregroundColor(Color.black)
                     }
       //              Spacer()
