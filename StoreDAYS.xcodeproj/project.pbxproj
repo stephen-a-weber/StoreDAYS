@@ -21,6 +21,10 @@
 		78E969FA27F76FCF0005EB67 /* MKCoordinateRegion+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E969F227F76FCE0005EB67 /* MKCoordinateRegion+Extensions.swift */; };
 		78E969FB27F76FCF0005EB67 /* DBConnector(nousefornow).swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E969F327F76FCF0005EB67 /* DBConnector(nousefornow).swift */; };
 		78E969FC27F76FCF0005EB67 /* LocationAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E969F427F76FCF0005EB67 /* LocationAssistant.swift */; };
+		78F788F027FB68E400F1ED80 /* CustomAnnotationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F788EF27FB68E400F1ED80 /* CustomAnnotationMapView.swift */; };
+		78F788F227FB691900F1ED80 /* T2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F788F127FB691900F1ED80 /* T2View.swift */; };
+		78F788F527FB6B5F00F1ED80 /* PaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F788F427FB6B5F00F1ED80 /* PaymentButton.swift */; };
+		78F788F627FB6B5F00F1ED80 /* PaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F788F427FB6B5F00F1ED80 /* PaymentButton.swift */; };
 		84C837FA27F51F6900815C63 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C837F927F51F6900815C63 /* AddressModel.swift */; };
 		84C837FC27F520E200815C63 /* ShippingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C837FB27F520E200815C63 /* ShippingModel.swift */; };
 		84C8380027F5215500815C63 /* InvoiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C837FF27F5215500815C63 /* InvoiceModel.swift */; };
@@ -90,6 +94,9 @@
 		78E969F227F76FCE0005EB67 /* MKCoordinateRegion+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+Extensions.swift"; sourceTree = "<group>"; };
 		78E969F327F76FCF0005EB67 /* DBConnector(nousefornow).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DBConnector(nousefornow).swift"; sourceTree = "<group>"; };
 		78E969F427F76FCF0005EB67 /* LocationAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAssistant.swift; sourceTree = "<group>"; };
+		78F788EF27FB68E400F1ED80 /* CustomAnnotationMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationMapView.swift; sourceTree = "<group>"; };
+		78F788F127FB691900F1ED80 /* T2View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T2View.swift; sourceTree = "<group>"; };
+		78F788F427FB6B5F00F1ED80 /* PaymentButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentButton.swift; sourceTree = "<group>"; };
 		84C837F927F51F6900815C63 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		84C837FB27F520E200815C63 /* ShippingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingModel.swift; sourceTree = "<group>"; };
 		84C837FF27F5215500815C63 /* InvoiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceModel.swift; sourceTree = "<group>"; };
@@ -267,6 +274,10 @@
 				D0E2B31E27F50311007DABE6 /* KittenDetailView.swift */,
 				D0E2B31C27F502FE007DABE6 /* PuppyDetailView.swift */,
 				D0E2B32027F503F1007DABE6 /* ExoticDetailView.swift */,
+				78F788EF27FB68E400F1ED80 /* CustomAnnotationMapView.swift */,
+				78F788F127FB691900F1ED80 /* T2View.swift */,
+				78E969F027F76FCE0005EB67 /* AddPaymentCardButton.swift */,
+				78F788F427FB6B5F00F1ED80 /* PaymentButton.swift */,
 				D0E2B32927F52ED9007DABE6 /* SubViews */,
 			);
 			path = Views;
@@ -324,7 +335,6 @@
 		D0E2B32927F52ED9007DABE6 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				78E969F027F76FCE0005EB67 /* AddPaymentCardButton.swift */,
 				D0E2B31827F4F1AB007DABE6 /* ItemCell3.swift */,
 				D0E2B31627F4F101007DABE6 /* ItemCell2.swift */,
 				D0E2B31427F4ECEB007DABE6 /* ItemCell.swift */,
@@ -472,6 +482,7 @@
 				D08622E427F3AC3C00BFE986 /* StoreDAYS.xcdatamodeld in Sources */,
 				D0E2B31F27F50311007DABE6 /* KittenDetailView.swift in Sources */,
 				D08622E127F3AC3C00BFE986 /* Persistence.swift in Sources */,
+				78F788F527FB6B5F00F1ED80 /* PaymentButton.swift in Sources */,
 				84C8380427F5218E00815C63 /* CatagoryModel.swift in Sources */,
 				22EBA8B127F8612B006BF6D3 /* DBHelper.swift in Sources */,
 				84C837FA27F51F6900815C63 /* AddressModel.swift in Sources */,
@@ -499,11 +510,13 @@
 				D086231527F406A800BFE986 /* Data.swift in Sources */,
 				D0E2B32427F51770007DABE6 /* SignInView.swift in Sources */,
 				D08622D827F3AC3A00BFE986 /* StoreDAYSApp.swift in Sources */,
+				78F788F227FB691900F1ED80 /* T2View.swift in Sources */,
 				D0FCBA1027F8E6FA0004329A /* Tracking.swift in Sources */,
 				78E969FB27F76FCF0005EB67 /* DBConnector(nousefornow).swift in Sources */,
 				84C8380827F5223000815C63 /* ReviewModel.swift in Sources */,
 				84C8380227F5217900815C63 /* OrderModel.swift in Sources */,
 				84C8380027F5215500815C63 /* InvoiceModel.swift in Sources */,
+				78F788F027FB68E400F1ED80 /* CustomAnnotationMapView.swift in Sources */,
 				22FFCD0727F7434700B22DE3 /* PaySwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78F788F627FB6B5F00F1ED80 /* PaymentButton.swift in Sources */,
 				D08622F827F3AC3C00BFE986 /* StoreDAYSUITests.swift in Sources */,
 				D08622FA27F3AC3C00BFE986 /* StoreDAYSUITestsLaunchTests.swift in Sources */,
 			);
