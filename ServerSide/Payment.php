@@ -80,7 +80,7 @@ case "GET":
 
   //if we are looking for a set
   if(isset($_GET['User_ID'])){
-    $sql="DELETE FROM PaymentMethods WHERE User_ID = ?";
+    $sql="SELECT *FROM PaymentMethods WHERE User_ID = ?";
     $var =(int)$_GET['User_ID'];
   }
 
