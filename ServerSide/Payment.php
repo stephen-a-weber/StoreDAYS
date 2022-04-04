@@ -83,7 +83,6 @@ case "GET":
     $sql="DELETE FROM PaymentMethods WHERE User_ID = ?";
     $var =(int)$_GET['User_ID'];
   }
-  echo"Current:".$sql." MEthod at".$Method;
 
   $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
   $stmt -> bind_param("i",$var) or die("Couldn't bind".htmlspecialchars($stmt->error));
