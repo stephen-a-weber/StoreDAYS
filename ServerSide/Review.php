@@ -60,23 +60,27 @@ case "GET":
   if(isset($_GET['ID'])){
     $sql="SELECT * FROM Orders WHERE ID = ?";
     $var=(int)$_GET['ID'];
-  }
+  }else
   if(isset($_GET['Items_ID'])){
     $sql="SELECT * FROM Review WHERE Items_ID = ?    ";
     $var =(int)$_GET['Items_ID'];
-  }
+  }else
   //if we are looking for a set of order for an invoice
   if(isset($_GET['Catagory_ID'])){
     $sql="SELECT * FROM Review WHERE Catagory_ID = ?    ";
     $var =(int)$_GET['Catagory_ID'];
-  }
+  }else
   if(isset($_GET['User_ID'])){
     $sql="SELECT * FROM Review WHERE User_ID = ?    ";
     $var =(int)$_GET['User_ID'];
   }
+  else  $sql="SELECT * FROM Review    ";
   
   $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
+  
+  if($var!=0)
   $stmt -> bind_param("i",$var) or die("Couldn't bind".htmlspecialchars($stmt->error));
+
   $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));;
   $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
   echo json_encode($rows);
