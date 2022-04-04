@@ -15,17 +15,17 @@ case "POST":
         $Name=" ";
         $Address_ID=0;
         //if post is set assign the description
-        if(isset($_GET['CardNumber'])){
-          $Street=(int)$_GET['CardNumber'];
+        if(isset($_POST['CardNumber'])){
+          $Street=(int)$_POST['CardNumber'];
         }
-        if(isset($_GET['CVC'])){
-          $CVC =$_GET['CVC'];
+        if(isset($_POST['CVC'])){
+          $CVC =(INT)$_POST['CVC'];
         }
-        if(isset($_GET['Expiration'])){
-          $Expiration =$_GET['Expiration'];
+        if(isset($_POST['Expiration'])){
+          $Expiration =$_POST['Expiration'];
         }
-        if(isset($_GET['Name'])){
-            $Name =$_GET['Name'];
+        if(isset($_POST['Name'])){
+            $Name =$_POST['Name'];
           }
           if (isset($_POST['Address_ID'])){
             $Address_ID = (int)$_POST['Address_ID'];
@@ -44,17 +44,17 @@ case "POST":
         $Name=" ";
         $Address_ID=0;
         //if post is set assign the description
-        if(isset($_GET['CardNumber'])){
-            $Street=(int)$_GET['CardNumber'];
+        if(isset($_POST['CardNumber'])){
+            $Street=(int)$_POST['CardNumber'];
           }
-          if(isset($_GET['CVC'])){
-            $CVC =$_GET['CVC'];
+          if(isset($_POST['CVC'])){
+            $CVC =$_POST['CVC'];
           }
-          if(isset($_GET['Expiration'])){
-            $Expiration =$_GET['Expiration'];
+          if(isset($_POST['Expiration'])){
+            $Expiration =$_POST['Expiration'];
           }
-          if(isset($_GET['Name'])){
-              $Name =$_GET['Name'];
+          if(isset($_POST['Name'])){
+              $Name =$_POST['Name'];
             }
             if (isset($_POST['Address_ID'])){
               $Address_ID = (int)$_POST['Address_ID'];
