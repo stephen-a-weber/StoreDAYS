@@ -35,7 +35,7 @@ die("There is a duplicate user");
 
       $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
       $stmt -> bind_param("ssssssi",$ID,$Password,$UserName,$FirstName,$LastName,$DateOfBirth,$Admin) or die("Couldn't bind".htmlspecialchars($stmt->error));
-      $stmt->execute();
+      $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
       echo "success";
     }else{
 die("Post was not met");
