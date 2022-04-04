@@ -65,6 +65,8 @@ case "POST":
         $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
         $stmt -> bind_param("iissii",$CardNumber,$CVC,$Expiration,$Name,$User_ID,$Address_ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
+}else{
+  die("Post wasn't define");  
 }
     break;
 case "GET":
@@ -79,10 +81,11 @@ case "GET":
   }
 
   //if we are looking for a set
-  if(isset($_GET['User_ID'])){
+ else if(isset($_GET['User_ID'])){
     $sql="SELECT *FROM PaymentMethods WHERE User_ID = ?";
     $var =(int)$_GET['User_ID'];
-  }
+  } else
+  die("Get wasn't define");  
 
   $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
   $stmt -> bind_param("i",$var) or die("Couldn't bind".htmlspecialchars($stmt->error));
@@ -91,7 +94,9 @@ case "GET":
   echo json_encode($rows);
 
     break;
-
+default:
+die("Methode wasn't define");
+break;
 
 }
 
