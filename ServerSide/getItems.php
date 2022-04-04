@@ -22,7 +22,7 @@ require_once "ReviewModel.php";
     $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
       echo json_encode($rows);
     }else{
-      $sql = "SELECT * FROM Items Availability= ?";
+      $sql = "SELECT * FROM Items WHERE Availability= ?";
       $stmt = $_SERVER['dbconnection']->prepare($sql) or die("Couldn't prepare".htmlspecialchars($stmt->error));;
       $stmt -> bind_param("i",1) or die("Couldn't bind".htmlspecialchars($stmt->error));
       $stmt->execute()or die("Couldn't Execute".htmlspecialchars($stmt->error));
