@@ -20,6 +20,7 @@ struct CreateAccountSwiftUIView: View {
         @State var animFlagLogin = false
         @State var db: DBHelper = DBHelper()
         @State var keyChainManage = KeyChainManage()
+        @State var appGetUserFromAWS = ManageUserFromAWS()
         
         var body: some View{
             ScrollView {
@@ -142,12 +143,16 @@ struct CreateAccountSwiftUIView: View {
                 print(" Data save ")
                 saveUserKeyChain()
                 saveUserDB()
+                insertUserAWSService()
                 dataValidate = true
                 return true
             }
         }
         
         
+        func insertUserAWSService(){
+            appGetUserFromAWS.insertUserAWSService(userName: email,firstName: firstName, lastName: lastName, email: email, password: password)
+        }
         
         func saveUserKeyChain() {
             keyChainManage.SaveData(email: email, password: password)
