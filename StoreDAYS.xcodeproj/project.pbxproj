@@ -25,6 +25,9 @@
 		84C8382327FA5E1100815C63 /* ImageToServerSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8382227FA5E1100815C63 /* ImageToServerSwiftUIView.swift */; };
 		84C8382527FA5F4600815C63 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8382427FA5F4600815C63 /* ImagePicker.swift */; };
 		84C8382727FB60A000815C63 /* AllModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8382627FB60A000815C63 /* AllModels.swift */; };
+		84C8382927FBF85600815C63 /* StorePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8382827FBF85600815C63 /* StorePlace.swift */; };
+		84C8382B27FC13EA00815C63 /* ReviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8382A27FC13EA00815C63 /* ReviewList.swift */; };
+		84C8382D27FC99E200815C63 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8382C27FC99E000815C63 /* Account.swift */; };
 		D08622D827F3AC3A00BFE986 /* StoreDAYSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08622D727F3AC3A00BFE986 /* StoreDAYSApp.swift */; };
 		D08622DA27F3AC3A00BFE986 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08622D927F3AC3A00BFE986 /* ContentView.swift */; };
 		D08622DC27F3AC3C00BFE986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08622DB27F3AC3C00BFE986 /* Assets.xcassets */; };
@@ -88,6 +91,9 @@
 		84C8382227FA5E1100815C63 /* ImageToServerSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageToServerSwiftUIView.swift; sourceTree = "<group>"; };
 		84C8382427FA5F4600815C63 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		84C8382627FB60A000815C63 /* AllModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllModels.swift; sourceTree = "<group>"; };
+		84C8382827FBF85600815C63 /* StorePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePlace.swift; sourceTree = "<group>"; };
+		84C8382A27FC13EA00815C63 /* ReviewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewList.swift; sourceTree = "<group>"; };
+		84C8382C27FC99E000815C63 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		D08622D427F3AC3A00BFE986 /* StoreDAYS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreDAYS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08622D727F3AC3A00BFE986 /* StoreDAYSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDAYSApp.swift; sourceTree = "<group>"; };
 		D08622D927F3AC3A00BFE986 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -168,6 +174,7 @@
 				84C8381927F752C500815C63 /* SwiftUIAPIView.swift */,
 				84C8382227FA5E1100815C63 /* ImageToServerSwiftUIView.swift */,
 				84C8382427FA5F4600815C63 /* ImagePicker.swift */,
+				84C8382A27FC13EA00815C63 /* ReviewList.swift */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -272,6 +279,8 @@
 				84C837FB27F520E200815C63 /* ShippingModel.swift */,
 				D086230C27F3EC7D00BFE986 /* UserData.swift */,
 				84C8382627FB60A000815C63 /* AllModels.swift */,
+				84C8382827FBF85600815C63 /* StorePlace.swift */,
+				84C8382C27FC99E000815C63 /* Account.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -433,6 +442,8 @@
 				84C837FC27F520E200815C63 /* ShippingModel.swift in Sources */,
 				22DD029127F63C68004D0144 /* GetUserFromAWS.swift in Sources */,
 				D08622E427F3AC3C00BFE986 /* StoreDAYS.xcdatamodeld in Sources */,
+				84C8382D27FC99E200815C63 /* Account.swift in Sources */,
+				84C8382B27FC13EA00815C63 /* ReviewList.swift in Sources */,
 				D0E2B31F27F50311007DABE6 /* KittenDetailView.swift in Sources */,
 				D08622E127F3AC3C00BFE986 /* Persistence.swift in Sources */,
 				84C8382027F796C900815C63 /* ViewControler.swift in Sources */,
@@ -461,6 +472,7 @@
 				D086231527F406A800BFE986 /* Data.swift in Sources */,
 				D0E2B32427F51770007DABE6 /* SignInView.swift in Sources */,
 				84C8382727FB60A000815C63 /* AllModels.swift in Sources */,
+				84C8382927FBF85600815C63 /* StorePlace.swift in Sources */,
 				D08622D827F3AC3A00BFE986 /* StoreDAYSApp.swift in Sources */,
 				84C8380827F5223000815C63 /* ReviewModel.swift in Sources */,
 				84C8380227F5217900815C63 /* OrderModel.swift in Sources */,
