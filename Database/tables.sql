@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `Address` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Shipping` (
   `ID` INT NOT NULL AUTO_INCREMENT,
-  `Type` TEXT NULL,
+  `ShippingType` TEXT NULL,
   `Cost` DECIMAL NULL,
   `ETA` VARCHAR(45) NULL,
   `User_ID` INT NOT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `PaymentMethods` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Invoice` (
   `ID` INT NOT NULL AUTO_INCREMENT,
-  `Sum` DECIMAL  NULL,
+  `Cost` DECIMAL  NULL,
   `User_ID` INT NOT NULL,
   `Shipping_ID` INT NOT NULL,
   `PaymentMethods_ID` INT NOT NULL,

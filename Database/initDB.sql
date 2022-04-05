@@ -9,18 +9,18 @@ INSERT INTO Address (Street, City, User_ID, State, Zip) VALUES ('2155 Corte Vist
 INSERT INTO Address (Street, City, User_ID, State, Zip) VALUES ('905 Ivy Ave','Amityville',3,'NY','11701');
 INSERT INTO Address (Street, City, User_ID, State, Zip) VALUES ('72 Surrey Rd','Lakeville',4,'MN','55044');
 -- Shipping
-INSERT INTO Shipping (Type, Cost, ETA, User_ID, Status, Address_ID) VALUES ('Priority',5.00,'2022-4-05',2,'Delevered',1);
-INSERT INTO Shipping (Type, Cost, ETA, User_ID, Status, Address_ID) VALUES ('Normal',20.00,'2022-12-20',3,'OnGoing',2);
-INSERT INTO Shipping (Type, Cost, ETA, User_ID, Status, Address_ID) VALUES ('NextDay',6.00,'2021-11-20',4,'Preparing',3);
+INSERT INTO Shipping (ShippingType, Cost, ETA, User_ID, Status, Address_ID) VALUES ('Priority',5.00,'2022-4-05',2,'Delevered',1);
+INSERT INTO Shipping (ShippingType, Cost, ETA, User_ID, Status, Address_ID) VALUES ('Normal',20.00,'2022-12-20',3,'OnGoing',2);
+INSERT INTO Shipping (ShippingType, Cost, ETA, User_ID, Status, Address_ID) VALUES ('NextDay',6.00,'2021-11-20',4,'Preparing',3);
 -- PaymentMethods
 INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (1234567891234567,123,'25/12',"Chase",2,1);
 INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (1234567891234567,123,'26/2',"WellsFargo",3,2);
 INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (1234567891234567,123,'23/9',"Bank Of America",4,3);
 
 -- Invoice
-INSERT INTO Invoice (Sum, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (84.65,2,1,1);
-INSERT INTO Invoice (Sum, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (114.20,3,2,2);
-INSERT INTO Invoice (Sum, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (52.20,4,3,3);
+INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (84.65,2,1,1);
+INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (114.20,3,2,2);
+INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (52.20,4,3,3);
 -- Orders
 INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (79.65,'Description',1);
 INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (94.20,'Description',2);

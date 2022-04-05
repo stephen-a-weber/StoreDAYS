@@ -24,23 +24,23 @@ DELETE FROM Address Where User_ID = ?
 
 ---Table:Shipping
 --Create
-INSERT INTO Shipping (Type, Cost, ETA, User_ID, Status, Address_ID) VALUES (?,?,?,?,?,?)
+INSERT INTO Shipping (ShippingType, Cost, ETA, User_ID, Status, Address_ID) VALUES (?,?,?,?,?,?)
 --Read
 SELECT * FROM Shipping WHERE User_ID = ?
 SELECT * FROM Shipping WHERE ID = ?
 --Update
-UPDATE Shipping set Type = ?, Cost = ?, ETA = ?, User_ID = ?, Status = ?, Address_ID = ? WHERE ID = ?
+UPDATE Shipping set ShippingType = ?, Cost = ?, ETA = ?, User_ID = ?, Status = ?, Address_ID = ? WHERE ID = ?
 --Delete
 DELETE FROM Shipping Where ID = ?
 
 ---Table:Invoice
 --Create
-INSERT INTO Invoice (Sum, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (?,?,?,?)
+INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (?,?,?,?)
 --Read
 SELECT * FROM Invoice WHERE ID = ?
 SELECT * FROM Invoice WHERE User_ID = ?
 --Update
-UPDATE Invoice set Sum = ?, User_ID = ?, Shipping_ID = ?, PaymentMethods_ID = ? WHERE ID = ?
+UPDATE Invoice set Cost = ?, User_ID = ?, Shipping_ID = ?, PaymentMethods_ID = ? WHERE ID = ?
 --Delete
 DELETE FROM Invoice Where ID = ?
 
