@@ -7,7 +7,7 @@
 
 import Foundation
 // Create a URLRequest for an API endpoint
-class GetUserFromAWS{
+class ManageUserFromAWS{
     
    // var myData: Data
     var myData: String=""
