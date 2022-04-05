@@ -4,7 +4,6 @@
 //
 //  Created by David Gonzalez on 3/31/22.
 //
-
 import SwiftUI
 
 struct CreateAccountSwiftUIView: View {
