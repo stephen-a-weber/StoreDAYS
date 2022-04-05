@@ -2,7 +2,7 @@
 require_once "config.php";
 require_once "UserModel.php";
 
-    if(isset($_POST['Email'])&&isset($_POST['Password'])&&isset($_POST['ID'])){
+    if(isset($_POST['ID'])){
       $Email = $_POST["Email"];
       $ID = $_POST["ID"];
       $Password = $_POST["Password"];
