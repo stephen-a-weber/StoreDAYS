@@ -17,6 +17,7 @@ struct LoginSwiftUIView: View {
         @State var myColor = "myBlue"
         @State var animFlagLogin = false
         @State var animFlag = false
+        @State var animFlag2 = false
         @State var dataValidate = true
         @State var keyChainManage = KeyChainManage()
         @State var queue  = OperationQueue()
@@ -58,6 +59,7 @@ struct LoginSwiftUIView: View {
                     //                        .frame(width: 300, alignment: .trailing).foregroundColor(Color(myColor))
                     //                        .padding(.bottom, 40.0)
                     // MARK: BUTTONS
+                        .padding(.bottom, 25.0)
                     Button(action: {
                         animFlagLogin = initSession()
                         
@@ -91,11 +93,31 @@ struct LoginSwiftUIView: View {
                                 PaySwiftUIView(user: "Guest")
                             })
                     }
+                    .padding(.bottom, 220.0)
+                    Button(action: {
+                        animFlag2 = continueVideo()
+                    }) {
+                        Text("PUBLICITY")
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(myColor))
+                            .frame( maxWidth: .infinity,  alignment: .center)
+                            .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
+                            .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
+                                                                                lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
+                        
+                             .sheet(isPresented: $animFlag2, content: {
+                                 VideoArkOfSuffering()
+                             })
+                    }
+                    
+                    
+               
                     
                     
                 }.padding(.horizontal, 77.0).frame(width: nil)
             } // Final Scroll view
             .padding(.top, 10.0)
+            
         }
         
         
@@ -129,6 +151,9 @@ struct LoginSwiftUIView: View {
         func continueGuest() -> Bool {
             return true
         }
+        func continueVideo() -> Bool {
+            return true
+        }
     }
     
     struct LoginAndCreateView:View{
@@ -136,6 +161,7 @@ struct LoginSwiftUIView: View {
         
         var body: some View{
             VStack{
+                
                 //MARK: BUTTON
                 HStack {
                     Spacer()
@@ -164,9 +190,11 @@ struct LoginSwiftUIView: View {
                     CreateAccountSwiftUIView(userData: UserData())
                 }
             }
+         
         }
     }
     var body: some View {
+        
         ZStack {
             Spacer()
             Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 1.0)
@@ -174,6 +202,8 @@ struct LoginSwiftUIView: View {
                 Image("logo1").resizable().aspectRatio(contentMode: .fit)
                     .padding(.bottom)
                     .frame(width: 250, height: 89, alignment: .center)
+                
+                
                 LoginAndCreateView()
             }
         }
