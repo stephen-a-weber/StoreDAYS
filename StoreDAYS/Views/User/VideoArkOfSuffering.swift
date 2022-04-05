@@ -10,7 +10,7 @@ import AVKit
 struct VideoArkOfSuffering: View {
     @State var animFlag = false
     var myColor = "myBlue"
-    var url = "https://cdn.cloudflare.steamstatic.com/steam/apps/256801252/movie480.mp4"
+    var url = "https://cdn.cloudflare.steamstatic.com/steam/apps/256757119/movie480.mp4"
     //"https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4"
     //"https://www.youtube.com/watch?v=Kx4M_4V1l3w"
     var body: some View {
