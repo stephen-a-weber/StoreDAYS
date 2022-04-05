@@ -36,7 +36,7 @@ class DBHelper {
     }
     
     //MARK: Functions USERS
- 
+    
     func createUsersDataTable() {
         let createTableString = "CREATE TABLE IF NOT EXISTS Users(Id INTEGER PRIMARY KEY AUTOINCREMENT,UserName TEXT UNIQUE, FirstName TEXT,LastName TEXT, DateOfBirth TEXT,password TEXT, Email TEXT);"
         var createTableStatement: OpaquePointer? = nil
@@ -51,7 +51,7 @@ class DBHelper {
         }
         sqlite3_finalize(createTableStatement)
     }
-
+    
     
     func insertUsers(UserName: String,FirstName: String, LastName: String , DateOfBirth: String , Password: String, Email: String) {
         let insertStatementString = "INSERT INTO Users( UserName,FirstName, LastName , DateOfBirth , Password, Email) VALUES (?, ?, ?, ?, ?, ?);"
@@ -88,8 +88,8 @@ class DBHelper {
                 let password = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
                 
                 let email = sqlite3_column_int(queryStatement, 4)
-               // psns.append(UserData( Int32(id) as! Decoder  ,UserName,FirstName, password, email))
-             //   psns.append(UserData(from: Decoder.self as! Decoder))
+                // psns.append(UserData( Int32(id) as! Decoder  ,UserName,FirstName, password, email))
+                //   psns.append(UserData(from: Decoder.self as! Decoder))
                 print("Query Result:")
                 print("\(id) | \(UserName) | \(password) | \(email)")
             }
@@ -100,7 +100,7 @@ class DBHelper {
         return psns
     }
     
-
-
-
+    
+    
+    
 }
