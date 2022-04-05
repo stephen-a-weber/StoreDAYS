@@ -21,13 +21,14 @@ struct LoginSwiftUIView: View {
         @State var dataValidate = true
         @State var keyChainManage = KeyChainManage()
         @State var queue  = OperationQueue()
+        @State var messajeValidate = "Please enter your email and password"
         
         var body: some View{
             ScrollView {
                 VStack (alignment:.leading){
                     // Validate Data
                     if dataValidate == false {
-                        Text("Please enter your email and password")
+                        Text(messajeValidate)
                             .foregroundColor(Color(.red))
                             .frame(width: 300, height: 20, alignment: .center)
                     }
@@ -127,6 +128,7 @@ struct LoginSwiftUIView: View {
             var userFromAWS = ""
             var existUser = false
             if (email == "" || password == ""){
+                messajeValidate = "Please enter your email and password"
                 dataValidate = false
                 return false
             }else{
@@ -135,8 +137,10 @@ struct LoginSwiftUIView: View {
                 queue.maxConcurrentOperationCount = 1
                 userFromAWS = keyChainManage.ViewDataKeyChain(email: email)
                 if userFromAWS == ""{
-                    print("Dont Exist")
-                    
+                    dataValidate = false
+                    messajeValidate = "User no exist"
+                    print("User no Exist")
+                    messajeValidate = "User no exist"
                     existUser  = false
                 }else{
                     print("Exist")
