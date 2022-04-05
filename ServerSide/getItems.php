@@ -4,7 +4,7 @@ require_once "ReviewModel.php";
 
     $sql = "";
 
-    if(isset($_GET['ID'])){
+    if(!empty($_GET['ID'])){
       $ID = $_GET['ID'];
       $sql = "SELECT * FROM Items WHERE ID = ?";
       $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));;
@@ -13,7 +13,7 @@ require_once "ReviewModel.php";
     $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
       echo json_encode($rows);
     }
-    else if(isset($_GET['Catagory_ID'])){
+    else if(!empty($_GET['Catagory_ID'])){
       $ID = $_GET['Catagory_ID'];
       $sql = "SELECT * FROM Items WHERE Catagory_ID = ?";
       $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
