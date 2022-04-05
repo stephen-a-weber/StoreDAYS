@@ -43,6 +43,7 @@ SELECT * FROM Invoice WHERE User_ID = ?
 UPDATE Invoice set Cost = ?, User_ID = ?, Shipping_ID = ?, PaymentMethods_ID = ? WHERE ID = ?
 --Delete
 DELETE FROM Invoice Where ID = ?
+DELETE FROM Invoice Where User_ID = ?
 
 ---Table:Orders
 --Create
@@ -54,6 +55,7 @@ SELECT * FROM Orders WHERE Invoice_ID = ?
 UPDATE Orders set  Cost = ?, Description = ?, Invoice_ID = ? WHERE ID = ?
 --Delete
 DELETE FROM Orders Where ID = ?
+DELETE FROM Orders Where User_ID = ?
 
 ---Table:Catagory
 --Create
@@ -68,15 +70,15 @@ DELETE FROM Catagory Where ID = ?
 
 ---Table:Payment Methods
 --Create
-INSERT INTO PayMentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (?,?,?,?,?,?)
+INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (?,?,?,?,?,?)
 --Read
-SELECT * FROM PayMentMethods WHERE User_ID = ?
-SELECT * FROM PayMentMethods WHERE ID = ?
+SELECT * FROM PaymentMethods WHERE User_ID = ?
+SELECT * FROM PaymentMethods WHERE ID = ?
 --Update
-UPDATE PayMentMethods set CardNumber = ?, CVC = ?, Expiration = ?, Name = ?, User_ID = ?, Address_ID = ?  WHERE ID = ?
+UPDATE PaymentMethods set CardNumber = ?, CVC = ?, Expiration = ?, Name = ?, User_ID = ?, Address_ID = ?  WHERE ID = ?
 --Delete
-DELETE FROM PayMentMethods Where ID = ?
-DELETE FROM PayMentMethods Where User_ID = ?
+DELETE FROM PaymentMethods Where ID = ?
+DELETE FROM PaymentMethods Where User_ID = ?
 
 ---Table:Items
 --Create
@@ -99,7 +101,7 @@ SELECT * FROM Review WHERE User_ID = ?
 SELECT * FROM Review WHERE Catagory_ID = ?
 SELECT * FROM Review WHERE Items_ID = ?
 --Update
-UPDATE Review set (Body = ?, User_ID = ?, Rate = ?, Items_ID = ?, Catagory_ID  = ? WHERE ID = ?
+UPDATE Review set Body = ?, User_ID = ?, Rate = ?, Items_ID = ?, Catagory_ID  = ? WHERE ID = ?
 --Delete
 DELETE FROM Review Where ID = ?
 DELETE FROM Review Where User_ID = ?
