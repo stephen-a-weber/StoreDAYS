@@ -4,7 +4,6 @@
 //
 //  Created by David Gonzalez on 3/31/22.
 //
-
 import SwiftUI
 
 struct CreateAccountSwiftUIView: View {
@@ -18,17 +17,15 @@ struct CreateAccountSwiftUIView: View {
         @State var myColor = "myBlue"
         @State var dataValidate = true
         @State var animFlagLogin = false
-        @State var db: DBHelper = DBHelper()
-        @State var keyChainManage = KeyChainManage()
-        @State var appGetUserFromAWS = ManageUserFromAWS()
+        @State var messageValidateData = "Please enter your data"
+        @State var manageCreateAccount = ManageCreateAccount()
         
         var body: some View{
             ScrollView {
                 VStack (alignment:.leading){
-                    //                    Text("\(userData.Email)")
-                    //                        .font(.system(size:40, weight: .bold))
+
                     if dataValidate == false {
-                        Text("Please enter your name, email and password")
+                        Text(messageValidateData)
                             .foregroundColor(Color(.red))
                             .frame(width: 300, height: 20, alignment: .center)
                     }
@@ -55,10 +52,7 @@ struct CreateAccountSwiftUIView: View {
                         }
                         Divider().frame(height: 1).background(Color(myColor))
                             .padding(.bottom)
-                        
-                        
-                        
-                        
+                          
                         // MARK: Email
                         Text("Email").foregroundColor(Color(myColor))
                         ZStack(alignment:.leading){
@@ -109,7 +103,7 @@ struct CreateAccountSwiftUIView: View {
                             .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
                             .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
-                        
+
                             .sheet(isPresented: $animFlagLogin, content: {
                                 PaySwiftUIView(user: email)
                             })
@@ -117,40 +111,35 @@ struct CreateAccountSwiftUIView: View {
                     .padding(.bottom, 25.0)
                     
                 }.padding(.horizontal, 77.0)
-            }
+            } // End Scrol
             .padding(.top, 10.0)
-            
         }
         
         //MARK: initSession
         func initSession() -> Bool {
-            print(" Email ", email, "Pass", password )
-            
-            if (firstName == "" || lastName == "" || email == "" || password == ""){
+            if (firstName == "" || lastName == "" || email == "" || password == "" || passwordConfirm == ""){
+                messageValidateData = "Please enter your data"
                 dataValidate = false
                 return false
             }else{
+                // Call Functions ManageCreateAccount // Controllers files
+                print(!manageCreateAccount.validatePass(pass1: password, pass2: passwordConfirm))
+                if  !manageCreateAccount.validatePass(pass1: password, pass2: passwordConfirm){
+                    messageValidateData = "Pass does not match"
+                    return false
+                }
                 print(" Data save ")
-                saveUserKeyChain()
-                saveUserDB()
-                insertUserAWSService()
+                manageCreateAccount.saveUserKeyChain(email: email, password: password)
+                manageCreateAccount.saveUserDB(userName: email, firstName: firstName, lastName: lastName, dateOfBirth: "01-01-1980", password: password, email: email)
+                
+                manageCreateAccount.insertUserAWSService(userName: email, firstName: firstName, lastName: lastName, email: email, password: password)
                 dataValidate = true
                 return true
             }
-        }
+        } // End initSession
         
-        
-        func insertUserAWSService(){
-            appGetUserFromAWS.insertUserAWSService(userName: email,firstName: firstName, lastName: lastName, email: email, password: password)
-        }
-        
-        func saveUserKeyChain() {
-            keyChainManage.SaveData(email: email, password: password)
-        }
-        
-        func saveUserDB() {
-            db.insertUsers(UserName: email,FirstName: firstName, LastName: lastName , DateOfBirth: "01-01-1980" , Password: password, Email: email)
-        }
+       
+      
     }
     struct CreateSessionView:View{
         var body: some View{
