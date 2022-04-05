@@ -13,7 +13,7 @@ struct LoginSwiftUIView: View {
         
         @State var email = ""
         @State var password = ""
-        @State var appGetUserFromAWS = GetUserFromAWS()
+        @State var appGetUserFromAWS = ManageUserFromAWS()
         @State var myColor = "myBlue"
         @State var animFlagLogin = false
         @State var animFlag = false
@@ -118,51 +118,54 @@ struct LoginSwiftUIView: View {
         
         //MARK: initSession
         func initSession() -> Bool {
-            var myData = ""
-            
+            var userFromAWS = ""
+            var existUser = false
             if (email == "" || password == ""){
                 dataValidate = false
                 return false
             }else{
                 // If credentials = OK
                 dataValidate = true
-                print(" Email ", email, "Pass", password )
+                queue.maxConcurrentOperationCount = 1
+                userFromAWS = keyChainManage.ViewDataKeyChain(email: email)
+                if userFromAWS == ""{
+                    print("Dont Exist")
+                    
+                    existUser  = false
+                }else{
+                    print("Exist")
+                    appGetUserFromAWS.getUseAWSService(email: email, password: password)
+                    existUser = true
+                }
                 
-               
+//                let task1 = BlockOperation{
+//                    print("task  1:::::::::: ")
+//                    if userFromAWS == ""{
+//                        print("Dont Exist")
+//
+//                        existUser  = false
+//                    }else{
+//                        print("Exist")
+//                        existUser = true
+//                    }
+//
+//                } return existUser
                 
-               
-                    print("Entro")
-                  //  func testTasks(){
-                        queue.maxConcurrentOperationCount = 1
-                        let task1 = BlockOperation{
-                            print("task  1:::::::::: ")
-                            if myData == ""{
-                                print("Dont Exist")
-                                print("Datos from WebService",myData)
-                            }else{
-                                print("Exist")
-                                print("Datos from WebService",myData)
-                            }
-                            
-                        }
-               
-                        let task2 = BlockOperation{
-                            //sleep(5)
-                            print("task  2")
-                            myData =  appGetUserFromAWS.getUseAWSService(email: email, password: password)
-                          
-                        }
-                        
-                        task1.addDependency(task2)
-                        queue.addOperation(task1)
-                        queue.addOperation(task2)
-                
-    
+//                let task2 = BlockOperation{
+//                    //sleep(5)
+//                    print("task  2")
+//                    appGetUserFromAWS.getUseAWSService(email: email, password: password)
+//                }
+//
+//                task1.addDependency(task2)
+//                queue.addOperation(task1)
+//                queue.addOperation(task2)
                 
                 // appGetUserFromAWS.getUseAWSService(email: "DavidG@gmail.com", password: "123")
                 // DavidG@gmail.com
-             //   keyChainManage.ViewData(email: email)
-                return false
+                //   keyChainManage.ViewData(email: email)
+                
+                return existUser
             }
         }
         
@@ -225,4 +228,3 @@ struct LoginSwiftUIView_Previews: PreviewProvider {
         LoginSwiftUIView()
     }
 }
-

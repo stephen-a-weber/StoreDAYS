@@ -28,8 +28,9 @@ class KeyChainManage{
     }
     
     
-    func ViewData(email: String ) {
+    func ViewDataKeyChain(email: String ) -> String{
         // Set query
+        var myUser : String=""
         let q : [String : Any] = [ kSecClass  as String : kSecClassGenericPassword,
                                    kSecAttrAccount as String : email,
                                    kSecReturnAttributes as String: true,
@@ -44,11 +45,13 @@ class KeyChainManage{
                let password2 = item [ kSecValueData  as String] as? Foundation.Data,
                let pass = String(data: password2, encoding: .utf8){
                 print("KeyChain :Id is :", uid, " Passs is:" , pass)
+                myUser = pass
             }
             else{
                 print("No data Found - KeyChain")
             }
         }
-        print(" d - KeyChain")
+        print(" d - KeyChain",myUser)
+        return myUser
     }
 }
