@@ -1,5 +1,5 @@
 //
-//  AddPaymentCardButton.swift
+//  PaymentCardSetupButton.swift
 //  StoreDAYS
 //
 //  Created by Young Ju on 4/1/22.
@@ -8,9 +8,9 @@
     import SwiftUI
     import PassKit
 
-    struct SetupButton: View {
-        var action: () -> Void
-        
+    struct PaymentCardSetupButton: View {
+      var action: () -> Void
+
         var body: some View {
             Representable(action: action)
                 .frame(minWidth: 100, maxWidth: 400)
@@ -19,13 +19,20 @@
         }
     }
 
-    struct SetupButton_Previews: PreviewProvider {
+    struct PaymentCardSetupButton_Previews: PreviewProvider {
         static var previews: some View {
-            SetupButton(action: {})
+            PaymentCardSetupButton(action:{})
         }
     }
 
-    extension SetupButton {
+//func enterCardInfo()  -> Void {
+//    if let window = UIApplication.shared.UIWindowScene.windows.first {
+//        window.rootViewController = UIHostingController(rootView: SetupCard())
+//        window.makeKeyAndVisible()
+//    }
+//}
+
+    extension PaymentCardSetupButton {
         struct Representable: UIViewRepresentable {
             var action: () -> Void
             

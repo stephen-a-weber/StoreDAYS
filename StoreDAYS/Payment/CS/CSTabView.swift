@@ -1,5 +1,5 @@
 //
-//  PayTabView.swift
+//  CSTabView.swift
 //  StoreDAYS
 //
 //  Created by Young Ju on 4/4/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PayTabView: View {
+struct CSTabView: View {
       private enum Tabs {
         case tracker, refund, claim
       }
@@ -28,7 +28,7 @@ struct PayTabView: View {
           .statusBar(hidden: selectedTab == .tracker)
         }
       }
-private extension PayTabView {
+private extension CSTabView {
 
       var tracker: some View {
             T2View()
@@ -57,8 +57,8 @@ private extension PayTabView {
           }
       }
 }
-struct PayTabView_Previews: PreviewProvider {
+struct CSTabView_Previews: PreviewProvider {
     static var previews: some View {
-        PayTabView()
+        CSTabView()
     }
 }
