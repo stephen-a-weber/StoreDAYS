@@ -70,14 +70,6 @@ struct LoginSwiftUIView: View {
                             .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                         
-                        //                            .fullScreenCover(isPresented: $animFlag, content: {
-                        //                                PaySwiftUIView()
-                        //                              .edgesIgnoringSafeArea(.all)
-                        //                              .animation(.easeInOut)
-                        //                              .transition(.move(edge: .bottom))
-                        //                        })
-                        
-                        
                             .sheet(isPresented: $animFlagLogin, content: {
                                 PaySwiftUIView(user: email)
                             })
@@ -94,13 +86,6 @@ struct LoginSwiftUIView: View {
                             .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
                             .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
-                        
-                        //                            .fullScreenCover(isPresented: $animFlag, content: {
-                        //                                PaySwiftUIView()
-                        //                              .edgesIgnoringSafeArea(.all)
-                        //                              .animation(.easeInOut)
-                        //                              .transition(.move(edge: .bottom))
-                        //                        })
                         
                         
                             .sheet(isPresented: $animFlag, content: {
@@ -135,37 +120,8 @@ struct LoginSwiftUIView: View {
                 }else{
                     print("Exist")
                     appGetUserFromAWS.getUserAWSService(email: email, password: password)
-               //     appGetUserFromAWS.getUseAWSService(email: email, password: password)
                     existUser = true
                 }
-                
-//                let task1 = BlockOperation{
-//                    print("task  1:::::::::: ")
-//                    if userFromAWS == ""{
-//                        print("Dont Exist")
-//
-//                        existUser  = false
-//                    }else{
-//                        print("Exist")
-//                        existUser = true
-//                    }
-//
-//                } return existUser
-                
-//                let task2 = BlockOperation{
-//                    //sleep(5)
-//                    print("task  2")
-//                    appGetUserFromAWS.getUseAWSService(email: email, password: password)
-//                }
-//
-//                task1.addDependency(task2)
-//                queue.addOperation(task1)
-//                queue.addOperation(task2)
-                
-                // appGetUserFromAWS.getUseAWSService(email: "DavidG@gmail.com", password: "123")
-                // DavidG@gmail.com
-                //   keyChainManage.ViewData(email: email)
-                
                 return existUser
             }
         }
