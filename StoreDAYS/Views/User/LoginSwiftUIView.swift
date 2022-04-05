@@ -134,7 +134,8 @@ struct LoginSwiftUIView: View {
                     existUser  = false
                 }else{
                     print("Exist")
-                    appGetUserFromAWS.getUseAWSService(email: email, password: password)
+                    appGetUserFromAWS.getUserAWSService(email: email, password: password)
+               //     appGetUserFromAWS.getUseAWSService(email: email, password: password)
                     existUser = true
                 }
                 
