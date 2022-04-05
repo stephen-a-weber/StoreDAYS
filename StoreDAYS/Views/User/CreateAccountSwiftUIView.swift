@@ -110,14 +110,6 @@ struct CreateAccountSwiftUIView: View {
                             .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                         
-                        //                            .fullScreenCover(isPresented: $animFlag, content: {
-                        //                                PaySwiftUIView()
-                        //                              .edgesIgnoringSafeArea(.all)
-                        //                              .animation(.easeInOut)
-                        //                              .transition(.move(edge: .bottom))
-                        //                        })
-                        
-                        
                             .sheet(isPresented: $animFlagLogin, content: {
                                 PaySwiftUIView(user: email)
                             })
@@ -129,8 +121,6 @@ struct CreateAccountSwiftUIView: View {
             .padding(.top, 10.0)
             
         }
-        
-        //MARK: initSession
         
         //MARK: initSession
         func initSession() -> Bool {
@@ -159,7 +149,6 @@ struct CreateAccountSwiftUIView: View {
         }
         
         func saveUserDB() {
-            //   db.insertUsers(UserName: "davisgon@gmail.com", FirstName: "David", LastName:  "Gonzalez" , DateOfBirth: <#T##String#>, Password: <#T##String#>, Email: <#T##String#>)
             db.insertUsers(UserName: email,FirstName: firstName, LastName: lastName , DateOfBirth: "01-01-1980" , Password: password, Email: email)
         }
     }
