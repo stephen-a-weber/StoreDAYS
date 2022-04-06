@@ -8,12 +8,14 @@
 import Foundation
 import SwiftUI
 class Store{
-    
+    static let TheStore=Store()
+
+    init(){}
 
     
-    @Published var Cart:[ItemModels]=[ItemModels]()
+    @Published var Cart:[ItemContainer]=[ItemContainer]()
     @Published var orders:[OrdersModels]=[OrdersModels]()
-    
+    @Published var allItems=GEtItems()
     func getAvaibleItems(){}
     func buyCart(){}
     
