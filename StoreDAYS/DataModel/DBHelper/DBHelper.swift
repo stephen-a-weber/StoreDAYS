@@ -84,7 +84,6 @@ class DBHelper {
             while sqlite3_step(queryStatement) == SQLITE_ROW {
                 let id = sqlite3_column_int(queryStatement, 0)
                 let UserName = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
-                let FirstName = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
                 let password = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
                 
                 let email = sqlite3_column_int(queryStatement, 4)
@@ -92,6 +91,12 @@ class DBHelper {
                 //   psns.append(UserData(from: Decoder.self as! Decoder))
                 print("Query Result:")
                 print("\(id) | \(UserName) | \(password) | \(email)")
+                let user=UserData()
+                user.ID=Int(id)
+                user.UserName=UserName
+                user.Password=password
+                user.Email=String(email)
+                psns.append(user)
             }
         } else {
             print("SELECT statement could not be prepared")
