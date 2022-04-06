@@ -24,6 +24,7 @@ class ManageUserFromAWS{
             
             if let error = error {
                 // Handle HTTP request error
+                print(error)
             } else if let data = data {
                 // Handle HTTP request response
                 print(String(data: data, encoding: .utf8)!)
@@ -55,6 +56,7 @@ class ManageUserFromAWS{
         let getUsersTask = session.dataTask(with: resquest) { (data, response, error) in
             
             if let error = error {
+                print(error)
                 // Handle HTTP request error
             } else if let data = data {
                 // Handle HTTP request response
