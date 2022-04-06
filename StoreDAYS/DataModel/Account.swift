@@ -32,7 +32,7 @@ class account{
     }
     func updateUser(){
         //creating REQUEST URL with parameters in http body and the method define
-        let paremeters="User=\(self.User.ID)"
+        let paremeters="?User=\(self.User.ID)"
         var request=URLRequest(url: URL(string: UpdateUser)!)
         request.httpMethod="POST"
         request.httpBody=paremeters.data(using: String.Encoding.utf8)
@@ -60,7 +60,7 @@ class account{
     }
     func GETAddress(){
         //creating REQUEST URL with parameters in http body and the method define
-        let paremeters="User=\(self.User.ID)"
+        let paremeters="?User=\(self.User.ID)"
         var request=URLRequest(url: URL(string: (AddressURL+paremeters))!)
         request.httpMethod="GET"
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
@@ -83,7 +83,7 @@ class account{
     func GETShipping(){
         
             //creating REQUEST URL with parameters in http body and the method define
-            let paremeters="User=\(self.User.ID)"
+            let paremeters="?User=\(self.User.ID)"
         var request=URLRequest(url: URL(string: (ShippingURL+paremeters))!)
         request.httpMethod="GET"
         // run network task
@@ -107,7 +107,7 @@ class account{
     func GETPaymentMethods()        {
         
             //creating REQUEST URL with parameters in http body and the method define
-            let paremeters="User=\(self.User.ID)"
+            let paremeters="?User=\(self.User.ID)"
         var request=URLRequest(url: URL(string: (PaymentURL+paremeters))!)
         request.httpMethod="GET"
         // run network task
@@ -131,7 +131,7 @@ class account{
     func GETInvoice(){
         
             //creating REQUEST URL with parameters in http body and the method define
-            let paremeters="User=\(self.User.ID)"
+            let paremeters="?User=\(self.User.ID)"
         var request=URLRequest(url: URL(string: (InvoiceURL+paremeters))!)
             request.httpMethod="GET"
         // run network task
@@ -155,7 +155,7 @@ class account{
     func GETOrders(){
         
             //creating REQUEST URL with parameters in http body and the method define
-            let paremeters="User=\(self.User.ID)"
+            let paremeters="?User=\(self.User.ID)"
         var request=URLRequest(url: URL(string: (AddressURL+paremeters))!)
             request.httpMethod="GET"
         // run network task
