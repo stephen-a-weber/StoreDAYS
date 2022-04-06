@@ -37,11 +37,12 @@ class account{
         request.httpMethod="POST"
         request.httpBody=paremeters.data(using: String.Encoding.utf8)
         
-        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
                     guard let data = data, error == nil else{
                         print("error")
                         return
                     }
+            print(String(data:data, encoding: String.Encoding.utf8) ?? "")
                    
                 }
                 task.resume()

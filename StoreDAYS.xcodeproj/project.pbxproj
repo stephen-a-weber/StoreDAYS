@@ -32,6 +32,7 @@
 		84C8382F27FE036100815C63 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8382E27FE036100815C63 /* Account.swift */; };
 		84C8383127FE037E00815C63 /* AllModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383027FE037E00815C63 /* AllModels.swift */; };
 		84C8383627FE042300815C63 /* SwiftUIAPIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383527FE042300815C63 /* SwiftUIAPIView.swift */; };
+		84C8383827FE05A700815C63 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383727FE05A700815C63 /* UserData.swift */; };
 		D08622D827F3AC3A00BFE986 /* StoreDAYSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08622D727F3AC3A00BFE986 /* StoreDAYSApp.swift */; };
 		D08622DA27F3AC3A00BFE986 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08622D927F3AC3A00BFE986 /* ContentView.swift */; };
 		D08622DC27F3AC3C00BFE986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08622DB27F3AC3C00BFE986 /* Assets.xcassets */; };
@@ -101,6 +102,7 @@
 		84C8382E27FE036100815C63 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		84C8383027FE037E00815C63 /* AllModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllModels.swift; sourceTree = "<group>"; };
 		84C8383527FE042300815C63 /* SwiftUIAPIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAPIView.swift; sourceTree = "<group>"; };
+		84C8383727FE05A700815C63 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		D08622D427F3AC3A00BFE986 /* StoreDAYS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreDAYS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08622D727F3AC3A00BFE986 /* StoreDAYSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDAYSApp.swift; sourceTree = "<group>"; };
 		D08622D927F3AC3A00BFE986 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				D086231427F406A800BFE986 /* Data.swift */,
 				84C8383027FE037E00815C63 /* AllModels.swift */,
 				84C8382E27FE036100815C63 /* Account.swift */,
+				84C8383727FE05A700815C63 /* UserData.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				2208352427FDE6620025EE18 /* TabSwiftMoreUIView.swift in Sources */,
 				D08622DA27F3AC3A00BFE986 /* ContentView.swift in Sources */,
 				D0E2B32627F5215E007DABE6 /* CreateAccountView.swift in Sources */,
+				84C8383827FE05A700815C63 /* UserData.swift in Sources */,
 				78FB9B6927FCDCF000BB798F /* ApplePayManager.swift in Sources */,
 				D086231527F406A800BFE986 /* Data.swift in Sources */,
 				D0E2B32427F51770007DABE6 /* SignInView.swift in Sources */,
