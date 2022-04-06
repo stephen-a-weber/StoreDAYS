@@ -4,47 +4,69 @@
 //
 //  Created by David Gonzalez on 3/31/22.
 //
-
 import SwiftUI
 
 struct CreateAccountSwiftUIView: View {
+    @ObservedObject var userData: UserData
     struct LoginSessionView:View{
-        
-        
         @State var firstName = ""
         @State var lastName = ""
         @State var email = ""
         @State var password = ""
         @State var passwordConfirm = ""
         @State var myColor = "myBlue"
-        
+        @State var dataValidate = true
+        @State var animFlagLogin = false
+        @State var messageValidateData = "Please enter your data"
+        @State var manageCreateAccount = ManageCreateAccount()
         
         var body: some View{
             ScrollView {
                 VStack (alignment:.leading){
-                    // MARK: Last Name
-                    Text("Full Name").foregroundColor(Color(myColor))
-                    ZStack(alignment:.leading){
-                        if  lastName.isEmpty {
-                            Text("Robison Cruzo").font(.caption)
-                                .foregroundColor(.gray)
-                        }
-                        TextField("", text: $lastName)
+
+                    if dataValidate == false {
+                        Text(messageValidateData)
+                            .foregroundColor(Color(.red))
+                            .frame(width: 300, height: 20, alignment: .center)
                     }
-                    Divider().frame(height: 1).background(Color(myColor))
-                        .padding(.bottom)
+                    Group{
+                        // MARK: First Name
+                        Text("First Name").foregroundColor(Color(myColor))
+                        ZStack(alignment:.leading){
+                            if  firstName.isEmpty {
+                                Text("Robison").font(.caption)
+                                    .foregroundColor(.gray)
+                            }
+                            TextField("", text: $firstName)
+                        }
+                        Divider().frame(height: 1).background(Color(myColor))
+                            .padding(.bottom)
+                        // MARK: Last Name
+                        Text("Last Name").foregroundColor(Color(myColor))
+                        ZStack(alignment:.leading){
+                            if  lastName.isEmpty {
+                                Text("Cruzo").font(.caption)
+                                    .foregroundColor(.gray)
+                            }
+                            TextField("", text: $lastName)
+                        }
+                        Divider().frame(height: 1).background(Color(myColor))
+                            .padding(.bottom)
+                          
+                        // MARK: Email
+                        Text("Email").foregroundColor(Color(myColor))
+                        ZStack(alignment:.leading){
+                            if  email.isEmpty {
+                                Text("example@revature.net").font(.caption)
+                                    .foregroundColor(.gray)
+                            }
+                            TextField("", text: $email)
+                        }
+                        Divider().frame(height: 1).background(Color(myColor))
+                            .padding(.bottom)
+                    }
                     
-                    // MARK: Email
-                    Text("Email").foregroundColor(Color(myColor))
-                    ZStack(alignment:.leading){
-                        if  email.isEmpty {
-                            Text("example@revature.net").font(.caption)
-                                .foregroundColor(.gray)
-                        }
-                        TextField("", text: $email)
-                    }
-                    Divider().frame(height: 1).background(Color(myColor))
-                        .padding(.bottom)
+                    
                     // MARK: PASSWORD
                     Text("Password").foregroundColor(Color(myColor))
                     ZStack(alignment:.leading){
@@ -58,9 +80,22 @@ struct CreateAccountSwiftUIView: View {
                     Divider().frame(height: 1).background(Color(myColor))
                         .padding(.bottom)
                     
+                    Text("Confirm Password").foregroundColor(Color(myColor))
+                    ZStack(alignment:.leading){
+                        if  passwordConfirm.isEmpty {
+                            Text("Confirm your password").font(.caption)
+                                .foregroundColor(.gray)
+                        }
+                        
+                        SecureField("", text: $passwordConfirm)
+                    }
+                    Divider().frame(height: 1).background(Color(myColor))
+                        .padding(.bottom)
                     
                     // MARK: BUTTONS
-                    Button(action: initSession, label: {
+                    Button(action: {
+                        animFlagLogin = initSession()
+                    }) {
                         Text("CONTINUE")
                             .fontWeight(.bold)
                             .foregroundColor(Color(myColor))
@@ -68,27 +103,44 @@ struct CreateAccountSwiftUIView: View {
                             .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
                             .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
-                    })
-                        .padding(.bottom, 25.0)
-                    
-                    
-                    
+
+                            .sheet(isPresented: $animFlagLogin, content: {
+                                PaySwiftUIView(user: email)
+                            })
+                    }
+                    .padding(.bottom, 25.0)
                     
                 }.padding(.horizontal, 77.0)
-            }
-            .padding(.top, 50.0)
+            } // End Scrol
+            .padding(.top, 10.0)
         }
         
         //MARK: initSession
-        func initSession(){
-            print("Create User")
-            //   readUser()
-            //app.read()
-        }
+        func initSession() -> Bool {
+            if (firstName == "" || lastName == "" || email == "" || password == "" || passwordConfirm == ""){
+                messageValidateData = "Please enter your data"
+                dataValidate = false
+                return false
+            }else{
+                // Call Functions ManageCreateAccount // Controllers files
+                print(!manageCreateAccount.validatePass(pass1: password, pass2: passwordConfirm))
+                if  !manageCreateAccount.validatePass(pass1: password, pass2: passwordConfirm){
+                    messageValidateData = "Pass does not match"
+                    return false
+                }
+                print(" Data save ")
+                manageCreateAccount.saveUserKeyChain(email: email, password: password)
+                manageCreateAccount.saveUserDB(userName: email, firstName: firstName, lastName: lastName, dateOfBirth: "01-01-1980", password: password, email: email)
+                
+                manageCreateAccount.insertUserAWSService(userName: email, firstName: firstName, lastName: lastName, email: email, password: password)
+                dataValidate = true
+                return true
+            }
+        } // End initSession
+        
+       
+      
     }
-    
-    
-    
     struct CreateSessionView:View{
         var body: some View{
             Text("Im Create account View")
@@ -131,6 +183,6 @@ struct CreateAccountSwiftUIView: View {
 
 struct CreateAccountSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateAccountSwiftUIView()
+        CreateAccountSwiftUIView(userData: UserData())
     }
 }

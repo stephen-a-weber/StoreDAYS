@@ -13,16 +13,30 @@ struct LoginSwiftUIView: View {
         
         @State var email = ""
         @State var password = ""
-        @State var appGetUserFromAWS = GetUserFromAWS()
+        @State var appGetUserFromAWS = ManageUserFromAWS()
         @State var myColor = "myBlue"
+        @State var animFlagLogin = false
+        @State var animFlag = false
+        @State var animFlag2 = false
+        @State var dataValidate = true
+        @State var keyChainManage = KeyChainManage()
+        @State var queue  = OperationQueue()
+        @State var messajeValidate = "Please enter your email and password"
+        
         var body: some View{
             ScrollView {
                 VStack (alignment:.leading){
+                    // Validate Data
+                    if dataValidate == false {
+                        Text(messajeValidate)
+                            .foregroundColor(Color(.red))
+                            .frame(width: 300, height: 20, alignment: .center)
+                    }
                     // MARK: EMAIL
                     Text("Email").foregroundColor(Color(myColor))
                     ZStack(alignment:.leading){
                         if  email.isEmpty {
-                            Text("example@gmail.com").font(.caption)
+                            Text("example: DavidG@gmail.com").font(.caption)
                                 .foregroundColor(.gray)
                         }
                         TextField("", text: $email)
@@ -41,12 +55,16 @@ struct LoginSwiftUIView: View {
                     }
                     Divider().frame(height: 1).background(Color(myColor))
                         .padding(.bottom)
-                    
-                    Text("Forgot your password?").font(.footnote)
-                        .frame(width: 300, alignment: .trailing).foregroundColor(Color(myColor))
-                        .padding(.bottom, 40.0)
+                    // TODO: add option
+                    //                    Text("Forgot your password?").font(.footnote)
+                    //                        .frame(width: 300, alignment: .trailing).foregroundColor(Color(myColor))
+                    //                        .padding(.bottom, 40.0)
                     // MARK: BUTTONS
-                    Button(action: initSession, label: {
+                        .padding(.bottom, 25.0)
+                    Button(action: {
+                        animFlagLogin = initSession()
+                        
+                    }) {
                         Text("CONTINUE")
                             .fontWeight(.bold)
                             .foregroundColor(Color(myColor))
@@ -54,10 +72,16 @@ struct LoginSwiftUIView: View {
                             .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
                             .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
-                    })
-                        .padding(.bottom, 25.0)
+                        
+                            .sheet(isPresented: $animFlagLogin, content: {
+                                PaySwiftUIView(user: email)
+                            })
+                    }
+                    .padding(.bottom, 25.0)
                     
-                    Button(action: initSession, label: {
+                    Button(action: {
+                        animFlag = continueGuest()
+                    }) {
                         Text("CONTINUE AS GUEST")
                             .fontWeight(.bold)
                             .foregroundColor(Color(myColor))
@@ -65,33 +89,83 @@ struct LoginSwiftUIView: View {
                             .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
                             .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
-                    })
+                        
+                            .sheet(isPresented: $animFlag, content: {
+                                PaySwiftUIView(user: "Guest")
+                            })
+                    }
+                    .padding(.bottom, 220.0)
+                    Button(action: {
+                        animFlag2 = continueVideo()
+                    }) {
+                        Text("PUBLICITY")
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(myColor))
+                            .frame( maxWidth: .infinity,  alignment: .center)
+                            .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
+                            .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
+                                                                                lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
+                        
+                             .sheet(isPresented: $animFlag2, content: {
+                                 VideoArkOfSuffering()
+                             })
+                    }
+                    
+                    
+               
                     
                     
                 }.padding(.horizontal, 77.0).frame(width: nil)
-            }
-            .padding(.top, 50.0)
+            } // Final Scroll view
+            .padding(.top, 10.0)
+            
         }
         
+        
+        
         //MARK: initSession
-        func initSession(){
-            //   readUser()
-            appGetUserFromAWS.read()
+        func initSession() -> Bool {
+            var userFromAWS = ""
+            var existUser = false
+            if (email == "" || password == ""){
+                messajeValidate = "Please enter your email and password"
+                dataValidate = false
+                return false
+            }else{
+                // If credentials = OK
+                dataValidate = true
+                queue.maxConcurrentOperationCount = 1
+                userFromAWS = keyChainManage.ViewDataKeyChain(email: email)
+                if userFromAWS == ""{
+                    dataValidate = false
+                    messajeValidate = "User no exist"
+                    print("User no Exist")
+                    messajeValidate = "User no exist"
+                    existUser  = false
+                }else{
+                    print("Exist")
+                    appGetUserFromAWS.getUserAWSService(email: email, password: password)
+                    existUser = true
+                }
+                
+                return existUser
+            }
+        }
+        
+        func continueGuest() -> Bool {
+            return true
+        }
+        func continueVideo() -> Bool {
+            return true
         }
     }
-    
-    
-    struct CreateSessionView:View{
-        var body: some View{
-            Text("Im Create account View")
-        }
-    }
-    
     
     struct LoginAndCreateView:View{
         @State var typeLoginSession = true
+        
         var body: some View{
             VStack{
+                
                 //MARK: BUTTON
                 HStack {
                     Spacer()
@@ -102,17 +176,10 @@ struct LoginSwiftUIView: View {
                     
                     Spacer()
                     
-                    //   NavigationLink("",  destination: CreateAccountSwiftUIView())
-                    
-                    
-                    //NavigationLink(LocalizedStringKey) {CreateAccountSwiftUIView()   }
                     Button("CREATE ACCOUNT"){
-                        
                         typeLoginSession = false
-                        //  CreateAccountSwiftUIView()
                         print("CREATE ACCOUNT")
                     }.foregroundColor(typeLoginSession ? .gray : .blue)
-                    
                     
                     Spacer()
                     
@@ -120,16 +187,18 @@ struct LoginSwiftUIView: View {
                 .padding(0.0)
                 Spacer(minLength: 42)
                 
+                
                 if typeLoginSession == true {
                     LoginSessionView()
                 }else{
-                    CreateAccountSwiftUIView()
-                    //CreateSessionView()
+                    CreateAccountSwiftUIView(userData: UserData())
                 }
             }
+         
         }
     }
     var body: some View {
+        
         ZStack {
             Spacer()
             Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 1.0)
@@ -137,6 +206,8 @@ struct LoginSwiftUIView: View {
                 Image("logo1").resizable().aspectRatio(contentMode: .fit)
                     .padding(.bottom)
                     .frame(width: 250, height: 89, alignment: .center)
+                
+                
                 LoginAndCreateView()
             }
         }
@@ -148,5 +219,3 @@ struct LoginSwiftUIView_Previews: PreviewProvider {
         LoginSwiftUIView()
     }
 }
-
-
