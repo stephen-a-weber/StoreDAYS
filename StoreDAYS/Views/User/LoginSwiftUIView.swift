@@ -98,7 +98,7 @@ struct LoginSwiftUIView: View {
                     Button(action: {
                         animFlag2 = continueVideo()
                     }) {
-                        Text("PUBLICITY")
+                        Text("OTHERS")
                             .fontWeight(.bold)
                             .foregroundColor(Color(myColor))
                             .frame( maxWidth: .infinity,  alignment: .center)
@@ -107,7 +107,7 @@ struct LoginSwiftUIView: View {
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                         
                              .sheet(isPresented: $animFlag2, content: {
-                                 VideoArkOfSuffering()
+                                 TabSwiftMoreUIView()
                              })
                     }
                     
