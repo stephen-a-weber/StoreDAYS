@@ -19,9 +19,9 @@ class account{
     @Published var Invoice:[InvoiceModels]=[InvoiceModels]()
     @Published var orders:[OrdersModels]=[OrdersModels]()
     let AddressURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Address.php"
-    let ShippingURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Shipping.php"//to be made
+    let ShippingURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Shipping.php"
     let PaymentURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Payment.php"
-    let InvoiceURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Invoice.php"//to be made
+    let InvoiceURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Invoice.php"
     let OrdersURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Orders.php"
 
     func login(Email:String,Password:String){
@@ -180,7 +180,7 @@ class account{
         POSTShipping()
         POSTPaymentMethods()
         POSTInvoice()
-        //POSTOrders()
+        POSTOrders()
     }
     
     func POSTAddress(){
