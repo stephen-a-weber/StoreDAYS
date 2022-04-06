@@ -14,6 +14,8 @@ struct VideoArkOfSuffering: View {
     //"https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4"
     //"https://www.youtube.com/watch?v=Kx4M_4V1l3w"
     var body: some View {
+        TabView {
+            
         
         ZStack{
            // Color("myBlue")
@@ -55,7 +57,7 @@ struct VideoArkOfSuffering: View {
             }
             
         }
-
+        } //end tab
         
     }
 }
