@@ -6,31 +6,12 @@
 //
 
 import SwiftUI
-///// There are three item cell subViews. files here is one
-/// One for kittens , puppies and animals
-/// could have made an enum but this works too
-///
+
 struct ItemCell2: View {
     var puppyName = "fido"
     var litter = 234
     var price = "$45000"
-    ////  there are three variables grabbed from data and these three files for item cells
-    /// are too keep each file small and clear as too its purpose.
-    ///
-    ///
-    /// A cell has an image
-    /// then some text
-    /// then the price
-    ///
-    /// all laid out horizontally
-    
-    
-    
-    
-    
-    
-    
-    
+   // @State var number : Int = 6
      var body: some View {
          HStack {
              
