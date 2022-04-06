@@ -184,18 +184,140 @@ class account{
     }
     
     func POSTAddress(){
+        for Model in Address{
+            let ID=Model.ID
+            let Street=Model.Street
+            let City=Model.City
+            let User_ID=Model.User_ID
+            let State=Model.State
+            let Zip=Model.Zip
+        let parameters="ID=\(ID)&=Street\(Street)&City=\(City)&User_ID=\(User_ID)&State=\(State)&Zip=\(Zip)"
+        var request = URLRequest(url: URL(string: AddressURL)!)
+        request.httpMethod="POST"
+            request.httpBody=parameters.data(using: String.Encoding.utf8)
+        let task = URLSession.shared.dataTask(with: request){
+            (data,_,error) in
+            if let error = error {
+                           // Handle HTTP request error
+print(error)                       } else if let data = data {
+                           // Handle HTTP request response
+                           print(String(data: data, encoding: .utf8)!)
+                       }
+        }
+        task.resume()
+        }
         
     }
     func POSTShipping(){
-        
+        for Model in Shipping{
+            let ID=Model.ID
+            let ShippingType=Model.ShippingType
+            let Cost=Model.Cost
+            let eta=Model.ETA
+            let User_ID=Model.User_ID
+            let Status=Model.Status
+            let Address_ID=Model.Address_ID
+        let parameters="ID=\(ID)&ShippingType=\(ShippingType)&Cost=\(Cost)&ETA=\(eta)&User_ID=\(User_ID)Status&=\(Status)&Address_ID=\(Address_ID)"
+        var request = URLRequest(url: URL(string: ShippingURL)!)
+        request.httpMethod="POST"
+            request.httpBody=parameters.data(using: String.Encoding.utf8)
+        let task = URLSession.shared.dataTask(with: request){
+            (data,_,error) in
+            if let error = error {
+                           // Handle HTTP request error
+print(error)                       } else if let data = data {
+                           // Handle HTTP request response
+                           print(String(data: data, encoding: .utf8)!)
+                       }
+        }
+        task.resume()
+        }
     }
     func POSTPaymentMethods(){
-        
+        for Model in PaymentMethods{
+            let ID=Model.ID
+            let CardNumber=Model.CardNumber
+            let CVC=Model.CVC
+            let Expiration=Model.Expiration
+            let Name=Model.Name
+            let User_ID=Model.User_ID
+            let Address_ID=Model.Address_ID
+        let parameters="ID=\(ID)&CardNumber=\(CardNumber)&CVC=\(CVC)&Expiration=\(Expiration)&Name=\(Name)&User_ID=\(User_ID)&Address_ID=\(Address_ID)"
+        var request = URLRequest(url: URL(string: ShippingURL)!)
+        request.httpMethod="POST"
+            request.httpBody=parameters.data(using: String.Encoding.utf8)
+        let task = URLSession.shared.dataTask(with: request){
+            (data,_,error) in
+            if let error = error {
+                           // Handle HTTP request error
+print(error)                       } else if let data = data {
+                           // Handle HTTP request response
+                           print(String(data: data, encoding: .utf8)!)
+                       }
+        }
+        task.resume()
+        }
     }
     func POSTInvoice(){
-        
+        for Model in Invoice{
+            let ID=Model.ID
+            let Cost=Model.Cost
+            let Shipping_ID=Model.Shipping_ID
+            let PaymentMethods_ID=Model.PaymentMethods_ID
+           
+        let parameters="ID=\(ID)&Cost=\(Cost)&Shipping_ID=\(Shipping_ID)&PaymentMethods_ID=\(PaymentMethods_ID)"
+        var request = URLRequest(url: URL(string: ShippingURL)!)
+        request.httpMethod="POST"
+            request.httpBody=parameters.data(using: String.Encoding.utf8)
+        let task = URLSession.shared.dataTask(with: request){
+            (data,_,error) in
+            if let error = error {
+                           // Handle HTTP request error
+print(error)                       } else if let data = data {
+                           // Handle HTTP request response
+                           print(String(data: data, encoding: .utf8)!)
+                       }
+        }
+        task.resume()
+        }
     }
     func POSTOrders(){
+        for Model in orders{
+            let ID=Model.ID
+            let Cost=Model.Cost
+            let Description=Model.Description
+            let Invoice_ID=Model.Invoice_ID
+           
+        let parameters="ID=\(ID)&Cost=\(Cost)&Description=\(Description)&Invoice_ID=\(Invoice_ID)"
+        var request = URLRequest(url: URL(string: ShippingURL)!)
+        request.httpMethod="POST"
+            request.httpBody=parameters.data(using: String.Encoding.utf8)
+        let task = URLSession.shared.dataTask(with: request){
+            (data,_,error) in
+            if let error = error {
+                           // Handle HTTP request error
+print(error)                       } else if let data = data {
+                           // Handle HTTP request response
+                           print(String(data: data, encoding: .utf8)!)
+                       }
+        }
+        task.resume()
+        }
+    }
+    
+    func POSTAddress(Model:AddressModels){
+        
+    }
+    func POSTShipping(Model:ShippingModels){
+        
+    }
+    func POSTPaymentMethods(Model:PaymentsModels){
+        
+    }
+    func POSTInvoice(Model:InvoiceModels){
+        
+    }
+    func POSTOrders(Model:OrdersModels){
         
     }
 }
