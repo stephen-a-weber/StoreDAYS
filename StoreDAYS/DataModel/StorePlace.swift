@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 class Store{
     
-    @Published var Cart:[ItemsModel]=[ItemsModel]()
-    @Published var List:[ItemsModel]=[ItemsModel]()
+    @Published var Cart:[ItemModels]=[ItemModels]()
+    @Published var List:[ItemModels]=[ItemModels]()
     func getAvaibleItems(){}
     func buyCart(){}
 }
