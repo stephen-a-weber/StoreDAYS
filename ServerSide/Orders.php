@@ -17,10 +17,10 @@ case "POST":
     }
     if(isset($_POST['Cost'])){
      $Cost = (int)$_POST['Cost'];}
-  
+
     if(isset($_POST['Description'])){
       $Description=$_POST['Description'];}
-  
+
     $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
     $stmt -> bind_param("isii",$Cost,$Description,$Invoice_ID,$ID) or die("Couldn't bind".htmlspecialchars($stmt->error));
     $stmt->execute();
@@ -61,7 +61,31 @@ case "GET":
   echo json_encode($rows);
 
     break;
+    case "DELETE":
+      //always using a string for query
+      $sql = "";
+      //always using an integer
+      $var=0;
+    //if we are looking for one
+      if(!empty($_GET['ID'])){
+        $sql="DELETE FROM Orders Where ID = ?";
+        $var=(int)$_GET['ID'];
+      }
 
+      //if we are looking for a set
+     else if(!empty($_GET['User_ID'])){
+        $sql="DELETE FROM Orders WHERE User_ID = ?";
+        $var =(int)$_GET['User_ID'];
+      } else
+      die("Get wasn't define");
+
+      $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
+      $stmt -> bind_param("i",$var) or die("Couldn't bind".htmlspecialchars($stmt->error));
+      $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));;
+      $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+      echo json_encode($rows);
+
+        break;
 
 }
 ?>

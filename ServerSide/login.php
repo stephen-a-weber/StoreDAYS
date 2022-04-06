@@ -4,7 +4,7 @@ require_once "UserModel.php";
 $ID = $_POST["Email"];
 $Password = $_POST["Password"];
 
-    if(isset($_POST['Email'])&&isset($_POST['Password'])){
+    if(!empty($_POST['Email'])&&!empty($_POST['Password'])){
      
       if ($Password == ""){
         echo "Blank Password"; 

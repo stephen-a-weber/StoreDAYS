@@ -2,7 +2,7 @@
 require_once "config.php";
 require_once "UserModel.php";
 
-    if(isset($_POST['ID'])){
+    if(!empty($_POST['ID'])){
       $Email = $_POST["Email"];
       $ID = $_POST["ID"];
       $Password = $_POST["Password"];
@@ -16,15 +16,15 @@ require_once "UserModel.php";
         return;
       };
       //keep track how many addtional variables
-      if(isset($_POST['UserName'])){
+      if(!empty($_POST['UserName'])){
         $UserName=$_POST['UserName'];}
-    if(isset($_POST['FirstName'])){
+    if(!empty($_POST['FirstName'])){
         $FirstName=$_POST['FirstName'];}
-    if(isset($_POST['LastName'])){
+    if(!empty($_POST['LastName'])){
         $LastName=$_POST['LastName'];}
-    if(isset($_POST['DateOfBirth'])){
+    if(!empty($_POST['DateOfBirth'])){
         $DateOfBirth=$_POST['DateOfBirth'];}
-    if(isset($_POST['Admin'])){
+    if(!empty($_POST['Admin'])){
         $Admin=(int)$_POST['Admin'];}
 
       "UPDATE User set UserName = ?, FirstName = ?, LastName = ?, DateOfBirth = ?, Password = ?, Email = ? WHERE ID = ?";
