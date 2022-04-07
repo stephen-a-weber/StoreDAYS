@@ -38,6 +38,7 @@
 		84701D8B27FE51E500430964 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D8A27FE51E500430964 /* CartView.swift */; };
 		84701D8D27FE574900430964 /* ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D8C27FE574900430964 /* ViewCell.swift */; };
 		84701D8F27FEA4D000430964 /* tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D8E27FEA4D000430964 /* tabs.swift */; };
+		84701D9127FF4B3700430964 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D9027FF4B3700430964 /* SwiftUIView.swift */; };
 		84C8382F27FE036100815C63 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8382E27FE036100815C63 /* Account.swift */; };
 		84C8383127FE037E00815C63 /* AllModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383027FE037E00815C63 /* AllModels.swift */; };
 		84C8383627FE042300815C63 /* SwiftUIAPIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383527FE042300815C63 /* SwiftUIAPIView.swift */; };
@@ -117,6 +118,7 @@
 		84701D8A27FE51E500430964 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		84701D8C27FE574900430964 /* ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCell.swift; sourceTree = "<group>"; };
 		84701D8E27FEA4D000430964 /* tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabs.swift; sourceTree = "<group>"; };
+		84701D9027FF4B3700430964 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		84C8382E27FE036100815C63 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		84C8383027FE037E00815C63 /* AllModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllModels.swift; sourceTree = "<group>"; };
 		84C8383527FE042300815C63 /* SwiftUIAPIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAPIView.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			children = (
 				84701D8527FE50FD00430964 /* TestZone */,
 				84C8383527FE042300815C63 /* SwiftUIAPIView.swift */,
+				84701D9027FF4B3700430964 /* SwiftUIView.swift */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				78FB9B6127FCDCF000BB798F /* DefaultPaymentMethodConvoy.swift in Sources */,
 				2208352627FDE79B0025EE18 /* FeedbackSwiftUIView.swift in Sources */,
 				D0E2B32B27F52F51007DABE6 /* TabbedMainView.swift in Sources */,
+				84701D9127FF4B3700430964 /* SwiftUIView.swift in Sources */,
 				78FB9B6A27FCDCF000BB798F /* PaymentAssistant.swift in Sources */,
 				D086231127F3F13600BFE986 /* StoreFront.swift in Sources */,
 				84701D8927FE512F00430964 /* StoreView.swift in Sources */,

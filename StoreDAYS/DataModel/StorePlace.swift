@@ -21,7 +21,7 @@ class Store: ObservableObject{
     }
     
     @ObservedObject var Cart=ItemContainer()
-    @Published var orders:[OrdersModels]=[OrdersModels]()
+    @Published var orders:[ItemContainer]=[ItemContainer]()
     @Published var allItems=[ItemContainer]()
     func getAvaibleItems(){}
     func buyCart(){}

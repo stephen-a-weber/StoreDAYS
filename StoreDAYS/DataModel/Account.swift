@@ -146,11 +146,36 @@ class account{
                 }
                 task.resume()
     }
-    func GETOrders(){
+    func GETInvoice(User_ID:Int)->Int{
         
             //creating REQUEST URL with parameters in http body and the method define
-            let paremeters="?User=\(self.User.ID)"
-        var request=URLRequest(url: URL(string: (AddressURL+paremeters))!)
+            let paremeters="?User=\(User_ID)"
+        var request=URLRequest(url: URL(string: (InvoiceURL+paremeters))!)
+            request.httpMethod="GET"
+        // run network task
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
+                    guard let data = data, error == nil else{
+                        print("error")
+                        return
+                    }
+                    //convert to json
+                    do{
+                        let JsonData = try JSONDecoder().decode([InvoiceModels].self, from: data)
+                        DispatchQueue.main.async {
+                            self?.Invoice=JsonData
+                        }
+                    }catch{
+                        print(error)
+                    }
+                }
+                task.resume()
+        return Invoice.capacity
+    }
+    func GETOrder(ID:Int){
+        
+            //creating REQUEST URL with parameters in http body and the method define
+            let paremeters="?ID=\(ID)"
+        var request=URLRequest(url: URL(string: (OrdersURL+paremeters))!)
             request.httpMethod="GET"
         // run network task
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
@@ -169,6 +194,35 @@ class account{
                     }
                 }
                 task.resume()
+    }
+    func GETOrders(Invoice_ID:Int){
+        
+            //creating REQUEST URL with parameters in http body and the method define
+            let paremeters="?Invoice_ID=\(Invoice_ID)"
+        var request=URLRequest(url: URL(string: (OrdersURL+paremeters))!)
+            request.httpMethod="GET"
+        // run network task
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
+                    guard let data = data, error == nil else{
+                        print("error")
+                        return
+                    }
+                    //convert to json
+                    do{
+                        let JsonData = try JSONDecoder().decode([OrdersModels].self, from: data)
+                        DispatchQueue.main.async {
+                            self?.orders=JsonData
+                        }
+                    }catch{
+                        print(error)
+                    }
+                }
+                task.resume()
+    }
+    func OrderHistory(User_ID:Int){
+        GETInvoice()
+        GETInvoice(User_ID: User_ID)
+        
     }
     func POSTDATA(){
         POSTAddress()
@@ -275,6 +329,7 @@ print(error)                       } else if let data = data {
         task.resume()
         }
     }
+   
     func POSTOrders(){
         for Model in orders{
             let ID=Model.ID
@@ -300,7 +355,7 @@ print(error)                       } else if let data = data {
     }
     
     func POSTAddress(Model:AddressModels){
-        let ID=Model.ID
+        let ID=Model.ID//""
                    let Street=Model.Street
                    let City=Model.City
                    let User_ID=Model.User_ID

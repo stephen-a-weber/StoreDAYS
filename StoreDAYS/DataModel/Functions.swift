@@ -14,6 +14,53 @@ let InvoiceURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/Store
 let OrdersURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Orders.php"
 let UpdateUser = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/UpdateUser.php"
 let ItemsURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/getItems.php"
+func POSTNewInvoice(Cost:Int,ShippingID:Int,User_ID:Int,OrderedItems:[ItemContainer]){
+   
+        let Cost=Cost
+        let Shipping_ID=ShippingID
+        let User_ID=User_ID
+       
+    let parameters="Cost=\(Cost)&User_ID=\(User_ID)&Shipping_ID=\(Shipping_ID)"
+    var request = URLRequest(url: URL(string: ShippingURL)!)
+    request.httpMethod="POST"
+        request.httpBody=parameters.data(using: String.Encoding.utf8)
+    let task = URLSession.shared.dataTask(with: request){
+        (data,_,error) in
+        
+        if let error = error {
+                       // Handle HTTP request error
+print(error)                       } else if let data = data {
+    var ID=String(data: data, encoding: .utf8)!
+    for Item in OrderedItems{
+        POSTNewOrders(Item: Item, InvoiceID: Int(ID)!)
+    }
+                       // Handle HTTP request response
+                       
+                   }
+    }
+    task.resume()
+    
+}
+func POSTNewOrders(Item:ItemContainer,InvoiceID:Int){
+    let Cost=Item.Cost
+    let Description=Item.Description
+        let Invoice_ID=InvoiceID
+       
+    let parameters="Cost=\(Cost)&Description=\(Description)&Invoice_ID=\(Invoice_ID)"
+    var request = URLRequest(url: URL(string: ShippingURL)!)
+    request.httpMethod="POST"
+        request.httpBody=parameters.data(using: String.Encoding.utf8)
+    let task = URLSession.shared.dataTask(with: request){
+        (data,_,error) in
+        if let error = error {
+                       // Handle HTTP request error
+print(error)                       } else if let data = data {
+                       // Handle HTTP request response
+                       print(String(data: data, encoding: .utf8)!)
+                   }
+    }
+    task.resume()
+    }
 
 func GEtItems(completion : @escaping ([ItemContainer])->(Void)){
     //what we are returning
@@ -50,6 +97,14 @@ func GEtItems(completion : @escaping ([ItemContainer])->(Void)){
             task.resume()
     
 
+}
+func checkout(Shipment:Int,Payment:Int){
+    var sum=0.0
+    
+    for Item in Store.TheStore.Cart.order{
+        sum = Item.Cost+sum
+    }
+    
 }
 //
 //func POSTItmes(Item:ItemModels){
