@@ -53,14 +53,3 @@ class ItemContainer:ObservableObject, Identifiable ,Equatable {
     @Published var Availability=0
     
 }
-//
-//class invoiceContainer{
-//    init(Invoice:InvoiceModels){
-//        self.Invoice=Invoice
-//        self.orders=[OrdersModels]()
-//    }
-//    init(Invoice:InvoiceModels,Orders:[OrdersModels]){
-//        self.Invoice=Invoice
-//        self.orders=Orders
-//    }
-//}

@@ -14,13 +14,9 @@ let InvoiceURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/Store
 let OrdersURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Orders.php"
 let UpdateUser = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/UpdateUser.php"
 let ItemsURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/getItems.php"
-func POSTNewInvoice(Cost:Int,ShippingID:Int,User_ID:Int,OrderedItems:[ItemContainer]){
+func POSTNewInvoice(Cost:Double,Shipping_ID:Int,User_ID:Int,OrderedItems:[ItemContainer], PaymentMethods_ID:Int){
    
-        let Cost=Cost
-        let Shipping_ID=ShippingID
-        let User_ID=User_ID
-       
-    let parameters="Cost=\(Cost)&User_ID=\(User_ID)&Shipping_ID=\(Shipping_ID)"
+    let parameters="Cost=\(Cost)&User_ID=\(User_ID)&Shipping_ID=\(Shipping_ID)&PaymentMethods_ID=\(PaymentMethods_ID)"
     var request = URLRequest(url: URL(string: ShippingURL)!)
     request.httpMethod="POST"
         request.httpBody=parameters.data(using: String.Encoding.utf8)
@@ -30,7 +26,9 @@ func POSTNewInvoice(Cost:Int,ShippingID:Int,User_ID:Int,OrderedItems:[ItemContai
         if let error = error {
                        // Handle HTTP request error
 print(error)                       } else if let data = data {
+    
     var ID=String(data: data, encoding: .utf8)!
+    print(ID)
     for Item in OrderedItems{
         POSTNewOrders(Item: Item, InvoiceID: Int(ID)!)
     }
@@ -97,12 +95,4 @@ func GEtItems(completion : @escaping ([ItemContainer])->(Void)){
             task.resume()
     
 
-}
-func checkout(Shipment:Int,Payment:Int){
-    var sum=0.0
-    
-    for Item in Store.TheStore.Cart.order{
-        sum = Item.Cost+sum
-    }
-    
 }
