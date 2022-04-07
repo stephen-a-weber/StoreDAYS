@@ -23,6 +23,13 @@ struct TabSwiftMoreUIView: View {
                 Text("Feedback")
                 
             }
+            
+            DashBoardSwiftUIView().tabItem {
+                
+                Image(systemName: "message")
+                Text("DashBoard")
+                
+            }
     //https://developer.apple.com/design/resources/#sf-symbols
     //            PaySwiftUIView(user: "Guest").tabItem { Label("Foto", systemImage: "square.grid.3x1.below.line.grid.1x2") }
             
