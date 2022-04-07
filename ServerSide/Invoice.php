@@ -7,14 +7,15 @@ case "POST":
     if(!empty($_POST['ID'])){
         $ID = (int)$_POST['ID'];
         $User_ID = (int)$_POST['User_ID'];
+        echo " in ID";
 
         //initialize description in case one wasn't given
-        $Cost=0;
+        $Sum=0;
         $Shipping_ID=0;
         $PaymentMethods_ID=0;
         //if post is set assign the description
-        if(!empty($_POST['Cost'])){
-          $Cost=(int)$_POST['Cost'];
+        if(!empty($_POST['Sum'])){
+          $Sum=(int)$_POST['Sum'];
         }
         if(!empty($_POST['Shipping_ID'])){
           $Shipping_ID =(INT)$_POST['Shipping_ID'];
@@ -23,21 +24,22 @@ case "POST":
             $PaymentMethods_ID = (int)$_POST['PaymentMethods_ID'];
           }
 
-        $sql = "UPDATE Invoice set Cost = ?, User_ID = ?, Shipping_ID = ?, PaymentMethods_ID = ? WHERE ID = ?";
+        $sql = "UPDATE Invoice set Sum = ?, User_ID = ?, Shipping_ID = ?, PaymentMethods_ID = ? WHERE ID = ?";
         $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
-        $stmt -> bind_param("iiiii",$Cost,$User_ID,$Shipping_ID,$PaymentMethods_ID,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
+        $stmt -> bind_param("iiiii",$Sum,$User_ID,$Shipping_ID,$PaymentMethods_ID,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
     }else if (!empty($_POST['User_ID'])){
+      echo " in User";
         $User_ID = (int)$_POST['User_ID'];
         //initialize description in case one wasn't given
-        $Cost=0;
+        $Sum=0;
         $Shipping_ID=0;
         $Expiration=" ";
         $Name=" ";
         $PaymentMethods_ID=0;
         //if post is set assign the description
-        if(!empty($_POST['Cost'])){
-            $Cost=(int)$_POST['Cost'];
+        if(!empty($_POST['Sum'])){
+            $Sum=(int)$_POST['Sum'];
           }
           if(!empty($_POST['Shipping_ID'])){
             $Shipping_ID =$_POST['Shipping_ID'];
@@ -53,10 +55,11 @@ case "POST":
             }
 
 
-        $sql = "INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (?,?,?,?)";
+        $sql = "INSERT INTO Invoice (Sum, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (?,?,?,?)";
         $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
-        $stmt -> bind_param("iiii",$Cost,$User_ID,$Shipping_ID,$PaymentMethods_ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
+        $stmt -> bind_param("iiii",$Sum,$User_ID,$Shipping_ID,$PaymentMethods_ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
+
 $sql="SELECT LAST_INSERT_ID()";
 $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
 $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
