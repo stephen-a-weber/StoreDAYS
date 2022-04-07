@@ -10,9 +10,8 @@ import AVKit
 struct VideoArkOfSuffering: View {
     @State var animFlag = false
     var myColor = "myBlue"
-    var url = "https://cdn.cloudflare.steamstatic.com/steam/apps/256757119/movie480.mp4"
-    //"https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4"
-    //"https://www.youtube.com/watch?v=Kx4M_4V1l3w"
+    var url = "https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4"
+
     var body: some View {
         TabView {
             
@@ -67,7 +66,9 @@ struct video:View{
     var url: String
     var body: some View{
         
-        VideoPlayer(player: AVPlayer(url: URL(string: url)!)).padding(.vertical, 50.0).ignoresSafeArea()
+       // VideoPlayer(player: AVPlayer(url: URL(string: url)!)).padding(.vertical, 50.0).ignoresSafeArea()
+        
+        VideoPlayer(player: AVPlayer(url:  Bundle.main.url(forResource: "coolAnimals", withExtension: "mp4")!)).padding(.vertical, 50.0).ignoresSafeArea()
         
         
     }
