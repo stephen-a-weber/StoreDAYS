@@ -106,30 +106,3 @@ func checkout(Shipment:Int,Payment:Int){
     }
     
 }
-//
-//func POSTItmes(Item:ItemModels){
-//    for Model in Item{
-//        let ID=Item.ID
-//        let Name=Item.Name
-//        let Description=Item.Description
-//        let Cost=Item.Cost
-//        let Catagory_ID=Item.Catagory_ID
-//        let Img=Item.Img
-//        let Availability=Item.Availability
-//    let parameters="ID=\(ID)&=Name\(Name)&Description=\(Description)&Cost=\(Cost)&Catagory_ID=\(Catagory_ID)&Img=\(Img)&Availability=\(Availability)"
-//    var request = URLRequest(url: URL(string: AddressURL)!)
-//    request.httpMethod="POST"
-//        request.httpBody=parameters.data(using: String.Encoding.utf8)
-//    let task = URLSession.shared.dataTask(with: request){
-//        (data,_,error) in
-//        if let error = error {
-//                       // Handle HTTP request error
-//print(error)                       } else if let data = data {
-//                       // Handle HTTP request response
-//                       print(String(data: data, encoding: .utf8)!)
-//                   }
-//    }
-//    task.resume()
-//    }
-//
-//}

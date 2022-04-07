@@ -163,6 +163,7 @@ class account{
                         let JsonData = try JSONDecoder().decode([InvoiceModels].self, from: data)
                         DispatchQueue.main.async {
                             self?.Invoice=JsonData
+                            print(self?.Invoice.capacity)
                         }
                     }catch{
                         print(error)
