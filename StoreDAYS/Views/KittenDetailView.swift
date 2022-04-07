@@ -11,6 +11,7 @@ import SwiftUI
 struct KittenDetailView: View {
     @ObservedObject var data : Data
     var kittenName = "Bob"
+    var kittenPrice = "$19.00"
     @State var isPurchased = false
     
     //// the data is from @StateObject data to keep a single instance incharge of the data of the app
@@ -31,9 +32,9 @@ struct KittenDetailView: View {
                 ///
                
             
-            
+           Text("\(kittenPrice)")
             Button("Adopt this Kitten") { if !isPurchased {
-        data.addToCart(item: kittenName)
+                data.addToCart(item: kittenName,price:kittenPrice)
         isPurchased.toggle()
             }}
     .frame(width: 155.0, height: 60.0)

@@ -11,7 +11,7 @@ struct ExoticDetailView: View {
     @ObservedObject var data: Data
     @State var isPurchased = false
     var exoticName = "Bob"
-    
+    var exoticPrice="$45.00"
     //// the data is from @StateObject data to keep a single instance in charge of the data of the app
     /// Here there is a toggle isPurchased which is used if the button below is pressed to signify if this
     /// Particular animal is going to be chosen and added to the Cart
@@ -31,9 +31,9 @@ struct ExoticDetailView: View {
                 ///
                
             
-            
+           Text("\(exoticPrice)")
             Button("Adopt this Wonderful Animal") { if !isPurchased {
-        data.addToCart(item: exoticName)
+                data.addToCart(item: exoticName, price: exoticPrice)
         isPurchased.toggle()
             }}
     .frame(width: 155.0, height: 60.0)
@@ -71,6 +71,6 @@ struct ExoticDetailView: View {
 
 struct ExoticDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ExoticDetailView(data:Data(),exoticName: "animal1")
+        ExoticDetailView(data:Data(),exoticName: "animal1",exoticPrice:"$45.00")
     }
 }

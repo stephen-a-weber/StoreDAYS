@@ -13,14 +13,30 @@ struct Location :Identifiable {
     let id = UUID()
     let name :String
     let coordinate: CLLocationCoordinate2D
+    let price : String
 }
  
 
 class Data: ObservableObject{
 
+    // Main Local data object called at runtime
+    struct Order :Hashable{
+        var name = ""
+        var price = ""
+    }
+    // Below the item order as of april7th is an array of Orders from structure above. When one chooses
+    // and fills cart this will be the data structure available automatically everywhere
+    // where the data class above is listed as  @ObservedObject var data:data
+    // data.order is then a normal array which can populate lists or
+    // database structures for the invoices.
+    //
+    @Published var order = [Order]()
     
-    
-    @Published var order : [String] = []
+    @Published var totalPrice : String = "$0.00"
+    //Currently the last Function in this file is called calculateTotalPrice()
+    // It uses the correct formatting principles to convert from a string like "$45.78"
+    // keeping .currency or two decimal places. It finally changes the above
+    // totalPrice string into a nice usable total.
     
     @Published var name = "STOREDAY!"
     @Published var kitten : [Int] = [1,2,3,4,5,6,7,8,9,10]
@@ -51,21 +67,21 @@ class Data: ObservableObject{
         for item in 0..<kittenNames.count {
             let coord = CLLocationCoordinate2D(latitude:kittenLatitude[item],longitude: kittenLongitude[item])
             
-            let L = Location(name: kittenNames[item], coordinate: coord )
+            let L = Location(name: kittenNames[item], coordinate: coord ,price:kittenPrice[item])
             self.locations.append(L)
             
         }
         for item in 0..<puppyNames.count {
             let coord = CLLocationCoordinate2D(latitude:puppyLatitude[item],longitude: puppyLongitude[item])
             
-            let L = Location(name: puppyNames[item], coordinate: coord )
+            let L = Location(name: puppyNames[item], coordinate: coord ,price:puppyPrice[item])
             locations.append(L)
             
         }
         for item in 0..<exoticNames.count {
             let coord = CLLocationCoordinate2D(latitude:animalLatitude[item],longitude: animalLongitude[item])
             
-            let L = Location(name: exoticNames[item], coordinate: coord )
+            let L = Location(name: exoticNames[item], coordinate: coord,price:exoticPrice[item] )
             locations.append(L)
             
         }
@@ -73,12 +89,26 @@ class Data: ObservableObject{
     
     
     
-    func addToCart(item : String) {
-        order.append(item)
+    func addToCart(item : String,price: String) {
+        let x = Order(name: item, price : price)
+        order.append(x)
         
     }
     
-    
+    func calculateTotalPrice() {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        var dollars : Decimal = 0.0
+        for i in self.order {
+            
+            if let number = formatter.number(from: i.price) {
+                let amount = number.decimalValue
+                dollars += amount
+            }
+            
+        }
+        self.totalPrice =  "$\(dollars)"
+    }
     
     
 }
