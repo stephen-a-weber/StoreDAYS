@@ -9,10 +9,7 @@ import SwiftUI
 
 struct DashBoardSwiftUIView: View {
     var body: some View {
-        VStack{
-            Text("Your total Orders :")
-            Text("Your total Amount :")
-        }
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
