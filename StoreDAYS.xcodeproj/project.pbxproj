@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2208352427FDE6620025EE18 /* TabSwiftMoreUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2208352327FDE6620025EE18 /* TabSwiftMoreUIView.swift */; };
 		2208352627FDE79B0025EE18 /* FeedbackSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2208352527FDE79B0025EE18 /* FeedbackSwiftUIView.swift */; };
+		223114AE27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223114AD27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift */; };
 		22AABD0727FCC251004C6B30 /* VideoArkOfSuffering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AABD0627FCC251004C6B30 /* VideoArkOfSuffering.swift */; };
 		22DD029127F63C68004D0144 /* ManageUserFromAWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD029027F63C68004D0144 /* ManageUserFromAWS.swift */; };
 		22DD029327F644C0004D0144 /* CreateAccountSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */; };
@@ -89,6 +90,7 @@
 /* Begin PBXFileReference section */
 		2208352327FDE6620025EE18 /* TabSwiftMoreUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSwiftMoreUIView.swift; sourceTree = "<group>"; };
 		2208352527FDE79B0025EE18 /* FeedbackSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackSwiftUIView.swift; sourceTree = "<group>"; };
+		223114AD27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardSwiftUIView.swift; sourceTree = "<group>"; };
 		22AABD0627FCC251004C6B30 /* VideoArkOfSuffering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoArkOfSuffering.swift; sourceTree = "<group>"; };
 		22DD029027F63C68004D0144 /* ManageUserFromAWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageUserFromAWS.swift; sourceTree = "<group>"; };
 		22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountSwiftUIView.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			children = (
 				22EDDAF127F52FE20075F49C /* LoginSwiftUIView.swift */,
 				2208352327FDE6620025EE18 /* TabSwiftMoreUIView.swift */,
+				223114AD27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift */,
 				2208352527FDE79B0025EE18 /* FeedbackSwiftUIView.swift */,
 				22AABD0627FCC251004C6B30 /* VideoArkOfSuffering.swift */,
 				22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */,
@@ -562,6 +565,7 @@
 				22DD029127F63C68004D0144 /* ManageUserFromAWS.swift in Sources */,
 				D08622E427F3AC3C00BFE986 /* StoreDAYS.xcdatamodeld in Sources */,
 				84701D8227FE390900430964 /* Functions.swift in Sources */,
+				223114AE27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift in Sources */,
 				D0E2B31F27F50311007DABE6 /* KittenDetailView.swift in Sources */,
 				D08622E127F3AC3C00BFE986 /* Persistence.swift in Sources */,
 				78FB9B6B27FCDCF000BB798F /* PaymentButton.swift in Sources */,
