@@ -48,7 +48,7 @@ struct Tracking: View {
             annotationItems: data.locations) {
             places in
             MapAnnotation(coordinate: places.coordinate){
-                NavigationLink(destination: ExoticDetailView(data:data,exoticName: places.name)
+                NavigationLink(destination: ExoticDetailView(data:data,exoticName: places.name,exoticPrice:places.price)
                 ){
                     Image(places.name)
                     .resizable()
