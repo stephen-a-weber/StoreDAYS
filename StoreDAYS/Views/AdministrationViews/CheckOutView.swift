@@ -92,6 +92,7 @@ struct CheckOutView: View {
     // from the cart and the global variables we are using under data
     func remove(at offsets: IndexSet) {
         data.order.remove(atOffsets: offsets)
+        data.calculateTotalPrice()
     }
     
     
