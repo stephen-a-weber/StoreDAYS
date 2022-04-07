@@ -9,7 +9,10 @@ import SwiftUI
 
 struct CheckOutView: View {
     @ObservedObject var data: Data
-
+    var totalPrice = "$0.01"
+    
+ 
+    
     // Using the ObservedObject from the @StateObject from StoreDAYSApp
     
     var body: some View {
@@ -27,17 +30,21 @@ struct CheckOutView: View {
                 
                 ForEach(data.order, id:\.self) { item in
                     HStack {
-                    Image(item)
+                        Image(item.name)
                             .resizable()
                             .frame(width:100,height:100)
                             .padding()
                         Spacer()
-                    Text("You ordered \(item)")
+                        VStack{
+                            Text("You ordered \(item.name)")
                             .padding()
+                            Text("The price is \(item.price)")
+                        }
                     }
                 }
                 .onDelete(perform: remove)
-                
+                .onAppear(perform: data.calculateTotalPrice)
+                Text("Total Price = \(data.totalPrice)")
             }
                     
                // The List has a onDelete method which allows

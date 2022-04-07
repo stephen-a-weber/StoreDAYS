@@ -18,7 +18,7 @@ struct StoreFront: View {
                
                 ForEach (data.kittenNames.indices) { item in
                
-                    NavigationLink{  KittenDetailView(data: data, kittenName:data.kittenNames[item])  }
+                    NavigationLink{  KittenDetailView(data: data, kittenName:data.kittenNames[item],kittenPrice:data.kittenPrice[item])  }
                         //put a detail view in for each item of each section
                         // with NavigationLink to KittenDetailView()
                         
@@ -35,7 +35,7 @@ struct StoreFront: View {
                  
                 ForEach (data.puppyNames.indices) { item in
                         
-                    NavigationLink{ PuppyDetailView(data: data,puppyName:data.puppyNames[item])  }
+                    NavigationLink{ PuppyDetailView(data: data,puppyName:data.puppyNames[item],puppyPrice:data.puppyPrice[item])  }
                         // The NavigationLink works like a button , the closure above
                         // is the next view. called PuppyDetailView
                         //
@@ -62,7 +62,7 @@ struct StoreFront: View {
                        
                 ForEach (data.exoticNames.indices) { item in
                                 
-                    NavigationLink {ExoticDetailView(data: data,exoticName:data.exoticNames[item])   }
+                    NavigationLink {ExoticDetailView(data: data,exoticName:data.exoticNames[item],exoticPrice:data.exoticPrice[item])   }
                     label : {
                         ItemCell3(exoticName:data.exoticNames[item],exoticLitter:data.exoticLitterCount[item],exoticPrice:data.exoticPrice[item])
                     }
@@ -75,7 +75,8 @@ struct StoreFront: View {
         
         
         }
-            .navigationTitle("HEre In the \(data.name)")
+            .navigationTitle("Pet Store")//("HEre In the \(data.name)")
+            
             .navigationBarTitleDisplayMode(.inline)
     }
 //}

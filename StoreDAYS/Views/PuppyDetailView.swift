@@ -11,6 +11,7 @@ struct PuppyDetailView: View {
     @ObservedObject var data: Data
     @State var isPurchased = false
     var puppyName = "Bob"
+    var puppyPrice="$34.00"
     
     //// the data is from @StateObject data to keep a single instance in charge of the data of the app
     /// Here there is a toggle isPurchased which is used if the button below is pressed to signify if this
@@ -29,9 +30,9 @@ struct PuppyDetailView: View {
             /// The if statement allows only the one addition to the cart.
             /// 
             
-            
+           Text("\(puppyPrice)")
             Button("Adopt this Puppy") { if !isPurchased {
-        data.addToCart(item: puppyName)
+                data.addToCart(item: puppyName, price: puppyPrice)
         isPurchased.toggle()
             }}
     .frame(width: 155.0, height: 60.0)
