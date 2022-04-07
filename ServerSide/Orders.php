@@ -33,7 +33,7 @@ case "POST":
         //if post is set assign the description
         if(isset($_POST['Description'])){
           $Description=$_POST['Description'];}
-        $sql = "INSERT INTO Orders (Cost, Description, Invoice_ID) VALUES (?,?,?,?)        ";
+        $sql = "INSERT INTO Orders (Cost, Description, Invoice_ID) VALUES (?,?,?)        ";
         $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
         $stmt -> bind_param("isi",$Cost,$Description,$Invoice_ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
