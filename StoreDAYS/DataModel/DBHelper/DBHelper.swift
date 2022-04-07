@@ -12,9 +12,17 @@ import SQLite3
 
 class DBHelper {
     
+    
+    ///Users/davidgonzalez/Library/Developer/CoreSimulator/Devices/18884C22-EC75-491D-8D15-3B66A943C77B/data/Containers/Data/Application/FDC6D6AD-66EB-4C40-900D-4F40B6EB78D2/Documents/shopDAYS.sqlite
+    
     init() {
         db = openDatabase()
         createUsersDataTable()
+        createTableItems()
+        initialItems()
+        getTotalItems()
+        getTotalItemsAmount()
+ 
     }
     
     let dbPath: String = "shopDAYS.sqlite"
@@ -23,6 +31,7 @@ class DBHelper {
     func openDatabase() -> OpaquePointer? {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent(dbPath)
+         
         var db: OpaquePointer? = nil
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
             print("error opening database")
@@ -106,6 +115,102 @@ class DBHelper {
     }
     
     
+    //MARK: Functions Orders
     
+
+    
+    func createTableItems() {
+        let createTableString = "CREATE TABLE IF NOT EXISTS Items(Id INTEGER PRIMARY KEY AUTOINCREMENT,Name TEXT UNIQUE, Description TEXT,Cost TEXT, Catagory_ID TEXT, Img TEXT, Availability TEXT);"
+        var createTableStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
+            if sqlite3_step(createTableStatement) == SQLITE_DONE {
+                print("Items table created.")
+            } else {
+                print("Items table could not be created.")
+            }
+        } else {
+            print("CREATE TABLE Items statement could not be prepared.")
+        }
+        sqlite3_finalize(createTableStatement)
+    }
+    
+    
+
+    func insertItems(Name: String,Description: String, Cost: String , Catagory_ID: String , IMG: String, Availability: String) {
+        let insertStatementString = "INSERT INTO Items( Name,Description, Cost , Catagory_ID , IMG, Availability) VALUES (?, ?, ?, ?, ?, ?);"
+        var insertStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
+            //            sqlite3_bind_int(insertStatement, 1, Int32(id))
+            sqlite3_bind_text(insertStatement, 1, (Name as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 2, (Description as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 3, (Cost as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 4, (Catagory_ID as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 5, (IMG as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 6, (Availability as NSString).utf8String, -1, nil)
+            
+            if sqlite3_step(insertStatement) == SQLITE_DONE {
+                print("Successfully inserted row.")
+            } else {
+                print("Could not insert row, User exist.")
+            }
+        } else {
+            print("INSERT statement could not be prepared.")
+        }
+        sqlite3_finalize(insertStatement)
+    }
+    
+    func getTotalItems() -> Int {
+        let queryStatementString = "select  count(*) total_order FROM Items;"
+        var queryStatement: OpaquePointer? = nil
+        var total: Int=0
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                let tot = sqlite3_column_int(queryStatement, 0)
+                total = Int(tot)
+                
+           
+           
+//                print("Quiz Sessions Query Result:")
+//                print("\(questionId) | \(answerText) | \(sequence)")
+            }
+        } else {
+            print("Quiz Sessions SELECT statement could not be prepared")
+        }
+        sqlite3_finalize(queryStatement)
+        print("Total de Ordenes :", total)
+        return total
+    }
+    
+    func getTotalItemsAmount() -> Int {
+        let queryStatementString = "select    sum (CAST(Cost as decimal))  costo  FROM Items;"
+        var queryStatement: OpaquePointer? = nil
+        var total: Int=0
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                let tot = sqlite3_column_int(queryStatement, 0)
+                total = Int(tot)
+                
+           
+           
+//                print("Quiz Sessions Query Result:")
+//                print("\(questionId) | \(answerText) | \(sequence)")
+            }
+        } else {
+            print("Quiz Sessions SELECT statement could not be prepared")
+        }
+        sqlite3_finalize(queryStatement)
+        print("Total de Amount Ordenes :", total)
+        return total
+    }
+    
+    
+    func initialItems(){
+        insertItems(Name:"Snow", Description: "White/Black", Cost: "20.00", Catagory_ID: "1", IMG: "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/img/kitten1.jpeg", Availability: "1")
+        insertItems(Name:"Tiger", Description: "White/Black", Cost: "20.00", Catagory_ID: "1", IMG: "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/img/kitten1.jpeg", Availability: "1")
+        insertItems(Name:"Bear", Description: "White/Black", Cost: "20.00", Catagory_ID: "1", IMG: "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/img/kitten6.jpeg", Availability: "1")
+        insertItems(Name:"Max", Description: "White/Black", Cost: "20.00", Catagory_ID: "1", IMG: "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/img/kitten10.jpeg", Availability: "1")
+        insertItems(Name:"Fredrick", Description: "Big eyes", Cost: "20.00", Catagory_ID: "1", IMG: "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/img/animal7.jpeg", Availability: "1")
+          
+    }
     
 }
