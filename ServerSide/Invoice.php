@@ -29,7 +29,6 @@ case "POST":
         $stmt -> bind_param("iiiii",$Sum,$User_ID,$Shipping_ID,$PaymentMethods_ID,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
     }else if (!empty($_POST['User_ID'])){
-      echo " in User";
         $User_ID = (int)$_POST['User_ID'];
         //initialize description in case one wasn't given
         $Sum=0;
@@ -89,7 +88,7 @@ case "GET":
   $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
   $stmt -> bind_param("i",$var) or die("Couldn't bind".htmlspecialchars($stmt->error));
   $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));;
-  $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+  $rows=$stmt->get_result()->fetch_all();
   echo json_encode($rows);
 
     break;
