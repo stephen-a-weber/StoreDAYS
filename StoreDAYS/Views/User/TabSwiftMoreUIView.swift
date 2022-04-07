@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabSwiftMoreUIView: View {
+    @ObservedObject var data: Data
     var body: some View {
         TabView {
             
@@ -24,7 +25,7 @@ struct TabSwiftMoreUIView: View {
                 
             }
             
-            DashBoardSwiftUIView().tabItem {
+            DashBoardSwiftUIView(data: Data()).tabItem {
                 
                 Image(systemName: "message")
                 Text("DashBoard")
@@ -39,6 +40,6 @@ struct TabSwiftMoreUIView: View {
 
 struct TabSwiftMoreUIView_Previews: PreviewProvider {
     static var previews: some View {
-        TabSwiftMoreUIView()
+        TabSwiftMoreUIView( data: Data())
     }
 }

@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct CreateAccountSwiftUIView: View {
-    @ObservedObject var userData: UserData
+    @ObservedObject var data: Data
     struct LoginSessionView:View{
         @State var firstName = ""
         @State var lastName = ""
@@ -183,6 +183,6 @@ struct CreateAccountSwiftUIView: View {
 
 struct CreateAccountSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateAccountSwiftUIView(userData: UserData())
+        CreateAccountSwiftUIView(data: Data())
     }
 }
