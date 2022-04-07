@@ -7,15 +7,22 @@
 
 import Foundation
 import SwiftUI
-class Store{
+class Store: ObservableObject{
     static let TheStore=Store()
 
-    init(){}
-
+    init(){
+        print("initStore")
+        GEtItems { (Item) in
+            self.allItems=Item        }
+        print(allItems.capacity)
+    }
+    func assign(given:[ItemContainer]){
+        allItems=given
+    }
     
-    @Published var Cart:[ItemContainer]=[ItemContainer]()
+    @ObservedObject var Cart=ItemContainer()
     @Published var orders:[OrdersModels]=[OrdersModels]()
-    @Published var allItems=GEtItems()
+    @Published var allItems=[ItemContainer]()
     func getAvaibleItems(){}
     func buyCart(){}
     

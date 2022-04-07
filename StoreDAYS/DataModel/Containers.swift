@@ -6,18 +6,21 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct ItemContainer:Hashable{
+
+class ItemContainer:ObservableObject, Identifiable ,Equatable {
     static func == (lhs: ItemContainer, rhs: ItemContainer) -> Bool {
         return lhs.ID==rhs.ID
     }
-    
+    init(){
+        }
     init(Item:ItemModels){
         self.Item=Item
         convert()
     }
-    mutating func convert(){
-        ID=Int(Item.ID)!
+     func convert(){
+         self.ID=Int(Item.ID)!
         Name=Item.Name
         Description=Item.Description
         Cost=Double(Item.Cost)!
@@ -25,23 +28,29 @@ struct ItemContainer:Hashable{
         Img=Item.Name
         Availability=Int(Item.Availability)!
     }
-    func addtoCart(){
-        Store.TheStore.Cart.append(self)
+    func addtoCart(items:ItemContainer){
+        if !Store.TheStore.Cart.order.contains(items){
+            Store.TheStore.Cart.order.append(items)}
+        for i in Store.TheStore.Cart.order{
+            print(i.Name)
+        }
+       
     }
     init(Item:ItemModels,Reviews:[ReviewModels]){
         self.Item=Item
         self.Review=Reviews
     }
-    var Review:[ReviewModels]=[ReviewModels]()
-    var Item: ItemModels
-    var id=UUID()
-    var ID=0
-    var Name=""
-    var Description=""
-    var Cost=0.0
-    var Catagory_ID=0
-    var Img:String=""
-    var Availability=0
+    @Published var order = [ItemContainer]()
+    @Published var Review:[ReviewModels]=[ReviewModels]()
+    @Published var Item: ItemModels = ItemModels(ID: "", Name: "", Description: "", Cost: "", Catagory_ID: "", Img: "", Availability: "")
+    @Published var id=UUID()
+    @Published var ID=0
+    @Published var Name=""
+    @Published var Description=""
+    @Published var Cost=0.0
+    @Published var Catagory_ID=0
+    @Published var Img:String=""
+    @Published var Availability=0
     
 }
 //

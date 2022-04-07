@@ -13,15 +13,15 @@ let PaymentURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/Store
 let InvoiceURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Invoice.php"
 let OrdersURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Orders.php"
 let UpdateUser = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/UpdateUser.php"
-let ItemsURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/GetItems.php"
+let ItemsURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/getItems.php"
 
-func GEtItems()->[ItemContainer]{
+func GEtItems(completion : @escaping ([ItemContainer])->(Void)){
     //what we are returning
     var AvaiavbleList = [ItemContainer]()
     //Json Array
     var Items=[ItemModels]()
     //creating REQUEST URL with parameters in http body and the method define
-    var request=URLRequest(url: URL(string: (AddressURL))!)
+    var request=URLRequest(url: URL(string: (ItemsURL))!)
     request.httpMethod="GET"
     let task = URLSession.shared.dataTask(with: request) {  data, _, error in
                 guard let data = data, error == nil else{
@@ -31,18 +31,25 @@ func GEtItems()->[ItemContainer]{
                 //convert to json
                 do{
                     let JsonData = try JSONDecoder().decode([ItemModels].self, from: data)
-                    DispatchQueue.main.async {
-                        Items=JsonData
+                    Items=JsonData
+                    for Pet in Items {
+                        AvaiavbleList.append(ItemContainer(Item: Pet))
                     }
+                    DispatchQueue.main.async {
+                        completion(AvaiavbleList)
+                        Store.TheStore.assign(given: AvaiavbleList)
+                        print(AvaiavbleList.capacity)
+
+                    }
+
                 }catch{
+                    print(": In Items")
                     print(error)
                 }
             }
             task.resume()
-    for Pet in Items {
-        AvaiavbleList.append(ItemContainer(Item: Pet))
-    }
-    return AvaiavbleList
+    
+
 }
 //
 //func POSTItmes(Item:ItemModels){

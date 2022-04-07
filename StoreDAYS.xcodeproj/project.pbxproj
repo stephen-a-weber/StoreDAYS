@@ -33,6 +33,11 @@
 		84701D8027FE239A00430964 /* UtilityModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D7F27FE239A00430964 /* UtilityModelController.swift */; };
 		84701D8227FE390900430964 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D8127FE390900430964 /* Functions.swift */; };
 		84701D8427FE391E00430964 /* Containers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D8327FE391E00430964 /* Containers.swift */; };
+		84701D8727FE511800430964 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D8627FE511800430964 /* DetailView.swift */; };
+		84701D8927FE512F00430964 /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D8827FE512F00430964 /* StoreView.swift */; };
+		84701D8B27FE51E500430964 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D8A27FE51E500430964 /* CartView.swift */; };
+		84701D8D27FE574900430964 /* ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D8C27FE574900430964 /* ViewCell.swift */; };
+		84701D8F27FEA4D000430964 /* tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D8E27FEA4D000430964 /* tabs.swift */; };
 		84C8382F27FE036100815C63 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8382E27FE036100815C63 /* Account.swift */; };
 		84C8383127FE037E00815C63 /* AllModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383027FE037E00815C63 /* AllModels.swift */; };
 		84C8383627FE042300815C63 /* SwiftUIAPIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383527FE042300815C63 /* SwiftUIAPIView.swift */; };
@@ -107,6 +112,11 @@
 		84701D7F27FE239A00430964 /* UtilityModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityModelController.swift; sourceTree = "<group>"; };
 		84701D8127FE390900430964 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		84701D8327FE391E00430964 /* Containers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Containers.swift; sourceTree = "<group>"; };
+		84701D8627FE511800430964 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		84701D8827FE512F00430964 /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
+		84701D8A27FE51E500430964 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		84701D8C27FE574900430964 /* ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCell.swift; sourceTree = "<group>"; };
+		84701D8E27FEA4D000430964 /* tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabs.swift; sourceTree = "<group>"; };
 		84C8382E27FE036100815C63 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		84C8383027FE037E00815C63 /* AllModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllModels.swift; sourceTree = "<group>"; };
 		84C8383527FE042300815C63 /* SwiftUIAPIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAPIView.swift; sourceTree = "<group>"; };
@@ -255,9 +265,22 @@
 			path = ApplePay;
 			sourceTree = "<group>";
 		};
+		84701D8527FE50FD00430964 /* TestZone */ = {
+			isa = PBXGroup;
+			children = (
+				84701D8627FE511800430964 /* DetailView.swift */,
+				84701D8827FE512F00430964 /* StoreView.swift */,
+				84701D8A27FE51E500430964 /* CartView.swift */,
+				84701D8C27FE574900430964 /* ViewCell.swift */,
+				84701D8E27FEA4D000430964 /* tabs.swift */,
+			);
+			path = TestZone;
+			sourceTree = "<group>";
+		};
 		84C8383227FE03EC00815C63 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				84701D8527FE50FD00430964 /* TestZone */,
 				84C8383527FE042300815C63 /* SwiftUIAPIView.swift */,
 			);
 			path = Examples;
@@ -520,11 +543,13 @@
 				22EDDAF227F52FE20075F49C /* LoginSwiftUIView.swift in Sources */,
 				84C8383127FE037E00815C63 /* AllModels.swift in Sources */,
 				78FB9B6627FCDCF000BB798F /* SetupCard.swift in Sources */,
+				84701D8B27FE51E500430964 /* CartView.swift in Sources */,
 				84701D7E27FE1F6600430964 /* StorePlace.swift in Sources */,
 				78FB9B6727FCDCF000BB798F /* PaySwiftUIView.swift in Sources */,
 				78FB9B6527FCDCF000BB798F /* T2View.swift in Sources */,
 				78FB9B6827FCDCF000BB798F /* PaymentCardSetupButton.swift in Sources */,
 				22FEA1AC27FCB9600007838E /* ManageCreateAccount.swift in Sources */,
+				84701D8F27FEA4D000430964 /* tabs.swift in Sources */,
 				84701D8027FE239A00430964 /* UtilityModelController.swift in Sources */,
 				22FFCD0C27F7C62E00B22DE3 /* KeyChainManage.swift in Sources */,
 				22DD029127F63C68004D0144 /* ManageUserFromAWS.swift in Sources */,
@@ -555,6 +580,9 @@
 				D0E2B32B27F52F51007DABE6 /* TabbedMainView.swift in Sources */,
 				78FB9B6A27FCDCF000BB798F /* PaymentAssistant.swift in Sources */,
 				D086231127F3F13600BFE986 /* StoreFront.swift in Sources */,
+				84701D8927FE512F00430964 /* StoreView.swift in Sources */,
+				84701D8D27FE574900430964 /* ViewCell.swift in Sources */,
+				84701D8727FE511800430964 /* DetailView.swift in Sources */,
 				D086231327F3F77400BFE986 /* StoreSplashPage.swift in Sources */,
 				2208352427FDE6620025EE18 /* TabSwiftMoreUIView.swift in Sources */,
 				D08622DA27F3AC3A00BFE986 /* ContentView.swift in Sources */,
