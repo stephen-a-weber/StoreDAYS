@@ -1,6 +1,5 @@
 <?php
 require_once "config.php";
-require_once "UserModel.php";
 
     if(!empty($_POST['ID'])){
       $Email = $_POST["Email"];

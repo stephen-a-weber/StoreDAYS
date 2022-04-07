@@ -1,6 +1,5 @@
 <?php
 require_once "config.php";
-require_once "UserModel.php";
 $ID = $_POST["Email"];
 $Password = $_POST["Password"];
 
