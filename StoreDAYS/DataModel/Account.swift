@@ -11,18 +11,13 @@ class account{
     static let initAccount=account()
     private init(){}
     @Published var User:UserModels=UserModels(ID: "", UserName: "", FirstName: "", LastName: "", DateOfBirth: "", Password: "", Email: "", Admin: "")
-    let UpdateUser = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/UpdateUser.php"
 
     @Published var Address: [AddressModels] = [AddressModels]()
     @Published var Shipping:[ShippingModels] = [ShippingModels]()
     @Published var PaymentMethods:[PaymentsModels] = [PaymentsModels]()
     @Published var Invoice:[InvoiceModels]=[InvoiceModels]()
     @Published var orders:[OrdersModels]=[OrdersModels]()
-    let AddressURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Address.php"
-    let ShippingURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Shipping.php"
-    let PaymentURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Payment.php"
-    let InvoiceURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Invoice.php"
-    let OrdersURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Orders.php"
+   
 
     func login(Email:String,Password:String){
         
@@ -56,7 +51,6 @@ class account{
         GETShipping()
         GETPaymentMethods()
         GETInvoice()
-       // GETOrders()
     }
     func GETAddress(){
         //creating REQUEST URL with parameters in http body and the method define
@@ -181,7 +175,6 @@ class account{
         POSTShipping()
         POSTPaymentMethods()
         POSTInvoice()
-        POSTOrders()
     }
     
     func POSTAddress(){

@@ -6,9 +6,8 @@
 //
 
 import Foundation
-let OrdersURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Orders.php"
 
-class invoiceContainer{
+class invoiceContaisner{
     init(Invoice:InvoiceModels){
         self.Invoice=Invoice
         self.orders=[OrdersModels]()
@@ -90,10 +89,12 @@ class invoiceContainer{
        }
 }
 
-class ReviewContainer{
+class ItemCosntainer{
     init(Item:ItemModels,Reviews:[ReviewModels]){
         self.Item=Item
         self.Review=Reviews
     }
     var Review:[ReviewModels]
-    var Item: ItemModels}
+    var Item: ItemModels
+    
+}
