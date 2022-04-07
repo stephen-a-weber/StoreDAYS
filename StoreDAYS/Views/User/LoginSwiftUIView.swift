@@ -12,7 +12,7 @@ struct LoginSwiftUIView: View {
     // LOGIN     CREATE ACCOUNT
     struct LoginAndCreateView:View{
         @State var typeLoginSession = true
-        
+        @ObservedObject var data: Data
         var body: some View{
             VStack{
                 
@@ -59,7 +59,7 @@ struct LoginSwiftUIView: View {
                     .frame(width: 250, height: 89, alignment: .center)
                 
                 
-                LoginAndCreateView()
+                LoginAndCreateView(data: Data())
             }
         }
     }
