@@ -40,7 +40,7 @@ struct InvoiceSwiftUIView: View {
                 HStack{
                     Image("invoice").resizable().frame(width: 150, height: 100, alignment: .leading)
                     
-                    Text("# NUMBER: A - 75423137").foregroundColor(.black)
+                    Text("# NUMBER       A- 75423137").foregroundColor(.black).font(.custom("Courier", fixedSize: 25))
                         .padding()
                 }
             }  .frame(width: 400, height: 100, alignment: .center)
@@ -60,9 +60,9 @@ struct InvoiceSwiftUIView: View {
                                     .padding()
                                 Spacer()
                                 VStack{
-                                    Text("You ordered \(item.name)")
+                                    Text("* \(item.name)")
                                         .padding()
-                                    Text("The price is \(item.price)")
+                                    Text("Sub-total \(item.price)")
                                 }
                             }
                         }
@@ -76,10 +76,10 @@ struct InvoiceSwiftUIView: View {
                 
                 
                 VStack(alignment: .trailing){
-                    Text("Total Price = \(data.totalPrice)").foregroundColor(.black)
-                    Text("Shipping =      \(data.shippingPrice)").foregroundColor(.black)
+                    Text("Total Price = \(data.totalPrice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 20))
+                    Text("Shipping =      \(data.shippingPrice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 12))
 
-                    Text("Adress:33 60 NY city Patagonia Argentina").foregroundColor(.black)
+                    Text("Adress:33 60 NY city Patagonia Argentina").foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
                 }
             
         }
