@@ -116,6 +116,7 @@ struct InvoiceSwiftUIView: View {
                 .onAppear(perform: data.calculateTotalPrice)
                 VStack(alignment: .trailing){
                 Text("Total Price = \(data.totalPrice)").foregroundColor(.black)
+                    Text("Shipping =      \(data.shippingPrice)").foregroundColor(.black)
                     Spacer()
                 Text("Adress:33 60 NY city Patagonia Argentina").foregroundColor(.black)
             }

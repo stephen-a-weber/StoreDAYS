@@ -33,6 +33,7 @@ class Data: ObservableObject{
     @Published var order = [Order]()
     
     @Published var totalPrice : String = "$55,750.00"
+    @Published var shippingPrice : String = "$350.00"
     //Currently the last Function in this file is called calculateTotalPrice()
     // It uses the correct formatting principles to convert from a string like "$45.78"
     // keeping .currency or two decimal places. It finally changes the above
