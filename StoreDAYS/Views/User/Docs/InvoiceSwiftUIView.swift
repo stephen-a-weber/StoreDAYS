@@ -29,13 +29,6 @@ struct InvoiceSwiftUIView: View {
         // each are separate files under the same used name
         
         VStack {
-            
-            Text("TRAKING").foregroundColor(Color("myBlue"))
-            Tracking(data:data)
-                .tabItem{
-                    Label("Locations", systemImage:"globe.americas.fill").frame(width: 20, height: 10, alignment: .center)
-                }
-            
             VStack{
                 HStack{
                     Image("invoice").resizable().frame(width: 150, height: 100, alignment: .leading)
@@ -48,6 +41,7 @@ struct InvoiceSwiftUIView: View {
             
             
             
+            Spacer()
             // Detail Invoice
             ScrollView{
                 Section("Detail") {
@@ -70,13 +64,13 @@ struct InvoiceSwiftUIView: View {
                         .onAppear(perform: data.calculateTotalPrice)
                     }
                     
-                }.frame(width: 450, height: 300, alignment: .center)
+                }.frame(width: 450, height: 460, alignment: .center)
                     .border(Color(.gray), width: 1)// End Scroll View
             }
                 
                 
                 VStack(alignment: .trailing){
-                    Text("Total Price = \(data.totalPrice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 20))
+                    Text("Total Price = \(data.totalPrice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 24))
                     Text("Shipping =      \(data.shippingPrice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 12))
 
                     Text("Adress:33 60 NY city Patagonia Argentina").foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
