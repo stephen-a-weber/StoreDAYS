@@ -10,11 +10,15 @@
 		2208352427FDE6620025EE18 /* TabSwiftMoreUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2208352327FDE6620025EE18 /* TabSwiftMoreUIView.swift */; };
 		2208352627FDE79B0025EE18 /* FeedbackSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2208352527FDE79B0025EE18 /* FeedbackSwiftUIView.swift */; };
 		223114AE27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223114AD27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift */; };
+		223114B027FF88BE00EF8AC9 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223114AF27FF88BE00EF8AC9 /* WebViewModel.swift */; };
+		223114B227FFA07900EF8AC9 /* LoginSessionViewSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223114B127FFA07900EF8AC9 /* LoginSessionViewSwiftUIView.swift */; };
 		22AABD0727FCC251004C6B30 /* VideoArkOfSuffering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AABD0627FCC251004C6B30 /* VideoArkOfSuffering.swift */; };
 		22DD029127F63C68004D0144 /* ManageUserFromAWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD029027F63C68004D0144 /* ManageUserFromAWS.swift */; };
 		22DD029327F644C0004D0144 /* CreateAccountSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */; };
 		22EBA8B127F8612B006BF6D3 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EBA8B027F8612B006BF6D3 /* DBHelper.swift */; };
 		22EDDAF227F52FE20075F49C /* LoginSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDDAF127F52FE20075F49C /* LoginSwiftUIView.swift */; };
+		22EE79B32800336B00BAE961 /* InvoiceSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE79B22800336B00BAE961 /* InvoiceSwiftUIView.swift */; };
+		22EE79B52800510000BAE961 /* TabDocumentsSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE79B42800510000BAE961 /* TabDocumentsSwiftUIView.swift */; };
 		22FBF75C27FF318B009EAB92 /* coolAnimals.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 22FBF75B27FF318B009EAB92 /* coolAnimals.mp4 */; };
 		22FEA1AC27FCB9600007838E /* ManageCreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FEA1AB27FCB9600007838E /* ManageCreateAccount.swift */; };
 		22FFCD0C27F7C62E00B22DE3 /* KeyChainManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFCD0B27F7C62E00B22DE3 /* KeyChainManage.swift */; };
@@ -92,11 +96,15 @@
 		2208352327FDE6620025EE18 /* TabSwiftMoreUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSwiftMoreUIView.swift; sourceTree = "<group>"; };
 		2208352527FDE79B0025EE18 /* FeedbackSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackSwiftUIView.swift; sourceTree = "<group>"; };
 		223114AD27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardSwiftUIView.swift; sourceTree = "<group>"; };
+		223114AF27FF88BE00EF8AC9 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
+		223114B127FFA07900EF8AC9 /* LoginSessionViewSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSessionViewSwiftUIView.swift; sourceTree = "<group>"; };
 		22AABD0627FCC251004C6B30 /* VideoArkOfSuffering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoArkOfSuffering.swift; sourceTree = "<group>"; };
 		22DD029027F63C68004D0144 /* ManageUserFromAWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageUserFromAWS.swift; sourceTree = "<group>"; };
 		22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountSwiftUIView.swift; sourceTree = "<group>"; };
 		22EBA8B027F8612B006BF6D3 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		22EDDAF127F52FE20075F49C /* LoginSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSwiftUIView.swift; sourceTree = "<group>"; };
+		22EE79B22800336B00BAE961 /* InvoiceSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceSwiftUIView.swift; sourceTree = "<group>"; };
+		22EE79B42800510000BAE961 /* TabDocumentsSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabDocumentsSwiftUIView.swift; sourceTree = "<group>"; };
 		22F48B1927FA2D4C0044218D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		22FBF75B27FF318B009EAB92 /* coolAnimals.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = coolAnimals.mp4; sourceTree = "<group>"; };
 		22FEA1AB27FCB9600007838E /* ManageCreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageCreateAccount.swift; sourceTree = "<group>"; };
@@ -195,6 +203,7 @@
 			children = (
 				22DD029027F63C68004D0144 /* ManageUserFromAWS.swift */,
 				22FEA1AB27FCB9600007838E /* ManageCreateAccount.swift */,
+				223114AF27FF88BE00EF8AC9 /* WebViewModel.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -215,12 +224,23 @@
 				2208352327FDE6620025EE18 /* TabSwiftMoreUIView.swift */,
 				223114AD27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift */,
 				2208352527FDE79B0025EE18 /* FeedbackSwiftUIView.swift */,
+				22EE79B62800536F00BAE961 /* Docs */,
 				22AABD0627FCC251004C6B30 /* VideoArkOfSuffering.swift */,
 				22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */,
+				223114B127FFA07900EF8AC9 /* LoginSessionViewSwiftUIView.swift */,
 				22EBA8B427F86B04006BF6D3 /* V0.0 */,
 				84701D922800964E00430964 /* MakeAddressView.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		22EE79B62800536F00BAE961 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				22EE79B42800510000BAE961 /* TabDocumentsSwiftUIView.swift */,
+				22EE79B22800336B00BAE961 /* InvoiceSwiftUIView.swift */,
+			);
+			path = Docs;
 			sourceTree = "<group>";
 		};
 		22FFCD0A27F7C61A00B22DE3 /* KeyChain */ = {
@@ -555,6 +575,8 @@
 			files = (
 				22EDDAF227F52FE20075F49C /* LoginSwiftUIView.swift in Sources */,
 				84C8383127FE037E00815C63 /* AllModels.swift in Sources */,
+				22EE79B52800510000BAE961 /* TabDocumentsSwiftUIView.swift in Sources */,
+				22EE79B32800336B00BAE961 /* InvoiceSwiftUIView.swift in Sources */,
 				78FB9B6627FCDCF000BB798F /* SetupCard.swift in Sources */,
 				84701D8B27FE51E500430964 /* CartView.swift in Sources */,
 				84701D7E27FE1F6600430964 /* StorePlace.swift in Sources */,
@@ -603,12 +625,14 @@
 				2208352427FDE6620025EE18 /* TabSwiftMoreUIView.swift in Sources */,
 				D08622DA27F3AC3A00BFE986 /* ContentView.swift in Sources */,
 				D0E2B32627F5215E007DABE6 /* CreateAccountView.swift in Sources */,
+				223114B227FFA07900EF8AC9 /* LoginSessionViewSwiftUIView.swift in Sources */,
 				84C8383827FE05A700815C63 /* UserData.swift in Sources */,
 				78FB9B6927FCDCF000BB798F /* ApplePayManager.swift in Sources */,
 				D086231527F406A800BFE986 /* Data.swift in Sources */,
 				D0E2B32427F51770007DABE6 /* SignInView.swift in Sources */,
 				D08622D827F3AC3A00BFE986 /* StoreDAYSApp.swift in Sources */,
 				D0FCBA1027F8E6FA0004329A /* Tracking.swift in Sources */,
+				223114B027FF88BE00EF8AC9 /* WebViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,6 +790,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StoreDAYS/Preview Content\"";
@@ -798,6 +823,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StoreDAYS/Preview Content\"";

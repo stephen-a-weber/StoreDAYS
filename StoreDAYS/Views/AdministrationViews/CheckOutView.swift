@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CheckOutView: View {
     @ObservedObject var data: Data
+    
     var totalPrice = "$0.01"
     
  
@@ -62,7 +63,7 @@ struct CheckOutView: View {
                     // add more or as the button is for go to purchase
                     NavigationLink {
                         
-                        LoginSwiftUIView()}
+                        LoginSwiftUIView(data: data)}
                 label: {
                         Text("Continue To Payment")
                             .fontWeight(.bold)

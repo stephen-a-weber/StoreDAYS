@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct CreateAccountSwiftUIView: View {
-    @ObservedObject var userData: UserData
+    @ObservedObject var data: Data
     struct LoginSessionView:View{
         @State var firstName = ""
         @State var lastName = ""
@@ -129,9 +129,11 @@ struct CreateAccountSwiftUIView: View {
                     return false
                 }
                 print(" Data save ")
+                // Save User KeyChain
                 manageCreateAccount.saveUserKeyChain(email: email, password: password)
+                //  Insert user sqLite
                 manageCreateAccount.saveUserDB(userName: email, firstName: firstName, lastName: lastName, dateOfBirth: "01-01-1980", password: password, email: email)
-                
+                // Web Service AWS Insert user
                 manageCreateAccount.insertUserAWSService(userName: email, firstName: firstName, lastName: lastName, email: email, password: password)
                 dataValidate = true
                 return true
@@ -183,6 +185,6 @@ struct CreateAccountSwiftUIView: View {
 
 struct CreateAccountSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateAccountSwiftUIView(userData: UserData())
+        CreateAccountSwiftUIView(data: Data())
     }
 }

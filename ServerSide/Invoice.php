@@ -59,7 +59,7 @@ case "POST":
         $stmt -> bind_param("iiii",$Sum,$User_ID,$Shipping_ID,$PaymentMethods_ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
 
-$sql="SELECT LAST_INSERT_ID()";
+$sql="SELECT LAST_INSERT_ID() as LAST_INSERT_ID";
 $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
 $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
 $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);

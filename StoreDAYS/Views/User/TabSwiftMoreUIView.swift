@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabSwiftMoreUIView: View {
+    @ObservedObject var data: Data
     var body: some View {
         TabView {
             
@@ -24,14 +25,12 @@ struct TabSwiftMoreUIView: View {
                 
             }
             
-            DashBoardSwiftUIView().tabItem {
+            DashBoardSwiftUIView(data: Data()).tabItem {
                 
-                Image(systemName: "message")
+                Image(systemName: "circle.dashed")
                 Text("DashBoard")
                 
             }
-    //https://developer.apple.com/design/resources/#sf-symbols
-    //            PaySwiftUIView(user: "Guest").tabItem { Label("Foto", systemImage: "square.grid.3x1.below.line.grid.1x2") }
             
         }
     }
@@ -39,6 +38,6 @@ struct TabSwiftMoreUIView: View {
 
 struct TabSwiftMoreUIView_Previews: PreviewProvider {
     static var previews: some View {
-        TabSwiftMoreUIView()
+        TabSwiftMoreUIView( data: Data())
     }
 }
