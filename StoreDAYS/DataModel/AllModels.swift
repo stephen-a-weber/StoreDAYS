@@ -71,6 +71,9 @@ struct ItemModels: Hashable, Codable{
     let Img:String
     let Availability:String
 }
+struct LastInsert: Hashable, Codable{
+    let LAST_INSERT_ID:Int
+}
 struct ReviewModels: Hashable, Codable{
     let ID:String
     let Body:String

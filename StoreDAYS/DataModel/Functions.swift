@@ -15,9 +15,14 @@ let OrdersURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreD
 let UpdateUser = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/UpdateUser.php"
 let ItemsURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/getItems.php"
 func POSTNewInvoice(Cost:Double,Shipping_ID:Int,User_ID:Int,OrderedItems:[ItemContainer], PaymentMethods_ID:Int){
-   
-    let parameters="Cost=\(Cost)&User_ID=\(User_ID)&Shipping_ID=\(Shipping_ID)&PaymentMethods_ID=\(PaymentMethods_ID)"
-    var request = URLRequest(url: URL(string: ShippingURL)!)
+   print("Invoice")
+    print(Cost)
+    print(Shipping_ID)
+    print(User_ID)
+    print(PaymentMethods_ID)
+    print(OrderedItems)
+    let parameters="Sum=\(Cost)&User_ID=\(User_ID)&Shipping_ID=\(Shipping_ID)&PaymentMethods_ID=\(PaymentMethods_ID)"
+    var request = URLRequest(url: URL(string: InvoiceURL)!)
     request.httpMethod="POST"
         request.httpBody=parameters.data(using: String.Encoding.utf8)
     let task = URLSession.shared.dataTask(with: request){
@@ -26,12 +31,20 @@ func POSTNewInvoice(Cost:Double,Shipping_ID:Int,User_ID:Int,OrderedItems:[ItemCo
         if let error = error {
                        // Handle HTTP request error
 print(error)                       } else if let data = data {
-    
-    var ID=String(data: data, encoding: .utf8)!
-    print(ID)
-    for Item in OrderedItems{
-        POSTNewOrders(Item: Item, InvoiceID: Int(ID)!)
+    do{
+        let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
+        let ID=JsonData.first!.LAST_INSERT_ID
+//        guard let ID=Int(JsonData.first!.LAST_INSERT_ID) else{
+//           print("error in convert int")
+//            return
+//        }
+        for Item in OrderedItems{
+            POSTNewOrders(Item: Item, InvoiceID: ID)
+        }
+    }catch{
+        print(error)
     }
+    
                        // Handle HTTP request response
                        
                    }
@@ -43,9 +56,8 @@ func POSTNewOrders(Item:ItemContainer,InvoiceID:Int){
     let Cost=Item.Cost
     let Description=Item.Description
         let Invoice_ID=InvoiceID
-       
     let parameters="Cost=\(Cost)&Description=\(Description)&Invoice_ID=\(Invoice_ID)"
-    var request = URLRequest(url: URL(string: ShippingURL)!)
+    var request = URLRequest(url: URL(string: OrdersURL)!)
     request.httpMethod="POST"
         request.httpBody=parameters.data(using: String.Encoding.utf8)
     let task = URLSession.shared.dataTask(with: request){
@@ -60,6 +72,15 @@ print(error)                       } else if let data = data {
     task.resume()
     }
 
+func checkout(Shipment:Int,Payment:Int,Items:[ItemContainer],User_ID:Int){
+    var sum=0.0
+
+    for Item in Items{
+        sum+=Item.Cost
+    }
+    POSTNewInvoice(Cost: sum, Shipping_ID: Shipment, User_ID: User_ID, OrderedItems: Items, PaymentMethods_ID: Payment)
+    
+}
 func GEtItems(completion : @escaping ([ItemContainer])->(Void)){
     //what we are returning
     var AvaiavbleList = [ItemContainer]()

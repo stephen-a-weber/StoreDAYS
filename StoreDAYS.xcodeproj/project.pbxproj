@@ -41,6 +41,7 @@
 		84701D8D27FE574900430964 /* ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D8C27FE574900430964 /* ViewCell.swift */; };
 		84701D8F27FEA4D000430964 /* tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D8E27FEA4D000430964 /* tabs.swift */; };
 		84701D9127FF4B3700430964 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D9027FF4B3700430964 /* SwiftUIView.swift */; };
+		84701D932800964E00430964 /* MakeAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D922800964E00430964 /* MakeAddressView.swift */; };
 		84C8382F27FE036100815C63 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8382E27FE036100815C63 /* Account.swift */; };
 		84C8383127FE037E00815C63 /* AllModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383027FE037E00815C63 /* AllModels.swift */; };
 		84C8383627FE042300815C63 /* SwiftUIAPIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383527FE042300815C63 /* SwiftUIAPIView.swift */; };
@@ -123,6 +124,7 @@
 		84701D8C27FE574900430964 /* ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCell.swift; sourceTree = "<group>"; };
 		84701D8E27FEA4D000430964 /* tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabs.swift; sourceTree = "<group>"; };
 		84701D9027FF4B3700430964 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		84701D922800964E00430964 /* MakeAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAddressView.swift; sourceTree = "<group>"; };
 		84C8382E27FE036100815C63 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		84C8383027FE037E00815C63 /* AllModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllModels.swift; sourceTree = "<group>"; };
 		84C8383527FE042300815C63 /* SwiftUIAPIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAPIView.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				22AABD0627FCC251004C6B30 /* VideoArkOfSuffering.swift */,
 				22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */,
 				22EBA8B427F86B04006BF6D3 /* V0.0 */,
+				84701D922800964E00430964 /* MakeAddressView.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				84701D7E27FE1F6600430964 /* StorePlace.swift in Sources */,
 				78FB9B6727FCDCF000BB798F /* PaySwiftUIView.swift in Sources */,
 				78FB9B6527FCDCF000BB798F /* T2View.swift in Sources */,
+				84701D932800964E00430964 /* MakeAddressView.swift in Sources */,
 				78FB9B6827FCDCF000BB798F /* PaymentCardSetupButton.swift in Sources */,
 				22FEA1AC27FCB9600007838E /* ManageCreateAccount.swift in Sources */,
 				84701D8F27FEA4D000430964 /* tabs.swift in Sources */,
