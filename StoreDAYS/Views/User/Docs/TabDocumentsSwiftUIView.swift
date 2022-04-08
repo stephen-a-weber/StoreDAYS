@@ -26,6 +26,11 @@ struct TabDocumentsSwiftUIView: View {
                 
             }
             
+            Tracking(data:data)
+                .tabItem{
+                    Label("Locations", systemImage:"globe.americas.fill")
+                }
+            
           
             
         }

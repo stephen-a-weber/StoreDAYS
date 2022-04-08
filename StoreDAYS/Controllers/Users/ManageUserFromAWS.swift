@@ -29,23 +29,20 @@ class ManageUserFromAWS{
                 // Handle HTTP request response
                 print(String(data: data, encoding: .utf8)!)
                 self.myData = String(data: data, encoding: .utf8)!
-               // print("self.myEmail",self.myData)
-               // myData = data as Foundation.Data
-               // print(String(describing: type(of: data)) )
+  
             } else {
-                // Handle unexpected error
+       
             }
         }
-        
         getUsersTask.resume()
-       // return myData
+ 
         
     }
     
     func insertUserAWSService(userName: String, firstName: String, lastName: String, email: String, password: String)  {
         let session = URLSession.shared
         
-        let getuser = URL(string:"http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/signup.php")
+        let getuser = URL(string:"http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Signup.php")
         let parameters="Email=\(email)&UserName=\(userName)&FirstName=\(firstName)&LastName=\(lastName)&Password=\(password)Password!"
         print(parameters)
         //Email=Q@gmail.com&UserName=Q@gmail.com&FirstName=Q&LastName=Q&Password=qPassword!
@@ -63,9 +60,7 @@ class ManageUserFromAWS{
                 print("Data send to AWS")
                 print(String(data: data, encoding: .utf8)!)
                 self.myData = String(data: data, encoding: .utf8)!
-               // print("self.myEmail",self.myData)
-               // myData = data as Foundation.Data
-               // print(String(describing: type(of: data)) )
+ 
             } else {
                 // Handle unexpected error
             }
