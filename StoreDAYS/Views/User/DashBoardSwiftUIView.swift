@@ -11,26 +11,13 @@ struct DashBoardSwiftUIView: View {
     @State var message = ""
     @ObservedObject var data: Data
     var body: some View {
-        List {
-            
-            ForEach(data.order, id:\.self) { item in
-                HStack {
-                    Image(item.name)
-                        .resizable()
-                        .frame(width:100,height:100)
-                        .padding()
-                    Spacer()
-                    VStack{
-                        Text("You ordered \(item.name)")
-                        .padding()
-                        Text("The price is \(item.price)")
-                    }
-                }
-            }
-           // .onDelete(perform: remove)
-            .onAppear(perform: data.calculateTotalPrice)
-            Text("Total Price = \(data.totalPrice)")
+        Text("Total Orders: \(data.totalPrice)")
         }
+    
+    // remove is a helper function used above to remove choses
+    // from the cart and the global variables we are using under data
+    func remove(at offsets: IndexSet) {
+        data.order.remove(atOffsets: offsets)
     }
 }
 

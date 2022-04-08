@@ -25,9 +25,16 @@ struct TabSwiftMoreUIView: View {
                 
             }
             
+            InvoiceSwiftUIView(data: Data()).tabItem {
+                
+                Image(systemName: "doc")
+                Text("Inv")
+                
+            }
+            
             DashBoardSwiftUIView(data: Data()).tabItem {
                 
-                Image(systemName: "message")
+                Image(systemName: "circle.dashed")
                 Text("DashBoard")
                 
             }
