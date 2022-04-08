@@ -42,7 +42,7 @@ class ManageUserFromAWS{
     func insertUserAWSService(userName: String, firstName: String, lastName: String, email: String, password: String)  {
         let session = URLSession.shared
         
-        let getuser = URL(string:"http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/signup.php")
+        let getuser = URL(string:"http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Signup.php")
         let parameters="Email=\(email)&UserName=\(userName)&FirstName=\(firstName)&LastName=\(lastName)&Password=\(password)Password!"
         print(parameters)
         //Email=Q@gmail.com&UserName=Q@gmail.com&FirstName=Q&LastName=Q&Password=qPassword!

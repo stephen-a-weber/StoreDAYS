@@ -55,7 +55,11 @@ struct InvoiceSwiftUIView: View {
                 // Total Invoice
                 VStack(alignment: .trailing){
                     Text("Total Price = \(data.totalPrice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 24))
+                    if   Float(data.shippingPrice) ?? 0  < 200 {
                     Text("Shipping =      \(data.shippingPrice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 12))
+                    }else{
+                        Text("Amount > 200 Free Shipping =      \(0)").foregroundColor(.black).font(.custom("Courier", fixedSize: 12))
+                    }
 
                     Text("Adress:33 60 NY city Patagonia Argentina").foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
                 }
