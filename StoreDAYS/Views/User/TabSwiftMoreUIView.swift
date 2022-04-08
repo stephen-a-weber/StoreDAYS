@@ -25,21 +25,12 @@ struct TabSwiftMoreUIView: View {
                 
             }
             
-            InvoiceSwiftUIView(data: Data()).tabItem {
-                
-                Image(systemName: "doc")
-                Text("Inv")
-                
-            }
-            
             DashBoardSwiftUIView(data: Data()).tabItem {
                 
                 Image(systemName: "circle.dashed")
                 Text("DashBoard")
                 
             }
-    //https://developer.apple.com/design/resources/#sf-symbols
-    //            PaySwiftUIView(user: "Guest").tabItem { Label("Foto", systemImage: "square.grid.3x1.below.line.grid.1x2") }
             
         }
     }

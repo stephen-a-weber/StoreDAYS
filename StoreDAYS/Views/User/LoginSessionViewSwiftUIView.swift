@@ -73,7 +73,7 @@ struct LoginSessionViewSwiftUIView: View {
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                         
                             .sheet(isPresented: $animFlagLogin, content: {
-                                PaySwiftUIView(user: email)
+                                TabDocumentsSwiftUIView(data: Data())
                             })
                     }
                     .padding(.bottom, 25.0)
@@ -90,7 +90,7 @@ struct LoginSessionViewSwiftUIView: View {
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                         
                             .sheet(isPresented: $animFlag, content: {
-                                PaySwiftUIView(user: "Guest")
+                                TabDocumentsSwiftUIView(data: Data())
                             })
                     }
                     .padding(.bottom, 220.0)
