@@ -10,12 +10,15 @@ import SwiftUI
 struct LoginSwiftUIView: View {
     @ObservedObject var data: Data
     // LOGIN     CREATE ACCOUNT
-    struct LoginAndCreateView:View{
+ 
         @State var typeLoginSession = true
-        @ObservedObject var data: Data
+  
         var body: some View{
             VStack{
-         
+                Image("logo1").resizable().aspectRatio(contentMode: .fit)
+                    .padding(.bottom)
+                    .frame(width: 250, height: 89, alignment: .center)
+
                 //MARK: BUTTON
                 HStack {
                     Spacer()
@@ -37,7 +40,7 @@ struct LoginSwiftUIView: View {
                 .padding(0.0)
                 Spacer(minLength: 42)
                 
-                
+                // Options LOGIN or CREATE ACCOUNT
                 if typeLoginSession == true {
                     LoginSessionViewSwiftUIView(data: data)
                 }else{
@@ -47,22 +50,8 @@ struct LoginSwiftUIView: View {
          
         }
     }
-    var body: some View {
-   
-        ZStack {
-            Spacer()
-            Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 1.0)
-            VStack{
-                Image("logo1").resizable().aspectRatio(contentMode: .fit)
-                    .padding(.bottom)
-                    .frame(width: 250, height: 89, alignment: .center)
-                
-                
-                LoginAndCreateView(data: data)
-            }
-        }
-    }
-}
+  
+
 
 struct LoginSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
