@@ -29,16 +29,13 @@ class ManageUserFromAWS{
                 // Handle HTTP request response
                 print(String(data: data, encoding: .utf8)!)
                 self.myData = String(data: data, encoding: .utf8)!
-               // print("self.myEmail",self.myData)
-               // myData = data as Foundation.Data
-               // print(String(describing: type(of: data)) )
+  
             } else {
-                // Handle unexpected error
+       
             }
         }
-        
         getUsersTask.resume()
-       // return myData
+ 
         
     }
     
@@ -63,9 +60,7 @@ class ManageUserFromAWS{
                 print("Data send to AWS")
                 print(String(data: data, encoding: .utf8)!)
                 self.myData = String(data: data, encoding: .utf8)!
-               // print("self.myEmail",self.myData)
-               // myData = data as Foundation.Data
-               // print(String(describing: type(of: data)) )
+ 
             } else {
                 // Handle unexpected error
             }

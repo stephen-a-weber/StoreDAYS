@@ -11,25 +11,9 @@ struct InvoiceSwiftUIView: View {
     @State var message = ""
     @ObservedObject var data: Data
     var body: some View {
-        
-        //    This is a wrapper view around three views
-        // There is a list view StoreFront which gives link
-        // for each animal grouped in sections
-        // for adding to cart
-        //
-        // the Location has all the animals spread across the
-        // planet in a map where each animal image is clickable
-        // if you want to add it to the cart
-        
-        // Both of these directs to a detailed view with individual
-        // animal chosen and ability to add to card
-        
-        // Finally the cart view.
-        
-        // each are separate files under the same used name
-        
         VStack {
             VStack{
+                // Header
                 HStack{
                     Image("invoice").resizable().frame(width: 150, height: 100, alignment: .leading)
                     
@@ -60,7 +44,7 @@ struct InvoiceSwiftUIView: View {
                                 }
                             }
                         }
-                        .onDelete(perform: remove)
+     
                         .onAppear(perform: data.calculateTotalPrice)
                     }
                     
@@ -68,7 +52,7 @@ struct InvoiceSwiftUIView: View {
                     .border(Color(.gray), width: 1)// End Scroll View
             }
                 
-                
+                // Total Invoice
                 VStack(alignment: .trailing){
                     Text("Total Price = \(data.totalPrice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 24))
                     Text("Shipping =      \(data.shippingPrice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 12))
@@ -78,12 +62,7 @@ struct InvoiceSwiftUIView: View {
             
         }
     }
-    
-    // remove is a helper function used above to remove choses
-    // from the cart and the global variables we are using under data
-    func remove(at offsets: IndexSet) {
-        data.order.remove(atOffsets: offsets)
-    }
+     
 }
 
 struct InvoiceSwiftUIView_Previews: PreviewProvider {

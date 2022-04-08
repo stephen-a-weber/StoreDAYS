@@ -21,8 +21,6 @@ struct VideoArkOfSuffering: View {
             // MARK: BUTTONS
             
             Button(action: {
-                 
-                
             }) {
                 Text("CONTINUE")
                     .fontWeight(.bold)
@@ -65,12 +63,7 @@ struct VideoArkOfSuffering: View {
 struct video:View{
     var url: String
     var body: some View{
-        
-       // VideoPlayer(player: AVPlayer(url: URL(string: url)!)).padding(.vertical, 50.0).ignoresSafeArea()
-        
         VideoPlayer(player: AVPlayer(url:  Bundle.main.url(forResource: "coolAnimals", withExtension: "mp4")!)).padding(.vertical, 50.0).ignoresSafeArea()
-        
-        
     }
 }
 

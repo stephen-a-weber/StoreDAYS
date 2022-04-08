@@ -117,6 +117,7 @@ struct CreateAccountSwiftUIView: View {
         
         //MARK: initSession
         func initSession() -> Bool {
+            // Validate enter full data
             if (firstName == "" || lastName == "" || email == "" || password == "" || passwordConfirm == ""){
                 messageValidateData = "Please enter your data"
                 dataValidate = false
