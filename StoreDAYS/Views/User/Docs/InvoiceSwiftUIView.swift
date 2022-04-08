@@ -40,7 +40,8 @@ struct InvoiceSwiftUIView: View {
                 HStack{
                     Image("invoice").resizable().frame(width: 150, height: 100, alignment: .leading)
                 
-                Text("# NUMBER: A - 75423137").padding()
+                    Text("# NUMBER: A - 75423137").foregroundColor(.black)
+                        .padding()
                 }
             }  .frame(width: 400, height: 100, alignment: .center)
                 .border(Color(.gray), width: 0).padding()
@@ -114,9 +115,9 @@ struct InvoiceSwiftUIView: View {
                 .onDelete(perform: remove)
                 .onAppear(perform: data.calculateTotalPrice)
                 VStack(alignment: .trailing){
-                Text("Total Price = \(data.totalPrice)")
+                Text("Total Price = \(data.totalPrice)").foregroundColor(.black)
                     Spacer()
-                Text("Adress:33 60 NY city Patagonia Argentina")
+                Text("Adress:33 60 NY city Patagonia Argentina").foregroundColor(.black)
             }
             }
            

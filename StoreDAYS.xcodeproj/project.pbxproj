@@ -220,16 +220,24 @@
 			children = (
 				22EDDAF127F52FE20075F49C /* LoginSwiftUIView.swift */,
 				2208352327FDE6620025EE18 /* TabSwiftMoreUIView.swift */,
-				22EE79B42800510000BAE961 /* TabDocumentsSwiftUIView.swift */,
 				223114AD27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift */,
-				22EE79B22800336B00BAE961 /* InvoiceSwiftUIView.swift */,
 				2208352527FDE79B0025EE18 /* FeedbackSwiftUIView.swift */,
+				22EE79B62800536F00BAE961 /* Docs */,
 				22AABD0627FCC251004C6B30 /* VideoArkOfSuffering.swift */,
 				22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */,
 				223114B127FFA07900EF8AC9 /* LoginSessionViewSwiftUIView.swift */,
 				22EBA8B427F86B04006BF6D3 /* V0.0 */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		22EE79B62800536F00BAE961 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				22EE79B42800510000BAE961 /* TabDocumentsSwiftUIView.swift */,
+				22EE79B22800336B00BAE961 /* InvoiceSwiftUIView.swift */,
+			);
+			path = Docs;
 			sourceTree = "<group>";
 		};
 		22FFCD0A27F7C61A00B22DE3 /* KeyChain */ = {
