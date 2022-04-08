@@ -9,15 +9,23 @@ import SwiftUI
 
 struct DashBoardSwiftUIView: View {
     @State var message = ""
+    @State var model = WebViewModel()
     @ObservedObject var data: Data
+    @State var myColor = "myBlue"
+    @State var messajeValidate = "DASHBOARD"
     var body: some View {
-        Text("Total Orders: \(data.totalPrice)")
-        }
-    
-    // remove is a helper function used above to remove choses
-    // from the cart and the global variables we are using under data
-    func remove(at offsets: IndexSet) {
-        data.order.remove(atOffsets: offsets)
+        VStack {
+            
+            Image("dashboard")
+            Text(messajeValidate)
+                .foregroundColor(Color(myColor))
+                .frame(width: 300, height: 20, alignment: .center)
+            
+            WebView(webView: model.webView).frame(width: 400, height: 650, alignment: .center)
+            Spacer()
+            
+            
+        }.frame(width: 250, height: 250 )
     }
 }
 

@@ -129,9 +129,11 @@ struct CreateAccountSwiftUIView: View {
                     return false
                 }
                 print(" Data save ")
+                // Save User KeyChain
                 manageCreateAccount.saveUserKeyChain(email: email, password: password)
+                //  Insert user sqLite
                 manageCreateAccount.saveUserDB(userName: email, firstName: firstName, lastName: lastName, dateOfBirth: "01-01-1980", password: password, email: email)
-                
+                // Web Service AWS Insert user
                 manageCreateAccount.insertUserAWSService(userName: email, firstName: firstName, lastName: lastName, email: email, password: password)
                 dataValidate = true
                 return true

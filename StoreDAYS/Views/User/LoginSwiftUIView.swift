@@ -15,8 +15,7 @@ struct LoginSwiftUIView: View {
         @ObservedObject var data: Data
         var body: some View{
             VStack{
-                
-                
+         
                 //MARK: BUTTON
                 HStack {
                     Spacer()
@@ -40,16 +39,16 @@ struct LoginSwiftUIView: View {
                 
                 
                 if typeLoginSession == true {
-                    LoginSessionViewSwiftUIView(data: Data())
+                    LoginSessionViewSwiftUIView(data: data)
                 }else{
-                    CreateAccountSwiftUIView(data: Data())
+                    CreateAccountSwiftUIView(data: data)
                 }
             }
          
         }
     }
     var body: some View {
-        
+   
         ZStack {
             Spacer()
             Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 1.0)
@@ -59,7 +58,7 @@ struct LoginSwiftUIView: View {
                     .frame(width: 250, height: 89, alignment: .center)
                 
                 
-                LoginAndCreateView(data: Data())
+                LoginAndCreateView(data: data)
             }
         }
     }

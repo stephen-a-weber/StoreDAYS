@@ -12,9 +12,6 @@ struct TabDocumentsSwiftUIView: View {
    
     var body: some View {
         TabView {
-            
-    
-            
             PaySwiftUIView(user: "davisgon@gmail.com").tabItem {
                 
                 Image(systemName: "message")
@@ -22,7 +19,7 @@ struct TabDocumentsSwiftUIView: View {
                 
             }
             
-            InvoiceSwiftUIView(data: Data()).tabItem {
+            InvoiceSwiftUIView(data: data).tabItem {
                 
                 Image(systemName: "doc")
                 Text("Invoice")

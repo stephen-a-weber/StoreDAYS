@@ -39,91 +39,48 @@ struct InvoiceSwiftUIView: View {
             VStack{
                 HStack{
                     Image("invoice").resizable().frame(width: 150, height: 100, alignment: .leading)
-                
+                    
                     Text("# NUMBER: A - 75423137").foregroundColor(.black)
                         .padding()
                 }
             }  .frame(width: 400, height: 100, alignment: .center)
                 .border(Color(.gray), width: 0).padding()
-              
-      
+            
+            
             
             // Detail Invoice
             ScrollView{
-            Section("Detail") {
-                 
-                ForEach (data.puppyNames.indices) { item in
-//                    if data.count == 3 {
-//                        break
-//                    }
-                    NavigationLink{ PuppyDetailView(data: data,puppyName:data.puppyNames[item],puppyPrice:data.puppyPrice[item])  }
-                        // The NavigationLink works like a button , the closure above
-                        // is the next view. called PuppyDetailView
-                        //
-                        // below is just a label for NavigationLink
-                        // in the {} of NavigationLink shows like protocol cell
-                        // we can replace it with a complex cell view in another swiftui file
-                        label : {
-                            ItemCell2(puppyName:data.puppyNames[item],litter:data.puppyLitterCount[item],price:data.puppyPrice[item])
-                        }
-               
-                    
-                    }
-                    
-                
-            }
-            
-            Section("EXOTIC ANIMALS") {
-                //Like the other two sections above. This one makes a row for each
-                //exotic animal.
-                // these rows are wrapped in a NavigationLink
-                // which if you tap on the row takes you to a Detailed View of the row chosen
-                // ExoticDetailView
-                       
-                ForEach (data.exoticNames.indices) { item in
-                                
-                    NavigationLink {ExoticDetailView(data: data,exoticName:data.exoticNames[item],exoticPrice:data.exoticPrice[item])   }
-                    label : {
-                        ItemCell3(exoticName:data.exoticNames[item],exoticLitter:data.exoticLitterCount[item],exoticPrice:data.exoticPrice[item])
-                    }
-                    
-                 
+                Section("Detail") {
+                    List {
+                        ForEach(data.order, id:\.self) { item in
+                            HStack {
+                                Image(item.name)
+                                    .resizable()
+                                    .frame(width:100,height:100)
+                                    .padding()
+                                Spacer()
+                                VStack{
+                                    Text("You ordered \(item.name)")
+                                        .padding()
+                                    Text("The price is \(item.price)")
+                                }
                             }
-           
-            }
-            
-            }.frame(width: 400, height: 300, alignment: .center)
-                .border(Color(.gray), width: 1)// End Scroll View
-            
-            
-            List {
-                
-                ForEach(data.order, id:\.self) { item in
-                    HStack {
-                        Image(item.name)
-                            .resizable()
-                            .frame(width:100,height:100)
-                            .padding()
-                        Spacer()
-                        VStack{
-                            Text("You ordered \(item.name)")
-                                .padding()
-                            Text("The price is \(item.price)")
                         }
+                        .onDelete(perform: remove)
+                        .onAppear(perform: data.calculateTotalPrice)
                     }
-                }
-                .onDelete(perform: remove)
-                .onAppear(perform: data.calculateTotalPrice)
+                    
+                }.frame(width: 450, height: 300, alignment: .center)
+                    .border(Color(.gray), width: 1)// End Scroll View
+            }
+                
+                
                 VStack(alignment: .trailing){
-                Text("Total Price = \(data.totalPrice)").foregroundColor(.black)
+                    Text("Total Price = \(data.totalPrice)").foregroundColor(.black)
                     Text("Shipping =      \(data.shippingPrice)").foregroundColor(.black)
-                    Spacer()
-                Text("Adress:33 60 NY city Patagonia Argentina").foregroundColor(.black)
-            }
-            }
-           
-          
-            
+
+                    Text("Adress:33 60 NY city Patagonia Argentina").foregroundColor(.black)
+                }
             
         }
     }
