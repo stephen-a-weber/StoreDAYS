@@ -31,7 +31,7 @@ if(!empty($_POST['ID'])){
         $User_ID = (int)$_POST['User_ID'];
       }
 
-    $sql = "UPDATE Address set Street = ?, City = ?, User_ID = ?, State = ?, Zip = ? WHERE ID = ?    ";
+    $sql = "UPDATE Address set Street = ?, City = ?, State = ?, Zip = ? WHERE ID = ?    ";
     $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
     $stmt -> bind_param("ssissi",$Street,$City,$User_ID,$State,$Zip,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
     $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
