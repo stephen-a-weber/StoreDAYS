@@ -76,7 +76,7 @@ case "GET":
 
   //if we are looking for a set
   if(!empty($_GET['User_ID'])){
-    $sql="SELECT FROM Address Where User_ID = ?";
+    $sql="SELECT * FROM Address Where User_ID = ?";
     $var =(int)$_GET['User_ID'];
   }
 
