@@ -9,7 +9,6 @@ if(!empty($_POST['ID'])){
 
 
     //initialize description in case one wasn't given
-    $User_ID = 0;
     $Street=" ";
     $City=" ";
     $State=0;
@@ -33,7 +32,7 @@ if(!empty($_POST['ID'])){
 
     $sql = "UPDATE Address set Street = ?, City = ?, State = ?, Zip = ? WHERE ID = ?    ";
     $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
-    $stmt -> bind_param("ssissi",$Street,$City,$User_ID,$State,$Zip,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
+    $stmt -> bind_param("ssssi",$Street,$City,$State,$Zip,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
     $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
 } else if (!empty($_POST['User_ID'])){
     $User_ID = (int)$_POST['User_ID'];
