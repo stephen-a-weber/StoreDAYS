@@ -46,6 +46,8 @@
 		84701D8F27FEA4D000430964 /* tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D8E27FEA4D000430964 /* tabs.swift */; };
 		84701D9127FF4B3700430964 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D9027FF4B3700430964 /* SwiftUIView.swift */; };
 		84701D932800964E00430964 /* MakeAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D922800964E00430964 /* MakeAddressView.swift */; };
+		84701D952800B7C800430964 /* GetAndUseAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D942800B7C800430964 /* GetAndUseAddress.swift */; };
+		84701D972800B7E200430964 /* AddressTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D962800B7E200430964 /* AddressTabController.swift */; };
 		84C8382F27FE036100815C63 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8382E27FE036100815C63 /* Account.swift */; };
 		84C8383127FE037E00815C63 /* AllModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383027FE037E00815C63 /* AllModels.swift */; };
 		84C8383627FE042300815C63 /* SwiftUIAPIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383527FE042300815C63 /* SwiftUIAPIView.swift */; };
@@ -133,6 +135,8 @@
 		84701D8E27FEA4D000430964 /* tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabs.swift; sourceTree = "<group>"; };
 		84701D9027FF4B3700430964 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		84701D922800964E00430964 /* MakeAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAddressView.swift; sourceTree = "<group>"; };
+		84701D942800B7C800430964 /* GetAndUseAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAndUseAddress.swift; sourceTree = "<group>"; };
+		84701D962800B7E200430964 /* AddressTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTabController.swift; sourceTree = "<group>"; };
 		84C8382E27FE036100815C63 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		84C8383027FE037E00815C63 /* AllModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllModels.swift; sourceTree = "<group>"; };
 		84C8383527FE042300815C63 /* SwiftUIAPIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAPIView.swift; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 				223114B127FFA07900EF8AC9 /* LoginSessionViewSwiftUIView.swift */,
 				22EBA8B427F86B04006BF6D3 /* V0.0 */,
 				84701D922800964E00430964 /* MakeAddressView.swift */,
+				84701D942800B7C800430964 /* GetAndUseAddress.swift */,
+				84701D962800B7E200430964 /* AddressTabController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -588,6 +594,7 @@
 				84701D8F27FEA4D000430964 /* tabs.swift in Sources */,
 				84701D8027FE239A00430964 /* UtilityModelController.swift in Sources */,
 				22FFCD0C27F7C62E00B22DE3 /* KeyChainManage.swift in Sources */,
+				84701D952800B7C800430964 /* GetAndUseAddress.swift in Sources */,
 				22DD029127F63C68004D0144 /* ManageUserFromAWS.swift in Sources */,
 				D08622E427F3AC3C00BFE986 /* StoreDAYS.xcdatamodeld in Sources */,
 				84701D8227FE390900430964 /* Functions.swift in Sources */,
@@ -604,6 +611,7 @@
 				78FB9B6027FCDCEF00BB798F /* PaymentCard.swift in Sources */,
 				22DD029327F644C0004D0144 /* CreateAccountSwiftUIView.swift in Sources */,
 				78FB9B6227FCDCF000BB798F /* CSTabView.swift in Sources */,
+				84701D972800B7E200430964 /* AddressTabController.swift in Sources */,
 				78FB9B6427FCDCF000BB798F /* CustomAnnotationMapView.swift in Sources */,
 				78FB9B6327FCDCF000BB798F /* LocationAssistant.swift in Sources */,
 				D0E2B31527F4ECEB007DABE6 /* ItemCell.swift in Sources */,
