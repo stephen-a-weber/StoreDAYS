@@ -188,6 +188,29 @@ print(error)                       } else if let data = data {
     }
     task.resume()
 }
+func POSTNewPaymentMethods(Model:PaymentsModels){
+        let CardNumber=Model.CardNumber
+        let CVC=Model.CVC
+        let Expiration=Model.Expiration
+        let Name=Model.Name
+        let User_ID=Model.User_ID
+        let Address_ID=Model.Address_ID
+    let parameters="CardNumber=\(CardNumber)&CVC=\(CVC)&Expiration=\(Expiration)&Name=\(Name)&User_ID=\(User_ID)&Address_ID=\(Address_ID)"
+    var request = URLRequest(url: URL(string: PaymentURL)!)
+    request.httpMethod="POST"
+        request.httpBody=parameters.data(using: String.Encoding.utf8)
+    let task = URLSession.shared.dataTask(with: request){
+        (data,_,error) in
+        if let error = error {
+                       // Handle HTTP request error
+print(error)                       } else if let data = data {
+                       // Handle HTTP request response
+                       print(String(data: data, encoding: .utf8)!)
+                   }
+    }
+    task.resume()
+    
+}
 
 func POSTUpdateAddress(Model:AddressModels){
         let ID=Model.ID

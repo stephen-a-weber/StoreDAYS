@@ -48,6 +48,7 @@
 		84701D932800964E00430964 /* MakeAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D922800964E00430964 /* MakeAddressView.swift */; };
 		84701D952800B7C800430964 /* GetAndUseAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D942800B7C800430964 /* GetAndUseAddress.swift */; };
 		84701D972800B7E200430964 /* AddressTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D962800B7E200430964 /* AddressTabController.swift */; };
+		84701D992803790500430964 /* MakeNewCardPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D982803790500430964 /* MakeNewCardPayment.swift */; };
 		84C8382F27FE036100815C63 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8382E27FE036100815C63 /* Account.swift */; };
 		84C8383127FE037E00815C63 /* AllModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383027FE037E00815C63 /* AllModels.swift */; };
 		84C8383627FE042300815C63 /* SwiftUIAPIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383527FE042300815C63 /* SwiftUIAPIView.swift */; };
@@ -137,6 +138,7 @@
 		84701D922800964E00430964 /* MakeAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAddressView.swift; sourceTree = "<group>"; };
 		84701D942800B7C800430964 /* GetAndUseAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAndUseAddress.swift; sourceTree = "<group>"; };
 		84701D962800B7E200430964 /* AddressTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTabController.swift; sourceTree = "<group>"; };
+		84701D982803790500430964 /* MakeNewCardPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeNewCardPayment.swift; sourceTree = "<group>"; };
 		84C8382E27FE036100815C63 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		84C8383027FE037E00815C63 /* AllModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllModels.swift; sourceTree = "<group>"; };
 		84C8383527FE042300815C63 /* SwiftUIAPIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAPIView.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				84701D922800964E00430964 /* MakeAddressView.swift */,
 				84701D942800B7C800430964 /* GetAndUseAddress.swift */,
 				84701D962800B7E200430964 /* AddressTabController.swift */,
+				84701D982803790500430964 /* MakeNewCardPayment.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				2208352627FDE79B0025EE18 /* FeedbackSwiftUIView.swift in Sources */,
 				D0E2B32B27F52F51007DABE6 /* TabbedMainView.swift in Sources */,
 				84701D9127FF4B3700430964 /* SwiftUIView.swift in Sources */,
+				84701D992803790500430964 /* MakeNewCardPayment.swift in Sources */,
 				78FB9B6A27FCDCF000BB798F /* PaymentAssistant.swift in Sources */,
 				D086231127F3F13600BFE986 /* StoreFront.swift in Sources */,
 				84701D8927FE512F00430964 /* StoreView.swift in Sources */,

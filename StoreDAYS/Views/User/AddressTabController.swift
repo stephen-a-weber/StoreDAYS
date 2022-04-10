@@ -19,7 +19,7 @@ struct AddressTabController: View {
                 .tabItem{
                     Label("Existing Address", systemImage:"")
             }
-            MakeAddressView()
+            MakeAddressView(data: Data())
                 .tabItem{
                     Label("Existing Address", systemImage:"")
             }

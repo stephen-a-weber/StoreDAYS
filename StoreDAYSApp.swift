@@ -15,11 +15,12 @@ struct StoreDAYSApp: App {
     @StateObject var userData = UserData()
     var body: some Scene {
         WindowGroup {
-            SwiftUIView()
+            //SwiftUIView()
+            MakeNewCardPayment(data: Data())
             //    CheckOutView(data:data)
           //    CreateAccountSwiftUIView(data: data)
        //     LoginSwiftUIView(data: data)
-            StoreSplashPage(data:data)
+           // StoreSplashPage(data:data)
         //    TabSwiftMoreUIView(data: data)
            // StoreView()
            // tabs(data: data)
