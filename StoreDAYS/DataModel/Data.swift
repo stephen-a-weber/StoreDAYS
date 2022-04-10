@@ -33,7 +33,7 @@ class Data: ObservableObject{
     @Published var order = [Order]()
     
     @Published var totalPrice : String = "$55,750.00"
-    @Published var shippingPrice : String = "$350.00"
+    @Published var shippingPrice : String = "$10.00"
     //Currently the last Function in this file is called calculateTotalPrice()
     // It uses the correct formatting principles to convert from a string like "$45.78"
     // keeping .currency or two decimal places. It finally changes the above
@@ -111,5 +111,27 @@ class Data: ObservableObject{
         self.totalPrice =  "$\(dollars)"
     }
     
+    
+    
+    
+    func calculateShipping() {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        var dollars : Decimal = 0.0
+        for i in self.order {
+            
+            if let number = formatter.number(from: i.price) {
+                let amount = number.decimalValue
+                dollars += amount
+            }
+            
+        }
+        if dollars > 200 {
+            self.shippingPrice =  "$\(0)"
+        }else{
+            self.shippingPrice =  "$\(10)"
+        }
+      
+    }
     
 }

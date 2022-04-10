@@ -9,7 +9,6 @@ if(!empty($_POST['ID'])){
 
 
     //initialize description in case one wasn't given
-    $User_ID = 0;
     $Street=" ";
     $City=" ";
     $State=0;
@@ -31,9 +30,9 @@ if(!empty($_POST['ID'])){
         $User_ID = (int)$_POST['User_ID'];
       }
 
-    $sql = "UPDATE Address set Street = ?, City = ?, User_ID = ?, State = ?, Zip = ? WHERE ID = ?    ";
+    $sql = "UPDATE Address set Street = ?, City = ?, State = ?, Zip = ? WHERE ID = ?    ";
     $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
-    $stmt -> bind_param("ssissi",$Street,$City,$User_ID,$State,$Zip,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
+    $stmt -> bind_param("ssssi",$Street,$City,$State,$Zip,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
     $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
 } else if (!empty($_POST['User_ID'])){
     $User_ID = (int)$_POST['User_ID'];
@@ -56,11 +55,13 @@ if(!empty($_POST['ID'])){
         $Zip =$_POST['Zip'];
       }
 
-
+echo $Street;
     $sql = "INSERT INTO Address (Street, City, User_ID, State, Zip) VALUES (?,?,?,?,?)";
     $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
     $stmt -> bind_param("ssiss",$Street,$City,$User_ID,$State,$Zip)or die("Couldn't bind".htmlspecialchars($stmt->error));
     $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
+}else{
+  die("Post Error: Niethier User or ID was define");
 }
     break;
 case "GET":
@@ -75,9 +76,11 @@ case "GET":
   }
 
   //if we are looking for a set
-  if(!empty($_GET['User_ID'])){
-    $sql="DELETE FROM Address Where User_ID = ?";
+  else if(!empty($_GET['User_ID'])){
+    $sql="SELECT * FROM Address Where User_ID = ?";
     $var =(int)$_GET['User_ID'];
+  }else{
+    die("Get Error: Niethier User or ID was define");
   }
 
   $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
