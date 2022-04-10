@@ -55,11 +55,13 @@ if(!empty($_POST['ID'])){
         $Zip =$_POST['Zip'];
       }
 
-
+echo $Street;
     $sql = "INSERT INTO Address (Street, City, User_ID, State, Zip) VALUES (?,?,?,?,?)";
     $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
     $stmt -> bind_param("ssiss",$Street,$City,$User_ID,$State,$Zip)or die("Couldn't bind".htmlspecialchars($stmt->error));
     $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
+}else{
+  die("Post Error: Niethier User or ID was define");
 }
     break;
 case "GET":
@@ -74,9 +76,11 @@ case "GET":
   }
 
   //if we are looking for a set
-  if(!empty($_GET['User_ID'])){
+  else if(!empty($_GET['User_ID'])){
     $sql="SELECT * FROM Address Where User_ID = ?";
     $var =(int)$_GET['User_ID'];
+  }else{
+    die("Get Error: Niethier User or ID was define");
   }
 
   $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
