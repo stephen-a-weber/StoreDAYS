@@ -12,13 +12,13 @@ struct InvoiceSwiftUIView: View {
     @ObservedObject var data: Data
     @State var releaseDate = Date()
     
- 
-       
-       static let stackDateFormat: DateFormatter = {
-           let formatter = DateFormatter()
-           formatter.dateFormat = "E, dd MMM yyyy HH:mm:ss z"
-           return formatter
-       }()
+    
+    
+    //       static let stackDateFormat: DateFormatter = {
+    //           let formatter = DateFormatter()
+    //           formatter.dateFormat = "E, dd MMM yyyy HH:mm:ss z"
+    //           return formatter
+    //       }()
     
     // *******
     var body: some View {
@@ -27,12 +27,12 @@ struct InvoiceSwiftUIView: View {
                 // Header
                 HStack{
                     VStack{
-                    Image("invoice").resizable().frame(width: 150, height: 100, alignment: .leading)
-                    Text(releaseDate, format: Date.FormatStyle().year().month().day().weekday())
+                        Image("invoice").resizable().frame(width: 150, height: 100, alignment: .leading)
+                        Text(releaseDate, format: Date.FormatStyle().year().month().day().weekday())
                     }
-                        VStack{
-                    Text("# NUMBER       A- 75423137" ).foregroundColor(.black).font(.custom("Courier", fixedSize: 25))
-                        .padding()
+                    VStack{
+                        Text("# NUMBER       A- 75423137" ).foregroundColor(.black).font(.custom("Courier", fixedSize: 25))
+                            .padding()
                     }
                 }
             }  .frame(width: 400, height: 100, alignment: .center)
@@ -59,28 +59,45 @@ struct InvoiceSwiftUIView: View {
                                 }
                             }
                         }
-     
+                        
                         .onAppear(perform: data.calculateTotalPrice)
                         .onAppear(perform: data.calculateShipping)
                         .onAppear(perform: data.calculateTax)
+                        .onAppear(perform: data.calculateTotalInvoice)
                     }
                     
                 }.frame(width: 450, height: 460, alignment: .center)
                     .border(Color(.gray), width: 1)// End Scroll View
             }
-                
-                // Total Invoice
-                VStack(alignment: .trailing){
-                    Text("Total Price = \(data.totalPrice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 24))
-                    Text("             Taxes =      \(data.taxes)").foregroundColor(.black).font(.custom("Courier", fixedSize: 12))
-                    Text("> $200.00 Free Shipping =      \(data.shippingPrice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 12))
-                 
-                    Text("Adress:33 60 NY city Patagonia Argentina").foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
+            
+            // Total Invoice
+            VStack(alignment: .trailing){
+                HStack{
+                    Text("Sub total Price:  \(data.totalPrice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
                 }
+                HStack{
+                    Text("Taxes:").foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
+                    
+                    Text(data.taxes).foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
+                }
+                HStack{
+                    HStack{
+                        Text("   > $200.00 Free Shipping: ").foregroundColor(.black).font(.custom("Courier", fixedSize: 15  ))
+                    }
+                    HStack{
+                        Text(data.shippingPrice).foregroundColor(.black).font(.custom("Courier", fixedSize: 15  ))
+                    }
+                }
+                Divider()
+                Text("Total     \(data.totalInvoice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 24))
+                Spacer()
+                Text("Adress:33 60 NY city Patagonia Argentina        ").foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
+                Spacer()
+            }
             
         }
     }
-     
+    
 }
 
 struct InvoiceSwiftUIView_Previews: PreviewProvider {

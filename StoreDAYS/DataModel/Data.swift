@@ -35,6 +35,7 @@ class Data: ObservableObject{
     @Published var totalPrice : String = "$50.00"
     @Published var shippingPrice : String = "$10.00"
     @Published var taxes         : String = "7%"
+    @Published var totalInvoice         : String = "00.00"
     //Currently the last Function in this file is called calculateTotalPrice()
     // It uses the correct formatting principles to convert from a string like "$45.78"
     // keeping .currency or two decimal places. It finally changes the above
@@ -128,9 +129,9 @@ class Data: ObservableObject{
             
         }
         if dollars > 200 {
-            self.shippingPrice =  "$\(0)"
+            self.shippingPrice =  "$\(0.00)"
         }else{
-            self.shippingPrice =  "$\(10)"
+            self.shippingPrice =  "$\(10.00)"
         }
       
     }
@@ -149,7 +150,34 @@ class Data: ObservableObject{
             
         }
         tax = (dollars * 0.07)
-        print(type(of: tax))
             self.taxes =  "$\(tax)"
+    }
+    
+    
+    
+    func calculateTotalInvoice() {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        var dollars : Decimal = 0.0
+        var total     : Decimal = 0.0
+        
+        for i in self.order {
+            
+            if let number = formatter.number(from: i.price) {
+                let amount = number.decimalValue
+                dollars += amount
+            }
+            
+        }
+        
+        if dollars > 200 {
+            dollars += 0
+        }else{
+            dollars += 10
+        }
+        total = dollars + (dollars * 0.07)
+        
+        
+        self.totalInvoice =  "$\(total)"
     }
 }
