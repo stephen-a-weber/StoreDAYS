@@ -117,3 +117,99 @@ func GEtItems(completion : @escaping ([ItemContainer])->(Void)){
     
 
 }
+
+func GETAddress(ID:Int)->[AddressModels]{
+    //creating REQUEST URL with parameters in http body and the method define
+    let paremeters="?ID=\(ID)"
+    var request=URLRequest(url: URL(string: (AddressURL+paremeters))!)
+    request.httpMethod="GET"
+    var Addresses=[AddressModels]()
+    let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                guard let data = data, error == nil else{
+                    print("error")
+                    return
+                }
+                //convert to json
+                do{
+                    let JsonData = try JSONDecoder().decode([AddressModels].self, from: data)
+                    DispatchQueue.main.sync {
+                        Addresses=JsonData
+                    }
+                }catch{
+                    print(error)
+                }
+            }
+            task.resume()
+    return Addresses
+}
+func GETAddress(User_ID:Int)->[AddressModels]{
+    //creating REQUEST URL with parameters in http body and the method define
+    let paremeters="?User_ID=\(User_ID)"
+    var request=URLRequest(url: URL(string: (AddressURL+paremeters))!)
+    request.httpMethod="GET"
+    var Addresses=[AddressModels]()
+    let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                guard let data = data, error == nil else{
+                    print("error")
+                    return
+                }
+                //convert to json
+                do{
+                    let JsonData = try JSONDecoder().decode([AddressModels].self, from: data)
+                    DispatchQueue.main.sync {
+                        Addresses=JsonData
+                    }
+                }catch{
+                    print(error)
+                }
+            }
+            task.resume()
+    return Addresses
+}
+
+func POSTNewAddress(Model:AddressModels){
+        let User_ID=Model.User_ID
+        let Street=Model.Street
+        let City=Model.City
+        let State=Model.State
+        let Zip=Model.Zip
+    let parameters="User_ID=\(User_ID)&Street=\(Street)&City=\(City)&State=\(State)&Zip=\(Zip)"
+    var request = URLRequest(url: URL(string: AddressURL)!)
+    request.httpMethod="POST"
+        request.httpBody=parameters.data(using: String.Encoding.utf8)
+    let task = URLSession.shared.dataTask(with: request){
+        (data,_,error) in
+        if let error = error {
+                       // Handle HTTP request error
+print(error)                       } else if let data = data {
+                       // Handle HTTP request response
+                       print(String(data: data, encoding: .utf8)!)
+                   }
+    }
+    task.resume()
+}
+
+func POSTUpdateAddress(Model:AddressModels){
+        let ID=Model.ID
+        let Street=Model.Street
+        let City=Model.City
+        let State=Model.State
+        let Zip=Model.Zip
+    let parameters="ID=\(ID)&=Street\(Street)&City=\(City)&State=\(State)&Zip=\(Zip)"
+    var request = URLRequest(url: URL(string: AddressURL)!)
+    request.httpMethod="POST"
+        request.httpBody=parameters.data(using: String.Encoding.utf8)
+    let task = URLSession.shared.dataTask(with: request){
+        (data,_,error) in
+        if let error = error {
+                       // Handle HTTP request error
+print(error)                       } else if let data = data {
+                       // Handle HTTP request response
+                       print(String(data: data, encoding: .utf8)!)
+                   }
+    }
+    task.resume()
+    
+    
+}
+

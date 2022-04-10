@@ -9,13 +9,14 @@ import SwiftUI
 
 
 struct MakeAddressView: View {
+    @ObservedObject var data: Data
     @State var Street=""
     @State var City=""
     @State var State=""
     @State var Zip=""
     @State var myColor = "myBlue"
     @State var flag=false
-    @State var dataValidate = false
+    @State var dataValidate = true
     @State var messageValidate = "Please enter your shipping address"
     var body: some View {
         ScrollView{
@@ -30,6 +31,7 @@ struct MakeAddressView: View {
                 Group{
                 Text("Street").foregroundColor(Color(myColor))
                                ZStack(alignment:.leading){
+                                   TextField("", text: $Street)
                                    if  Street.isEmpty {
                                        Text("Write your Street").font(.caption)
                                            .foregroundColor(.gray)
@@ -43,12 +45,12 @@ struct MakeAddressView: View {
                 Group{
             Text("City").foregroundColor(Color(myColor))
                                ZStack(alignment:.leading){
+                                   TextField("", text: $City)
                                    if  City.isEmpty {
                                        Text("City").font(.caption)
                                            .foregroundColor(.gray)
                                    }
                                    
-                                   SecureField("", text: $City)
                                }
                                Divider().frame(height: 1).background(Color(myColor))
                     .padding(.bottom)}
@@ -56,12 +58,13 @@ struct MakeAddressView: View {
                 Group{
             Text("State").foregroundColor(Color(myColor))
                                ZStack(alignment:.leading){
+                                   TextField("", text: $State)
+
                                    if  State.isEmpty {
                                        Text("Write your State").font(.caption)
                                            .foregroundColor(.gray)
                                    }
                                    
-                                   SecureField("", text: $State)
                                }
                                Divider().frame(height: 1).background(Color(myColor))
                     .padding(.bottom)}
@@ -69,6 +72,8 @@ struct MakeAddressView: View {
                 Group{
             Text("Zip").foregroundColor(Color(myColor))
                                ZStack(alignment:.leading){
+                                   TextField("", text: $Zip)
+
                                    if   Zip.isEmpty {
                                        Text("Write your Zip").font(.caption)
                                            .foregroundColor(.gray)
@@ -80,9 +85,19 @@ struct MakeAddressView: View {
                 
                 
                 Button {
-                    flag=true
+                    dataValidate=continueSession()
                 } label: {
                     Text("Continue")
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(myColor))
+                        .frame( maxWidth: .infinity,  alignment: .center)
+                        .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
+                        .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
+                                            lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
+                                                
+                                                     .sheet(isPresented: $flag, content: {
+                                                         TabSwiftMoreUIView(data: data )
+                                                     })
                 }
 
         }.padding(.horizontal,77.0)
@@ -90,10 +105,20 @@ struct MakeAddressView: View {
 
         
     }
+    func continueSession()->Bool{
+        if(Street==""||City==""||State==""||Zip==""){
+            return false
+        }
+        let Address = AddressModels(ID: "", Street: Street, City: City, User_ID: "2", State: State, Zip: Zip)
+        
+        POSTNewAddress(Model: Address)
+        return true;
+    }
 }
+
 
 struct MakeAddressView_Previews: PreviewProvider {
     static var previews: some View {
-        MakeAddressView()
+        MakeAddressView(data:Data())
     }
 }
