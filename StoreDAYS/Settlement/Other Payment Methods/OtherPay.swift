@@ -29,7 +29,7 @@ struct OtherPay: View {
                     }
                 }.rotation3DEffect(
                     .degrees(degrees),
-                    axis: (x: 1.0, y: 1.0, z: 0.0)
+                    axis: (x: 0.0, y: 1.0, z: 0.0)
                 )
             }
             .onTapGesture {
@@ -39,18 +39,18 @@ struct OtherPay: View {
                 }
             }
             
-              TextField("Name", text: $cardNumber)
+              TextField("Card Number", text: $cardNumber)
                   .textFieldStyle(RoundedBorderTextFieldStyle())
                   .padding([.top,.leading,.trailing])
-  
+                  .frame(height:25)
               TextField("Name", text: $cardHolderName)
                   .textFieldStyle(RoundedBorderTextFieldStyle())
                   .padding([.top,.leading,.trailing])
-
+                  .frame(height:25)
             TextField("Expiration", text: $expiration)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding([.leading,.trailing])
-            
+                .frame(height:25)
             TextField("CVV", text: $cvv) { (editingChanged) in
                 withAnimation {
                     degrees += 180
@@ -59,7 +59,7 @@ struct OtherPay: View {
             } onCommit: {}
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding([.leading,.trailing])
-            
+                .frame(height:25)
         }
     }
 }
