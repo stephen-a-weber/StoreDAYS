@@ -19,7 +19,7 @@ struct StoreDAYSApp: App {
             //    CheckOutView(data:data)
           //    CreateAccountSwiftUIView(data: data)
        //     LoginSwiftUIView(data: data)
-           // StoreSplashPage(data:data)
+           StoreSplashPage(data:data)
         //    TabSwiftMoreUIView(data: data)
            // StoreView()
            // tabs(data: data)
