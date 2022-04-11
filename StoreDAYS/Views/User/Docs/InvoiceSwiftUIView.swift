@@ -11,6 +11,8 @@ struct InvoiceSwiftUIView: View {
     @State var message = ""
     @ObservedObject var data: Data
     @State var releaseDate = Date()
+    @State var myColor = "myBlue"
+    @State var animFlag2 = false
     
     
     
@@ -91,13 +93,32 @@ struct InvoiceSwiftUIView: View {
                 Divider()
                 Text("Total     \(data.totalInvoice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 24))
                 Spacer()
+             
                 Text("Adress:33 60 NY city Patagonia Argentina        ").foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
+                Spacer()
+                Button(action: {
+                    animFlag2 = true
+                }) {
+                    Text("PAY")
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(myColor))
+                        .frame( maxWidth: .infinity,  alignment: .center)
+                        .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
+                        .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
+                                                                            lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
+                    
+                         .sheet(isPresented: $animFlag2, content: {
+                             PayTabView(user: "davisgon@gmail.com")
+                         })
+                }
                 Spacer()
             }
             
         }
     }
-    
+    func continueVideo() -> Bool {
+        return true
+    }
 }
 
 struct InvoiceSwiftUIView_Previews: PreviewProvider {
