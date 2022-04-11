@@ -55,7 +55,7 @@ if(!empty($_POST['ID'])){
         $Zip =$_POST['Zip'];
       }
 
-echo $Street;
+
     $sql = "INSERT INTO Address (Street, City, User_ID, State, Zip) VALUES (?,?,?,?,?)";
     $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
     $stmt -> bind_param("ssiss",$Street,$City,$User_ID,$State,$Zip)or die("Couldn't bind".htmlspecialchars($stmt->error));

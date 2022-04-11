@@ -6,12 +6,13 @@
 
 import SwiftUI
 
-struct SetupCard: View {
+struct OtherPay: View {
     
     @State private var degrees: Double = 0
     @State private var flipped: Bool = false
     
-    @State private var name: String = ""
+      @State private var cardNumber: String = ""
+      @State private var cardHolderName: String = ""
     @State private var expiration: String = ""
     @State private var cvv: String = ""
     
@@ -23,7 +24,7 @@ struct SetupCard: View {
                         if flipped {
                             PaymentCardBack(cvv: cvv)
                         } else {
-                            PaymentCardFront(name: name, expiration: expiration)
+                            PaymentCardFront(name: cardHolderName, expiration: expiration)
                         }
                     }
                 }.rotation3DEffect(
@@ -38,10 +39,14 @@ struct SetupCard: View {
                 }
             }
             
-            TextField("Name", text: $name)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding([.top,.leading,.trailing])
-            
+              TextField("Name", text: $cardNumber)
+                  .textFieldStyle(RoundedBorderTextFieldStyle())
+                  .padding([.top,.leading,.trailing])
+  
+              TextField("Name", text: $cardHolderName)
+                  .textFieldStyle(RoundedBorderTextFieldStyle())
+                  .padding([.top,.leading,.trailing])
+
             TextField("Expiration", text: $expiration)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding([.leading,.trailing])
@@ -59,8 +64,8 @@ struct SetupCard: View {
     }
 }
 
-struct SetupCard_Previews: PreviewProvider {
+struct OtherPay_Previews: PreviewProvider {
     static var previews: some View {
-        SetupCard()
+        OtherPay()
     }
 }

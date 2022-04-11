@@ -12,7 +12,7 @@ struct TabDocumentsSwiftUIView: View {
    
     var body: some View {
         TabView {
-            PaySwiftUIView(user: "davisgon@gmail.com").tabItem {
+            PayTabView(user: "davisgon@gmail.com").tabItem {
                 
                 Image(systemName: "message")
                 Text("Pay")
