@@ -110,7 +110,9 @@ DELETE FROM Review Where User_ID = ?
 --Create
 INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (?,?,?)
 --Read
-SELECT * FROM Orders_Details WHERE ID =
+SELECT * FROM Orders_Details WHERE ID = ?
+SELECT * FROM Orders_Details WHERE Items_ID = ?
+
 --Update
 UPDATE Orders_Details set Items_ID = ?, Orders_ID = ?, Quantity = ? WHERE ID = ?
 --Delete
