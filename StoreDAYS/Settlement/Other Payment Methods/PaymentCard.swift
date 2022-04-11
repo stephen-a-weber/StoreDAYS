@@ -42,26 +42,19 @@ struct PaymentCardFront: View {
             Text("**** **** **** ****")
                 .foregroundColor(Color.white)
                 .font(.system(size: 21))
-            
             Spacer()
-            
             HStack {
-                
                 VStack(alignment: .leading) {
                     Text("")
                         .font(.caption)
                         .fontWeight(.bold)
                         .foregroundColor(Color.gray)
-                    
                     Text(name)
                         .font(.caption)
                         .fontWeight(.bold)
                         .foregroundColor(Color.white)
-                    
                 }
-                
                 Spacer()
-                
                 VStack {
                     Text("Valid Through")
                         .font(.caption)
@@ -74,10 +67,7 @@ struct PaymentCardFront: View {
                 }
                 
             }
-            
-            
-            
-        }.frame(width: 200, height: 120)
+         }.frame(width: 200, height: 120)
         .padding()
         .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)), Color.gray]), startPoint: .topLeading, endPoint: .bottomTrailing))
         .cornerRadius(10)
@@ -100,19 +90,17 @@ struct PaymentCardBack: View {
             
             HStack {
                 
-                Text(cvv).foregroundColor(Color.black)
-                    .rotation3DEffect(
-                        .degrees(180),
-                        axis: (x: 0.0, y: 1.0, z: 0.0))
-                    .padding(5)
-                    .frame(width: 100, height: 20)
-                    .background(Color.white)
-                
-                
+                Text(cvv)
+                        .foregroundColor(Color.black)
+                        .rotation3DEffect(
+                        .degrees(180), axis: (x: 0.0, y: 1.0, z: 0.0))
+                        .padding(5)
+                        .frame(width: 100, height: 20)
+                        .background(Color.white)
                 Spacer()
             }.padding()
             
-        }.frame(width: 300, height: 200)
+        }.frame(width: 200, height: 120)
         .background(LinearGradient(gradient: Gradient(colors: [Color.yellow, Color.blue]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/))
         .cornerRadius(10)
     }
