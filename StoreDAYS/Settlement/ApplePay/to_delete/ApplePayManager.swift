@@ -85,7 +85,7 @@ final class ApplePayManager: NSObject {
         return btn
     }()
     
-    func buyBtnTapped() {
+    func buttonTapped() {
 //        guard let paymentVC = PKPaymentAuthorizationController(paymentRequest: paymentRequest),
            // let window = SwiftHelper.getSceneDelegate()?.window
               let window = UIApplication.shared.connectedScenes
