@@ -106,7 +106,7 @@ case "GET":
         $sql="DELETE FROM Address WHERE User_ID = ?";
         $var =(int)$_GET['User_ID'];
       } else
-      die("Get wasn't define");
+      die("Delete wasn't define");
 
       $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
       $stmt -> bind_param("i",$var) or die("Couldn't bind".htmlspecialchars($stmt->error));
