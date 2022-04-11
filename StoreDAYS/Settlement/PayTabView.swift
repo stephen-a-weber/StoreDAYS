@@ -59,8 +59,6 @@
       private extension PayTabView {
             
             var applePayTab: some View {
-//                  Representable(action: action)
-
 
                   PaymentButton(action: cartManager.pay)
                       .padding()
@@ -70,9 +68,6 @@
                               cartManager.paymentSuccess = false
                           }
                       }
-
-
-//                  ApplePayView()
                   .tabItem {
                         Image("applepay")
                             .frame(width: 15.0, height: 15.0)

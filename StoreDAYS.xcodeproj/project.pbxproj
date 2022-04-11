@@ -127,6 +127,7 @@
 		7868E20028046AF400FF7DF1 /* CustomAnnotationMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationMapView.swift; sourceTree = "<group>"; };
 		7868E20128046AF400FF7DF1 /* T2View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T2View.swift; sourceTree = "<group>"; };
 		7868E20628046B9C00FF7DF1 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		7874922E2804707000C28ECC /* StoreDAYS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StoreDAYS.entitlements; sourceTree = "<group>"; };
 		84701D7D27FE1F6600430964 /* StorePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePlace.swift; sourceTree = "<group>"; };
 		84701D7F27FE239A00430964 /* UtilityModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityModelController.swift; sourceTree = "<group>"; };
 		84701D8127FE390900430964 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -361,6 +362,7 @@
 		D08622D627F3AC3A00BFE986 /* StoreDAYS */ = {
 			isa = PBXGroup;
 			children = (
+				7874922E2804707000C28ECC /* StoreDAYS.entitlements */,
 				84C8383227FE03EC00815C63 /* Examples */,
 				22F48B1927FA2D4C0044218D /* Info.plist */,
 				D08622DB27F3AC3C00BFE986 /* Assets.xcassets */,
@@ -814,11 +816,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StoreDAYS/StoreDAYS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StoreDAYS/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YF9V9JAWLK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoreDAYS/Info.plist;
@@ -847,6 +850,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StoreDAYS/StoreDAYS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;

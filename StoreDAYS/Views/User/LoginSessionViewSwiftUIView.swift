@@ -90,7 +90,9 @@ struct LoginSessionViewSwiftUIView: View {
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                         
                             .sheet(isPresented: $animFlag, content: {
-                                TabDocumentsSwiftUIView(data: data)
+                                  PayTabView()
+                                    .environmentObject(CartManager())
+//                                TabDocumentsSwiftUIView(data: data)
                             })
                     }
                     .padding(.bottom, 220.0)
