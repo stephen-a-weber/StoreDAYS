@@ -10,6 +10,8 @@ import SwiftUI
 
 struct MakeAddressView: View {
     @ObservedObject var data: Data
+    @State var User_ID = 0
+    @State var ID=0
     @State var Street=""
     @State var City=""
     @State var State=""
@@ -17,7 +19,10 @@ struct MakeAddressView: View {
     @State var myColor = "myBlue"
     @State var flag=false
     @State var dataValidate = true
+    @State var EditFlag = false
     @State var messageValidate = "Please enter your shipping address"
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
         ScrollView{
             VStack{
@@ -109,9 +114,13 @@ struct MakeAddressView: View {
         if(Street==""||City==""||State==""||Zip==""){
             return false
         }
-        let Address = AddressModels(ID: "", Street: Street, City: City, User_ID: "2", State: State, Zip: Zip)
-        
-        POSTNewAddress(Model: Address)
+        let Address = AddressModels(ID: ID, Street: Street, City: City, User_ID: User_ID, State: State, Zip: Zip)
+        if !EditFlag{
+            POSTNewAddress(Model: Address)}
+        else {
+            POSTUpdateAddress(Model: Address)
+            presentationMode.wrappedValue.dismiss()
+        }
         return true;
     }
 }

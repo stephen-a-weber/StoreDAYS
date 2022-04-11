@@ -18,10 +18,10 @@ struct UserModels: Hashable, Codable{
     
 }
 struct AddressModels: Hashable, Codable{
-    let ID:String
+    let ID:Int
     let Street:String
     let City:String
-    let User_ID:String
+    let User_ID:Int
     let State:String
     let Zip:String
     }

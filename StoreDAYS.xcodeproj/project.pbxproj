@@ -52,6 +52,7 @@
 		84701D952800B7C800430964 /* GetAndUseAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D942800B7C800430964 /* GetAndUseAddress.swift */; };
 		84701D972800B7E200430964 /* AddressTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D962800B7E200430964 /* AddressTabController.swift */; };
 		84701D992803790500430964 /* MakeNewCardPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D982803790500430964 /* MakeNewCardPayment.swift */; };
+		84701D9D280480D800430964 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D9C280480D700430964 /* AddressCell.swift */; };
 		84C8382F27FE036100815C63 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8382E27FE036100815C63 /* Account.swift */; };
 		84C8383127FE037E00815C63 /* AllModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383027FE037E00815C63 /* AllModels.swift */; };
 		84C8383627FE042300815C63 /* SwiftUIAPIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383527FE042300815C63 /* SwiftUIAPIView.swift */; };
@@ -146,6 +147,7 @@
 		84701D942800B7C800430964 /* GetAndUseAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAndUseAddress.swift; sourceTree = "<group>"; };
 		84701D962800B7E200430964 /* AddressTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTabController.swift; sourceTree = "<group>"; };
 		84701D982803790500430964 /* MakeNewCardPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeNewCardPayment.swift; sourceTree = "<group>"; };
+		84701D9C280480D700430964 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		84C8382E27FE036100815C63 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		84C8383027FE037E00815C63 /* AllModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllModels.swift; sourceTree = "<group>"; };
 		84C8383527FE042300815C63 /* SwiftUIAPIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAPIView.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				84701D942800B7C800430964 /* GetAndUseAddress.swift */,
 				84701D962800B7E200430964 /* AddressTabController.swift */,
 				84701D982803790500430964 /* MakeNewCardPayment.swift */,
+				84701D9C280480D700430964 /* AddressCell.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -618,10 +621,7 @@
 				7868E1FB28046AE500FF7DF1 /* ApplePayView.swift in Sources */,
 				7868E1F428046AE500FF7DF1 /* CartManager.swift in Sources */,
 				84701D7E27FE1F6600430964 /* StorePlace.swift in Sources */,
-				78FB9B6727FCDCF000BB798F /* PaySwiftUIView.swift in Sources */,
-				78FB9B6527FCDCF000BB798F /* T2View.swift in Sources */,
 				84701D932800964E00430964 /* MakeAddressView.swift in Sources */,
-				78FB9B6827FCDCF000BB798F /* PaymentCardSetupButton.swift in Sources */,
 				22FEA1AC27FCB9600007838E /* ManageCreateAccount.swift in Sources */,
 				7868E1F328046AE500FF7DF1 /* OtherPay.swift in Sources */,
 				84701D8F27FEA4D000430964 /* tabs.swift in Sources */,
@@ -650,10 +650,7 @@
 				D0E2B31927F4F1AB007DABE6 /* ItemCell3.swift in Sources */,
 				D0E2B31D27F502FE007DABE6 /* PuppyDetailView.swift in Sources */,
 				22DD029327F644C0004D0144 /* CreateAccountSwiftUIView.swift in Sources */,
-				78FB9B6227FCDCF000BB798F /* CSTabView.swift in Sources */,
 				84701D972800B7E200430964 /* AddressTabController.swift in Sources */,
-				78FB9B6427FCDCF000BB798F /* CustomAnnotationMapView.swift in Sources */,
-				78FB9B6327FCDCF000BB798F /* LocationAssistant.swift in Sources */,
 				D0E2B31527F4ECEB007DABE6 /* ItemCell.swift in Sources */,
 				22AABD0727FCC251004C6B30 /* VideoArkOfSuffering.swift in Sources */,
 				D0E2B32127F503F1007DABE6 /* ExoticDetailView.swift in Sources */,
@@ -665,7 +662,6 @@
 				D0E2B32B27F52F51007DABE6 /* TabbedMainView.swift in Sources */,
 				84701D9127FF4B3700430964 /* SwiftUIView.swift in Sources */,
 				84701D992803790500430964 /* MakeNewCardPayment.swift in Sources */,
-				78FB9B6A27FCDCF000BB798F /* PaymentAssistant.swift in Sources */,
 				D086231127F3F13600BFE986 /* StoreFront.swift in Sources */,
 				84701D8927FE512F00430964 /* StoreView.swift in Sources */,
 				84701D8D27FE574900430964 /* ViewCell.swift in Sources */,
@@ -681,6 +677,7 @@
 				D0E2B32427F51770007DABE6 /* SignInView.swift in Sources */,
 				D08622D827F3AC3A00BFE986 /* StoreDAYSApp.swift in Sources */,
 				D0FCBA1027F8E6FA0004329A /* Tracking.swift in Sources */,
+				84701D9D280480D800430964 /* AddressCell.swift in Sources */,
 				223114B027FF88BE00EF8AC9 /* WebViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
