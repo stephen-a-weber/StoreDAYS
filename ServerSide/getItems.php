@@ -20,7 +20,7 @@ require_once "config.php";
       $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
     $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
       echo json_encode($rows);
-    }else if(!empty($_POST['Invoice_ID'])){
+    }else if(!empty($_GET['Invoice_ID'])){
       $ID = $_GET['Invoice_ID'];
       $sql = "SELECT Items_ID from Orders_Details WHERE Orders_ID = (SELECT ID From Orders WHERE Invoice_ID = ?)      ";
       $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
