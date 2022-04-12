@@ -7,14 +7,16 @@
 import SwiftUI
 
 struct OtherPay: View {
-    
-    @State private var degrees: Double = 0
-    @State private var flipped: Bool = false
-    
-      @State private var cardNumber: String = ""
-      @State private var cardHolderName: String = ""
-    @State private var expiration: String = ""
-    @State private var cvv: String = ""
+    @Environment(\.presentationMode) var presentationMode
+    @State  var degrees: Double = 0
+    @State  var flipped: Bool = false
+    @State var ID = 0
+    @State var User_ID=0
+    @State var UseEditFlag=true
+      @State  var cardNumber: String = ""
+      @State  var cardHolderName: String = ""
+    @State  var expiration: String = ""
+    @State  var cvv: String = ""
     
     var body: some View {
         VStack {
@@ -60,6 +62,33 @@ struct OtherPay: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding([.leading,.trailing])
                 .frame(height:25)
+            if !UseEditFlag{
+                if ID==0{
+                    Button {
+                let model=PaymentsModels(ID: ID, CardNumber: cardNumber, CVC: Int(cvv) ?? 0, Expiration: expiration, Name: cardHolderName, User_ID: User_ID, Address_ID: 2)
+                        POSTNEWPaymentMethods(Model: model)
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Text("Make")
+                    }
+
+                }else{
+                    Button {
+                        let model=PaymentsModels(ID: ID, CardNumber: cardNumber, CVC: Int(cvv)!, Expiration: expiration, Name: cardHolderName, User_ID: User_ID, Address_ID: 2)
+                        POSTUpdatePaymentMethods(Model: model)
+                        presentationMode.wrappedValue.dismiss()                    } label: {
+                        Text("Update")
+                    }
+                    
+                }
+            }else{
+                Button {
+                    print("")
+                } label: {
+                    Text("Continue")
+                }
+                
+            }
         }
     }
 }

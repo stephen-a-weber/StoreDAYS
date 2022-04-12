@@ -42,6 +42,8 @@ struct GetAndUseAddress: View {
                             DeleteAddress(ID: Address.ID)
                             Model.loadAddresses(User_ID: 2)
                         }label:{Label("Delete", systemImage: "trash")}
+                        .tint(.red)
+
                     })
                                
                                           

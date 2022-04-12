@@ -35,13 +35,13 @@ struct ShippingModels: Hashable, Codable{
     let Address_ID:String
     }
 struct PaymentsModels: Hashable, Codable{
-    let ID:String
+    let ID:Int
     let CardNumber:String
-    let CVC:String
+    let CVC:Int
     let Expiration:String
     let Name:String
-    let User_ID:String
-    let Address_ID:String
+    let User_ID:Int
+    let Address_ID:Int
 }
 struct InvoiceModels: Hashable, Codable{
     let ID:Int

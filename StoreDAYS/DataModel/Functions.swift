@@ -59,6 +59,76 @@ func GETInvoice(ID:Int, InvoiceCompletionHandler:@escaping(InvoiceModels?,Error?
             })
             task.resume()
 }
+func GETPaymentMethods(User_ID:Int,PaymentCompletionHandler:@escaping([PaymentsModels]?,Error?)->Void)        {
+    
+        //creating REQUEST URL with parameters in http body and the method define
+        let paremeters="?User_ID=\(User_ID)"
+    var request=URLRequest(url: URL(string: (PaymentURL+paremeters))!)
+    request.httpMethod="GET"
+    // run network task
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
+                    guard let data = data, error == nil else{
+                        print("error")
+                        return
+                    }
+                    //convert to json
+                    do{
+                        let JsonData = try JSONDecoder().decode([PaymentsModels].self, from: data)
+                        PaymentCompletionHandler(JsonData, nil)
+                    }catch{
+                        print(error)
+                    }
+                })
+                task.resume()
+}
+func POSTNEWPaymentMethods(Model:PaymentsModels){
+               let CardNumber=Model.CardNumber
+               let CVC=Model.CVC
+               let Expiration=Model.Expiration
+               let Name=Model.Name
+               let User_ID=Model.User_ID
+               let Address_ID=Model.Address_ID
+           let parameters="CardNumber=\(CardNumber)&CVC=\(CVC)&Expiration=\(Expiration)&Name=\(Name)&User_ID=\(User_ID)&Address_ID=\(Address_ID)"
+    print(parameters)
+           var request = URLRequest(url: URL(string: PaymentURL)!)
+           request.httpMethod="POST"
+               request.httpBody=parameters.data(using: String.Encoding.utf8)
+           let task = URLSession.shared.dataTask(with: request){
+               (data,_,error) in
+               if let error = error {
+                              // Handle HTTP request error
+   print(error)                       } else if let data = data {
+                              // Handle HTTP request response
+                              print(String(data: data, encoding: .utf8)!)
+                          }
+           }
+           task.resume()
+}
+
+func POSTUpdatePaymentMethods(Model:PaymentsModels){
+               let CardNumber=Model.CardNumber
+               let CVC=Model.CVC
+               let Expiration=Model.Expiration
+               let Name=Model.Name
+               let ID=Model.ID
+               let Address_ID=Model.Address_ID
+           let parameters="ID=\(ID)CardNumber=\(CardNumber)&CVC=\(CVC)&Expiration=\(Expiration)&Name=\(Name)&Address_ID=\(Address_ID)"
+    print(parameters)
+           var request = URLRequest(url: URL(string: PaymentURL)!)
+           request.httpMethod="POST"
+               request.httpBody=parameters.data(using: String.Encoding.utf8)
+           let task = URLSession.shared.dataTask(with: request){
+               (data,_,error) in
+               if let error = error {
+                              // Handle HTTP request error
+   print(error)                       } else if let data = data {
+       print(String(data: data, encoding: .utf8)!)
+
+                              // Handle HTTP request response
+                          }
+           }
+           task.resume()
+}
 func GetInvoiceItems(Invoice_ID:Int, InvoiceItemsCompletionHandler:@escaping([ItemModels]?,Error?)->Void){
     //creating REQUEST URL with parameters in http body and the method define
     let paremeters="?Invoice_ID=\(Invoice_ID)"
@@ -390,34 +460,29 @@ print(error)                       } else if let data = data {
     }
     task.resume()
 }
-func POSTNewPaymentMethods(Model:PaymentsModels){
-        let CardNumber=Model.CardNumber
-        let CVC=Model.CVC
-        let Expiration=Model.Expiration
-        let Name=Model.Name
-        let User_ID=Model.User_ID
-        let Address_ID=Model.Address_ID
-    let parameters="CardNumber=\(CardNumber)&CVC=\(CVC)&Expiration=\(Expiration)&Name=\(Name)&User_ID=\(User_ID)&Address_ID=\(Address_ID)"
-    var request = URLRequest(url: URL(string: PaymentURL)!)
-    request.httpMethod="POST"
-        request.httpBody=parameters.data(using: String.Encoding.utf8)
-    let task = URLSession.shared.dataTask(with: request){
-        (data,_,error) in
-        if let error = error {
-                       // Handle HTTP request error
-print(error)                       } else if let data = data {
-                       // Handle HTTP request response
-                       print(String(data: data, encoding: .utf8)!)
-                   }
-    }
-    task.resume()
-    
-}
 
 func DeleteAddress(ID:Int){
   
 let parameters="?ID=\(ID)"
 var request = URLRequest(url: URL(string: AddressURL+parameters)!)
+request.httpMethod="DELETE"
+    request.httpBody=parameters.data(using: String.Encoding.utf8)
+let task = URLSession.shared.dataTask(with: request){
+    (data,_,error) in
+    if let error = error {
+                   // Handle HTTP request error
+print(error)                       } else if let data = data {
+                   // Handle HTTP request response
+                   print(String(data: data, encoding: .utf8)!)
+               }
+}
+task.resume()
+}
+
+func DeleteCard(ID:Int){
+  
+let parameters="?ID=\(ID)"
+var request = URLRequest(url: URL(string: PaymentURL+parameters)!)
 request.httpMethod="DELETE"
     request.httpBody=parameters.data(using: String.Encoding.utf8)
 let task = URLSession.shared.dataTask(with: request){
