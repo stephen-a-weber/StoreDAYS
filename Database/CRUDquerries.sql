@@ -87,6 +87,8 @@ INSERT INTO Items (Name, Description, Cost, Catagory_ID, IMG ) VALUES (?,?,?,?,?
 SELECT * FROM Items WHERE ID = ?
 SELECT * FROM Items WHERE Catagory_ID = ?
 SELECT * FROM Items WHERE Name = ?
+SELECT * FROM Items WHERE ID IN (SELECT Items_ID from Orders_Details WHERE Orders_ID IN (SELECT ID From Orders WHERE Invoice_ID = ?))      
+SELECT * FROM Items WHERE ID IN (SELECT Items_ID from Orders_Details WHERE Orders_ID = ?)
 --Update
 UPDATE Items set Name  = ?, Description = ?, Cost = ?, Catagory_ID = ?, Stock = ?, IMG = ?, Availability = ?  WHERE ID  = ?
 --Delete
