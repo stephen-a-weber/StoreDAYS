@@ -6,10 +6,9 @@ switch ($Method){
 case "POST":
     if(!empty($_POST['ID'])){
         $ID = (int)$_POST['ID'];
-        $User_ID = (int)$_POST['User_ID'];
 
         //initialize description in case one wasn't given
-        $CardNumber=0;
+        $CardNumber="";
         $CVC=0;
         $Expiration=" ";
         $Name=" ";
@@ -31,14 +30,16 @@ case "POST":
             $Address_ID = (int)$_POST['Address_ID'];
           }
 
-        $sql = " UPDATE PaymentMethods SET CardNumber = ?, CVC = ?, Expiration = ?, Name = ?, User_ID = ?, Address_ID = ?  WHERE ID =?";
+        $sql = " UPDATE PaymentMethods SET CardNumber = ?, CVC = ?, Expiration = ?, Name = ?, Address_ID = ?  WHERE ID =?";
         $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
-        $stmt -> bind_param("iissiii",$CardNumber,$CVC,$Expiration,$Name,$User_ID,$Address_ID,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
+        $stmt -> bind_param("sissii",$CardNumber,$CVC,$Expiration,$Name,$Address_ID,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
+        echo"SUCCESS";
+
     }else if (!empty($_POST['User_ID'])){
         $User_ID = (int)$_POST['User_ID'];
         //initialize description in case one wasn't given
-        $CardNumber=0;
+        $CardNumber="";
         $CVC=0;
         $Expiration=" ";
         $Name=" ";
@@ -63,8 +64,9 @@ case "POST":
 
         $sql = "INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (?,?,?,?,?,?)";
         $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
-        $stmt -> bind_param("iissii",$CardNumber,$CVC,$Expiration,$Name,$User_ID,$Address_ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
+        $stmt -> bind_param("sissii",$CardNumber,$CVC,$Expiration,$Name,$User_ID,$Address_ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
+        echo"SUCCESS";
 }else{  die("Post wasn't define");
 }
     break;

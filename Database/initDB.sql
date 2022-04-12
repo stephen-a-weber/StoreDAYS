@@ -13,9 +13,9 @@ INSERT INTO Shipping (ShippingType, Cost, ETA, User_ID, Status, Address_ID) VALU
 INSERT INTO Shipping (ShippingType, Cost, ETA, User_ID, Status, Address_ID) VALUES ('Normal',20.00,'2022-12-20',3,'OnGoing',2);
 INSERT INTO Shipping (ShippingType, Cost, ETA, User_ID, Status, Address_ID) VALUES ('NextDay',6.00,'2021-11-20',4,'Preparing',3);
 -- PaymentMethods
-INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (1234567891234567,123,'25/12',"Chase",2,1);
-INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (1234567891234567,123,'26/2',"WellsFargo",3,2);
-INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES (1234567891234567,123,'23/9',"Bank Of America",4,3);
+INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES ("1234567891234567",123,'25/12',"Chase",2,1);
+INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES ("1234567891234567",123,'26/2',"WellsFargo",3,2);
+INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES ("1234567891234567",123,'23/9',"Bank Of America",4,3);
 
 -- Invoice
 INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (84.65,2,1,1);

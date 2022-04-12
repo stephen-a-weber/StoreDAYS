@@ -9,12 +9,12 @@ USE StoreDAYS;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `User` (
   `ID` INT NOT NULL AUTO_INCREMENT,
-  `UserName` UNIQUE TEXT NULL,
+  `UserName`  TEXT NULL ,
   `FirstName` TEXT NULL,
   `LastName` TEXT NULL,
   `DateOfBirth` DATE NULL,
   `Password` TEXT NULL,
-  `Email` UNIQUE TEXT NULL,
+  `Email`  TEXT NULL ,
   `Admin` INT NULL,
   PRIMARY KEY (`ID`));
 
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `Shipping` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PaymentMethods` (
   `ID` INT NOT NULL AUTO_INCREMENT,
-  `CardNumber` BIGINT(20) NULL,
+  `CardNumber` TEXT NULL,
   `CVC` INT NULL,
   `Expiration` TEXT NULL,
   `Name` VARCHAR(45) NULL,
