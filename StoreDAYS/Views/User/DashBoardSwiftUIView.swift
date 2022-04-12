@@ -22,10 +22,10 @@ struct DashBoardSwiftUIView: View {
                 .frame(width: 300, height: 50, alignment: .center)
             Spacer()
             
-            Image("dash1")
+            Image("dashboard1")
                 .resizable()
                 .scaledToFit()
-            Image("dash2")
+            Image("dashboard2")
                 .resizable()
                 .scaledToFit().frame(width: 400, height: 190, alignment: .center)
          //   WebView(webView: model.webView).frame(width: 400, height: 650, alignment: .center)
