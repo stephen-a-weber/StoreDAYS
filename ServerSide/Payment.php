@@ -5,7 +5,7 @@ $Method=$_SERVER['REQUEST_METHOD'];
 switch ($Method){
 case "POST":
     if(!empty($_POST['ID'])){
-        $ID = (int)$_POST['ID'];
+        $ID = $_POST['ID'];
 
         //initialize description in case one wasn't given
         $CardNumber="";
@@ -35,7 +35,7 @@ case "POST":
         $stmt -> bind_param("sissii",$CardNumber,$CVC,$Expiration,$Name,$Address_ID,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
     }else if (!empty($_POST['User_ID'])){
-        $User_ID = (int)$_POST['User_ID'];
+        $User_ID = $_POST['User_ID'];
         //initialize description in case one wasn't given
         $CardNumber="";
         $CVC=0;
