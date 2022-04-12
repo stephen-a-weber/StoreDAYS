@@ -62,14 +62,30 @@ struct InvoiceList: View {
                     Text("Invoice Number:#\(Invoice.SelfInvoice.ID)")
                     Text("Cost:$\(Invoice.SelfInvoice.Sum)")
                     }
-                }
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        Button {
+                            print("Refund")
+                        } label: {
+                            Text("Refund")
+                        }
+                        .tint(.blue)
+                    }
+                        .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                            Button {
+                                print("Complete")
+                            } label: {
+                                Text("Complete")
+                            }
+                            .tint(.green)
+                        }
+                    }
+                }            .onAppear{Model.loadInvoices(User_ID: 2)}
                 .navigationTitle("Invoice Orders")
             }
         }
-            .onAppear{Model.loadInvoices(User_ID: 2)}
         
         }
-    }
+    
 
 struct InvoiceList_Previews: PreviewProvider {
     static var previews: some View {

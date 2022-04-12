@@ -15,7 +15,6 @@ struct StoreDAYSApp: App {
     @StateObject var userData = UserData()
     var body: some Scene {
         WindowGroup {
-            InvoiceList()
             //SwiftUIView()
             //    CheckOutView(data:data)
           //    CreateAccountSwiftUIView(data: data)

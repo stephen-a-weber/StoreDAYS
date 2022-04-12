@@ -9,6 +9,8 @@ import SwiftUI
 struct CreateAccountSwiftUIView: View {
     @ObservedObject var data: Data
     struct LoginSessionView:View{
+        @ObservedObject var data: Data
+
         @State var firstName = ""
         @State var lastName = ""
         @State var email = ""
@@ -105,7 +107,7 @@ struct CreateAccountSwiftUIView: View {
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
 
                             .sheet(isPresented: $animFlagLogin, content: {
-                                PayTabView(user: email)
+                                InvoiceSwiftUIView(data: data)
                             })
                     }
                     .padding(.bottom, 25.0)
@@ -145,6 +147,7 @@ struct CreateAccountSwiftUIView: View {
       
     }
     struct CreateSessionView:View{
+        @ObservedObject var data: Data
         var body: some View{
             Text("Im Create account View")
         }
@@ -152,6 +155,7 @@ struct CreateAccountSwiftUIView: View {
     
     
     struct CreateAccountView:View{
+        @ObservedObject var data: Data
         @State var typeLoginSession = true
         var body: some View{
             VStack{
@@ -165,9 +169,9 @@ struct CreateAccountSwiftUIView: View {
                 Spacer(minLength: 42)
                 
                 if typeLoginSession == true {
-                    LoginSessionView()
+                    LoginSessionView(data: data)
                 }else{
-                    CreateSessionView()
+                    CreateSessionView(data:data)
                 }
             }
         }
@@ -178,7 +182,7 @@ struct CreateAccountSwiftUIView: View {
             Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 1.0)
             VStack{
                 
-                CreateAccountView()
+                CreateAccountView(data: data)
             }
         }
     }
