@@ -14,6 +14,116 @@ let InvoiceURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/Store
 let OrdersURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Orders.php"
 let UpdateUser = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/UpdateUser.php"
 let ItemsURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/getItems.php"
+
+func GETInvoice(User_ID:Int, InvoiceCompletionHandler:@escaping([InvoiceModels]?,Error?)->Void){
+    
+        //creating REQUEST URL with parameters in http body and the method define
+        let paremeters="?User_ID=\(User_ID)"
+    var request=URLRequest(url: URL(string: (InvoiceURL+paremeters))!)
+        request.httpMethod="GET"
+    // run network task
+    let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
+                guard let data = data, error == nil else{
+                    print("error")
+                    return
+                }
+                //convert to json
+                do{
+                    let JsonData = try JSONDecoder().decode([InvoiceModels].self, from: data)
+                 InvoiceCompletionHandler(JsonData,nil)
+                }catch{
+                    print(error)
+                }
+            })
+            task.resume()
+}
+func GETInvoice(ID:Int, InvoiceCompletionHandler:@escaping(InvoiceModels?,Error?)->Void){
+    
+        //creating REQUEST URL with parameters in http body and the method define
+        let paremeters="?ID=\(ID)"
+    var request=URLRequest(url: URL(string: (InvoiceURL+paremeters))!)
+        request.httpMethod="GET"
+    // run network task
+    let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
+                guard let data = data, error == nil else{
+                    print("error")
+                    return
+                }
+                //convert to json
+                do{
+                    let JsonData = try JSONDecoder().decode(InvoiceModels.self, from: data)
+                 InvoiceCompletionHandler(JsonData,nil)
+                }catch{
+                    print(error)
+                }
+            })
+            task.resume()
+}
+func GetInvoiceItems(Invoice_ID:Int, InvoiceItemsCompletionHandler:@escaping([ItemModels]?,Error?)->Void){
+    //creating REQUEST URL with parameters in http body and the method define
+    let paremeters="?Invoice_ID=\(Invoice_ID)"
+var request=URLRequest(url: URL(string: (InvoiceURL+paremeters))!)
+    request.httpMethod="GET"
+// run network task
+let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
+            guard let data = data, error == nil else{
+                print("error")
+                return
+            }
+            //convert to json
+            do{
+                let JsonData = try JSONDecoder().decode([ItemModels].self, from: data)
+                InvoiceItemsCompletionHandler(JsonData,nil)
+            }catch{
+                print(error)
+            }
+        })
+        task.resume()
+}
+func GETOrder(Invoice_ID:Int, OrderCompletionHandler: @escaping([OrdersModels]?,Error?)->Void){
+    
+        //creating REQUEST URL with parameters in http body and the method define
+        let paremeters="?Invoice_ID=\(Invoice_ID)"
+    var request=URLRequest(url: URL(string: (OrdersURL+paremeters))!)
+        request.httpMethod="GET"
+    // run network task
+    let task = URLSession.shared.dataTask(with: request, completionHandler:  { data, _, error in
+                guard let data = data, error == nil else{
+                    print("error")
+                    return
+                }
+                //convert to json
+                do{
+                    let JsonData = try JSONDecoder().decode([OrdersModels].self, from: data)
+              OrderCompletionHandler(JsonData, nil)
+                }catch{
+                    print(error)
+                }
+            })
+            task.resume()
+}
+func GETOrder(ID:Int, OrderCompletionHandler: @escaping(OrdersModels?,Error?)->Void){
+    
+        //creating REQUEST URL with parameters in http body and the method define
+        let paremeters="?ID=\(ID)"
+    var request=URLRequest(url: URL(string: (OrdersURL+paremeters))!)
+        request.httpMethod="GET"
+    // run network task
+    let task = URLSession.shared.dataTask(with: request, completionHandler:  { data, _, error in
+                guard let data = data, error == nil else{
+                    print("error")
+                    return
+                }
+                //convert to json
+                do{
+                    let JsonData = try JSONDecoder().decode(OrdersModels.self, from: data)
+              OrderCompletionHandler(JsonData, nil)
+                }catch{
+                    print(error)
+                }
+            })
+            task.resume()
+}
 func POSTNewInvoice(Cost:Double,Shipping_ID:Int,User_ID:Int,OrderedItems:[ItemContainer], PaymentMethods_ID:Int){
    print("Invoice")
     print(Cost)
@@ -34,10 +144,6 @@ print(error)                       } else if let data = data {
     do{
         let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
         let ID=JsonData.first!.LAST_INSERT_ID
-//        guard let ID=Int(JsonData.first!.LAST_INSERT_ID) else{
-//           print("error in convert int")
-//            return
-//        }
         for Item in OrderedItems{
             POSTNewOrders(Item: Item, InvoiceID: ID)
         }
@@ -63,6 +169,26 @@ func POSTNewOrders(Item:ItemContainer,InvoiceID:Int){
     let task = URLSession.shared.dataTask(with: request){
         (data,_,error) in
         if let error = error {
+            print(error)           // Handle HTTP request error
+        }
+        else if let data = data {                       // Handle HTTP request response
+            do{
+    let JsonData = try JSONDecoder().decode(LastInsert.self, from: data)
+                let ID=JsonData.LAST_INSERT_ID
+                POSTOrderDetail(Items_ID: Item.ID, Order_ID: ID)
+            }catch{print(error)}       }
+    }
+    task.resume()
+    }
+func POSTOrderDetail(Items_ID:Int,Order_ID:Int){
+    
+    let parameters="Items_ID=\(Items_ID)&Order_ID=\(Order_ID)&Quantity=1"
+    var request = URLRequest(url: URL(string: OrdersURL)!)
+    request.httpMethod="POST"
+        request.httpBody=parameters.data(using: String.Encoding.utf8)
+    let task = URLSession.shared.dataTask(with: request){
+        (data,_,error) in
+        if let error = error {
                        // Handle HTTP request error
 print(error)                       } else if let data = data {
                        // Handle HTTP request response
@@ -70,8 +196,7 @@ print(error)                       } else if let data = data {
                    }
     }
     task.resume()
-    }
-
+}
 func checkout(Shipment:Int,Payment:Int,Items:[ItemContainer],User_ID:Int){
     var sum=0.0
 
@@ -113,6 +238,86 @@ func GEtItems(completion : @escaping ([ItemContainer])->(Void)){
                     print(error)
                 }
             }
+            task.resume()
+    
+
+}
+
+func GETItems(Order_ID:Int,completion : @escaping ([ItemModels]?,Error?)->(Void)){
+    
+    //creating REQUEST URL with parameters in http body and the method define
+    let paremeters="?Order_ID=\(Order_ID)"
+    var request=URLRequest(url: URL(string: (ItemsURL)+paremeters)!)
+    request.httpMethod="GET"
+    let task = URLSession.shared.dataTask(with: request,completionHandler: {  data, _, error in
+                guard let data = data, error == nil else{
+                    print("error")
+                    return
+                }
+                //convert to json
+                do{
+                    let JsonData = try JSONDecoder().decode([ItemModels].self, from: data)
+              completion(JsonData,nil)
+
+                }catch{
+                    print(": In Items")
+                    print(error)
+                }
+            })
+            task.resume()
+    
+
+}
+
+func GETItems(Catagory_ID:Int,completion : @escaping ([ItemModels]?,Error?)->(Void)){
+
+    //creating REQUEST URL with parameters in http body and the method define
+    let paremeters="?Catagory_ID=\(Catagory_ID)"
+    var request=URLRequest(url: URL(string: (ItemsURL)+paremeters)!)
+    request.httpMethod="GET"
+    let task = URLSession.shared.dataTask(with: request, completionHandler:  {  data, _, error in
+                guard let data = data, error == nil else{
+                    print("error")
+                    return
+                }
+                //convert to json
+                do{
+                    let JsonData = try JSONDecoder().decode([ItemModels].self, from: data)
+                    completion(JsonData,nil)
+
+
+                }catch{
+                    print(": In Items")
+                    print(error)
+                }
+            })
+            task.resume()
+    
+
+}
+
+func GETItems(Invoice_ID:Int,completion : @escaping ([ItemModels]?,Error?)->(Void)){
+   
+    //creating REQUEST URL with parameters in http body and the method define
+    let paremeters="?Invoice_ID=\(Invoice_ID)"
+    var request=URLRequest(url: URL(string: (ItemsURL)+paremeters)!)
+    request.httpMethod="GET"
+    let task = URLSession.shared.dataTask(with: request,completionHandler:  {  data, _, error in
+                guard let data = data, error == nil else{
+                    print("error")
+                    return
+                }
+                //convert to json
+                do{
+                    let JsonData = try JSONDecoder().decode([ItemModels].self, from: data)
+                    completion(JsonData,nil)
+
+
+                }catch{
+                    print(": In Items")
+                    print(error)
+                }
+            })
             task.resume()
     
 

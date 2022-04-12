@@ -20,13 +20,13 @@ class ItemContainer:ObservableObject, Identifiable ,Equatable {
         convert()
     }
      func convert(){
-         self.ID=Int(Item.ID)!
+         self.ID=Item.ID
         Name=Item.Name
         Description=Item.Description
         Cost=Double(Item.Cost)!
-        Catagory_ID=Int(Item.Catagory_ID)!
+        Catagory_ID=Item.Catagory_ID
         Img=Item.Name
-        Availability=Int(Item.Availability)!
+        Availability=Item.Availability
     }
     func addtoCart(items:ItemContainer){
         if !Store.TheStore.Cart.order.contains(items){
@@ -42,7 +42,7 @@ class ItemContainer:ObservableObject, Identifiable ,Equatable {
     }
     @Published var order = [ItemContainer]()
     @Published var Review:[ReviewModels]=[ReviewModels]()
-    @Published var Item: ItemModels = ItemModels(ID: "", Name: "", Description: "", Cost: "", Catagory_ID: "", Img: "", Availability: "")
+    @Published var Item: ItemModels = ItemModels(ID: 0, Name: "", Description: "", Cost: "", Catagory_ID: 0, Img: "", Availability: 0)
     @Published var id=UUID()
     @Published var ID=0
     @Published var Name=""

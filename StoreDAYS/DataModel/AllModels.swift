@@ -44,18 +44,18 @@ struct PaymentsModels: Hashable, Codable{
     let Address_ID:String
 }
 struct InvoiceModels: Hashable, Codable{
-    let ID:String
-    let Cost:String
-    let User_ID:String
-    let Shipping_ID:String
-    let PaymentMethods_ID:String
+    let ID:Int
+    let Sum:String
+    let User_ID:Int
+    let Shipping_ID:Int
+    let PaymentMethods_ID:Int
     
 }
 struct OrdersModels: Hashable, Codable{
-    let ID:String
+    let ID:Int
     let Cost:String
     let Description:String
-    let Invoice_ID:String
+    let Invoice_ID:Int
   
 }
 struct CatagoryModels: Hashable, Codable{
@@ -63,13 +63,13 @@ struct CatagoryModels: Hashable, Codable{
     let title : String
 }
 struct ItemModels: Hashable, Codable{
-    let ID:String
+    let ID:Int
     let Name:String
     let Description:String
     let Cost:String
-    let Catagory_ID:String
+    let Catagory_ID:Int
     let Img:String
-    let Availability:String
+    let Availability:Int
 }
 struct LastInsert: Hashable, Codable{
     let LAST_INSERT_ID:Int
