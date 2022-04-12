@@ -9,12 +9,12 @@ USE StoreDAYS;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `User` (
   `ID` INT NOT NULL AUTO_INCREMENT,
-  `UserName` UNIQUE TEXT NULL,
+  `UserName`  TEXT NULL UNIQUE,
   `FirstName` TEXT NULL,
   `LastName` TEXT NULL,
   `DateOfBirth` DATE NULL,
   `Password` TEXT NULL,
-  `Email` UNIQUE TEXT NULL,
+  `Email`  TEXT NULL UNIQUE,
   `Admin` INT NULL,
   PRIMARY KEY (`ID`));
 
