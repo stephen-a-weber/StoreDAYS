@@ -88,7 +88,7 @@ case "GET":
   $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
   $stmt -> bind_param("i",$var) or die("Couldn't bind".htmlspecialchars($stmt->error));
   $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));;
-  $rows=$stmt->get_result()->fetch_all();
+  $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
   echo json_encode($rows);
 
     break;

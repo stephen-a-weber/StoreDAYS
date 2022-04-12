@@ -16,16 +16,23 @@ struct DashBoardSwiftUIView: View {
     var body: some View {
         VStack {
             
-            Image("dashboard")
+         
             Text(messajeValidate)
                 .foregroundColor(Color(myColor))
-                .frame(width: 300, height: 20, alignment: .center)
+                .frame(width: 300, height: 50, alignment: .center)
+            Spacer()
             
-            WebView(webView: model.webView).frame(width: 400, height: 650, alignment: .center)
+            Image("dash1")
+                .resizable()
+                .scaledToFit()
+            Image("dash2")
+                .resizable()
+                .scaledToFit().frame(width: 400, height: 190, alignment: .center)
+         //   WebView(webView: model.webView).frame(width: 400, height: 650, alignment: .center)
             Spacer()
             
             
-        }.frame(width: 250, height: 250 )
+        }
     }
 }
 

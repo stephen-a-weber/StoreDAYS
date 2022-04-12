@@ -87,6 +87,8 @@ INSERT INTO Items (Name, Description, Cost, Catagory_ID, IMG ) VALUES (?,?,?,?,?
 SELECT * FROM Items WHERE ID = ?
 SELECT * FROM Items WHERE Catagory_ID = ?
 SELECT * FROM Items WHERE Name = ?
+SELECT * FROM Items WHERE ID IN (SELECT Items_ID from Orders_Details WHERE Orders_ID IN (SELECT ID From Orders WHERE Invoice_ID = ?))      
+SELECT * FROM Items WHERE ID IN (SELECT Items_ID from Orders_Details WHERE Orders_ID = ?)
 --Update
 UPDATE Items set Name  = ?, Description = ?, Cost = ?, Catagory_ID = ?, Stock = ?, IMG = ?, Availability = ?  WHERE ID  = ?
 --Delete
@@ -110,7 +112,9 @@ DELETE FROM Review Where User_ID = ?
 --Create
 INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (?,?,?)
 --Read
-SELECT * FROM Orders_Details WHERE ID =
+SELECT * FROM Orders_Details WHERE ID = ?
+SELECT * FROM Orders_Details WHERE Items_ID = ?
+
 --Update
 UPDATE Orders_Details set Items_ID = ?, Orders_ID = ?, Quantity = ? WHERE ID = ?
 --Delete

@@ -150,7 +150,13 @@ class Data: ObservableObject{
             
         }
         tax = (dollars * 0.07)
-            self.taxes =  "$\(tax)"
+        var Tx = Double(tax.description) ?? 0
+        Tx = round(Tx * 100) / 100
+        
+     
+    print(Tx)
+        
+            self.taxes =  "$\(Tx)"
     }
     
     
@@ -178,6 +184,11 @@ class Data: ObservableObject{
         total = dollars + (dollars * 0.07)
         
         
-        self.totalInvoice =  "$\(total)"
+        
+   
+        var TTL = Double(total.description) ?? 0
+        TTL = round(TTL * 100) / 100
+        
+        self.totalInvoice =  "$\(TTL)"
     }
 }

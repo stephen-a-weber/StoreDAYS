@@ -29,16 +29,16 @@
                           .foregroundColor(.cyan)
                           .padding()
                     settleView
-                     NavigationView {
-                                NavigationLink {
-                                      CSTabView()
-                                }
-                                label: {
-                                        Text("For customer satisfaction!")
-                                            .padding()
-                                }
-                          }
-                    Spacer()
+//                     NavigationView {
+//                                NavigationLink {
+//                                      CSTabView()
+//                                }
+//                                label: {
+//                                        Text("For customer satisfaction!")
+//                                            .padding()
+//                                }
+//                          }
+//                    Spacer()
                 }
                 
                 TabView(selection: $selectedPayTab) {
