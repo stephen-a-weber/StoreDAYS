@@ -22,6 +22,7 @@ class DBHelper {
         initialItems()
         getTotalItems()
         getTotalItemsAmount()
+        createTableInvoice()
  
     }
     
@@ -174,7 +175,7 @@ class DBHelper {
 //                print("\(questionId) | \(answerText) | \(sequence)")
             }
         } else {
-            print("Quiz Sessions SELECT statement could not be prepared")
+            print("total_order SELECT statement could not be prepared")
         }
         sqlite3_finalize(queryStatement)
         print("Total de Ordenes :", total)
@@ -191,16 +192,30 @@ class DBHelper {
                 total = Int(tot)
                 
            
-           
-//                print("Quiz Sessions Query Result:")
-//                print("\(questionId) | \(answerText) | \(sequence)")
+ 
             }
         } else {
-            print("Quiz Sessions SELECT statement could not be prepared")
+            print(" ELECT statement could not be prepared")
         }
         sqlite3_finalize(queryStatement)
         print("Total de Amount Ordenes :", total)
         return total
+    }
+    
+    
+    func createTableInvoice() {
+        let createTableString = "CREATE TABLE IF NOT EXISTS Invoice(Id INTEGER PRIMARY KEY AUTOINCREMENT,Number TEXT UNIQUE, Date DATE, Tax TEXT, SubTotal TEXT, Total TEXT, Adress TEXT, User TEXT);"
+        var createTableStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
+            if sqlite3_step(createTableStatement) == SQLITE_DONE {
+                print("Invoice table created.")
+            } else {
+                print("Invoice table could not be created.")
+            }
+        } else {
+            print("CREATE TABLE Invoice statement could not be prepared.")
+        }
+        sqlite3_finalize(createTableStatement)
     }
     
     
