@@ -19,12 +19,33 @@ INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_
 
 -- Invoice
 INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (84.65,2,1,1);
+INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (114.20,2,1,1);
+INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (52.20,2,1,1);
+
 INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (114.20,3,2,2);
+INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (84.65,3,2,2);
+INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (52.20,3,2,2);
+
+
+INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (114.20,4,3,3);
+INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (84.65,4,3,3);
 INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (52.20,4,3,3);
 -- Orders
-INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (79.65,'Description',1);
-INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (94.20,'Description',2);
-INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (46.20,'Description',3);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (79.65,'INPROGRESS',1);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (94.20,'COMPLETE',1);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (46.20,'REFUND',1);
+
+
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (79.65,'INPROGRESS',2);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (94.20,'COMPLETE',2);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (46.20,'REFUND',2);
+
+
+
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (79.65,'INPROGRESS',3);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (94.20,'COMPLETE',3);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (46.20,'REFUND',3);
+
 
 -- Catagory
 INSERT INTO Catagory (Title) VALUES ('Kittens');
@@ -74,3 +95,11 @@ INSERT INTO Review (Body, User_ID, Rate, Items_ID, Catagory_ID) VALUES ('It was 
 INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (10,1,1);
 INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (20,2,1);
 INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (29,3,1);
+
+INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (10,4,1);
+INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (20,5,1);
+INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (29,6,1);
+
+INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (10,7,1);
+INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (20,8,1);
+INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (29,9,1);
