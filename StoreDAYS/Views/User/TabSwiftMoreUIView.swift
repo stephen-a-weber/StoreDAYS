@@ -32,11 +32,6 @@ struct TabSwiftMoreUIView: View {
                 
             }
             
-            CardBook()
-                .tabItem{
-                    Label("Cards", systemImage:"creditcard")
-                }
-            
         }
     }
 }
