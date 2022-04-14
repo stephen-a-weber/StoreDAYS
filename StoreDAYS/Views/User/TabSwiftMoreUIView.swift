@@ -27,7 +27,7 @@ struct TabSwiftMoreUIView: View {
             
             DashBoardSwiftUIView(data: Data()).tabItem {
                 
-                Image(systemName: "circle.dashed")
+                Image(systemName: "face.dashed")
                 Text("DashBoard")
                 
             }

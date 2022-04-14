@@ -94,7 +94,7 @@ struct InvoiceSwiftUIView: View {
                 Text("Total     \(data.totalInvoice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 24))
                 Spacer()
              
-                Text("Adress:33 60 NY city Patagonia Argentina        ").foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
+                Text("Addres \(data.addres)").foregroundColor(.black).font(.custom("Courier", fixedSize: 13))
                 Spacer()
                 Button(action: {
                     animFlag2 = true
