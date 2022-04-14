@@ -55,7 +55,7 @@ struct DetailInvoiceView: View {
                   
             List{
                HStack{ Text("With Card\(TheInvoice.Payment.Name)")
-                Text("To:"+TheInvoice.Address.Street+", "+TheInvoice.Address.City+", "+TheInvoice.Address.State+TheInvoice.Address.Zip)}
+                Text("To:\(TheInvoice.Address.Street), \(TheInvoice.Address.City), \(TheInvoice.Address.State) \(TheInvoice.Address.Zip)")}
                 ForEach(TheInvoice.OrderList, id:\.self){
                     EachOrder in
                     HStack{
