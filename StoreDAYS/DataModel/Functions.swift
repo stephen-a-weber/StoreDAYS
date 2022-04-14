@@ -14,7 +14,7 @@ let InvoiceURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/Store
 let OrdersURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Orders.php"
 let UpdateUser = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/UpdateUser.php"
 let ItemsURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/getItems.php"
-
+let ReviewURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Review.php"
 func GETInvoice(User_ID:Int, InvoiceCompletionHandler:@escaping([InvoiceModels]?,Error?)->Void){
     
         //creating REQUEST URL with parameters in http body and the method define
@@ -97,7 +97,6 @@ func GETShipping(ID:Int,ShippingComplete:@escaping(ShippingModels?,Error?)->Void
                     //convert to json
                     do{
                         let JsonData = try JSONDecoder().decode([ShippingModels].self, from: data)
-                        print(JsonData)
                         ShippingComplete(JsonData.first!, nil)
                         
                     }catch{
@@ -394,8 +393,9 @@ func GETItems(Order_ID:Int,completion : @escaping (ItemModels?,Error?)->(Void)){
                 }
                 //convert to json
                 do{
-                    let JsonData = try JSONDecoder().decode(ItemModels.self, from: data)
-              completion(JsonData,nil)
+                    let JsonData = try JSONDecoder().decode([ItemModels].self, from: data)
+                    print(JsonData)
+                    completion(JsonData.first!,nil)
 
                 }catch{
                     print(": In Items")
@@ -434,6 +434,31 @@ func GETItems(Catagory_ID:Int,completion : @escaping ([ItemModels]?,Error?)->(Vo
 
 }
 
+
+func GETItems(ID:Int,completion : @escaping (ItemModels?,Error?)->(Void)){
+
+    //creating REQUEST URL with parameters in http body and the method define
+    let paremeters="?ID=\(ID)"
+    var request=URLRequest(url: URL(string: (ItemsURL)+paremeters)!)
+    request.httpMethod="GET"
+    let task = URLSession.shared.dataTask(with: request, completionHandler:  {  data, _, error in
+                guard let data = data, error == nil else{
+                    print("error")
+                    return
+                }
+                //convert to json
+                do{
+                    let JsonData = try JSONDecoder().decode([ItemModels].self, from: data)
+                    completion(JsonData.first!,nil)
+                }catch{
+                    print(": In Items")
+                    print(error)
+                }
+            })
+            task.resume()
+    
+
+}
 func GETItems(Invoice_ID:Int,completion : @escaping ([ItemModels]?,Error?)->(Void)){
    
     //creating REQUEST URL with parameters in http body and the method define
@@ -473,7 +498,6 @@ func GETAddress(ID:Int, SingleCompletionAddressHandler:@escaping(AddressModels?,
                     return
                 }
                 //convert to json
-        print(String(data: data, encoding: .utf8))
                 do{
                     let JsonData = try JSONDecoder().decode([AddressModels].self, from: data)
                     SingleCompletionAddressHandler(JsonData.first!,nil)
