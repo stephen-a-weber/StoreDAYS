@@ -100,7 +100,10 @@ struct LoginSessionViewSwiftUIView: View {
                     Button(action: {
                         animFlag2 = continueVideo()
                     }) {
-                        Text("OTHERS")
+                      
+                        ZStack{
+                        Text("")
+                        
                             .fontWeight(.bold)
                             .foregroundColor(Color(myColor))
                             .frame( maxWidth: .infinity,  alignment: .center)
@@ -111,6 +114,11 @@ struct LoginSessionViewSwiftUIView: View {
                              .sheet(isPresented: $animFlag2, content: {
                                  TabSwiftMoreUIView(data: data )
                              })
+                            
+                            Image(systemName: "questionmark.folder")
+                                .font(.title2)
+                            
+                        }
                     }
                     
                     
