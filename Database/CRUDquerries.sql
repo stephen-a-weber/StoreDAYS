@@ -103,7 +103,7 @@ SELECT * FROM Review WHERE User_ID = ?
 SELECT * FROM Review WHERE Catagory_ID = ?
 SELECT * FROM Review WHERE Items_ID = ?
 --Update
-UPDATE Review set Body = ?, User_ID = ?, Rate = ?, Items_ID = ?, Catagory_ID  = ? WHERE ID = ?
+UPDATE Review set Body = ?, Rate = ?, Items_ID = ?, Catagory_ID  = ? WHERE ID = ?
 --Delete
 DELETE FROM Review Where ID = ?
 DELETE FROM Review Where User_ID = ?
