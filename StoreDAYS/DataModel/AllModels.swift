@@ -26,13 +26,13 @@ struct AddressModels: Hashable, Codable{
     let Zip:String
     }
 struct ShippingModels: Hashable, Codable{
-    let ID:String
+    let ID:Int
     let ShippingType:String
     let Cost:String
     let ETA:String
-    let User_ID:String
+    let User_ID:Int
     let Status:String
-    let Address_ID:String
+    let Address_ID:Int
     }
 struct PaymentsModels: Hashable, Codable{
     let ID:Int
@@ -45,7 +45,7 @@ struct PaymentsModels: Hashable, Codable{
 }
 struct InvoiceModels: Hashable, Codable{
     let ID:Int
-    let Sum:String
+    let Cost:String
     let User_ID:Int
     let Shipping_ID:Int
     let PaymentMethods_ID:Int
@@ -82,4 +82,12 @@ struct ReviewModels: Hashable, Codable{
     let Items_ID:String
     let Catagory_ID:String
     
+}
+struct Invoices:Hashable{
+    var SelfInvoice:InvoiceModels
+    var Order:[Orders]
+}
+struct Orders:Hashable{
+    var SelfOrder:OrdersModels
+    var Items:ItemModels
 }

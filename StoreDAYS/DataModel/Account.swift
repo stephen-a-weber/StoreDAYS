@@ -308,7 +308,7 @@ print(error)                       } else if let data = data {
     func POSTInvoice(){
         for Model in Invoice{
             let ID=Model.ID
-            let Cost=Model.Sum
+            let Cost=Model.Cost
             let Shipping_ID=Model.Shipping_ID
             let PaymentMethods_ID=Model.PaymentMethods_ID
            
@@ -424,7 +424,7 @@ print(error)                       } else if let data = data {
     }
     func POSTInvoice(Model:InvoiceModels){
         let ID=Model.ID
-                    let Cost=Model.Sum
+                    let Cost=Model.Cost
                     let Shipping_ID=Model.Shipping_ID
                     let PaymentMethods_ID=Model.PaymentMethods_ID
                    

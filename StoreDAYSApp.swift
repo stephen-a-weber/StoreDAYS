@@ -15,7 +15,7 @@ struct StoreDAYSApp: App {
     @StateObject var userData = UserData()
     var body: some Scene {
         WindowGroup {
-            CardBook()
+DetailInvoiceView(selfInvoice: InvoiceModels(ID: 2, Cost: "", User_ID: 2, Shipping_ID: 1, PaymentMethods_ID: 1))
             //SwiftUIView()
             //    CheckOutView(data:data)
           //    CreateAccountSwiftUIView(data: data)

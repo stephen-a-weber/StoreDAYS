@@ -8,15 +8,8 @@
 import SwiftUI
 class viewInvoiceListModel:ObservableObject{
     @Published var InvoicesModel :[InvoiceModels]=[]
-    @Published var Containers:[invoices]=[]
-    struct invoices:Hashable{
-        var SelfInvoice:InvoiceModels
-        var Order:[Orders]
-    }
-    struct Orders:Hashable{
-        var SelfOrder:OrdersModels
-        var Items:[ItemModels]
-    }
+    @Published var Containers:[Invoices]=[]
+    
     func loadOrdersIntoInvoice(){
         for invoice in InvoicesModel{
             var InvoiceOrders=[Orders]()
@@ -31,7 +24,7 @@ class viewInvoiceListModel:ObservableObject{
                 
             }
             DispatchQueue.main.async {
-                self.Containers.append(invoices(SelfInvoice: invoice, Order:InvoiceOrders))
+                self.Containers.append(Invoices(SelfInvoice: invoice, Order:InvoiceOrders))
             }
         }
     }
@@ -49,6 +42,7 @@ class viewInvoiceListModel:ObservableObject{
     }
 }
 struct InvoiceList: View {
+    
     @StateObject var Model=viewInvoiceListModel()
 
     var body: some View {
@@ -57,11 +51,17 @@ struct InvoiceList: View {
 
                 ForEach(Model.Containers, id:\.self){
                     Invoice in
-                    HStack{
-                        
-                    Text("Invoice Number:#\(Invoice.SelfInvoice.ID)")
-                    Text("Cost:$\(Invoice.SelfInvoice.Sum)")
+                    
+                    NavigationLink{
+                        DetailInvoiceView(selfInvoice: Invoice.SelfInvoice)}
+                label:{
+                        HStack{
+                            
+                        Text("Invoice Number:#\(Invoice.SelfInvoice.ID)")
+                        Text("Cost:$\(Invoice.SelfInvoice.Cost)")
+                        }
                     }
+                    
                     .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                         Button {
                             print("Refund")

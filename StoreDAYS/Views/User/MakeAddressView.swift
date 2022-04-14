@@ -20,6 +20,7 @@ struct MakeAddressView: View {
     @State var flag=false
     @State var dataValidate = true
     @State var EditFlag = false
+    @State var UseFlag=false
     @State var messageValidate = "Please enter your shipping address"
     @Environment(\.presentationMode) var presentationMode
 
@@ -114,13 +115,21 @@ struct MakeAddressView: View {
         if(Street==""||City==""||State==""||Zip==""){
             return false
         }
+        
         let Address = AddressModels(ID: ID, Street: Street, City: City, User_ID: User_ID, State: State, Zip: Zip)
+        if UseFlag{
+            
+        }else{
         if !EditFlag{
             POSTNewAddress(Model: Address)}
         else {
             POSTUpdateAddress(Model: Address)
             presentationMode.wrappedValue.dismiss()
         }
+            
+        }
+        
+        
         return true;
     }
 }
