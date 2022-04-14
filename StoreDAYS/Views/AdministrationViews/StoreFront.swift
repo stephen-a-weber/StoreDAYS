@@ -53,7 +53,7 @@ struct StoreFront: View {
                 
             }
             
-            Section("EXOTIC ANIMALS -- Suggested Items") {
+            Section("EXOTIC ANIMALS -- Suggested Pets") {
                 //Like the other two sections above. This one makes a row for each
                 //exotic animal.
                 // these rows are wrapped in a NavigationLink

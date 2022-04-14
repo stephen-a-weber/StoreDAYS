@@ -81,6 +81,54 @@ func GETPaymentMethods(User_ID:Int,PaymentCompletionHandler:@escaping([PaymentsM
                 })
                 task.resume()
 }
+
+func GETShipping(ID:Int,ShippingComplete:@escaping(ShippingModels?,Error?)->Void)        {
+    
+        //creating REQUEST URL with parameters in http body and the method define
+        let paremeters="?ID=\(ID)"
+    var request=URLRequest(url: URL(string: (ShippingURL+paremeters))!)
+    request.httpMethod="GET"
+    // run network task
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
+                    guard let data = data, error == nil else{
+                        print("error")
+                        return
+                    }
+                    //convert to json
+                    do{
+                        let JsonData = try JSONDecoder().decode([ShippingModels].self, from: data)
+                        print(JsonData)
+                        ShippingComplete(JsonData.first!, nil)
+                        
+                    }catch{
+                        print("In Shipping")
+                        print(error)
+                    }
+                })
+                task.resume()
+}
+func GETPaymentMethods(ID:Int,PaymentCompletionHandler:@escaping(PaymentsModels?,Error?)->Void)        {
+    
+        //creating REQUEST URL with parameters in http body and the method define
+        let paremeters="?ID=\(ID)"
+    var request=URLRequest(url: URL(string: (PaymentURL+paremeters))!)
+    request.httpMethod="GET"
+    // run network task
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
+                    guard let data = data, error == nil else{
+                        print("error")
+                        return
+                    }
+                    //convert to json
+                    do{
+                        let JsonData = try JSONDecoder().decode([PaymentsModels].self, from: data)
+                        PaymentCompletionHandler(JsonData.first!, nil)
+                    }catch{
+                        print(error)
+                    }
+                })
+                task.resume()
+}
 func POSTNEWPaymentMethods(Model:PaymentsModels){
                let CardNumber=Model.CardNumber
                let CVC=Model.CVC
@@ -128,6 +176,26 @@ func POSTUpdatePaymentMethods(Model:PaymentsModels){
                           }
            }
            task.resume()
+}
+func GETInvoice(ID:Int, InvoiceHandler:@escaping (InvoiceModels?,Error?)->Void){
+    let paremeters="?ID=\(ID)"
+var request=URLRequest(url: URL(string: (InvoiceURL+paremeters))!)
+    request.httpMethod="GET"
+// run network task
+let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
+            guard let data = data, error == nil else{
+                print("error")
+                return
+            }
+            //convert to json
+            do{
+                let JsonData = try JSONDecoder().decode(InvoiceModels.self, from: data)
+                InvoiceHandler(JsonData,nil)
+            }catch{
+                print(error)
+            }
+        })
+        task.resume()
 }
 func GetInvoiceItems(Invoice_ID:Int, InvoiceItemsCompletionHandler:@escaping([ItemModels]?,Error?)->Void){
     //creating REQUEST URL with parameters in http body and the method define
@@ -313,7 +381,7 @@ func GEtItems(completion : @escaping ([ItemContainer])->(Void)){
 
 }
 
-func GETItems(Order_ID:Int,completion : @escaping ([ItemModels]?,Error?)->(Void)){
+func GETItems(Order_ID:Int,completion : @escaping (ItemModels?,Error?)->(Void)){
     
     //creating REQUEST URL with parameters in http body and the method define
     let paremeters="?Order_ID=\(Order_ID)"
@@ -326,7 +394,7 @@ func GETItems(Order_ID:Int,completion : @escaping ([ItemModels]?,Error?)->(Void)
                 }
                 //convert to json
                 do{
-                    let JsonData = try JSONDecoder().decode([ItemModels].self, from: data)
+                    let JsonData = try JSONDecoder().decode(ItemModels.self, from: data)
               completion(JsonData,nil)
 
                 }catch{
@@ -393,29 +461,29 @@ func GETItems(Invoice_ID:Int,completion : @escaping ([ItemModels]?,Error?)->(Voi
 
 }
 
-func GETAddress(ID:Int)->[AddressModels]{
+func GETAddress(ID:Int, SingleCompletionAddressHandler:@escaping(AddressModels?,Error?)->Void){
     //creating REQUEST URL with parameters in http body and the method define
     let paremeters="?ID=\(ID)"
     var request=URLRequest(url: URL(string: (AddressURL+paremeters))!)
     request.httpMethod="GET"
-    var Addresses=[AddressModels]()
-    let task = URLSession.shared.dataTask(with: request) { data, _, error in
+    print(paremeters)
+    let task = URLSession.shared.dataTask(with: request, completionHandler:  { data, _, error in
                 guard let data = data, error == nil else{
                     print("error")
                     return
                 }
                 //convert to json
+        print(String(data: data, encoding: .utf8))
                 do{
                     let JsonData = try JSONDecoder().decode([AddressModels].self, from: data)
-                    DispatchQueue.main.sync {
-                        Addresses=JsonData
-                    }
+                    SingleCompletionAddressHandler(JsonData.first!,nil)
                 }catch{
+                    print("In address")
                     print(error)
                 }
-            }
+            })
             task.resume()
-    return Addresses
+    
 }
 func GETAddress(User_ID:Int, AddressCompletionHandler: @escaping([AddressModels]?,Error?)->Void){
     //creating REQUEST URL with parameters in http body and the method define
