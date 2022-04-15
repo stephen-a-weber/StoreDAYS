@@ -386,7 +386,7 @@ func DynamicCheckOut(data:Data){
                     
                     POSTNewAddress(Model: AddressModel, AddressIDCompletionHandler: {
                         GivenAddressID, error in
-                        var InvoiceModel:InvoiceModels=InvoiceModels(ID: 0, Cost: "", User_ID: GivenUserID!, Shipping_ID: 0, PaymentMethods_ID: 0)
+                        var InvoiceModel:InvoiceModels=InvoiceModels(ID: 0, Cost: 0.0, User_ID: GivenUserID!, Shipping_ID: 0, PaymentMethods_ID: 0)
                         let PaymentModel=PaymentsModels(ID: 0, CardNumber: data.CardInformation.CardNumber, CVC: data.CardInformation.CVC, Expiration: data.CardInformation.Expiration, Name: data.CardInformation.Name, User_ID: GivenUserID!, Address_ID: GivenAddressID!)
                         POSTNEWPaymentMethods(Model: PaymentModel, PaymentIDCompletionHandler: {
                             GivenPaymentID, error in
@@ -415,7 +415,7 @@ func DynamicCheckOut(data:Data){
                     
                     POSTNewAddress(Model: AddressModel, AddressIDCompletionHandler: {
                         GivenAddressID, error in
-                        var InvoiceModel:InvoiceModels=InvoiceModels(ID: 0, Cost: "", User_ID: ID!, Shipping_ID: 0, PaymentMethods_ID: 0)
+                        var InvoiceModel:InvoiceModels=InvoiceModels(ID: 0, Cost: 0.0, User_ID: ID!, Shipping_ID: 0, PaymentMethods_ID: 0)
                         let PaymentModel=PaymentsModels(ID: 0, CardNumber: data.CardInformation.CardNumber, CVC: data.CardInformation.CVC, Expiration: data.CardInformation.Expiration, Name: data.CardInformation.Name, User_ID: ID!, Address_ID: GivenAddressID!)
                         POSTNEWPaymentMethods(Model: PaymentModel, PaymentIDCompletionHandler: {
                             GivenPaymentID, error in
@@ -442,7 +442,7 @@ func DynamicCheckOut(data:Data){
                     
         }
     }else{
-        var InvoiceModel:InvoiceModels=InvoiceModels(ID: 0, Cost: "", User_ID: data.UserInformation.ID, Shipping_ID: 0, PaymentMethods_ID: data.CardInformation.ID)
+        var InvoiceModel:InvoiceModels=InvoiceModels(ID: 0, Cost: 0.0, User_ID: data.UserInformation.ID, Shipping_ID: 0, PaymentMethods_ID: data.CardInformation.ID)
         
         let ShippingModel=ShippingModels(ID: 0, ShippingType: data.ShippingInformation.ShippingType, Cost: data.ShippingInformation.Cost, ETA: data.ShippingInformation.ETA, User_ID: data.UserInformation.ID, Status: data.ShippingInformation.Status, Address_ID: data.AddressInformation.ID)
         POSTNewShipping(Model: ShippingModel, ShippingIDCompletionHandler: {
@@ -617,6 +617,31 @@ func GETItems(Order_ID:Int,completion : @escaping (ItemModels?,Error?)->(Void)){
 
 }
 
+func GETItems(completion : @escaping ([ItemModels]?,Error?)->(Void)){
+    
+    //creating REQUEST URL with parameters in http body and the method define
+    var request=URLRequest(url: URL(string: (ItemsURL))!)
+    request.httpMethod="GET"
+    let task = URLSession.shared.dataTask(with: request,completionHandler: {  data, _, error in
+                guard let data = data, error == nil else{
+                    print("error")
+                    return
+                }
+                //convert to json
+                do{
+                    let JsonData = try JSONDecoder().decode([ItemModels].self, from: data)
+                    print(JsonData)
+                    completion(JsonData,nil)
+
+                }catch{
+                    print(": In Items")
+                    print(error)
+                }
+            })
+            task.resume()
+    
+
+}
 func GETItems(Catagory_ID:Int,completion : @escaping ([ItemModels]?,Error?)->(Void)){
 
     //creating REQUEST URL with parameters in http body and the method define

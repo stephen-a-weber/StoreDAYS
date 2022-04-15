@@ -10,7 +10,7 @@ class InvoiceViewModel: ObservableObject{
     @Published var OrderList:[OrdersModels]=[]
     @Published var OrdersWithItems:[Orders]=[]
     @Published var Address:AddressModels=AddressModels(ID: 0, Street: "", City: "", User_ID: 0, State: "", Zip: "")
-    @Published var Shipping=ShippingModels(ID: 0, ShippingType: "", Cost: "", ETA: "", User_ID: 0, Status: "", Address_ID:0)
+    @Published var Shipping=ShippingModels(ID: 0, ShippingType: "", Cost: 0.0, ETA: "", User_ID: 0, Status: "", Address_ID:0)
     @Published var Payment = PaymentsModels(ID: 0, CardNumber: "", CVC: 0, Expiration: "", Name: "", User_ID: 0, Address_ID: 0)
     func loadItems(){
         
@@ -120,6 +120,6 @@ struct DetailInvoiceView: View {
 
 struct DetailInvoiceView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailInvoiceView(selfInvoice: InvoiceModels(ID: 2, Cost: "", User_ID: 2, Shipping_ID: 1, PaymentMethods_ID: 1))
+        DetailInvoiceView(selfInvoice: InvoiceModels(ID: 10, Cost: 0.0, User_ID: 2, Shipping_ID: 1, PaymentMethods_ID: 1))
     }
 }

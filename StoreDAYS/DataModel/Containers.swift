@@ -23,7 +23,7 @@ class ItemContainer:ObservableObject, Identifiable ,Equatable {
          self.ID=Item.ID
         Name=Item.Name
         Description=Item.Description
-        Cost=Double(Item.Cost)!
+        Cost=Item.Cost
         Catagory_ID=Item.Catagory_ID
         Img=Item.Name
         Availability=Item.Availability
@@ -42,7 +42,7 @@ class ItemContainer:ObservableObject, Identifiable ,Equatable {
     }
     @Published var order = [ItemContainer]()
     @Published var Review:[ReviewModels]=[ReviewModels]()
-    @Published var Item: ItemModels = ItemModels(ID: 0, Name: "", Description: "", Cost: "", Catagory_ID: 0, Img: "", Availability: 0)
+    @Published var Item: ItemModels = ItemModels(ID: 0, Name: "", Description: "", Cost: 0.0, Catagory_ID: 0, Img: "", Availability: 0)
     @Published var id=UUID()
     @Published var ID=0
     @Published var Name=""
@@ -73,7 +73,7 @@ class TheItemContainer:ObservableObject, Identifiable ,Equatable {
     }
    
     @Published var Review:[ReviewModels]=[ReviewModels]()
-    @Published var Item: ItemModels = ItemModels(ID: 0, Name: "", Description: "", Cost: "", Catagory_ID: 0, Img: "", Availability: 0)
+    @Published var Item: ItemModels = ItemModels(ID: 0, Name: "", Description: "", Cost: 0.0, Catagory_ID: 0, Img: "", Availability: 0)
     @Published var id=UUID()
    
     
