@@ -35,8 +35,13 @@ die("There is a duplicate user");
       $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
       $stmt -> bind_param("ssssssi",$UserName,$FirstName,$LastName,$DateOfBirth,$Password,$Email,$Admin) or die("Couldn't bind".htmlspecialchars($stmt->error));
       $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
-      echo "success";
-    }else{
+
+      $sql="SELECT LAST_INSERT_ID() as LAST_INSERT_ID";
+      $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
+      $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
+      $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+      echo json_encode($rows);
+        }else{
 die("Post was not met");
     }
 

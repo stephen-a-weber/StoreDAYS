@@ -66,8 +66,13 @@ case "POST":
         $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
         $stmt -> bind_param("sissii",$CardNumber,$CVC,$Expiration,$Name,$User_ID,$Address_ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
-        echo"SUCCESS";
-}else{  die("Post wasn't define");
+
+        $sql="SELECT LAST_INSERT_ID() as LAST_INSERT_ID";
+        $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
+        $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
+        $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        echo json_encode($rows);
+      }else{  die("Post wasn't define");
 }
     break;
 case "GET":
