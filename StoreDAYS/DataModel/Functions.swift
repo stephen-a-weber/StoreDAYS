@@ -295,6 +295,9 @@ print(error)                       } else if let data = data {
     task.resume()
     
 }
+func checkoutGuess(){
+    
+}
 func POSTNewOrders(Item:ItemContainer,InvoiceID:Int){
     let Cost=Item.Cost
     let Description=Item.Description
