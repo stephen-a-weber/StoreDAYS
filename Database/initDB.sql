@@ -20,6 +20,9 @@ INSERT INTO Shipping (ShippingType, Cost, ETA, User_ID, Status, Address_ID) VALU
 INSERT INTO Shipping (ShippingType, Cost, ETA, User_ID, Status, Address_ID) VALUES ('Priority',5.00,'2022-4-05',2,'Delevered',3);
 INSERT INTO Shipping (ShippingType, Cost, ETA, User_ID, Status, Address_ID) VALUES ('Normal',20.00,'2022-12-20',3,'OnGoing',3);
 INSERT INTO Shipping (ShippingType, Cost, ETA, User_ID, Status, Address_ID) VALUES ('NextDay',6.00,'2021-11-20',4,'Preparing',3);
+
+INSERT INTO Shipping (ShippingType, Cost, ETA, User_ID, Status, Address_ID) VALUES ('NextDay',6.00,'2021-11-20',2,'Preparing',3);
+
 -- PaymentMethods
 INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES ("1234567891234567",123,'25/12',"Chase",2,1);
 INSERT INTO PaymentMethods (CardNumber, CVC, Expiration, Name, User_ID, Address_ID) VALUES ("1234567891234567",123,'26/2',"WellsFargo",3,2);
@@ -38,22 +41,30 @@ INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (52.2
 INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (114.20,4,7,3);
 INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (84.65,4,8,3);
 INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (52.20,4,9,3);
+
+INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (52.20,2,6,1);
+
 -- Orders
 INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (79.65,'INPROGRESS',1);
-INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (94.20,'COMPLETE',1);
-INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (46.20,'REFUND',1);
-
-
-INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (79.65,'INPROGRESS',2);
 INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (94.20,'COMPLETE',2);
-INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (46.20,'REFUND',2);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (46.20,'REFUND',3;
+
+
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (79.65,'INPROGRESS',4);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (94.20,'COMPLETE',5);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (46.20,'REFUND',6);
 
 
 
-INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (79.65,'INPROGRESS',3);
-INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (94.20,'COMPLETE',3);
-INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (46.20,'REFUND',3);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (79.65,'INPROGRESS',7);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (94.20,'COMPLETE',8);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (46.20,'REFUND',9);
 
+
+
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (79.65,'INPROGRESS',10);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (94.20,'COMPLETE',10);
+INSERT INTO Orders ( Cost, Description, Invoice_ID) VALUES (46.20,'REFUND',10);
 
 -- Catagory
 INSERT INTO Catagory (Title) VALUES ('Kittens');
@@ -111,3 +122,9 @@ INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (29,6,1);
 INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (10,7,1);
 INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (20,8,1);
 INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (29,9,1);
+
+
+INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (10,10,1);
+INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (20,11,1);
+INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (29,12,1);
+
