@@ -7,7 +7,7 @@
 
 import Foundation
 struct UserModels: Hashable, Codable{
-    let ID:String
+    let ID:Int
     let UserName:String
     let FirstName:String
     let LastName:String

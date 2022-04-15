@@ -21,7 +21,9 @@ class Data: ObservableObject{
 //information to be kept during checkout
     @Published var CardInformation:PaymentsModels=PaymentsModels(ID: 0, CardNumber: "", CVC: 0, Expiration: "", Name: "", User_ID: 0, Address_ID: 0)
     @Published var AddressInformation:AddressModels=AddressModels(ID: 0, Street: "", City: "", User_ID: 0, State: "", Zip: "")
-    @Published var UserInformation:UserModels=UserModels(ID: "", UserName: "", FirstName: "", LastName: "", DateOfBirth: "", Password: "", Email: "", Admin: "")
+    @Published var UserInformation:UserModels=UserModels(ID: 0, UserName: "", FirstName: "", LastName: "", DateOfBirth: "", Password: "", Email: "", Admin: "")
+    @Published var ShippingInformation:ShippingModels=ShippingModels(ID: 0, ShippingType: "", Cost: "", ETA: "", User_ID: 0, Status: "", Address_ID: 0)
+    @Published var ItemedCart:[ItemModels]=[]
     // Main Local data object called at runtime
     struct Order :Hashable{
         var name = ""

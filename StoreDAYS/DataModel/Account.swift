@@ -10,7 +10,7 @@ import CoreVideo
 class account{
     static let initAccount=account()
     private init(){}
-    @Published var User:UserModels=UserModels(ID: "", UserName: "", FirstName: "", LastName: "", DateOfBirth: "", Password: "", Email: "", Admin: "")
+    @Published var User:UserModels=UserModels(ID: 0, UserName: "", FirstName: "", LastName: "", DateOfBirth: "", Password: "", Email: "", Admin: "")
 
     @Published var Address: [AddressModels] = [AddressModels]()
     @Published var Shipping:[ShippingModels] = [ShippingModels]()
@@ -43,7 +43,7 @@ class account{
                 task.resume()
     }
     func isUser()->Bool{
-        return self.User.ID != ""
+        return self.User.ID != 0
     }
     func GETDATA(){
         if isUser() {return}
