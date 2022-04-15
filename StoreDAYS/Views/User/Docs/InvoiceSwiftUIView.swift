@@ -13,7 +13,7 @@ struct InvoiceSwiftUIView: View {
     @State var releaseDate = Date()
     @State var myColor = "myBlue"
     @State var animFlag2 = false
-    
+    @State var firstName = ""
     
     
     //       static let stackDateFormat: DateFormatter = {
@@ -91,10 +91,23 @@ struct InvoiceSwiftUIView: View {
                     }
                 }
                 Divider()
+                Group{
                 Text("Total     \(data.totalInvoice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 24))
                 Spacer()
-             
+               
                 Text("Addres \(data.addres)").foregroundColor(.black).font(.custom("Courier", fixedSize: 13))
+                  
+                    ZStack(alignment:.trailing){
+                        if  firstName.isEmpty {
+                            Text("Adress \(data.addres)").font(.caption)
+                                .foregroundColor(.gray)
+                        }
+                        TextField("", text: $firstName)
+                    }
+                 
+                       
+             
+                
                 Spacer()
                 Button(action: {
                     animFlag2 = true
@@ -110,6 +123,7 @@ struct InvoiceSwiftUIView: View {
                          .sheet(isPresented: $animFlag2, content: {
                              PayTabView(user: "davisgon@gmail.com")
                          })
+                }
                 }
                 Spacer()
             }

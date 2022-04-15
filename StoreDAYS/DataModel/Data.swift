@@ -37,7 +37,7 @@ class Data: ObservableObject{
     //
     @Published var order = [Order]()
     
-    @Published var totalPrice : String = "$50.00"
+    @Published var totalPrice : String = "$0.00"
     @Published var shippingPrice : String = "$10.00"
     @Published var taxes         : String = "7%"
     @Published var totalInvoice   : String = "00.00"
@@ -55,7 +55,7 @@ class Data: ObservableObject{
     
     @Published var puppyNames : [String] = ["puppy1","puppy2","puppy3","puppy4","puppy5","puppy6","puppy7","puppy8","puppy9","puppy10"]
     @Published var puppyLitterCount = [ 2,6,4,8,3,4,5,4,3,6]
-    @Published var puppyPrice = ["$100","$234","$267","$765","$333","$666","$546","$125","$212","Free"]
+    @Published var puppyPrice = ["$100","$234","$267","$765","$333","$666","$546","$125","$212","$145"]
     
     @Published var exoticNames: [String] = ["animal1","animal2","animal3","animal4","animal5","animal6","animal7","animal8","animal9"]
     @Published var exoticLitterCount = [2,2,2,3,2,1,2,1,1]
@@ -198,3 +198,4 @@ class Data: ObservableObject{
         self.totalInvoice =  "$\(TTL)"
     }
 }
+
