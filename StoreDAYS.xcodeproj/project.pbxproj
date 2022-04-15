@@ -428,8 +428,8 @@
 		D086230727F3AE4600BFE986 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				22EDDAF027F52FAA0075F49C /* User */,
 				D0E2B32227F51753007DABE6 /* UpToCartViews */,
+				22EDDAF027F52FAA0075F49C /* User */,
 				84701D9E2804C99700430964 /* OrderListView.swift */,
 				84701DA02805074600430964 /* InvoiceList.swift */,
 				84701DA62806199A00430964 /* DetailInvoiceView.swift */,
