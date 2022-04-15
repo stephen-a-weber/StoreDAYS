@@ -53,3 +53,28 @@ class ItemContainer:ObservableObject, Identifiable ,Equatable {
     @Published var Availability=0
     
 }
+
+class TheItemContainer:ObservableObject, Identifiable ,Equatable {
+    static func == (lhs: TheItemContainer, rhs: TheItemContainer) -> Bool {
+        return lhs.Item.ID==rhs.Item.ID
+    }
+    init(){
+        }
+    init(Item:ItemModels){
+        self.Item=Item
+    }
+    init(Item:ItemModels,Reviews:[ReviewModels]){
+        self.Item=Item
+        self.Review=Reviews
+    }
+    func addtoCart(items:ItemContainer){
+  
+       
+    }
+   
+    @Published var Review:[ReviewModels]=[ReviewModels]()
+    @Published var Item: ItemModels = ItemModels(ID: 0, Name: "", Description: "", Cost: "", Catagory_ID: 0, Img: "", Availability: 0)
+    @Published var id=UUID()
+   
+    
+}

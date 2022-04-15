@@ -118,6 +118,7 @@ struct MakeAddressView: View {
         
         let Address = AddressModels(ID: ID, Street: Street, City: City, User_ID: User_ID, State: State, Zip: Zip)
         if UseFlag{
+            data.addres="\(Address.Street), \(Address.City), \(Address.State) \(Address.Zip)"
             
         }else{
         if !EditFlag{
