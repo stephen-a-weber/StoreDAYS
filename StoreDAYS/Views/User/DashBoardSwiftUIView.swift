@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DashBoardSwiftUIView: View {
     @State var message = ""
-    @State var model = WebViewModel()
+    
     @ObservedObject var data: Data
     @State var myColor = "myBlue"
     @State var messajeValidate = "DASHBOARD"
@@ -37,8 +37,7 @@ struct DashBoardSwiftUIView: View {
 }
 
 func initData(){
-    var db: DBHelper = DBHelper()
-    var total =  db.getTotalItems()
+    
    // message = "Your Total is : \(total)"
 }
 

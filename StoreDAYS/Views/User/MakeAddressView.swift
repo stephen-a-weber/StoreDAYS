@@ -22,10 +22,10 @@ struct MakeAddressView: View {
     @State var EditFlag = false
     @State var UseFlag=false
     @State var messageValidate = "Please enter your shipping address"
-    @Environment(\.presentationMode) var presentationMode
+ 
 
     var body: some View {
-        ScrollView{
+        
             VStack{
                 // Validate Data
                                  if dataValidate == false {
@@ -91,7 +91,7 @@ struct MakeAddressView: View {
                 
                 
                 Button {
-                    dataValidate=continueSession()
+                   
                 } label: {
                     Text("Continue")
                         .fontWeight(.bold)
@@ -105,35 +105,15 @@ struct MakeAddressView: View {
                                                          TabSwiftMoreUIView(data: data )
                                                      })
                 }
+                
 
-        }.padding(.horizontal,77.0)
-    }.padding(.top, 10.0)
+        }
+        .navigationTitle("Mailing Address")
+    }
 
         
-    }
-    func continueSession()->Bool{
-        if(Street==""||City==""||State==""||Zip==""){
-            return false
-        }
-        
-        let Address = AddressModels(ID: ID, Street: Street, City: City, User_ID: User_ID, State: State, Zip: Zip)
-        if UseFlag{
-            data.addres="\(Address.Street), \(Address.City), \(Address.State) \(Address.Zip)"
-            
-        }else{
-        if !EditFlag{
-            POSTNewAddress(Model: Address)}
-        else {
-            POSTUpdateAddress(Model: Address)
-            presentationMode.wrappedValue.dismiss()
-        }
-            
-        }
-        
-        
-        return true;
-    }
 }
+  
 
 
 struct MakeAddressView_Previews: PreviewProvider {

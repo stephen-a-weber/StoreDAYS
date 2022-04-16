@@ -12,11 +12,8 @@ struct TabSwiftMoreUIView: View {
     var body: some View {
         TabView {
             
-            VideoArkOfSuffering()
-                 .tabItem {
-                    Image(systemName: "play")
-                    Text("Publicity")
-                  }
+             
+                 
             
             FeedbackSwiftUIView().tabItem {
                 

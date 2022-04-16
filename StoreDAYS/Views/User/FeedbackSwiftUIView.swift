@@ -24,7 +24,7 @@ struct WebView: UIViewRepresentable {
 
 
 struct FeedbackSwiftUIView: View {
-    @State var model = WebViewModel()
+   
     @State var animFlag3 = true
     @State var myColor = "myBlue"
     @State var messajeValidate = "Pls enter your feedback"
@@ -39,8 +39,7 @@ struct FeedbackSwiftUIView: View {
                 .foregroundColor(Color(myColor))
                 .frame(width: 300, height: 20, alignment: .center)
             
-            WebView(webView: model.webView).frame(width: 400, height: 650, alignment: .center)
-            Spacer()
+               Spacer()
             
             
         }.frame(width: 250, height: 250 )

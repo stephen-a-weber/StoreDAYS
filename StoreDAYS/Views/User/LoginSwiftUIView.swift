@@ -42,9 +42,9 @@ struct LoginSwiftUIView: View {
                 
                 // Options LOGIN or CREATE ACCOUNT
                 if typeLoginSession == true {
-                    LoginSessionViewSwiftUIView(data: data)
+                   SignInView()
                 }else{
-                    CreateAccountSwiftUIView(data: data)
+                  CreateAccountView()
                 }
             }
          

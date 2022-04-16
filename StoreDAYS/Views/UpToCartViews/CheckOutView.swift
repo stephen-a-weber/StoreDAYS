@@ -63,7 +63,7 @@ struct CheckOutView: View {
                     // add more or as the button is for go to purchase
                     NavigationLink {
                         
-                        LoginSwiftUIView(data: data)}
+                        InvoiceSwiftUIView(data: data)}
                 label: {
                         Text("Continue To Payment")
                             .fontWeight(.bold)
