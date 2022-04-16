@@ -33,6 +33,8 @@
 		D0E2B32627F5215E007DABE6 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2B32527F5215E007DABE6 /* CreateAccountView.swift */; };
 		D0E2B32827F52E3A007DABE6 /* CheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2B32727F52E3A007DABE6 /* CheckOutView.swift */; };
 		D0E2B32B27F52F51007DABE6 /* TabbedMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2B32A27F52F51007DABE6 /* TabbedMainView.swift */; };
+		D0F807CA280A5A3800B323F7 /* slidingDoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F807C9280A5A3800B323F7 /* slidingDoor.swift */; };
+		D0F807CC280B3F5700B323F7 /* hmm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F807CB280B3F5700B323F7 /* hmm.swift */; };
 		D0FCBA1027F8E6FA0004329A /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FCBA0F27F8E6FA0004329A /* Tracking.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +86,8 @@
 		D0E2B32527F5215E007DABE6 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		D0E2B32727F52E3A007DABE6 /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
 		D0E2B32A27F52F51007DABE6 /* TabbedMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedMainView.swift; sourceTree = "<group>"; };
+		D0F807C9280A5A3800B323F7 /* slidingDoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = slidingDoor.swift; sourceTree = "<group>"; };
+		D0F807CB280B3F5700B323F7 /* hmm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hmm.swift; sourceTree = "<group>"; };
 		D0FCBA0F27F8E6FA0004329A /* Tracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,10 +211,12 @@
 			isa = PBXGroup;
 			children = (
 				22EBA8B427F86B04006BF6D3 /* V0.0 */,
+				D0F807CB280B3F5700B323F7 /* hmm.swift */,
 				D086231227F3F77400BFE986 /* StoreSplashPage.swift */,
+				D0F807C9280A5A3800B323F7 /* slidingDoor.swift */,
+				D0E2B32A27F52F51007DABE6 /* TabbedMainView.swift */,
 				D086231027F3F13600BFE986 /* StoreFront.swift */,
 				D0FCBA0F27F8E6FA0004329A /* Tracking.swift */,
-				D0E2B32A27F52F51007DABE6 /* TabbedMainView.swift */,
 				D0E2B32727F52E3A007DABE6 /* CheckOutView.swift */,
 				D0E2B32927F52ED9007DABE6 /* SubViews */,
 				D0E2B31C27F502FE007DABE6 /* PuppyDetailView.swift */,
@@ -379,6 +385,7 @@
 				D0E2B31527F4ECEB007DABE6 /* ItemCell.swift in Sources */,
 				D0E2B32127F503F1007DABE6 /* ExoticDetailView.swift in Sources */,
 				D0E2B32827F52E3A007DABE6 /* CheckOutView.swift in Sources */,
+				D0F807CA280A5A3800B323F7 /* slidingDoor.swift in Sources */,
 				2208352627FDE79B0025EE18 /* FeedbackSwiftUIView.swift in Sources */,
 				D0E2B32B27F52F51007DABE6 /* TabbedMainView.swift in Sources */,
 				D086231127F3F13600BFE986 /* StoreFront.swift in Sources */,
@@ -388,6 +395,7 @@
 				D086231527F406A800BFE986 /* Data.swift in Sources */,
 				D0E2B32427F51770007DABE6 /* SignInView.swift in Sources */,
 				D08622D827F3AC3A00BFE986 /* StoreDAYSApp.swift in Sources */,
+				D0F807CC280B3F5700B323F7 /* hmm.swift in Sources */,
 				D0FCBA1027F8E6FA0004329A /* Tracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,11 +563,14 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoreDAYS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Store DAYS";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -589,11 +600,14 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoreDAYS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Store DAYS";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
