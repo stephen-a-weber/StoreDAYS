@@ -37,7 +37,7 @@ struct ShippingModels: Hashable, Codable{
 struct PaymentsModels: Hashable, Codable{
     let ID:Int
     let CardNumber:String
-    let CVC:Int
+    let CVC:String
     let Expiration:String
     let Name:String
     let User_ID:Int
