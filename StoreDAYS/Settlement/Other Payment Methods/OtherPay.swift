@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct OtherPay: View {
+    @ObservedObject var data:Data=Data()
     @Environment(\.presentationMode) var presentationMode
     @State  var degrees: Double = 0
     @State  var flipped: Bool = false
@@ -65,7 +66,7 @@ struct OtherPay: View {
             if !UseEditFlag{
                 if ID==0{
                     Button {
-                let model=PaymentsModels(ID: ID, CardNumber: cardNumber, CVC: Int(cvv) ?? 0, Expiration: expiration, Name: cardHolderName, User_ID: User_ID, Address_ID: 2)
+                let model=PaymentsModels(ID: ID, CardNumber: cardNumber, CVC: cvv, Expiration: expiration, Name: cardHolderName, User_ID: User_ID, Address_ID: 2)
                         POSTNEWPaymentMethods(Model: model)
                         presentationMode.wrappedValue.dismiss()
                     } label: {
@@ -74,7 +75,7 @@ struct OtherPay: View {
 
                 }else{
                     Button {
-                        let model=PaymentsModels(ID: ID, CardNumber: cardNumber, CVC: Int(cvv)!, Expiration: expiration, Name: cardHolderName, User_ID: User_ID, Address_ID: 2)
+                        let model=PaymentsModels(ID: ID, CardNumber: cardNumber, CVC: cvv, Expiration: expiration, Name: cardHolderName, User_ID: User_ID, Address_ID: 2)
                         POSTUpdatePaymentMethods(Model: model)
                         presentationMode.wrappedValue.dismiss()                    } label: {
                         Text("Update")
@@ -83,8 +84,9 @@ struct OtherPay: View {
                 }
             }else{
                 Button {
-                    print("")
-                } label: {
+                    data.CardInformation=PaymentsModels(ID: 0, CardNumber: cardNumber, CVC: cvv, Expiration: expiration, Name: cardHolderName, User_ID: data.UserInformation.ID, Address_ID: data.AddressInformation.ID)
+                    
+                                    } label: {
                     Text("Continue")
                 }
                 

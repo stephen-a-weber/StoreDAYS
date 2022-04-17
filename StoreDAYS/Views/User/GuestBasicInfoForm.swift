@@ -58,8 +58,7 @@ struct GuestBasicInfoForm: View {
                     .padding(.bottom)
             }
             Button {
-print("")
-                
+                data.UserInformation=UserModels(ID: 0, UserName: "", FirstName: FirstName, LastName: LastName, DateOfBirth: "", Password: "123Password!", Email: Email, Admin: "")
             } label: {
                 Text("Continue")
                     .fontWeight(.bold)

@@ -11,7 +11,7 @@ class InvoiceViewModel: ObservableObject{
     @Published var OrdersWithItems:[Orders]=[]
     @Published var Address:AddressModels=AddressModels(ID: 0, Street: "", City: "", User_ID: 0, State: "", Zip: "")
     @Published var Shipping=ShippingModels(ID: 0, ShippingType: "", Cost: 0.0, ETA: "", User_ID: 0, Status: "", Address_ID:0)
-    @Published var Payment = PaymentsModels(ID: 0, CardNumber: "", CVC: 0, Expiration: "", Name: "", User_ID: 0, Address_ID: 0)
+    @Published var Payment = PaymentsModels(ID: 0, CardNumber: "", CVC: "", Expiration: "", Name: "", User_ID: 0, Address_ID: 0)
     func loadItems(){
         
         print(OrderList.capacity)
