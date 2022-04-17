@@ -82,7 +82,7 @@ DELETE FROM PaymentMethods Where User_ID = ?
 
 ---Table:Items
 --Create
-INSERT INTO Items (Name, Description, Cost, Catagory_ID, IMG ) VALUES (?,?,?,?,?)
+INSERT INTO Items (Name, Description, Cost, Catagory_ID, IMG, Longitude, Latitude ) VALUES (?,?,?,?,?,?,?)
 --Read
 SELECT * FROM Items WHERE ID = ?
 SELECT * FROM Items WHERE Catagory_ID = ?
@@ -90,7 +90,7 @@ SELECT * FROM Items WHERE Name = ?
 SELECT * FROM Items WHERE ID IN (SELECT Items_ID from Orders_Details WHERE Orders_ID IN (SELECT ID From Orders WHERE Invoice_ID = ?))      
 SELECT * FROM Items WHERE ID IN (SELECT Items_ID from Orders_Details WHERE Orders_ID = ?)
 --Update
-UPDATE Items set Name  = ?, Description = ?, Cost = ?, Catagory_ID = ?, Stock = ?, IMG = ?, Availability = ?  WHERE ID  = ?
+UPDATE Items set Name  = ?, Description = ?, Cost = ?, Catagory_ID = ?, Stock = ?, IMG = ?, Availability = ? , Longitude = ?, Latitude = ?  WHERE ID  = ?
 --Delete
 DELETE FROM Items Where ID = ?
 

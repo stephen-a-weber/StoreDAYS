@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `Address` (
 CREATE TABLE IF NOT EXISTS `Shipping` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `ShippingType` TEXT NULL,
-  `Cost` DECIMAL NULL,
+  `Cost` DOUBLE(15, 4)	 NULL,
   `ETA` VARCHAR(45) NULL,
   `User_ID` INT NOT NULL,
   `Status` VARCHAR(45) NULL,
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `Shipping` (
 CREATE TABLE IF NOT EXISTS `PaymentMethods` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `CardNumber` TEXT NULL,
-  `CVC` INT NULL,
+  `CVC` TEXT NULL,
   `Expiration` TEXT NULL,
   `Name` VARCHAR(45) NULL,
   `User_ID` INT NOT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `PaymentMethods` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Invoice` (
   `ID` INT NOT NULL AUTO_INCREMENT,
-  `Cost` DECIMAL  NULL,
+  `Cost` DOUBLE(15, 4)	  NULL,
   `User_ID` INT NOT NULL,
   `Shipping_ID` INT NOT NULL,
   `PaymentMethods_ID` INT NOT NULL,
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `Invoice` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Orders` (
   `ID` INT NOT NULL AUTO_INCREMENT,
-  `Cost` DECIMAL NULL,
+  `Cost` DOUBLE(15, 4)	 NULL,
   `Description` TEXT NULL,
   `Invoice_ID` INT NOT NULL,
   PRIMARY KEY (`ID`),
@@ -153,10 +153,12 @@ CREATE TABLE IF NOT EXISTS `Items` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `Name` TEXT NULL,
   `Description` TEXT NULL,
-  `Cost` DECIMAL NULL,
+  `Cost` DOUBLE(15, 4)	 NULL,
   `Catagory_ID` INT NOT NULL,
   `Img` TEXT NULL,
   `Availability` INT NULL,
+  `Longitude` DOUBLE(15, 4)	 NULL,
+  `Latitude` DOUBLE(15, 4)	 NULL,
   PRIMARY KEY (`ID`),
   INDEX `fk_Items_Catagory_idx` (`Catagory_ID` ASC) ,
   CONSTRAINT `fk_Items_Catagory`
