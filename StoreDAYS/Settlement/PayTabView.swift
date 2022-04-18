@@ -161,7 +161,7 @@ extension PayTabView {
       
 var settleView: some View {
       HStack {
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 10) {
                   Text("Invoice Amount:")
                   Text("Money Settled:")
                   Divider().background(Color.red)
@@ -169,7 +169,7 @@ var settleView: some View {
                   Text("Money Owed:")
             }
                               .padding()
-            VStack(alignment: .trailing, spacing: 0) {
+            VStack(alignment: .trailing, spacing: 10) {
                   Text(formatFunction(number: invoiceAmt))
                   Text(formatFunction(number: settledAmt))
                   Divider().background(Color.red)
