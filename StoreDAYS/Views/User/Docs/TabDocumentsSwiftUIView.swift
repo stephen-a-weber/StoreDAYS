@@ -21,7 +21,7 @@ struct TabDocumentsSwiftUIView: View {
                 
             }
             
-            PayTabView(user: "davisgon@gmail.com").tabItem {
+            PayTabView().tabItem {
                 
                 Image(systemName: "message")
                 Text("Pay")

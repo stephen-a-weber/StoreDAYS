@@ -31,7 +31,7 @@ struct VideoArkOfSuffering: View {
                                                                         lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                 
                     .sheet(isPresented: $animFlag, content: {
-                        PayTabView(user: "email")
+                        PayTabView()
                     })
             }
             .padding(.bottom, 5.0)

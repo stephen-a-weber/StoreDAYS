@@ -121,7 +121,7 @@ struct InvoiceSwiftUIView: View {
                                                                             lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                     
                          .sheet(isPresented: $animFlag2, content: {
-                             PayTabView(user: "davisgon@gmail.com")
+                             PayTabView()
                          })
                 }
                 }

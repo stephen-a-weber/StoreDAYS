@@ -9,11 +9,13 @@
 
 import PassKit
 import Foundation
+import SwiftUI
 
 typealias PaymentCompletionHandler = (Bool) -> Void
 
 class PaymentHandler: NSObject {
-
+      @ObservedObject var cart = Data()
+      @ObservedObject var model = Model()
       var paymentController: PKPaymentAuthorizationController?
     var paymentSummaryItems = [PKPaymentSummaryItem]()
     var paymentStatus = PKPaymentAuthorizationStatus.failure
@@ -74,9 +76,6 @@ class PaymentHandler: NSObject {
                shippingCollection.identifier = "COLLECTION"
         
                return [shippingDelivery]
-//               return [shippingDelivery, shippingCollection]
-//         }
-//          return []
     }
     
       @objc func startPayment(total: Int,  completion: @escaping PaymentCompletionHandler) {
@@ -86,17 +85,17 @@ class PaymentHandler: NSObject {
         
         let orderAmt = PKPaymentSummaryItem(label: "Pet", amount: NSDecimalNumber(string: "9.99"), type: .final)
         let tax = PKPaymentSummaryItem(label: "Tax", amount: NSDecimalNumber(string: "1.00"), type: .final)
-        let afterTaxAmt = PKPaymentSummaryItem(label: "Total", amount: NSDecimalNumber(string: "10.99"), type: .final)
+        let afterTaxAmt = PKPaymentSummaryItem(label: "Total", amount: NSDecimalNumber(string: cart.totalInvoice), type: .final)
         paymentSummaryItems = [orderAmt, tax, afterTaxAmt]
         
         // Create a payment request.
         let paymentRequest = PKPaymentRequest()
         paymentRequest.paymentSummaryItems = paymentSummaryItems
-//        paymentRequest.merchantIdentifier = Configuration.Merchant.identifier
+        paymentRequest.merchantIdentifier = "merchant/com/revature.STOREDAYS"
         paymentRequest.merchantCapabilities = .capability3DS
         paymentRequest.countryCode = "US"
         paymentRequest.currencyCode = "USD"
-          paymentRequest.supportedNetworks = PaymentHandler.supportedNetworks
+        paymentRequest.supportedNetworks = PaymentHandler.supportedNetworks
         paymentRequest.shippingType = .delivery
         paymentRequest.shippingMethods = shippingMethodCalculator()
         paymentRequest.requiredShippingContactFields = [.name, .postalAddress]
@@ -124,36 +123,45 @@ extension PaymentHandler: PKPaymentAuthorizationControllerDelegate {
         // Perform basic validation on the provided contact information.
           var errors = [Error]()
           var status = PKPaymentAuthorizationStatus.success
-//          if payment.shippingContact?.postalAddress?.isoCountryCode != "US" {
-//              let pickupError = PKPaymentRequest.paymentShippingAddressUnserviceableError(withLocalizedDescription: "Sample App only available in the United States")
-//              let countryError = PKPaymentRequest.paymentShippingAddressInvalidError(withKey: CNPostalAddressCountryKey, localizedDescription: "Invalid country")
-//              errors.append(pickupError)
-//              errors.append(countryError)
-//              status = .failure
-//          } else {
-//              // Send the payment token to your server or payment provider to process here.
-//              // Once processed, return an appropriate status in the completion handler (success, failure, and so on).
-//          }
+          if payment.shippingContact?.postalAddress?.isoCountryCode != "US" {
+              let pickupError = PKPaymentRequest.paymentShippingAddressUnserviceableError(withLocalizedDescription: "Sample App only available in the United States")
+              let countryError = PKPaymentRequest.paymentShippingAddressInvalidError(withKey: CNPostalAddressCountryKey, localizedDescription: "Invalid country")
+              errors.append(pickupError)
+              errors.append(countryError)
+              status = .failure
+          } else {
+              // Send the payment token to your server or payment provider to process here.
+              // Once processed, return an appropriate status in the completion handler (success, failure, and so on).
+          }
          
         self.paymentStatus = status
         completion(PKPaymentAuthorizationResult(status: status, errors: errors))
     }
     
+      func initializeViewAmount(_ view: PayTabView) {
+          view.model.invoiceAmount = 0
+      }
+
+//      let view = PayTabView()
+
+
     func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
-          print("dismiss")
       // Dismiss the payment sheet
       controller.dismiss()  {
-//          DispatchQueue.main.async {
-//              if self.paymentStatus == .success {
-//                  if let completionHandler = self.completionHandler {
-//                      completionHandler(true)
-//                  }
-//              } else {
-//                  if let completionHandler = self.completionHandler {
-//                      completionHandler(false)
-//                  }
-//              }
-//          }
+          DispatchQueue.main.async {
+              if self.paymentStatus == .success {
+                  if let completionHandler = self.completionHandler {
+                      completionHandler(true)
+                        self.initializeViewAmount(PayTabView())
+//                        PayTabView().updateSettlementDisplay(amount: 0.00)
+                        print("결제 완료! \(PayTabView().model.invoiceAmount)")
+                  }
+              } else {
+                  if let completionHandler = self.completionHandler {
+                      completionHandler(false)
+                  }
+              }
+          }
       }
     }
  }
