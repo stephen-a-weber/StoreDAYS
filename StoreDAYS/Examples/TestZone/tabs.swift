@@ -17,9 +17,11 @@ struct tabs: View {
                 Label("animals",systemImage:"pawprint.fill")
             }
                    
-                   
-                   
-                   
+            Tracking(data:data)
+                .tabItem{
+                    Label("Locations", systemImage:"globe.americas.fill")
+                }
+            
             CartView(data: data)
                 .tabItem{
                    Label("Cart",systemImage:"cart.fill")

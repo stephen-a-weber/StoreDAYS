@@ -13,7 +13,8 @@ struct Location :Identifiable {
     let id = UUID()
     let name :String
     let coordinate: CLLocationCoordinate2D
-    let price : String
+    let price : Double
+    let Item:ItemModels
 }
  
 func NumberToDollar(Tottal:Double)->String{
@@ -37,6 +38,11 @@ class Data: ObservableObject{
        Data.initdata.ItemedCart.append(Item)
         
         print("size is \(ItemedCart.capacity)")
+    }
+    func loadDataIntoLocation(){
+        for Item in AvaiableItems{
+            locations.append(Item.location)
+        }
     }
     func loadDataBaseIntoItems(){
         GETItems { GivenItems, error in
@@ -115,27 +121,12 @@ class Data: ObservableObject{
 
     @Published var locations = [Location]()
     init(){
-        
-        for item in 0..<kittenNames.count {
-            let coord = CLLocationCoordinate2D(latitude:kittenLatitude[item],longitude: kittenLongitude[item])
+        loadDataBaseIntoItems()
+        for GivenItem in AvaiableItems {
+            let coord = CLLocationCoordinate2D(latitude:GivenItem.Item.Latitude,longitude:GivenItem.Item.Longitude)
             
-            let L = Location(name: kittenNames[item], coordinate: coord ,price:kittenPrice[item])
+            let L = Location(name: GivenItem.Item.Name, coordinate: coord, price: GivenItem.Item.Cost, Item: GivenItem.Item)
             self.locations.append(L)
-            
-        }
-        for item in 0..<puppyNames.count {
-            let coord = CLLocationCoordinate2D(latitude:puppyLatitude[item],longitude: puppyLongitude[item])
-            
-            let L = Location(name: puppyNames[item], coordinate: coord ,price:puppyPrice[item])
-            locations.append(L)
-            
-        }
-        for item in 0..<exoticNames.count {
-            let coord = CLLocationCoordinate2D(latitude:animalLatitude[item],longitude: animalLongitude[item])
-            
-            let L = Location(name: exoticNames[item], coordinate: coord,price:exoticPrice[item] )
-            locations.append(L)
-            
         }
     }
     

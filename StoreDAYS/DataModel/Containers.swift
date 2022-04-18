@@ -68,13 +68,13 @@ class TheItemContainer:ObservableObject, Identifiable ,Equatable{
         self.Item=Item
         self.Review=Reviews
     }
-    @Published var location:Location=Location(name: "Item.Name", coordinate: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0), price: String(0.0))
+    @Published var location:Location=Location(name: "Item.Name", coordinate: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0), price: 0.0, Item:  ItemModels(ID: 0, Name: "", Description: "", Cost: 0.0, Catagory_ID: 0, Img: "", Availability: 0, Longitude: 0.0, Latitude: 0.0))
 
     @Published var Review:[ReviewModels]=[ReviewModels]()
     @Published var Item: ItemModels = ItemModels(ID: 0, Name: "", Description: "", Cost: 0.0, Catagory_ID: 0, Img: "", Availability: 0, Longitude: 0.0, Latitude: 0.0)
     @Published var id=UUID()
     func load(){
-        self.location=Location(name: Item.Name, coordinate: CLLocationCoordinate2D(latitude: Item.Latitude, longitude: Item.Latitude), price: String(Item.Cost))
+        self.location=Location(name: Item.Name, coordinate: CLLocationCoordinate2D(latitude: Item.Latitude, longitude: Item.Latitude), price: Item.Cost, Item: Item)
         GETReview(Items_ID: Item.ID) { GivenReviews, error in
             DispatchQueue.main.sync{self.Review=GivenReviews!}
         }
