@@ -22,7 +22,7 @@ struct CartView: View {
                     //cart
                     
                     List{
-                        ForEach(       Data.initdata.ItemedCart){
+                        ForEach(       data.ItemedCart){
                             AvailbleItem in
                             HStack{
                         
@@ -36,12 +36,13 @@ struct CartView: View {
 
                                 Text(AvailbleItem.Item.Name)
                                     .bold()
-                                Text(String(AvailbleItem.Item.Cost))
+                                Text(NumberToDollar(Tottal: AvailbleItem.Item.Cost))
                                 Text(String(AvailbleItem.Item.Catagory_ID))
                                 
 
 
                             }.onAppear{
+                                Data.initdata.ItemedCart=data.ItemedCart
                                 print("firstname:\(Data.initdata.UserInformation.FirstName)")
                                 print("State:\(Data.initdata.AddressInformation.State)")
                                 print("items\(       Data.initdata.ItemedCart.description)")
@@ -50,6 +51,7 @@ struct CartView: View {
                             .padding(3)
                         }
                         .onDelete { Index in
+                            Data.initdata.ItemedCart.remove(atOffsets: Index)
                             data.ItemedCart.remove(atOffsets:Index)
                         }
                     }
@@ -76,7 +78,7 @@ struct CartView: View {
                             .frame( maxWidth: .infinity,  alignment: .center)
                             .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
                             .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color("myBlue"),lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
-                    }
+                }
                     Spacer()
               
                 
@@ -90,15 +92,15 @@ struct CartView: View {
             
             
             
-        }
+            }
         
     }
+        
     
     // remove is a helper function used above to remove choses
     // from the cart and the global variables we are using under data
     func remove(at offsets: IndexSet) {
-        Store.TheStore.Cart.order.remove(atOffsets: offsets)
-          }
+        data.ItemedCart.remove(atOffsets: offsets)          }
     
     
     
