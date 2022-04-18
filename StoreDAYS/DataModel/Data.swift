@@ -92,15 +92,15 @@ class Data: ObservableObject, Identifiable{
     let puppy = [1,2,3,4,5,6,7,8,9,10]
     let puppyProperNames = ["Cuddles",
                             "Bubbles","Daisy","Hope","Ivy","June","Olive","Pearl","Willow","Violet"]
-    let puppyDescription = ["Cuddles Family of Kittens",
-                            "A family of smiling cats.",
-                            "Kittens with College Degrees.",
+    let puppyDescription = ["Cuddles Family of Puppies",
+                            "A family of smiling dogs.",
+                            "Puppies with College Degrees.",
                             "Pretty Sure Santa raised these cuties.",
                             "Friendship forever.",
                             "These are from an immortal lineage.",
-                            "These kittens had a color named after them.",
-                            "Definitely a musical purring box.",
-                            "Long live the Royal cat family.",
+                            "These puppies had a color named after them.",
+                            "Definitely a musical bark.",
+                            "Long live the Royal dog family.",
                             "Happily ever after."]
     @Published var puppyNames : [String] = ["puppy1","puppy2","puppy3","puppy4","puppy5","puppy6","puppy7","puppy8","puppy9","puppy10"]
     @Published var puppyLitterCount = [ 2,6,4,8,3,4,5,4,3,6]
@@ -113,15 +113,15 @@ class Data: ObservableObject, Identifiable{
     let exotic = [1,2,3,4,5,6,7,8,9]
     let exoticProperNames = ["Cuddles",
                              "Bubbles","Daisy","Hope","Ivy","June","Olive","Pearl","Willow"]
-    let exoticDescription = ["Cuddles Family of Kittens",
-                             "A family of smiling cats.",
-                             "Kittens with College Degrees.",
+    let exoticDescription = ["Cuddles Family of Fabulous animals",
+                             "A family of smiling animals.",
+                             "Interesting animals with College Degrees.",
                              "Pretty Sure Santa raised these cuties.",
                              "Friendship forever.",
                              "These are from an immortal lineage.",
-                             "These kittens had a color named after them.",
-                             "Definitely a musical purring box.",
-                             "Long live the Royal cat family."]
+                             "These animals had a color named after them.",
+                             "They Definitely make musical sounds.",
+                             "Long live the Royal animal family."]
     
    
     var kittenLatitude : [Double]=[44,37,24.7,25,  40.3,-4.097,43.6,61.87,0.6921,46.36]
