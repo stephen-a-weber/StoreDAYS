@@ -11,8 +11,8 @@ import SwiftUI
 
 
 struct Tracking: View {
- //   @EnvironmentObject var data : Data
-   @ObservedObject var data: Data
+ 
+    @EnvironmentObject var data:Data
    // As in all of the App we are using Data.swift which is a class
     //for our data
     // when database arrives the same will hold true for passed data
@@ -48,7 +48,7 @@ struct Tracking: View {
             annotationItems: data.locations) {
             places in
             MapAnnotation(coordinate: places.coordinate){
-                NavigationLink(destination: ExoticDetailView(data:data,exoticName: places.name,exoticPrice:places.price)
+                NavigationLink(destination: WorldDetailView(index: places.count)
                 ){
                     Image(places.name)
                     .resizable()
@@ -65,6 +65,7 @@ struct Tracking: View {
 
 struct Tracking_Previews: PreviewProvider {
     static var previews: some View {
-        Tracking(data: Data())
+        Tracking()
+            .environmentObject(Data())
     }
 }

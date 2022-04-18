@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabbedMainView: View {
-    @ObservedObject var data : Data
+    @StateObject var data = Data()
     @State private var showStore = true
     
         // ObservedObject pulls from @StateObject data in StoreDAYSApp
@@ -32,32 +32,32 @@ struct TabbedMainView: View {
         
             // each are separate files under the same used name
             //  NavigationView {
-       //Color.clear.zIndex(0)
+            //Color.clear.zIndex(0)
+        
+        NavigationView{
+            TabView {
+                StoreFront()
+                    .tabItem{
+                        Label("Animals",systemImage:"pawprint.fill")
+                    }
+                
+                Tracking()
+                    .tabItem{
+                        Label("Locations", systemImage:"globe.americas.fill")
+                    }
+                
+                
+                
+                CheckOutView()
+                    .tabItem{
+                        Label("Cart",systemImage:"cart.fill")
+                        
+                    }
+                
+            }
             
-            NavigationView{
-                TabView {
-                    StoreFront(data:data)
-                        .tabItem{
-                            Label("Animals",systemImage:"pawprint.fill")
-                        }
-                    
-                    Tracking(data:data)
-                        .tabItem{
-                            Label("Locations", systemImage:"globe.americas.fill")
-                        }
-                    
-                    
-                    
-                    CheckOutView(data:data)
-                        .tabItem{
-                            Label("Cart",systemImage:"cart.fill")
-                            
-                        }
-                    
-                }
-                
-                
-           
+            
+            
             .ignoresSafeArea()
                 //        .onAppear {
                 //            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -69,13 +69,15 @@ struct TabbedMainView: View {
                 //    }
             
         }
+        .environmentObject(data)
     }
 }
 
 
 struct TabbedMainView_Previews: PreviewProvider {
     static var previews: some View {
-        TabbedMainView(data: Data())
+        TabbedMainView()
+            .environmentObject(Data())
         
     }
 }

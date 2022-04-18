@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2208352427FDE6620025EE18 /* TabSwiftMoreUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2208352327FDE6620025EE18 /* TabSwiftMoreUIView.swift */; };
-		2208352627FDE79B0025EE18 /* FeedbackSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2208352527FDE79B0025EE18 /* FeedbackSwiftUIView.swift */; };
-		223114AE27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223114AD27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift */; };
 		22EDDAF227F52FE20075F49C /* LoginSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDDAF127F52FE20075F49C /* LoginSwiftUIView.swift */; };
 		22EE79B32800336B00BAE961 /* InvoiceSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE79B22800336B00BAE961 /* InvoiceSwiftUIView.swift */; };
 		84701D932800964E00430964 /* MakeAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D922800964E00430964 /* MakeAddressView.swift */; };
@@ -35,6 +32,7 @@
 		D0E2B32B27F52F51007DABE6 /* TabbedMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2B32A27F52F51007DABE6 /* TabbedMainView.swift */; };
 		D0F807CA280A5A3800B323F7 /* slidingDoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F807C9280A5A3800B323F7 /* slidingDoor.swift */; };
 		D0F807CC280B3F5700B323F7 /* hmm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F807CB280B3F5700B323F7 /* hmm.swift */; };
+		D0F80802280C93AC00B323F7 /* WorldDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F80801280C93AC00B323F7 /* WorldDetailView.swift */; };
 		D0FCBA1027F8E6FA0004329A /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FCBA0F27F8E6FA0004329A /* Tracking.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,9 +54,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2208352327FDE6620025EE18 /* TabSwiftMoreUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSwiftMoreUIView.swift; sourceTree = "<group>"; };
-		2208352527FDE79B0025EE18 /* FeedbackSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackSwiftUIView.swift; sourceTree = "<group>"; };
-		223114AD27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardSwiftUIView.swift; sourceTree = "<group>"; };
 		22EDDAF127F52FE20075F49C /* LoginSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSwiftUIView.swift; sourceTree = "<group>"; };
 		22EE79B22800336B00BAE961 /* InvoiceSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceSwiftUIView.swift; sourceTree = "<group>"; };
 		22F48B1927FA2D4C0044218D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -88,6 +83,7 @@
 		D0E2B32A27F52F51007DABE6 /* TabbedMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedMainView.swift; sourceTree = "<group>"; };
 		D0F807C9280A5A3800B323F7 /* slidingDoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = slidingDoor.swift; sourceTree = "<group>"; };
 		D0F807CB280B3F5700B323F7 /* hmm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hmm.swift; sourceTree = "<group>"; };
+		D0F80801280C93AC00B323F7 /* WorldDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldDetailView.swift; sourceTree = "<group>"; };
 		D0FCBA0F27F8E6FA0004329A /* Tracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,9 +126,6 @@
 			children = (
 				22EE79B22800336B00BAE961 /* InvoiceSwiftUIView.swift */,
 				22EDDAF127F52FE20075F49C /* LoginSwiftUIView.swift */,
-				2208352327FDE6620025EE18 /* TabSwiftMoreUIView.swift */,
-				223114AD27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift */,
-				2208352527FDE79B0025EE18 /* FeedbackSwiftUIView.swift */,
 				84701D922800964E00430964 /* MakeAddressView.swift */,
 				84701DA82809B37A00430964 /* GuestBasicInfoForm.swift */,
 			);
@@ -222,6 +215,7 @@
 				D0E2B31C27F502FE007DABE6 /* PuppyDetailView.swift */,
 				D0E2B31E27F50311007DABE6 /* KittenDetailView.swift */,
 				D0E2B32027F503F1007DABE6 /* ExoticDetailView.swift */,
+				D0F80801280C93AC00B323F7 /* WorldDetailView.swift */,
 			);
 			path = UpToCartViews;
 			sourceTree = "<group>";
@@ -375,9 +369,9 @@
 			files = (
 				22EDDAF227F52FE20075F49C /* LoginSwiftUIView.swift in Sources */,
 				84701DA92809B37B00430964 /* GuestBasicInfoForm.swift in Sources */,
+				D0F80802280C93AC00B323F7 /* WorldDetailView.swift in Sources */,
 				22EE79B32800336B00BAE961 /* InvoiceSwiftUIView.swift in Sources */,
 				84701D932800964E00430964 /* MakeAddressView.swift in Sources */,
-				223114AE27FF7CE400EF8AC9 /* DashBoardSwiftUIView.swift in Sources */,
 				D0E2B31F27F50311007DABE6 /* KittenDetailView.swift in Sources */,
 				D0E2B31727F4F101007DABE6 /* ItemCell2.swift in Sources */,
 				D0E2B31927F4F1AB007DABE6 /* ItemCell3.swift in Sources */,
@@ -386,11 +380,9 @@
 				D0E2B32127F503F1007DABE6 /* ExoticDetailView.swift in Sources */,
 				D0E2B32827F52E3A007DABE6 /* CheckOutView.swift in Sources */,
 				D0F807CA280A5A3800B323F7 /* slidingDoor.swift in Sources */,
-				2208352627FDE79B0025EE18 /* FeedbackSwiftUIView.swift in Sources */,
 				D0E2B32B27F52F51007DABE6 /* TabbedMainView.swift in Sources */,
 				D086231127F3F13600BFE986 /* StoreFront.swift in Sources */,
 				D086231327F3F77400BFE986 /* StoreSplashPage.swift in Sources */,
-				2208352427FDE6620025EE18 /* TabSwiftMoreUIView.swift in Sources */,
 				D0E2B32627F5215E007DABE6 /* CreateAccountView.swift in Sources */,
 				D086231527F406A800BFE986 /* Data.swift in Sources */,
 				D0E2B32427F51770007DABE6 /* SignInView.swift in Sources */,

@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct KittenDetailView: View {
-    @ObservedObject var data : Data
+    @EnvironmentObject var data:Data
     var kittenName = "Bob"
     var kittenPrice = "$19.00"
+    var index = 0
     @State var isPurchased = false
     
     //// the data is from @StateObject data to keep a single instance incharge of the data of the app
@@ -22,7 +23,7 @@ struct KittenDetailView: View {
     var body: some View {
         
         VStack {
-        Image(kittenName)
+            Image(data.kittenViewOrders[index].pictureName)
             .resizable()
             .scaledToFit()
        
@@ -32,14 +33,16 @@ struct KittenDetailView: View {
                 ///
                
             
-           Text("\(kittenPrice)")
+            Text("\(data.kittenViewOrders[index].price)")
             Button("Adopt this Kitten") { if !isPurchased {
-                data.addToCart(item: kittenName,price:kittenPrice)
+                data.addToCart(item: data.kittenViewOrders[index])
         isPurchased.toggle()
             }}
     .frame(width: 155.0, height: 60.0)
             
             Spacer()
+            Text("Born with the name: \(data.kittenViewOrders[index].name)")
+            Text(data.kittenViewOrders[index].description)
             Spacer()
             
             
@@ -69,6 +72,7 @@ struct KittenDetailView: View {
     
 struct KittenDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        KittenDetailView(data: Data(), kittenName:"kitten1")
+        KittenDetailView(index:0)
+            .environmentObject(Data())
     }
 }

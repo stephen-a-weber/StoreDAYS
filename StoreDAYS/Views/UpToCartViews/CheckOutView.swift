@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CheckOutView: View {
-    @ObservedObject var data: Data
+    @EnvironmentObject var data:Data
     
     var totalPrice = "$0.01"
     
@@ -29,17 +29,17 @@ struct CheckOutView: View {
                     
             List {
                 
-                ForEach(data.order, id:\.self) { item in
+                ForEach(data.cartOrders.indices) { item in
                     HStack {
-                        Image(item.name)
+                        Image(data.cartOrders[item].pictureName)
                             .resizable()
                             .frame(width:100,height:100)
                             .padding()
                         Spacer()
                         VStack{
-                            Text("You ordered \(item.name)")
+                            Text("You ordered \(data.cartOrders[item].name)")
                             .padding()
-                            Text("The price is \(item.price)")
+                            Text("The price is \(data.cartOrders[item].price)")
                         }
                     }
                 }
@@ -63,7 +63,9 @@ struct CheckOutView: View {
                     // add more or as the button is for go to purchase
                     NavigationLink {
                         
-                        InvoiceSwiftUIView(data: data)}
+                       // InvoiceSwiftUIView(data: data)
+                        
+                    }
                 label: {
                         Text("Continue To Payment")
                             .fontWeight(.bold)
@@ -92,7 +94,7 @@ struct CheckOutView: View {
     // remove is a helper function used above to remove choses
     // from the cart and the global variables we are using under data
     func remove(at offsets: IndexSet) {
-        data.order.remove(atOffsets: offsets)
+        data.cartOrders.remove(atOffsets: offsets)
     }
     
     
@@ -101,6 +103,7 @@ struct CheckOutView: View {
 
 struct CheckOutView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckOutView(data:Data())
+        CheckOutView()
+            .environmentObject(Data())
     }
 }

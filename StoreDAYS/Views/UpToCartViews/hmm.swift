@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct hmm: View {
-    @ObservedObject var data : Data
+   
     
     @AppStorage("OH") var OH = true
     var body: some View {
         Group {
             //Color.blue.zIndex(-1)
             if OH {
-                StoreSplashPage(data:data)
+                StoreSplashPage()
                      
             }
             else {
-                TabbedMainView(data:data)
+                TabbedMainView()
                    
                     
                 
@@ -31,6 +31,7 @@ struct hmm: View {
         
         
     }
+       
         
   
     
@@ -39,6 +40,8 @@ struct hmm: View {
 
 struct hmm_Previews: PreviewProvider {
     static var previews: some View {
-        hmm(data:Data())
+        hmm()
+           
     }
+       
 }

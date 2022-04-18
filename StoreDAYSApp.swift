@@ -1,34 +1,35 @@
-//
-//  StoreDAYSApp.swift
-//  StoreDAYS
-//
-//  Created by stephen weber on 3/29/22.
-//
+    //
+    //  StoreDAYSApp.swift
+    //  StoreDAYS
+    //
+    //  Created by stephen weber on 3/29/22.
+    //
 
 import SwiftUI
 
 @main
 struct StoreDAYSApp: App {
     @Environment(\.scenePhase) var scenePhase
-    // This was NotificationCenter, but has been grouped for lifetime events in
+        // This was NotificationCenter, but has been grouped for lifetime events in
         // swiftui under an environment variable.
-    // Used because splash screen has a custom transition and needs a global variable
-    // saving bool state for store or splash in AppStorage OH. And using scenePhase
-    // such that if app is closed or inactive etc. state reverts to splashscreen on restart.
+        // Used because splash screen has a custom transition and needs a global variable
+        // saving bool state for store or splash in AppStorage OH. And using scenePhase
+        // such that if app is closed or inactive etc. state reverts to splashscreen on restart.
     
     
     
     
     @AppStorage("OH") var OH = true
-    @StateObject var data = Data()
-   
-  
+    
+    
+    
     var body: some Scene {
         WindowGroup {
-            //TabbedMainView(data:data)
-           //StoreSplashPage(data:data)
-            hmm(data:data)
+                //TabbedMainView(data:data)
+                //StoreSplashPage(data:data)
+            hmm()
         }
+       
         .onChange(of: scenePhase) { newScenePhase in
             
             switch newScenePhase {
@@ -42,6 +43,8 @@ struct StoreDAYSApp: App {
             @unknown default:
                 print("Pay attention this is some unknown state....")
             }
+              
         }
     }
+        
 }

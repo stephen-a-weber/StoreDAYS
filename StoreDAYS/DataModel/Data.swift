@@ -14,23 +14,53 @@ struct Location :Identifiable {
     let name :String
     let coordinate: CLLocationCoordinate2D
     let price : String
+    let count : Int
 }
- 
+enum sellingCategory {
+    case kitten
+    case puppy
+    case exotic
+    
+}
 
-class Data: ObservableObject{
-//information to be kept during checkout
-   
-    struct Order :Hashable{
+
+class Data: ObservableObject, Identifiable{
+    
+    struct Order :Identifiable{
+        
+        let id = UUID()
         var name = ""
+        var locations = CLLocationCoordinate2D(latitude:0,longitude: 0 )
         var price = ""
+        var category = sellingCategory.kitten
+        var description = ""
+        var inventoryNumber : Int = 1
+        var pictureName = ""
+        
     }
-    // Below the item order as of april7th is an array of Orders from structure above. When one chooses
+    
+    @Published var orders = [Order]()
+    @Published var puppyViewOrders = [Order]()
+    @Published var kittenViewOrders = [Order]()
+    @Published var exoticViewOrders = [Order]()
+    @Published var cartOrders = [Order]()
+    
+    
+    
+    
+////information to be kept during checkout
+//
+//    struct Order :Hashable{
+//        var name = ""
+//        var price = ""
+//    }
+//    // Below the item order as of april7th is an array of Orders from structure above. When one chooses
     // and fills cart this will be the data structure available automatically everywhere
     // where the data class above is listed as  @ObservedObject var data:data
     // data.order is then a normal array which can populate lists or
     // database structures for the invoices.
     //
-    @Published var order = [Order]()
+  //  @Published var order = [Order]()
     
     @Published var totalPrice : String = "$0.00"
     @Published var shippingPrice : String = "$10.00"
@@ -42,12 +72,36 @@ class Data: ObservableObject{
     // keeping .currency or two decimal places. It finally changes the above
     // totalPrice string into a nice usable total.
     
+    var kittenProperNames=["Cuddles",
+                           "Bubbles","Daisy","Hope","Ivy","June","Olive","Pearl","Willow","Violet"]
+    var kittenDescription = ["Cuddles Family of Kittens",
+                             "A family of smiling cats.",
+                             "Kittens with College Degrees.",
+                             "Pretty Sure Santa raised these cuties.",
+                             "Friendship forever.",
+                             "These are from an immortal lineage.",
+                             "These kittens had a color named after them.",
+                             "Definitely a musical purring box.",
+                             "Long live the Royal cat family.",
+                             "Happily ever after."]
     @Published var name = "STOREDAY!"
     @Published var kitten : [Int] = [1,2,3,4,5,6,7,8,9,10]
     @Published var kittenNames : [String] = ["kitten1","kitten2","kitten3","kitten4","kitten5","kitten6","kitten7","kitten8","kitten9","kitten10"]
     @Published var kittenLitterCount = [ 5,3,6,2,2,5,4,6,3,4]
     @Published var kittenPrice = ["$12.99","$15.99","$19.99","$14.99","$19.99","$14.99","$19.99","$14.99","$19.99","$14.99"]
-    
+    let puppy = [1,2,3,4,5,6,7,8,9,10]
+    let puppyProperNames = ["Cuddles",
+                            "Bubbles","Daisy","Hope","Ivy","June","Olive","Pearl","Willow","Violet"]
+    let puppyDescription = ["Cuddles Family of Kittens",
+                            "A family of smiling cats.",
+                            "Kittens with College Degrees.",
+                            "Pretty Sure Santa raised these cuties.",
+                            "Friendship forever.",
+                            "These are from an immortal lineage.",
+                            "These kittens had a color named after them.",
+                            "Definitely a musical purring box.",
+                            "Long live the Royal cat family.",
+                            "Happily ever after."]
     @Published var puppyNames : [String] = ["puppy1","puppy2","puppy3","puppy4","puppy5","puppy6","puppy7","puppy8","puppy9","puppy10"]
     @Published var puppyLitterCount = [ 2,6,4,8,3,4,5,4,3,6]
     @Published var puppyPrice = ["$100","$234","$267","$765","$333","$666","$546","$125","$212","$145"]
@@ -56,6 +110,18 @@ class Data: ObservableObject{
     @Published var exoticLitterCount = [2,2,2,3,2,1,2,1,1]
     @Published var exoticPrice = ["$1200","$1100","$2300","$4500","$5200","$3666","$2567","$9765","$12000"]
     
+    let exotic = [1,2,3,4,5,6,7,8,9]
+    let exoticProperNames = ["Cuddles",
+                             "Bubbles","Daisy","Hope","Ivy","June","Olive","Pearl","Willow"]
+    let exoticDescription = ["Cuddles Family of Kittens",
+                             "A family of smiling cats.",
+                             "Kittens with College Degrees.",
+                             "Pretty Sure Santa raised these cuties.",
+                             "Friendship forever.",
+                             "These are from an immortal lineage.",
+                             "These kittens had a color named after them.",
+                             "Definitely a musical purring box.",
+                             "Long live the Royal cat family."]
     
    
     var kittenLatitude : [Double]=[44,37,24.7,25,  40.3,-4.097,43.6,61.87,0.6921,46.36]
@@ -67,49 +133,90 @@ class Data: ObservableObject{
 
     @Published var locations = [Location]()
     init(){
-        
+        var count = 0
         for item in 0..<kittenNames.count {
-            let coord = CLLocationCoordinate2D(latitude:kittenLatitude[item],longitude: kittenLongitude[item])
             
-            let L = Location(name: kittenNames[item], coordinate: coord ,price:kittenPrice[item])
+            let coord = CLLocationCoordinate2D(latitude:kittenLatitude[item],longitude: kittenLongitude[item])
+            var order = Order()
+            order.name = kittenProperNames[item]
+            order.locations=coord
+            order.price=kittenPrice[item]
+            order.category=sellingCategory.kitten
+            order.description=kittenDescription[item]
+            order.inventoryNumber = kittenLitterCount[item]
+            order.pictureName = kittenNames[item]
+            orders.append(order)
+            kittenViewOrders.append(order)
+            let L = Location(name: kittenNames[item], coordinate: coord ,price:kittenPrice[item],count: count)
             self.locations.append(L)
+            count+=1
             
         }
         for item in 0..<puppyNames.count {
             let coord = CLLocationCoordinate2D(latitude:puppyLatitude[item],longitude: puppyLongitude[item])
+
+            var order = Order()
+            order.name = puppyProperNames[item]
+            order.locations=coord
+            order.price=puppyPrice[item]
+            order.category=sellingCategory.puppy
+            order.description=puppyDescription[item]
+            order.inventoryNumber = puppyLitterCount[item]
+            order.pictureName = puppyNames[item]
+            orders.append(order)
+            puppyViewOrders.append(order)
             
-            let L = Location(name: puppyNames[item], coordinate: coord ,price:puppyPrice[item])
+            
+            
+            let L = Location(name: puppyNames[item], coordinate: coord ,price:puppyPrice[item],count:count)
             locations.append(L)
+            count+=1
             
         }
         for item in 0..<exoticNames.count {
             let coord = CLLocationCoordinate2D(latitude:animalLatitude[item],longitude: animalLongitude[item])
+
+            var order = Order()
+            order.name = exoticProperNames[item]
+            order.locations=coord
+            order.price=exoticPrice[item]
+            order.category=sellingCategory.exotic
+            order.description=exoticDescription[item]
+            order.inventoryNumber = exoticLitterCount[item]
+            order.pictureName = exoticNames[item]
+            orders.append(order)
+            exoticViewOrders.append(order)
+
             
-            let L = Location(name: exoticNames[item], coordinate: coord,price:exoticPrice[item] )
+            
+            
+            let L = Location(name: exoticNames[item], coordinate: coord,price:exoticPrice[item],count:count )
             locations.append(L)
+            count+=1
             
         }
     }
     
     
     
-    func addToCart(item : String,price: String) {
-        let x = Order(name: item, price : price)
-        order.append(x)
+    func addToCart(item : Order) {
+        
+        cartOrders.append(item)
         
     }
+  
     
     func calculateTotalPrice() {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         var dollars : Decimal = 0.0
-        for i in self.order {
-            
-            if let number = formatter.number(from: i.price) {
+        for i in self.cartOrders.indices{
+            let item = cartOrders[i].price
+            if let number = formatter.number(from: item) {
                 let amount = number.decimalValue
                 dollars += amount
             }
-            
+
         }
         self.totalPrice =  "$\(dollars)"
     }
@@ -117,80 +224,79 @@ class Data: ObservableObject{
     
     
     // Shipping
-    func calculateShipping() {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        var dollars : Decimal = 0.0
-        for i in self.order {
-            
-            if let number = formatter.number(from: i.price) {
-                let amount = number.decimalValue
-                dollars += amount
-            }
-            
-        }
-        if dollars > 200 {
-            self.shippingPrice =  "$\(0.00)"
-        }else{
-            self.shippingPrice =  "$\(10.00)"
-        }
-      
-    }
-    // Taxes
-    func calculateTax() {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        var dollars : Decimal = 0.0
-        var tax     : Decimal = 0.0
-        for i in self.order {
-            
-            if let number = formatter.number(from: i.price) {
-                let amount = number.decimalValue
-                dollars += amount
-            }
-            
-        }
-        tax = (dollars * 0.07)
-        var Tx = Double(tax.description) ?? 0
-        Tx = round(Tx * 100) / 100
-        
-     
-    print(Tx)
-        
-            self.taxes =  "$\(Tx)"
-    }
+//    func calculateShipping() {
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = .currency
+//        var dollars : Decimal = 0.0
+//        for i in self.order {
+//
+//            if let number = formatter.number(from: i.price) {
+//                let amount = number.decimalValue
+//                dollars += amount
+//            }
+//
+//        }
+//        if dollars > 200 {
+//            self.shippingPrice =  "$\(0.00)"
+//        }else{
+//            self.shippingPrice =  "$\(10.00)"
+//        }
+//
+//    }
+//    // Taxes
+//    func calculateTax() {
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = .currency
+//        var dollars : Decimal = 0.0
+//        var tax     : Decimal = 0.0
+//        for i in self.order {
+//            
+//            if let number = formatter.number(from: i.price) {
+//                let amount = number.decimalValue
+//                dollars += amount
+//            }
+//            
+//        }
+//        tax = (dollars * 0.07)
+//        var Tx = Double(tax.description) ?? 0
+//        Tx = round(Tx * 100) / 100
+//        
+//     
+//    print(Tx)
+//        
+//            self.taxes =  "$\(Tx)"
+//    }
+//    
     
-    
-    
-    func calculateTotalInvoice() {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        var dollars : Decimal = 0.0
-        var total     : Decimal = 0.0
-        
-        for i in self.order {
-            
-            if let number = formatter.number(from: i.price) {
-                let amount = number.decimalValue
-                dollars += amount
-            }
-            
-        }
-        
-        if dollars > 200 {
-            dollars += 0
-        }else{
-            dollars += 10
-        }
-        total = dollars + (dollars * 0.07)
-        
-        
-        
-   
-        var TTL = Double(total.description) ?? 0
-        TTL = round(TTL * 100) / 100
-        
-        self.totalInvoice =  "$\(TTL)"
-    }
+//
+//    func calculateTotalInvoice() {
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = .currency
+//        var dollars : Decimal = 0.0
+//        var total     : Decimal = 0.0
+//
+//        for i in self.order {
+//
+//            if let number = formatter.number(from: i.price) {
+//                let amount = number.decimalValue
+//                dollars += amount
+//            }
+//
+//        }
+//
+//        if dollars > 200 {
+//            dollars += 0
+//        }else{
+//            dollars += 10
+//        }
+//        total = dollars + (dollars * 0.07)
+//
+//
+//
+//
+//        var TTL = Double(total.description) ?? 0
+//        TTL = round(TTL * 100) / 100
+//
+//        self.totalInvoice =  "$\(TTL)"
+//    }
 }
-
