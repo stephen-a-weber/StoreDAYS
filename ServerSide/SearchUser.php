@@ -9,7 +9,7 @@ if (!empty($_GET['Email'])) {
     $stmt->execute() or die("Couldn't excute" . htmlspecialchars($stmt->error));
     $rows = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-        echo json_encode($rows[0]);
+        echo json_encode($rows);
 } else {
     die("Post was not met");
 }
