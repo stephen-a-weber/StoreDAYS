@@ -166,11 +166,8 @@ var settleView: some View {
                   Text("Money Settled:")
                   Divider().background(Color.red)
                   Spacer()
-//                  Divider().background(Color.red)
                   Text("Money Owed:")
             }
-//            .font(.system(size: 20))
-//                                        .fontWeight(.bold)
                               .padding()
             VStack(alignment: .trailing, spacing: 0) {
                   Text(formatFunction(number: invoiceAmt))
@@ -195,59 +192,6 @@ var settleView: some View {
           )
 }
 
-
-
- 
-            
-
-      
-      
-      
-      
-      
-//      VStack(alignment: .trailing, spacing: 5) {
-//            VStack(alignment: .trailing, spacing: 0) {
-//                  HStack {
-//                         Text(formatFunction(number: invoiceAmt))
-//                                    .font(.system(size: 20))
-//                                    .fontWeight(.bold)
-//                                    .padding()
-//                  }
-//                  ZStack (alignment: .lastTextBaseline ) {
-//                        Text("Money Settled:")
-//                              .fontWeight(.bold)
-//                        Text(formatFunction(number: settledAmt))
-//                              .fontWeight(.bold)
-//            }
-//                  .padding(.bottom)
-//                  .font(.system(size: 20))
-//
-//            }
-//            Divider().background(Color.red)
-//      HStack{
-//            Text("Money Owed:")
-//             .font(.system(size: 20))
-//             .fontWeight(.bold)
-//             .padding()
-//            Text(formatFunction(number: owedAmt))
-//             .font(.system(size: 20))
-//             .fontWeight(.bold)
-//             .padding()
-//      }
-//      .background(.cyan)
-//      }
-//      .onAppear {
-//            invoiceAmt  =  Double(cart.totalInvoice) ?? 0
-//            owedAmt = invoiceAmt
-//     }
-//      .foregroundColor(.black)
-//      .frame(height: 180)
-//      .padding()
-//      .overlay(
-//              RoundedRectangle(cornerRadius: 16)
-//                  .stroke(Color.cyan, lineWidth: 4)
-//          )
-//      }
       public func updateSettlementDisplay(amount: Double) {
           DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
               DispatchQueue.main.async {
