@@ -8,9 +8,7 @@ if (!empty($_GET['Email'])) {
     $stmt->bind_param("s", $email) or die("Couldn't bind" . htmlspecialchars($stmt->error));
     $stmt->execute() or die("Couldn't excute" . htmlspecialchars($stmt->error));
     $rows = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-    if (empty($rows))
-        echo json_encode(0);
-    else
+
         echo json_encode($rows[0]);
 } else {
     die("Post was not met");
