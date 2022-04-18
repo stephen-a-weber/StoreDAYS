@@ -24,7 +24,7 @@ case "POST":
             $PaymentMethods_ID = (int)$_POST['PaymentMethods_ID'];
           }
 
-        $sql = "UPDATE Invoice set Sum = ?, User_ID = ?, Shipping_ID = ?, PaymentMethods_ID = ? WHERE ID = ?";
+        $sql = "UPDATE Invoice set Cost = ?, User_ID = ?, Shipping_ID = ?, PaymentMethods_ID = ? WHERE ID = ?";
         $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
         $stmt -> bind_param("iiiii",$Sum,$User_ID,$Shipping_ID,$PaymentMethods_ID,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
@@ -54,7 +54,7 @@ case "POST":
             }
 
 
-        $sql = "INSERT INTO Invoice (Sum, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (?,?,?,?)";
+        $sql = "INSERT INTO Invoice (Cost, User_ID, Shipping_ID, PaymentMethods_ID) VALUES (?,?,?,?)";
         $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
         $stmt -> bind_param("iiii",$Sum,$User_ID,$Shipping_ID,$PaymentMethods_ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
         $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
