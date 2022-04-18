@@ -160,37 +160,94 @@ extension PayTabView {
       }
       
 var settleView: some View {
-      VStack(alignment: .trailing, spacing: 5) {
-            VStack(alignment: .trailing, spacing: 0) {
-            Text("Invoice Amount:  \(formatFunction(number: invoiceAmt))")
-                        .font(.system(size: 20))
-                        .fontWeight(.bold)
-                        .padding()
-            Text("Money Settled:  \(formatFunction(number: settledAmt))")
-                        .font(.system(size: 20))
-                        .fontWeight(.bold)
-                        .underline()
-                        .padding()
+      HStack {
+            VStack(alignment: .leading, spacing: 0) {
+                  Text("Invoice Amount:")
+                  Text("Money Settled:")
+                  Divider().background(Color.red)
+                  Spacer()
+//                  Divider().background(Color.red)
+                  Text("Money Owed:")
             }
-            Spacer()
-                  Text("Money Owed:  \(formatFunction(number: owedAmt))")
-                   .font(.system(size: 20))
-                   .fontWeight(.bold)
-                   .padding()
-            .background(.cyan)
+//            .font(.system(size: 20))
+//                                        .fontWeight(.bold)
+                              .padding()
+            VStack(alignment: .trailing, spacing: 0) {
+                  Text(formatFunction(number: invoiceAmt))
+                  Text(formatFunction(number: settledAmt))
+                  Divider().background(Color.red)
+                  Spacer()
+                  Text(formatFunction(number: owedAmt))
+            }
+            .padding()
       }
+      .font(.headline)
       .onAppear {
             invoiceAmt  =  Double(cart.totalInvoice) ?? 0
             owedAmt = invoiceAmt
      }
       .foregroundColor(.black)
-      .frame(height: 180)
+      .frame(height: 150)
       .padding()
       .overlay(
               RoundedRectangle(cornerRadius: 16)
                   .stroke(Color.cyan, lineWidth: 4)
           )
-      }
+}
+
+
+
+ 
+            
+
+      
+      
+      
+      
+      
+//      VStack(alignment: .trailing, spacing: 5) {
+//            VStack(alignment: .trailing, spacing: 0) {
+//                  HStack {
+//                         Text(formatFunction(number: invoiceAmt))
+//                                    .font(.system(size: 20))
+//                                    .fontWeight(.bold)
+//                                    .padding()
+//                  }
+//                  ZStack (alignment: .lastTextBaseline ) {
+//                        Text("Money Settled:")
+//                              .fontWeight(.bold)
+//                        Text(formatFunction(number: settledAmt))
+//                              .fontWeight(.bold)
+//            }
+//                  .padding(.bottom)
+//                  .font(.system(size: 20))
+//
+//            }
+//            Divider().background(Color.red)
+//      HStack{
+//            Text("Money Owed:")
+//             .font(.system(size: 20))
+//             .fontWeight(.bold)
+//             .padding()
+//            Text(formatFunction(number: owedAmt))
+//             .font(.system(size: 20))
+//             .fontWeight(.bold)
+//             .padding()
+//      }
+//      .background(.cyan)
+//      }
+//      .onAppear {
+//            invoiceAmt  =  Double(cart.totalInvoice) ?? 0
+//            owedAmt = invoiceAmt
+//     }
+//      .foregroundColor(.black)
+//      .frame(height: 180)
+//      .padding()
+//      .overlay(
+//              RoundedRectangle(cornerRadius: 16)
+//                  .stroke(Color.cyan, lineWidth: 4)
+//          )
+//      }
       public func updateSettlementDisplay(amount: Double) {
           DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
               DispatchQueue.main.async {
