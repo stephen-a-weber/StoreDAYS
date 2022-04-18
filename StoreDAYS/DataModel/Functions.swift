@@ -185,6 +185,7 @@ func POSTNEWPaymentMethods(Model:PaymentsModels){
            let task = URLSession.shared.dataTask(with: request){
                (data,_,error) in
                if let error = error {
+                   print("NewPayment")
                               // Handle HTTP request error
    print(error)                       } else if let data = data {
                               // Handle HTTP request response
@@ -217,6 +218,7 @@ func POSTNEWPaymentMethods(Model:PaymentsModels,PaymentIDCompletionHandler:@esca
            let ID=JsonData.first!.LAST_INSERT_ID
            PaymentIDCompletionHandler(ID,nil)
        }catch{
+           print("NewPAyment")
            print(error)
        }                          }
            })
@@ -337,6 +339,7 @@ func POSTNewInvoice(Model:InvoiceModels, OrderedItems:[TheItemContainer]){
  
 
     let parameters="Sum=\(Model.Cost)&User_ID=\(Model.User_ID)&Shipping_ID=\(Model.Shipping_ID)&PaymentMethods_ID=\(Model.PaymentMethods_ID)"
+    print(parameters)
     var request = URLRequest(url: URL(string: InvoiceURL)!)
     request.httpMethod="POST"
         request.httpBody=parameters.data(using: String.Encoding.utf8)
@@ -346,6 +349,8 @@ func POSTNewInvoice(Model:InvoiceModels, OrderedItems:[TheItemContainer]){
         if let error = error {
                        // Handle HTTP request error
 print(error)                       } else if let data = data {
+    print(String(data:data, encoding: .utf8))
+
     do{
         let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
         let ID=JsonData.first!.LAST_INSERT_ID
@@ -353,6 +358,7 @@ print(error)                       } else if let data = data {
             POSTNewOrders(Item: Item.Item, InvoiceID: ID)
         }
     }catch{
+        print("NewInvoice")
         print(error)
     }
     
@@ -383,6 +389,7 @@ print(error)                       } else if let data = data {
             POSTNewOrders(Item: Item, InvoiceID: ID)
         }
     }catch{
+        print("NewInvoice")
         print(error)
     }
     
@@ -404,11 +411,11 @@ func GETSearchUser(Email:String, UserIDCompletionHandler:@escaping(Int?,Error?)-
                 }
                 //convert to json
                 do{
-                    let JsonData = try JSONDecoder().decode(Int.self, from: data)
-                    UserIDCompletionHandler(JsonData,nil)
+                    let JsonData = try JSONDecoder().decode(IDModel.self, from: data)
+                    UserIDCompletionHandler(JsonData.ID,nil)
                     
                 }catch{
-                    print(": In Items")
+                    print(": In Search User")
                     print(error)
                 }
             }
@@ -419,60 +426,57 @@ func GETSearchUser(Email:String, UserIDCompletionHandler:@escaping(Int?,Error?)-
 func DynamicCheckOut(data:Data){
     if (data.UserInformation.ID==0){
         GETSearchUser(Email: data.UserInformation.Email) { ID, error in
-            
+            print(ID)
             if(ID! == 0){
+                print("Doing NEW New")
                 POSTSignUp(Info: data.UserInformation) { GivenUserID, error in
                     let AddressModel = AddressModels(ID: 0, Street: data.AddressInformation.Street, City: data.AddressInformation.City, User_ID: GivenUserID!, State: data.AddressInformation.State, Zip: data.AddressInformation.Zip)
                     
                     POSTNewAddress(Model: AddressModel, AddressIDCompletionHandler: {
                         GivenAddressID, error in
-                        var InvoiceModel:InvoiceModels=InvoiceModels(ID: 0, Cost: 0.0, User_ID: GivenUserID!, Shipping_ID: 0, PaymentMethods_ID: 0)
-                        let PaymentModel=PaymentsModels(ID: 0, CardNumber: data.CardInformation.CardNumber, CVC: data.CardInformation.CVC, Expiration: data.CardInformation.Expiration, Name: data.CardInformation.Name, User_ID: GivenUserID!, Address_ID: GivenAddressID!)
-                        POSTNEWPaymentMethods(Model: PaymentModel, PaymentIDCompletionHandler: {
-                            GivenPaymentID, error in
-                            DispatchQueue.main.sync {
-                                InvoiceModel=InvoiceModels(ID: 0, Cost: InvoiceModel.Cost, User_ID: InvoiceModel.User_ID, Shipping_ID: InvoiceModel.Shipping_ID, PaymentMethods_ID: GivenPaymentID!)
-                            }
-                        })
+                       
                         
                         let ShippingModel=ShippingModels(ID: 0, ShippingType: data.ShippingInformation.ShippingType, Cost: data.ShippingInformation.Cost, ETA: data.ShippingInformation.ETA, User_ID: GivenUserID!, Status: data.ShippingInformation.Status, Address_ID: GivenAddressID!)
                         POSTNewShipping(Model: ShippingModel, ShippingIDCompletionHandler: {
                             GivenShippingID, error in
-                            DispatchQueue.main.sync {
-                                InvoiceModel=InvoiceModels(ID: 0, Cost: InvoiceModel.Cost, User_ID: InvoiceModel.User_ID, Shipping_ID: GivenShippingID!, PaymentMethods_ID: InvoiceModel.PaymentMethods_ID)
-                            }
+                            let PaymentModel=PaymentsModels(ID: 0, CardNumber: data.CardInformation.CardNumber, CVC: data.CardInformation.CVC, Expiration: data.CardInformation.Expiration, Name: data.CardInformation.Name, User_ID: GivenUserID!, Address_ID: GivenAddressID!)
+                            POSTNEWPaymentMethods(Model: PaymentModel, PaymentIDCompletionHandler: {
+                                GivenPaymentID, error in
+                                let InvoiceModel:InvoiceModels=InvoiceModels(ID: 0, Cost: Data.initdata.totalInvoice, User_ID: GivenUserID!, Shipping_ID: GivenShippingID!, PaymentMethods_ID:GivenPaymentID!)
+                              
+                                POSTNewInvoice(Model: InvoiceModel, OrderedItems: data.ItemedCart)
+
+                            })
                         })
                         
-                        POSTNewInvoice(Model: InvoiceModel, OrderedItems: data.ItemedCart)
                     })
                     
                   
                 }
             }
             else{
-                
+                print("Found Guest")
                     let AddressModel = AddressModels(ID: 0, Street: data.AddressInformation.Street, City: data.AddressInformation.City, User_ID: ID!, State: data.AddressInformation.State, Zip: data.AddressInformation.Zip)
                     
                     POSTNewAddress(Model: AddressModel, AddressIDCompletionHandler: {
                         GivenAddressID, error in
-                        var InvoiceModel:InvoiceModels=InvoiceModels(ID: 0, Cost: 0.0, User_ID: ID!, Shipping_ID: 0, PaymentMethods_ID: 0)
+                       
                         let PaymentModel=PaymentsModels(ID: 0, CardNumber: data.CardInformation.CardNumber, CVC: data.CardInformation.CVC, Expiration: data.CardInformation.Expiration, Name: data.CardInformation.Name, User_ID: ID!, Address_ID: GivenAddressID!)
                         POSTNEWPaymentMethods(Model: PaymentModel, PaymentIDCompletionHandler: {
                             GivenPaymentID, error in
-                            DispatchQueue.main.sync {
-                                InvoiceModel=InvoiceModels(ID: 0, Cost: InvoiceModel.Cost, User_ID: InvoiceModel.User_ID, Shipping_ID: InvoiceModel.Shipping_ID, PaymentMethods_ID: GivenPaymentID!)
-                            }
+                            let ShippingModel=ShippingModels(ID: 0, ShippingType: data.ShippingInformation.ShippingType, Cost: data.ShippingInformation.Cost, ETA: data.ShippingInformation.ETA, User_ID: ID!, Status: data.ShippingInformation.Status, Address_ID: GivenAddressID!)
+                            POSTNewShipping(Model: ShippingModel, ShippingIDCompletionHandler: {
+                                GivenShippingID, error in
+                                var InvoiceModel:InvoiceModels=InvoiceModels(ID: 0, Cost: 0.0, User_ID: ID!, Shipping_ID: 0, PaymentMethods_ID: 0)
+                                    InvoiceModel=InvoiceModels(ID: 0, Cost: InvoiceModel.Cost, User_ID: InvoiceModel.User_ID, Shipping_ID: GivenShippingID!, PaymentMethods_ID: GivenPaymentID!)
+                                POSTNewInvoice(Model: InvoiceModel, OrderedItems: data.ItemedCart)
+
+                                
+                            })
                         })
                         
-                        let ShippingModel=ShippingModels(ID: 0, ShippingType: data.ShippingInformation.ShippingType, Cost: data.ShippingInformation.Cost, ETA: data.ShippingInformation.ETA, User_ID: ID!, Status: data.ShippingInformation.Status, Address_ID: GivenAddressID!)
-                        POSTNewShipping(Model: ShippingModel, ShippingIDCompletionHandler: {
-                            GivenShippingID, error in
-                            DispatchQueue.main.sync {
-                                InvoiceModel=InvoiceModels(ID: 0, Cost: InvoiceModel.Cost, User_ID: InvoiceModel.User_ID, Shipping_ID: GivenShippingID!, PaymentMethods_ID: InvoiceModel.PaymentMethods_ID)
-                            }
-                        })
                         
-                        POSTNewInvoice(Model: InvoiceModel, OrderedItems: data.ItemedCart)
+                        
                     
                     
                   
@@ -503,8 +507,8 @@ func POSTSignUp(Info:UserModels, SignupHandler:@escaping(Int?,Error?)->Void){
         Password=Info.Password
     }
     
-    let parameters="FirstName=\(Info.FirstName)&LastName=\(Info.LastName)&Email&\(Info.Email)&Passowrd=\(Password)"
-    var request = URLRequest(url: URL(string: OrdersURL)!)
+    let parameters="FirstName=\(Info.FirstName)&LastName=\(Info.LastName)&Email=\(Info.Email)&Password=\(Password)"
+    var request = URLRequest(url: URL(string: SignUpURL)!)
     request.httpMethod="POST"
         request.httpBody=parameters.data(using: String.Encoding.utf8)
     let task = URLSession.shared.dataTask(with: request){
@@ -512,12 +516,18 @@ func POSTSignUp(Info:UserModels, SignupHandler:@escaping(Int?,Error?)->Void){
         if let error = error {
             print(error)           // Handle HTTP request error
         }
-        else if let data = data {                       // Handle HTTP request response
+        else if let data = data {
+            print(String(data:data, encoding: .utf8))
+
+            // Handle HTTP request response
             do{
-    let JsonData = try JSONDecoder().decode(LastInsert.self, from: data)
-                let ID=JsonData.LAST_INSERT_ID
+
+    let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
+                let ID=JsonData.first!.LAST_INSERT_ID
                 SignupHandler(ID,nil)
-            }catch{print(error)}       }
+            }catch{
+                print("Signup")
+                print(error)}       }
     }
     task.resume()
 }
@@ -532,14 +542,17 @@ func POSTNewOrders(Item:ItemContainer,InvoiceID:Int){
     let task = URLSession.shared.dataTask(with: request){
         (data,_,error) in
         if let error = error {
+            print("NewOrder")
             print(error)           // Handle HTTP request error
         }
         else if let data = data {                       // Handle HTTP request response
             do{
-    let JsonData = try JSONDecoder().decode(LastInsert.self, from: data)
-                let ID=JsonData.LAST_INSERT_ID
+    let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
+                let ID=JsonData.first!.LAST_INSERT_ID
                 POSTOrderDetail(Items_ID: Item.ID, Order_ID: ID)
-            }catch{print(error)}       }
+            }catch{print(error)
+                print("NewOrder")
+            }       }
     }
     task.resume()
     }
@@ -555,14 +568,17 @@ func POSTNewOrders(Item:ItemModels,InvoiceID:Int){
     let task = URLSession.shared.dataTask(with: request){
         (data,_,error) in
         if let error = error {
+            print("NewOrder")
             print(error)           // Handle HTTP request error
         }
         else if let data = data {                       // Handle HTTP request response
             do{
-    let JsonData = try JSONDecoder().decode(LastInsert.self, from: data)
-                let ID=JsonData.LAST_INSERT_ID
+    let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
+                let ID=JsonData.first!.LAST_INSERT_ID
                 POSTOrderDetail(Items_ID: Item.ID, Order_ID: ID)
-            }catch{print(error)}       }
+            }catch{print(error)
+                print("NewOrder")
+            }       }
     }
     task.resume()
     }
@@ -807,7 +823,7 @@ func GETAddress(User_ID:Int, AddressCompletionHandler: @escaping([AddressModels]
 func POSTNewShipping(Model:ShippingModels, ShippingIDCompletionHandler:@escaping(Int?,Error?)->Void){
    
     let parameters="ShippingType=\(Model.ShippingType)&Cost=\(Model.Cost)&ETA=\(Model.ETA)&User_ID=\(Model.User_ID)&Status=\(Model.Status)&Address_ID=\(Model.Address_ID)"
-    var request = URLRequest(url: URL(string: AddressURL)!)
+    var request = URLRequest(url: URL(string: ShippingURL)!)
     request.httpMethod="POST"
         request.httpBody=parameters.data(using: String.Encoding.utf8)
     let task = URLSession.shared.dataTask(with: request, completionHandler: {
@@ -816,6 +832,7 @@ func POSTNewShipping(Model:ShippingModels, ShippingIDCompletionHandler:@escaping
                        // Handle HTTP request error
 print(error)                       } else if let data = data {
                        // Handle HTTP request response
+    print(String(data:data,encoding: .utf8))
     do{
         let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
         let ID=JsonData.first!.LAST_INSERT_ID

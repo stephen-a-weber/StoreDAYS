@@ -17,6 +17,9 @@ struct UserModels: Hashable, Codable{
     let Admin:String
     
 }
+struct IDModel: Hashable, Codable{
+let ID:Int
+}
 struct AddressModels: Hashable, Codable{
     let ID:Int
     let Street:String
