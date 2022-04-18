@@ -25,7 +25,7 @@ struct SwiftUIAPIView: View {
 
                         Text(AvailbleItem.Item.Name)
                             .bold()
-                        Text(String(AvailbleItem.Item.Cost))
+                        Text(NumberToDollar(Tottal: AvailbleItem.Item.Cost))
                         Text(String(AvailbleItem.Item.Catagory_ID))
                         NavigationLink("", destination:DetailView(ItemedContainer: TheItemContainer(Item: AvailbleItem.Item), data:data, isPurchased: false))
 

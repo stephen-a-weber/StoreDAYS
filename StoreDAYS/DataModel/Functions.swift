@@ -349,44 +349,13 @@ func POSTNewInvoice(Model:InvoiceModels, OrderedItems:[TheItemContainer]){
         if let error = error {
                        // Handle HTTP request error
 print(error)                       } else if let data = data {
-    print(String(data:data, encoding: .utf8))
+    print(String(data:data, encoding: .utf8) ?? " ")
 
     do{
         let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
         let ID=JsonData.first!.LAST_INSERT_ID
         for Item in OrderedItems{
             POSTNewOrders(Item: Item.Item, InvoiceID: ID)
-        }
-    }catch{
-        print("NewInvoice")
-        print(error)
-    }
-    
-                       // Handle HTTP request response
-                       
-                   }
-    }
-    task.resume()
-    
-}
-func POSTNewInvoice(Cost:Double,Shipping_ID:Int,User_ID:Int,OrderedItems:[ItemContainer], PaymentMethods_ID:Int){
- 
-
-    let parameters="Sum=\(Cost)&User_ID=\(User_ID)&Shipping_ID=\(Shipping_ID)&PaymentMethods_ID=\(PaymentMethods_ID)"
-    var request = URLRequest(url: URL(string: InvoiceURL)!)
-    request.httpMethod="POST"
-        request.httpBody=parameters.data(using: String.Encoding.utf8)
-    let task = URLSession.shared.dataTask(with: request){
-        (data,_,error) in
-        
-        if let error = error {
-                       // Handle HTTP request error
-print(error)                       } else if let data = data {
-    do{
-        let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
-        let ID=JsonData.first!.LAST_INSERT_ID
-        for Item in OrderedItems{
-            POSTNewOrders(Item: Item, InvoiceID: ID)
         }
     }catch{
         print("NewInvoice")
@@ -426,7 +395,7 @@ func GETSearchUser(Email:String, UserIDCompletionHandler:@escaping(Int?,Error?)-
 func DynamicCheckOut(data:Data){
     if (data.UserInformation.ID==0){
         GETSearchUser(Email: data.UserInformation.Email) { ID, error in
-            print(ID)
+            print(ID ?? 0)
             if(ID! == 0){
                 print("Doing NEW New")
                 POSTSignUp(Info: data.UserInformation) { GivenUserID, error in
@@ -457,7 +426,6 @@ func DynamicCheckOut(data:Data){
             else{
                 print("Found Guest")
                     let AddressModel = AddressModels(ID: 0, Street: data.AddressInformation.Street, City: data.AddressInformation.City, User_ID: ID!, State: data.AddressInformation.State, Zip: data.AddressInformation.Zip)
-                    
                     POSTNewAddress(Model: AddressModel, AddressIDCompletionHandler: {
                         GivenAddressID, error in
                        
@@ -517,7 +485,7 @@ func POSTSignUp(Info:UserModels, SignupHandler:@escaping(Int?,Error?)->Void){
             print(error)           // Handle HTTP request error
         }
         else if let data = data {
-            print(String(data:data, encoding: .utf8))
+            print(String(data:data, encoding: .utf8) ?? " ")
 
             // Handle HTTP request response
             do{
@@ -531,32 +499,6 @@ func POSTSignUp(Info:UserModels, SignupHandler:@escaping(Int?,Error?)->Void){
     }
     task.resume()
 }
-func POSTNewOrders(Item:ItemContainer,InvoiceID:Int){
-    let Cost=Item.Cost
-    let Description=Item.Description
-        let Invoice_ID=InvoiceID
-    let parameters="Cost=\(Cost)&Description=\(Description)&Invoice_ID=\(Invoice_ID)"
-    var request = URLRequest(url: URL(string: OrdersURL)!)
-    request.httpMethod="POST"
-        request.httpBody=parameters.data(using: String.Encoding.utf8)
-    let task = URLSession.shared.dataTask(with: request){
-        (data,_,error) in
-        if let error = error {
-            print("NewOrder")
-            print(error)           // Handle HTTP request error
-        }
-        else if let data = data {                       // Handle HTTP request response
-            do{
-    let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
-                let ID=JsonData.first!.LAST_INSERT_ID
-                POSTOrderDetail(Items_ID: Item.ID, Order_ID: ID)
-            }catch{print(error)
-                print("NewOrder")
-            }       }
-    }
-    task.resume()
-    }
-
 func POSTNewOrders(Item:ItemModels,InvoiceID:Int){
     let Cost=Item.Cost
     let Description=Item.Description
@@ -600,51 +542,7 @@ print(error)                       } else if let data = data {
     }
     task.resume()
 }
-func checkout(Shipment:Int,Payment:Int,Items:[ItemContainer],User_ID:Int){
-    var sum=0.0
 
-    for Item in Items{
-        sum+=Item.Cost
-    }
-    POSTNewInvoice(Cost: sum, Shipping_ID: Shipment, User_ID: User_ID, OrderedItems: Items, PaymentMethods_ID: Payment)
-    
-}
-func GEtItems(completion : @escaping ([ItemContainer])->(Void)){
-    //what we are returning
-    var AvaiavbleList = [ItemContainer]()
-    //Json Array
-    var Items=[ItemModels]()
-    //creating REQUEST URL with parameters in http body and the method define
-    var request=URLRequest(url: URL(string: (ItemsURL))!)
-    request.httpMethod="GET"
-    let task = URLSession.shared.dataTask(with: request) {  data, _, error in
-                guard let data = data, error == nil else{
-                    print("error")
-                    return
-                }
-                //convert to json
-                do{
-                    let JsonData = try JSONDecoder().decode([ItemModels].self, from: data)
-                    Items=JsonData
-                    for Pet in Items {
-                        AvaiavbleList.append(ItemContainer(Item: Pet))
-                    }
-                    DispatchQueue.main.async {
-                        completion(AvaiavbleList)
-                        Store.TheStore.assign(given: AvaiavbleList)
-                        print(AvaiavbleList.capacity)
-
-                    }
-
-                }catch{
-                    print(": In Items")
-                    print(error)
-                }
-            }
-            task.resume()
-    
-
-}
 
 func GETItems(Order_ID:Int,completion : @escaping (ItemModels?,Error?)->(Void)){
     
@@ -672,13 +570,13 @@ func GETItems(Order_ID:Int,completion : @escaping (ItemModels?,Error?)->(Void)){
     
 
 }
+func GETItems(Catagory_ID:Int,completion : @escaping ([ItemModels]?,Error?)->(Void)){
 
-func GETItems(completion : @escaping ([ItemModels]?,Error?)->(Void)){
-    
     //creating REQUEST URL with parameters in http body and the method define
-    var request=URLRequest(url: URL(string: (ItemsURL))!)
+    let paremeters="?Catagory_ID=\(Catagory_ID)"
+    var request=URLRequest(url: URL(string: (ItemsURL)+paremeters)!)
     request.httpMethod="GET"
-    let task = URLSession.shared.dataTask(with: request,completionHandler: {  data, _, error in
+    let task = URLSession.shared.dataTask(with: request, completionHandler:  {  data, _, error in
                 guard let data = data, error == nil else{
                     print("error")
                     return
@@ -687,6 +585,7 @@ func GETItems(completion : @escaping ([ItemModels]?,Error?)->(Void)){
                 do{
                     let JsonData = try JSONDecoder().decode([ItemModels].self, from: data)
                     completion(JsonData,nil)
+
 
                 }catch{
                     print(": In Items")
@@ -697,11 +596,11 @@ func GETItems(completion : @escaping ([ItemModels]?,Error?)->(Void)){
     
 
 }
-func GETItems(Catagory_ID:Int,completion : @escaping ([ItemModels]?,Error?)->(Void)){
+
+func GETItems(completion : @escaping ([ItemModels]?,Error?)->(Void)){
 
     //creating REQUEST URL with parameters in http body and the method define
-    let paremeters="?Catagory_ID=\(Catagory_ID)"
-    var request=URLRequest(url: URL(string: (ItemsURL)+paremeters)!)
+    var request=URLRequest(url: URL(string: (ItemsURL))!)
     request.httpMethod="GET"
     let task = URLSession.shared.dataTask(with: request, completionHandler:  {  data, _, error in
                 guard let data = data, error == nil else{
@@ -832,7 +731,7 @@ func POSTNewShipping(Model:ShippingModels, ShippingIDCompletionHandler:@escaping
                        // Handle HTTP request error
 print(error)                       } else if let data = data {
                        // Handle HTTP request response
-    print(String(data:data,encoding: .utf8))
+    print(String(data:data,encoding: .utf8) ?? " ")
     do{
         let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
         let ID=JsonData.first!.LAST_INSERT_ID
@@ -908,7 +807,7 @@ let task = URLSession.shared.dataTask(with: request){
                    // Handle HTTP request error
 print(error)                       } else if let data = data {
                    // Handle HTTP request response
-                   print(String(data: data, encoding: .utf8)!)
+                   print(String(data: data, encoding: .utf8) ?? " ")
                }
 }
 task.resume()

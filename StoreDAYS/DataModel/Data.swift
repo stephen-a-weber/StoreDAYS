@@ -35,7 +35,7 @@ class Data: ObservableObject{
     @Published var KittenItems:[TheItemContainer]=[]
     @Published var AnimalItems:[TheItemContainer]=[]
     func addtoItemedCart(Item:TheItemContainer){
-       Data.initdata.ItemedCart.append(Item)
+       ItemedCart.append(Item)
         
         print("size is \(ItemedCart.capacity)")
     }
@@ -154,30 +154,31 @@ class Data: ObservableObject{
             Data.initdata.shippingPrice =  10.00
         }
       
-    // Taxes
-
-        var Tx = (dollars * 0.07)
-        Tx = round(Tx * 100) / 100
-        
-     
-        
-        Data.initdata.taxes =  Tx
-
+    
         
         if dollars > 200 {
             dollars += 0
         }else{
             dollars += 10
         }
+        // Taxes
+
+            var Tx = (dollars * 0.07)
+            Tx = round(Tx * 100) / 100
+            
+         
+            
+            Data.initdata.taxes =  Tx
+
 let total = dollars + (dollars * 0.07)
         
         
         
-   
+   //the math didnt make since so
         var TTL = total
         TTL = round(TTL * 100) / 100
         
-        Data.initdata.totalInvoice =  TTL
+        Data.initdata.totalInvoice =  total
     }
 }
 
