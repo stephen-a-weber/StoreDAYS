@@ -11,7 +11,7 @@ struct StoreFront: View {
     @EnvironmentObject var data:Data
     var body: some View {
         
-      //  NavigationView {
+        
             List{
             Section("KITTENS") {
                 
@@ -79,8 +79,8 @@ struct StoreFront: View {
             
             .navigationBarTitleDisplayMode(.inline)
     }
-//}
-}
+ }
+ 
     
 struct StoreFront_Previews: PreviewProvider {
     static var previews: some View {

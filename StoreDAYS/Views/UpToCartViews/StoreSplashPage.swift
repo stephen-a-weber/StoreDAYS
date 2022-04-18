@@ -13,8 +13,7 @@ struct StoreSplashPage: View {
     /// using appStorage for using a unique transitioning between splashscreen and store (tabbedMainView)
     /// 
     
-    
-    
+   
     
         ///// the data variable is not used currently on this page. The boolean enterStore is the required MVC bit to make a state
         ///transition to another view.. the .onTapGesture can toggle this variable. and the NavigationLink is waiting around
@@ -55,7 +54,7 @@ struct StoreSplashPage: View {
 
 
 struct StoreSplashPage_Previews: PreviewProvider {
-   
+    @ObservedObject var data : Data
     static var previews: some View {
         StoreSplashPage()
     }

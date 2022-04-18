@@ -33,6 +33,7 @@
 		D0F807CA280A5A3800B323F7 /* slidingDoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F807C9280A5A3800B323F7 /* slidingDoor.swift */; };
 		D0F807CC280B3F5700B323F7 /* hmm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F807CB280B3F5700B323F7 /* hmm.swift */; };
 		D0F80802280C93AC00B323F7 /* WorldDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F80801280C93AC00B323F7 /* WorldDetailView.swift */; };
+		D0F80804280DB69F00B323F7 /* testPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F80803280DB69F00B323F7 /* testPage.swift */; };
 		D0FCBA1027F8E6FA0004329A /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FCBA0F27F8E6FA0004329A /* Tracking.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		D0F807C9280A5A3800B323F7 /* slidingDoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = slidingDoor.swift; sourceTree = "<group>"; };
 		D0F807CB280B3F5700B323F7 /* hmm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hmm.swift; sourceTree = "<group>"; };
 		D0F80801280C93AC00B323F7 /* WorldDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldDetailView.swift; sourceTree = "<group>"; };
+		D0F80803280DB69F00B323F7 /* testPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testPage.swift; sourceTree = "<group>"; };
 		D0FCBA0F27F8E6FA0004329A /* Tracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -211,6 +213,7 @@
 				D086231027F3F13600BFE986 /* StoreFront.swift */,
 				D0FCBA0F27F8E6FA0004329A /* Tracking.swift */,
 				D0E2B32727F52E3A007DABE6 /* CheckOutView.swift */,
+				D0F80803280DB69F00B323F7 /* testPage.swift */,
 				D0E2B32927F52ED9007DABE6 /* SubViews */,
 				D0E2B31C27F502FE007DABE6 /* PuppyDetailView.swift */,
 				D0E2B31E27F50311007DABE6 /* KittenDetailView.swift */,
@@ -376,6 +379,7 @@
 				D0E2B31727F4F101007DABE6 /* ItemCell2.swift in Sources */,
 				D0E2B31927F4F1AB007DABE6 /* ItemCell3.swift in Sources */,
 				D0E2B31D27F502FE007DABE6 /* PuppyDetailView.swift in Sources */,
+				D0F80804280DB69F00B323F7 /* testPage.swift in Sources */,
 				D0E2B31527F4ECEB007DABE6 /* ItemCell.swift in Sources */,
 				D0E2B32127F503F1007DABE6 /* ExoticDetailView.swift in Sources */,
 				D0E2B32827F52E3A007DABE6 /* CheckOutView.swift in Sources */,

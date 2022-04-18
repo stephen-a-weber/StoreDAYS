@@ -20,7 +20,7 @@ struct StoreDAYSApp: App {
     
     
     @AppStorage("OH") var OH = true
-    
+   // @StateObject var data = Data()
     
     
     var body: some Scene {

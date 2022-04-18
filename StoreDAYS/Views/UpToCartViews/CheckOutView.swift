@@ -10,14 +10,13 @@ import SwiftUI
 struct CheckOutView: View {
     @EnvironmentObject var data:Data
     
-    var totalPrice = "$0.01"
     
  
     
-    // Using the ObservedObject from the @StateObject from StoreDAYSApp
+    // from the @StateObject
     
     var body: some View {
-    //    NavigationView {
+    
             Section{
                 VStack {
                     
@@ -29,23 +28,23 @@ struct CheckOutView: View {
                     
             List {
                 
-                ForEach(data.cartOrders.indices) { item in
+                ForEach(data.cartOrders) { item in
                     HStack {
-                        Image(data.cartOrders[item].pictureName)
+                        Image(item.pictureName)
                             .resizable()
                             .frame(width:100,height:100)
                             .padding()
                         Spacer()
                         VStack{
-                            Text("You ordered \(data.cartOrders[item].name)")
+                            Text("You ordered \(item.name)")
                             .padding()
-                            Text("The price is \(data.cartOrders[item].price)")
+                            Text("The price is \(item.price)")
                         }
                     }
                 }
-                .onDelete(perform: remove)
-                .onAppear(perform: data.calculateTotalPrice)
-                Text("Total Price = \(data.totalPrice)")
+              .onDelete(perform: remove)
+                 .onAppear(perform: data.calculateTotalPrice)
+               
             }
                     
                // The List has a onDelete method which allows
@@ -62,11 +61,12 @@ struct CheckOutView: View {
                     // so you can easily see what is in the cart
                     // add more or as the button is for go to purchase
                     NavigationLink {
-                        
-                       // InvoiceSwiftUIView(data: data)
+                       // testPage()
+                         InvoiceSwiftUIView( )
                         
                     }
-                label: {
+                label: { Text("Total : \(data.totalPrice)")
+                        .padding()
                         Text("Continue To Payment")
                             .fontWeight(.bold)
                             .foregroundColor(Color("myBlue"))
@@ -79,7 +79,7 @@ struct CheckOutView: View {
                 
                 
             
-        //        }
+               }
             }
             .navigationTitle("Your Future Friends :")
             .listStyle(InsetGroupedListStyle())
@@ -89,12 +89,15 @@ struct CheckOutView: View {
             
         }
         
-    }
+   
     
     // remove is a helper function used above to remove choses
     // from the cart and the global variables we are using under data
     func remove(at offsets: IndexSet) {
-        data.cartOrders.remove(atOffsets: offsets)
+         
+       data.cartOrders.remove(atOffsets: offsets)
+       
+        
     }
     
     

@@ -23,10 +23,9 @@ enum sellingCategory {
     
 }
 
-
-class Data: ObservableObject, Identifiable{
+ class Data: ObservableObject, Identifiable{
     
-    struct Order :Identifiable{
+   struct Order :Identifiable{
         
         let id = UUID()
         var name = ""
@@ -38,13 +37,18 @@ class Data: ObservableObject, Identifiable{
         var pictureName = ""
         
     }
-    
+    @Published var itemOrder = Order()
     @Published var orders = [Order]()
     @Published var puppyViewOrders = [Order]()
     @Published var kittenViewOrders = [Order]()
     @Published var exoticViewOrders = [Order]()
     @Published var cartOrders = [Order]()
-    
+   
+    func addToCart(item : Order) {
+        
+        self.cartOrders.append(item)
+        
+    }
     
     
     
@@ -82,7 +86,7 @@ class Data: ObservableObject, Identifiable{
                              "These are from an immortal lineage.",
                              "These kittens had a color named after them.",
                              "Definitely a musical purring box.",
-                             "Long live the Royal cat family.",
+                             "Long live this Royal cat family.",
                              "Happily ever after."]
     @Published var name = "STOREDAY!"
     @Published var kitten : [Int] = [1,2,3,4,5,6,7,8,9,10]
@@ -100,7 +104,7 @@ class Data: ObservableObject, Identifiable{
                             "These are from an immortal lineage.",
                             "These puppies had a color named after them.",
                             "Definitely a musical bark.",
-                            "Long live the Royal dog family.",
+                            "Long live this Royal dog family.",
                             "Happily ever after."]
     @Published var puppyNames : [String] = ["puppy1","puppy2","puppy3","puppy4","puppy5","puppy6","puppy7","puppy8","puppy9","puppy10"]
     @Published var puppyLitterCount = [ 2,6,4,8,3,4,5,4,3,6]
@@ -121,7 +125,7 @@ class Data: ObservableObject, Identifiable{
                              "These are from an immortal lineage.",
                              "These animals had a color named after them.",
                              "They Definitely make musical sounds.",
-                             "Long live the Royal animal family."]
+                             "Long live this Royal animal family."]
     
    
     var kittenLatitude : [Double]=[44,37,24.7,25,  40.3,-4.097,43.6,61.87,0.6921,46.36]
@@ -133,6 +137,7 @@ class Data: ObservableObject, Identifiable{
 
     @Published var locations = [Location]()
     init(){
+        cartOrders = []
         var count = 0
         for item in 0..<kittenNames.count {
             
@@ -199,14 +204,10 @@ class Data: ObservableObject, Identifiable{
     
     
     
-    func addToCart(item : Order) {
-        
-        cartOrders.append(item)
-        
-    }
+ 
   
     
-    func calculateTotalPrice() {
+    func calculateTotalPrice()->Void {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         var dollars : Decimal = 0.0
@@ -218,85 +219,86 @@ class Data: ObservableObject, Identifiable{
             }
 
         }
+        print("In this routine we print \(dollars)")
         self.totalPrice =  "$\(dollars)"
     }
     
     
     
-    // Shipping
-//    func calculateShipping() {
-//        let formatter = NumberFormatter()
-//        formatter.numberStyle = .currency
-//        var dollars : Decimal = 0.0
-//        for i in self.order {
-//
-//            if let number = formatter.number(from: i.price) {
-//                let amount = number.decimalValue
-//                dollars += amount
-//            }
-//
-//        }
-//        if dollars > 200 {
-//            self.shippingPrice =  "$\(0.00)"
-//        }else{
-//            self.shippingPrice =  "$\(10.00)"
-//        }
-//
-//    }
-//    // Taxes
-//    func calculateTax() {
-//        let formatter = NumberFormatter()
-//        formatter.numberStyle = .currency
-//        var dollars : Decimal = 0.0
-//        var tax     : Decimal = 0.0
-//        for i in self.order {
-//            
-//            if let number = formatter.number(from: i.price) {
-//                let amount = number.decimalValue
-//                dollars += amount
-//            }
-//            
-//        }
-//        tax = (dollars * 0.07)
-//        var Tx = Double(tax.description) ?? 0
-//        Tx = round(Tx * 100) / 100
-//        
-//     
-//    print(Tx)
-//        
-//            self.taxes =  "$\(Tx)"
-//    }
-//    
+     
+    func calculateShipping() {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        var dollars : Decimal = 0.0
+        for i in self.cartOrders  {
+
+            if let number = formatter.number(from: i.price) {
+                let amount = number.decimalValue
+                dollars += amount
+            }
+
+        }
+        if dollars > 200 {
+            self.shippingPrice =  "$\(0.00)"
+        }else{
+            self.shippingPrice =  "$\(10.00)"
+        }
+
+    }
+    // Taxes
+    func calculateTax() {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        var dollars : Decimal = 0.0
+        var tax     : Decimal = 0.0
+        for i in self.cartOrders {
+            
+            if let number = formatter.number(from: i.price) {
+                let amount = number.decimalValue
+                dollars += amount
+            }
+            
+        }
+        tax = (dollars * 0.07)
+        var Tx = Double(tax.description) ?? 0
+        Tx = round(Tx * 100) / 100
+        
+     
+    print(Tx)
+        
+            self.taxes =  "$\(Tx)"
+    }
     
-//
-//    func calculateTotalInvoice() {
-//        let formatter = NumberFormatter()
-//        formatter.numberStyle = .currency
-//        var dollars : Decimal = 0.0
-//        var total     : Decimal = 0.0
-//
-//        for i in self.order {
-//
-//            if let number = formatter.number(from: i.price) {
-//                let amount = number.decimalValue
-//                dollars += amount
-//            }
-//
-//        }
-//
-//        if dollars > 200 {
-//            dollars += 0
-//        }else{
-//            dollars += 10
-//        }
-//        total = dollars + (dollars * 0.07)
-//
-//
-//
-//
-//        var TTL = Double(total.description) ?? 0
-//        TTL = round(TTL * 100) / 100
-//
-//        self.totalInvoice =  "$\(TTL)"
-//    }
+    
+
+    func calculateTotalInvoice() {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        var dollars : Decimal = 0.0
+        var total     : Decimal = 0.0
+
+        for i in self.cartOrders {
+
+            if let number = formatter.number(from: i.price) {
+                let amount = number.decimalValue
+                dollars += amount
+            }
+
+        }
+
+        if dollars > 200 {
+            dollars += 0
+        }else{
+            dollars += 10
+        }
+        total = dollars + (dollars * 0.07)
+
+
+
+
+        var TTL = Double(total.description) ?? 0
+        TTL = round(TTL * 100) / 100
+
+        self.totalInvoice =  "$\(TTL)"
+    }
 }

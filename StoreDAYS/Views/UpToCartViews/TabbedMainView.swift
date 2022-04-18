@@ -33,8 +33,8 @@ struct TabbedMainView: View {
             // each are separate files under the same used name
             //  NavigationView {
             //Color.clear.zIndex(0)
-        
         NavigationView{
+            
             TabView {
                 StoreFront()
                     .tabItem{
@@ -56,20 +56,13 @@ struct TabbedMainView: View {
                 
             }
             
-            
-            
             .ignoresSafeArea()
-                //        .onAppear {
-                //            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                //                withAnimation(.easeIn(duration:2)) {
-                //                    self.showStore = false
-                //                }
-                //            }
-                //        }
-                //    }
-            
+              
         }
-        .environmentObject(data)
+            
+            
+            .environmentObject(data)
+        
     }
 }
 

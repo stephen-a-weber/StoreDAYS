@@ -19,17 +19,7 @@ class StoreDAYSTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func test1DataOrder() {
-                    let  singleOrder = Data.Order.init(name: "animal1", price: "$12.03")
-            
-          //          testData.order.append(singleOrder)
-            
-        //            testData.calculateTotalPrice()
-            
-          //          XCTAssert(testData.totalPrice == "$12.03")
-            
-                }
-            
+   
     
     
     

@@ -38,11 +38,23 @@ struct KittenDetailView: View {
                 data.addToCart(item: data.kittenViewOrders[index])
         isPurchased.toggle()
             }}
-    .frame(width: 155.0, height: 60.0)
-            
+            .frame(width: 155.0, height: 60.0)
+            .cornerRadius(/*@START_MENU_TOKEN@*/12.0/*@END_MENU_TOKEN@*/)
+            .shadow(radius: /*@START_MENU_TOKEN@*/18/*@END_MENU_TOKEN@*/)
+            .border(/*@START_MENU_TOKEN@*/Color.blue/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/4/*@END_MENU_TOKEN@*/)
+            .hoverEffect(/*@START_MENU_TOKEN@*/.automatic/*@END_MENU_TOKEN@*/)
+            .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 0.568, saturation: 0.107, brightness: 0.926)/*@END_MENU_TOKEN@*/)
             Spacer()
             Text("Born with the name: \(data.kittenViewOrders[index].name)")
+                .font(.title)
+                .fontWeight(.bold)
+                .shadow(color:.blue,radius:6)
+                .padding(.all)
             Text(data.kittenViewOrders[index].description)
+                .font(.title)
+                .fontWeight(.bold)
+                .shadow(color:.blue,radius:6)
+                .padding(.all)
             Spacer()
             
             
