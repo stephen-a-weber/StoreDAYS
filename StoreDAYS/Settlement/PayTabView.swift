@@ -30,7 +30,8 @@ struct PayTabView: View {
       @State private var name: String = ""
       @State private var expiration: String = ""
       @State private var invoiceAmt: Double = 0.00
-      @State private var settleAmt: Double = 0.00
+      @State private var owedAmt: Double = 0.00
+      @State private var settledAmt: Double = 0.00
       @State private var showingPopup: Bool = true
       @State private var selectedPayTab: Tabs = .otherPay
       
@@ -159,12 +160,20 @@ extension PayTabView {
       }
       
 var settleView: some View {
-      VStack(alignment: .trailing, spacing: 15) {
+      VStack(alignment: .trailing, spacing: 5) {
+            VStack(alignment: .trailing, spacing: 0) {
             Text("Invoice Amount:  \(formatFunction(number: invoiceAmt))")
                         .font(.system(size: 20))
                         .fontWeight(.bold)
                         .padding()
-                  Text("Money Owed:  \(formatFunction(number: settleAmt))")
+            Text("Money Settled:  \(formatFunction(number: settledAmt))")
+                        .font(.system(size: 20))
+                        .fontWeight(.bold)
+                        .underline()
+                        .padding()
+            }
+            Spacer()
+                  Text("Money Owed:  \(formatFunction(number: owedAmt))")
                    .font(.system(size: 20))
                    .fontWeight(.bold)
                    .padding()
@@ -172,9 +181,10 @@ var settleView: some View {
       }
       .onAppear {
             invoiceAmt  =  Double(cart.totalInvoice) ?? 0
-            settleAmt = invoiceAmt
+            owedAmt = invoiceAmt
      }
       .foregroundColor(.black)
+      .frame(height: 180)
       .padding()
       .overlay(
               RoundedRectangle(cornerRadius: 16)
