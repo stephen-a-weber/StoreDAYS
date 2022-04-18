@@ -38,11 +38,11 @@ case "POST":
           $Body=$_POST['Body'];
         }
         $Items_ID=0;
-        if(!empty($_GET['Items_ID'])){
+        if(!empty($_POST['Items_ID'])){
           $Items_ID =(int)$_POST['Items_ID'];
         }
         //if we are looking for a set of order for an invoice
-        if(!empty($_GET['Catagory_ID'])){
+        if(!empty($_POST['Catagory_ID'])){
           $Catagory_ID =(int)$_POST['Catagory_ID'];
         }
 
