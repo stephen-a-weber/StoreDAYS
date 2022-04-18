@@ -8,21 +8,23 @@
 import SwiftUI
 
 struct StoreView: View {
+    @ObservedObject var data :Data=Data()
     var body: some View {
         
-      //  NavigationView {
-            List{
+       NavigationView {
             Section("KITTENS") {
-                ForEach(Store.TheStore.allItems.indices){ item in
-                    NavigationLink{  DetailView(data: Store.TheStore.allItems[item], kittenName:Store.TheStore.allItems[item].Name)  }
-                        //put a detail view in for each item of each section
-                        // with NavigationLink to KittenDetailView()
-                        
-                        label : {
-                            ViewCell(Name: Store.TheStore.allItems[item].Name,litter: Store.TheStore.allItems[item].Availability,price:Store.TheStore.allItems[item].Cost)
-                        }
-                }
-               
+                List{
+
+//                ForEach(data.AvaiableItems){ item in
+//                    NavigationLink{  DetailView(ItemedContainer: TheItemContainer(Item:item), data: data)  }
+//                        //put a detail view in for each item of each section
+//                        // with NavigationLink to KittenDetailView()
+//                        
+//                        label : {
+//                            ViewCell(Name: Store.TheStore.allItems[item].Name,litter: Store.TheStore.allItems[item].Availability,price:Store.TheStore.allItems[item].Cost)
+//                        }
+//                }
+            }
                
                 
             }

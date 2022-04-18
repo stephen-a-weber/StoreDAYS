@@ -91,7 +91,8 @@ struct LoginSessionViewSwiftUIView: View {
                         
                             .sheet(isPresented: $animFlag, content: {
                                 //  PayTabView()
-                                InvoiceSwiftUIView(data: data)
+                                GuestBasicInfoForm(data:data)
+                                //InvoiceSwiftUIView(data: data)
                                     .environmentObject(CartManager())
 //                                TabDocumentsSwiftUIView(data: data)
                             })

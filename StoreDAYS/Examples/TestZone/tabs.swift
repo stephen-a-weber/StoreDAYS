@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct tabs: View {
-    @ObservedObject var data : ItemContainer
+    @ObservedObject var data : Data
 
     var body: some View {
         TabView {
-            SwiftUIAPIView().tabItem {
+            
+            SwiftUIAPIView(data:data).tabItem {
                 Label("animals",systemImage:"pawprint.fill")
             }
                    
@@ -31,6 +32,6 @@ struct tabs: View {
 
 struct tabs_Previews: PreviewProvider {
     static var previews: some View {
-        tabs(data:ItemContainer())
+        tabs(data:Data())
     }
 }

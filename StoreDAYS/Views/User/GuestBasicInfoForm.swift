@@ -8,13 +8,22 @@
 import SwiftUI
 
 struct GuestBasicInfoForm: View {
-    @ObservedObject var data:Data=Data()
+    @ObservedObject var data:Data
     @State var myColor = "myBlue"
     @State var FirstName=""
     @State var LastName=""
     @State var Email=""
+    @State var dataValidate = true
+    @State var messageValidate = "Please enter your Basic Information for shipping"
+
+    @State private var ShowingSheet=false
     var body: some View {
         VStack{
+            if dataValidate == false {
+                Text(messageValidate)
+                    .foregroundColor(Color(.red))
+                    .frame(width: 300, height: 20, alignment: .center)
+            }
             //FirstName
             Group{
                 Text("First Name").foregroundColor(Color(myColor))
@@ -58,7 +67,13 @@ struct GuestBasicInfoForm: View {
                     .padding(.bottom)
             }
             Button {
-                data.UserInformation=UserModels(ID: 0, UserName: "", FirstName: FirstName, LastName: LastName, DateOfBirth: "", Password: "123Password!", Email: Email, Admin: "")
+                if(!(FirstName==""||LastName==""||Email=="")){
+                Data.initdata.UserInformation=UserModels(ID: 0, UserName: "", FirstName: FirstName, LastName: LastName, DateOfBirth: "", Password: "123Password!", Email: Email, Admin: "")
+                ShowingSheet.toggle()
+                }else{
+                    dataValidate=false
+                }
+                
             } label: {
                 Text("Continue")
                     .fontWeight(.bold)
@@ -69,14 +84,21 @@ struct GuestBasicInfoForm: View {
                                         lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                                             
                                                  
-            }
+            }.fullScreenCover(isPresented: $ShowingSheet){MakeAddressView(data: data)}
+            
         }        .padding(.horizontal,77.0)
             .padding(.top,10)
+            .onAppear{
+                print("firstname:\(Data.initdata.UserInformation.FirstName)")
+                print("State:\(Data.initdata.AddressInformation.State)")
+                print("items\(Data.initdata.ItemedCart.description)")
+            }
     }
+        
 }
 
 struct GuestBasicInfoForm_Previews: PreviewProvider {
     static var previews: some View {
-        GuestBasicInfoForm()
+        GuestBasicInfoForm(data:Data())
     }
 }

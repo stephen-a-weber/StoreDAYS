@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct DetailView: View {
-    @ObservedObject var data : ItemContainer
-    var kittenName = "Bob"
+    @ObservedObject var ItemedContainer : TheItemContainer = TheItemContainer(Item: ItemModels(ID: 2, Name: "demo", Description: "", Cost: 0.0, Catagory_ID: 0, Img: "", Availability: 1, Longitude: 0.0, Latitude: 0.0))
+    @ObservedObject var data: Data
     @State var isPurchased = false
     
     //// the data is from @StateObject data to keep a single instance incharge of the data of the app
@@ -20,7 +20,7 @@ struct DetailView: View {
     var body: some View {
         
         VStack {
-            AsyncImage(url: URL(string: data.Item.Img)) { image in
+            AsyncImage(url: URL(string:ItemedContainer.Item.Img)) { image in
                                                                image.resizable()
                                                            } placeholder: {
                                                                Color.red
@@ -35,16 +35,11 @@ struct DetailView: View {
             
             
             Button("Adopt this Kitten"){
-                data.addtoCart(items: data)
-                
-            }
+                isPurchased=true
+                data.addtoItemedCart(Item: ItemedContainer)         }
             }
     .frame(width: 155.0, height: 60.0)
-            
-            Spacer()
-            Spacer()
-            
-            
+          
             
          //    if you choose from this detail view
             // A notification is given to let you see some
@@ -61,7 +56,7 @@ struct DetailView: View {
                     .fontWeight(.heavy)
                     .multilineTextAlignment(.center)
             }
-            Spacer()
+        
 }
         
     }
@@ -70,7 +65,7 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(data: ItemContainer(), kittenName:"kitten1")
+        DetailView(data:Data())
     }
 }
 

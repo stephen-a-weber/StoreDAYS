@@ -24,6 +24,7 @@ struct InvoiceSwiftUIView: View {
     
     // *******
     var body: some View {
+        
         VStack {
             VStack{
                 // Header
@@ -39,6 +40,11 @@ struct InvoiceSwiftUIView: View {
                 }
             }  .frame(width: 400, height: 100, alignment: .center)
                 .border(Color(.gray), width: 0).padding()
+                .onAppear{
+                    print("firstname:\(Data.initdata.UserInformation.FirstName)")
+                    print("State:\(Data.initdata.AddressInformation.State)")
+                    print("items\(Data.initdata.ItemedCart.description)")
+                }
             
             
             
@@ -47,25 +53,27 @@ struct InvoiceSwiftUIView: View {
             ScrollView{
                 Section("Detail") {
                     List {
-                        ForEach(data.order, id:\.self) { item in
-                            HStack {
-                                Image(item.name)
-                                    .resizable()
-                                    .frame(width:100,height:100)
-                                    .padding()
-                                Spacer()
-                                VStack{
-                                    Text("* \(item.name)")
+                        VStack{
+                        ForEach(Data.initdata.ItemedCart){
+                            item in
+                            HStack{
+                                AsyncImage(url: URL(string:item.Item.Img)) { image in
+                                                                                    image.resizable()
+                                                                                } placeholder: {
+                                                                                    Color.red
+                                                                                }
+                                                                                .frame(width: 128, height: 128)
+                                                                                .clipShape(RoundedRectangle(cornerRadius: 25))
+                                
+                                    Text("* \(item.Item.Name)")
                                         .padding()
-                                    Text("Sub-total \(item.price)")
-                                }
+                                    Text("Sub-total \(item.Item.Cost)")
                             }
+                            
+                        }
+                            
                         }
                         
-                        .onAppear(perform: data.calculateTotalPrice)
-                        .onAppear(perform: data.calculateShipping)
-                        .onAppear(perform: data.calculateTax)
-                        .onAppear(perform: data.calculateTotalInvoice)
                     }
                     
                 }.frame(width: 450, height: 460, alignment: .center)
@@ -75,31 +83,44 @@ struct InvoiceSwiftUIView: View {
             // Total Invoice
             VStack(alignment: .trailing){
                 HStack{
-                    Text("Sub total Price:  \(data.totalPrice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
+                    Text("Sub total Price:  \(Data.initdata.totalPrice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
+                }                        .onAppear{
+                    print("SubTotal:\(Data.initdata.totalPrice)")
                 }
+
                 HStack{
                     Text("Taxes:").foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
                     
-                    Text(data.taxes).foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
+                    Text(NumberToDollar(Tottal: Data.initdata.taxes)).foregroundColor(.black).font(.custom("Courier", fixedSize: 15))
+                }                        .onAppear{
+                print("Taxes:\(Data.initdata.taxes)")
                 }
+
                 HStack{
                     HStack{
                         Text("   > $200.00 Free Shipping: ").foregroundColor(.black).font(.custom("Courier", fixedSize: 15  ))
                     }
+
                     HStack{
-                        Text(data.shippingPrice).foregroundColor(.black).font(.custom("Courier", fixedSize: 15  ))
+                        Text(NumberToDollar(Tottal: Data.initdata.shippingPrice)).foregroundColor(.black).font(.custom("Courier", fixedSize: 15  ))
                     }
                 }
                 Divider()
                 Group{
-                Text("Total     \(data.totalInvoice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 24))
+                    Text("Total     \(NumberToDollar(Tottal: Data.initdata.totalInvoice))").foregroundColor(.black).font(.custom("Courier", fixedSize: 24))
+                        .onAppear{print( "TotalInvoice:\(Data.initdata.totalInvoice)")
+                            
+                        }
+                        
+
+                    
                 Spacer()
                
-                Text("Addres \(data.addres)").foregroundColor(.black).font(.custom("Courier", fixedSize: 13))
+                Text("Addres \(Data.initdata.addres)").foregroundColor(.black).font(.custom("Courier", fixedSize: 13))
                   
                     ZStack(alignment:.trailing){
                         if  firstName.isEmpty {
-                            Text("Adress \(data.addres)").font(.caption)
+                            Text("Adress \(Data.initdata.addres)").font(.caption)
                                 .foregroundColor(.gray)
                         }
                         TextField("", text: $firstName)
@@ -126,7 +147,7 @@ struct InvoiceSwiftUIView: View {
                 }
                 }
                 Spacer()
-            }
+            }.onAppear{ Data.initdata.calculateTotalPrice()}
             
         }
     }

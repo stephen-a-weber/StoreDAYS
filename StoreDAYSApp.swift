@@ -21,10 +21,10 @@ struct StoreDAYSApp: App {
             //    CheckOutView(data:data)
           //    CreateAccountSwiftUIView(data: data)
        //     LoginSwiftUIView(data: data)
-           StoreSplashPage(data:data)
+           //StoreSplashPage(data:data)
         //    TabSwiftMoreUIView(data: data)
            // StoreView()
-           // tabs(data: data)
+            tabs(data: data)
             //            ContentView()
             //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }   

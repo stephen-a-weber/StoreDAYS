@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct CartView: View {
-    static var cart:[ItemContainer]=[ItemContainer]()
-    @ObservedObject var data=Store.TheStore.Cart
+    @ObservedObject var data:Data
     // Using the ObservedObject from the @StateObject from StoreDAYSApp
     
     var body: some View {
-    //    NavigationView {
-            Section{
+            NavigationView{
                 VStack {
                     
                   // Using Section and List for some background
@@ -23,28 +21,38 @@ struct CartView: View {
                     // of the animals that you placed in the
                     //cart
                     
-            List {
-                
-                ForEach(Store.TheStore.Cart.order.indices) { item in
-                    HStack {
-                        Text(Store.TheStore.Cart.order[item].Name)
-                        AsyncImage(url: URL(string: Store.TheStore.Cart.order[item].Item.Img)) { image in
-                                                                           image.resizable()
-                                                                       } placeholder: {
-                                                                           Color.red
-                                                                       }
-                                                                       .frame(width: 128, height: 128)
-                                                                       .clipShape(RoundedRectangle(cornerRadius: 25))
-                        Spacer()
-                        Text("You ordered \(Store.TheStore.Cart.order[item].Name)")
-                            .padding()
+                    List{
+                        ForEach(       Data.initdata.ItemedCart){
+                            AvailbleItem in
+                            HStack{
+                        
+                                AsyncImage(url: URL(string: AvailbleItem.Item.Img)) { image in
+                                                            image.resizable()
+                                                        } placeholder: {
+                                                            Color.red
+                                                        }
+                                                        .frame(width: 128, height: 128)
+                                                        .clipShape(RoundedRectangle(cornerRadius: 25))
+
+                                Text(AvailbleItem.Item.Name)
+                                    .bold()
+                                Text(String(AvailbleItem.Item.Cost))
+                                Text(String(AvailbleItem.Item.Catagory_ID))
+                                
+
+
+                            }.onAppear{
+                                print("firstname:\(Data.initdata.UserInformation.FirstName)")
+                                print("State:\(Data.initdata.AddressInformation.State)")
+                                print("items\(       Data.initdata.ItemedCart.description)")
+                            }
+                            
+                            .padding(3)
+                        }
+                        .onDelete { Index in
+                            data.ItemedCart.remove(atOffsets:Index)
+                        }
                     }
-                }
-                
-                .onDelete(perform: remove)
-                
-            }
-                    
                // The List has a onDelete method which allows
             /// users to change their mind about their future pets.
                     ///  the function remove is below
@@ -98,6 +106,6 @@ struct CartView: View {
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
-        CartView(data:ItemContainer())
+        CartView(data:Data())
     }
 }

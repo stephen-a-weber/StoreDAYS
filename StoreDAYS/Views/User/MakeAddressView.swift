@@ -23,6 +23,7 @@ struct MakeAddressView: View {
     @State var UseFlag=false
     @State var messageValidate = "Please enter your shipping address"
     @Environment(\.presentationMode) var presentationMode
+    @State private var isPresented = false
 
     var body: some View {
         ScrollView{
@@ -101,9 +102,8 @@ struct MakeAddressView: View {
                         .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
                                             lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                                                 
-                                                     .sheet(isPresented: $flag, content: {
-                                                         TabSwiftMoreUIView(data: data )
-                                                     })
+                }.fullScreenCover(isPresented: $isPresented){
+                    InvoiceSwiftUIView(data:data)
                 }
 
         }.padding(.horizontal,77.0)
@@ -117,9 +117,9 @@ struct MakeAddressView: View {
         }
         
         let Address = AddressModels(ID: ID, Street: Street, City: City, User_ID: User_ID, State: State, Zip: Zip)
-        if UseFlag{
-            data.AddressInformation=Address
-            data.addres="\(Address.Street), \(Address.City), \(Address.State) \(Address.Zip)"
+        if !UseFlag{
+            Data.initdata.AddressInformation=Address
+            Data.initdata.addres="\(Address.Street), \(Address.City), \(Address.State) \(Address.Zip)"
             
         }else{
         if !EditFlag{
@@ -131,7 +131,7 @@ struct MakeAddressView: View {
             
         }
         
-        
+        isPresented=true;
         return true;
     }
 }

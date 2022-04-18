@@ -36,6 +36,10 @@ struct LoginSwiftUIView: View {
                     
                     Spacer()
                     
+                }.onAppear{
+                    print("firstname:\(Data.initdata.UserInformation.FirstName)")
+                    print("State:\(Data.initdata.AddressInformation.State)")
+                    print("items\(Data.initdata.ItemedCart.description)")
                 }
                 .padding(0.0)
                 Spacer(minLength: 42)

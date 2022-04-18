@@ -130,6 +130,46 @@ func GETPaymentMethods(ID:Int,PaymentCompletionHandler:@escaping(PaymentsModels?
                 })
                 task.resume()
 }
+func GETReview(Items_ID:Int, ReviewCompletionHanlder:@escaping([ReviewModels]?,Error?)->Void){
+    
+        //creating REQUEST URL with parameters in http body and the method define
+        let paremeters="?Items_ID=\(Items_ID)"
+    var request=URLRequest(url: URL(string: (PaymentURL+paremeters))!)
+    request.httpMethod="GET"
+    // run network task
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
+                    guard let data = data, error == nil else{
+                        print("error")
+                        return
+                    }
+                    //convert to json
+                    do{
+                        let JsonData = try JSONDecoder().decode([ReviewModels].self, from: data)
+                        ReviewCompletionHanlder(JsonData, nil)
+                    }catch{
+                        print(error)
+                    }
+                })
+                task.resume()
+}
+func PostReview(Model:ReviewModels){
+    
+    let parameters="Items_ID=\(Model.Items_ID)&Body=\(Model.Body)&Rate=\(Model.Rate)&=\(Model.Catagory_ID)&User_ID=\(Model.User_ID)"
+    
+           var request = URLRequest(url: URL(string: PaymentURL)!)
+           request.httpMethod="POST"
+               request.httpBody=parameters.data(using: String.Encoding.utf8)
+           let task = URLSession.shared.dataTask(with: request){
+               (data,_,error) in
+               if let error = error {
+                              // Handle HTTP request error
+   print(error)                       } else if let data = data {
+                              // Handle HTTP request response
+                              print(String(data: data, encoding: .utf8)!)
+                          }
+           }
+           task.resume()
+}
 func POSTNEWPaymentMethods(Model:PaymentsModels){
                let CardNumber=Model.CardNumber
                let CVC=Model.CVC
@@ -293,7 +333,7 @@ func GETOrder(ID:Int, OrderCompletionHandler: @escaping(OrdersModels?,Error?)->V
             })
             task.resume()
 }
-func POSTNewInvoice(Model:InvoiceModels, OrderedItems:[ItemModels]){
+func POSTNewInvoice(Model:InvoiceModels, OrderedItems:[TheItemContainer]){
  
 
     let parameters="Sum=\(Model.Cost)&User_ID=\(Model.User_ID)&Shipping_ID=\(Model.Shipping_ID)&PaymentMethods_ID=\(Model.PaymentMethods_ID)"
@@ -310,7 +350,7 @@ print(error)                       } else if let data = data {
         let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
         let ID=JsonData.first!.LAST_INSERT_ID
         for Item in OrderedItems{
-            POSTNewOrders(Item: Item, InvoiceID: ID)
+            POSTNewOrders(Item: Item.Item, InvoiceID: ID)
         }
     }catch{
         print(error)
@@ -630,7 +670,6 @@ func GETItems(completion : @escaping ([ItemModels]?,Error?)->(Void)){
                 //convert to json
                 do{
                     let JsonData = try JSONDecoder().decode([ItemModels].self, from: data)
-                    print(JsonData)
                     completion(JsonData,nil)
 
                 }catch{

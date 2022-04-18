@@ -18,9 +18,16 @@ struct OtherPay: View {
       @State  var cardHolderName: String = ""
     @State  var expiration: String = ""
     @State  var cvv: String = ""
-    
+    @State var dataValidate = true
+    @State var messageValidate = "Please enter your Card Information for Payment"
+
     var body: some View {
         VStack {
+            if dataValidate == false {
+                Text(messageValidate)
+                    .foregroundColor(Color(.red))
+                    .frame(width: 300, height: 20, alignment: .center)
+            }
             PaymentCard {
                 VStack {
                     Group {
@@ -46,10 +53,10 @@ struct OtherPay: View {
                   .textFieldStyle(RoundedBorderTextFieldStyle())
                   .padding([.top,.leading,.trailing])
                   .frame(height:25)
-              TextField("Name", text: $cardHolderName)
+            if(!UseEditFlag){ TextField("Name", text: $cardHolderName)
                   .textFieldStyle(RoundedBorderTextFieldStyle())
                   .padding([.top,.leading,.trailing])
-                  .frame(height:25)
+                .frame(height:25)}
             TextField("Expiration", text: $expiration)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding([.leading,.trailing])
@@ -83,9 +90,16 @@ struct OtherPay: View {
                     
                 }
             }else{
-                Button {
-                    data.CardInformation=PaymentsModels(ID: 0, CardNumber: cardNumber, CVC: cvv, Expiration: expiration, Name: cardHolderName, User_ID: data.UserInformation.ID, Address_ID: data.AddressInformation.ID)
+                Button {if(!(cardNumber==""||cvv==""||expiration=="")){
+                    Data.initdata.CardInformation=PaymentsModels(ID: 0, CardNumber: cardNumber, CVC: cvv, Expiration: expiration, Name: cardHolderName, User_ID: data.UserInformation.ID, Address_ID: data.AddressInformation.ID)
+                    print("firstname:\(Data.initdata.UserInformation.FirstName)")
+                    print("State:\(Data.initdata.AddressInformation.State)")
+                    print("items\(Data.initdata.ItemedCart.description)")
                     
+                    DynamicCheckOut(data: Data.initdata)
+                }else{
+                        dataValidate=false
+                    }
                                     } label: {
                     Text("Continue")
                 }

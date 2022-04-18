@@ -70,6 +70,9 @@ struct ItemModels: Hashable, Codable{
     let Catagory_ID:Int
     let Img:String
     let Availability:Int
+    let Longitude:Double
+    let Latitude:Double
+
 }
 struct LastInsert: Hashable, Codable{
     let LAST_INSERT_ID:Int
