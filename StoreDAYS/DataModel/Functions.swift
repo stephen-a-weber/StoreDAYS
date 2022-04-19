@@ -17,6 +17,7 @@ let ItemsURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDA
 let ReviewURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Review.php"
 let SearchUserURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/SearchUser.php"
 let SignUpURL="http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Signup.php"
+let SignInURL="http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/login.php"
 func GETInvoice(User_ID:Int, InvoiceCompletionHandler:@escaping([InvoiceModels]?,Error?)->Void){
     
         //creating REQUEST URL with parameters in http body and the method define
@@ -142,7 +143,7 @@ func GETReview(Items_ID:Int, ReviewCompletionHanlder:@escaping([ReviewModels]?,E
                         print("error")
                         return
                     }
-            print(String(data:data, encoding:.utf8))
+            print(String(data:data, encoding:.utf8) ?? " ")
                     //convert to json
                     do{
                         let JsonData = try JSONDecoder().decode([ReviewModels].self, from: data)
@@ -494,6 +495,33 @@ func POSTSignUp(Info:UserModels, SignupHandler:@escaping(Int?,Error?)->Void){
     let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
                 let ID=JsonData.first!.LAST_INSERT_ID
                 SignupHandler(ID,nil)
+            }catch{
+                print("Signup")
+                print(error)}       }
+    }
+    task.resume()
+}
+
+func POSTSignIn(Email:String,Password:String, SignupHandler:@escaping(UserModels?,Error?)->Void){
+  
+    
+    let parameters="Email=\(Email)&Password=\(Password)"
+    var request = URLRequest(url: URL(string: SignInURL)!)
+    request.httpMethod="POST"
+        request.httpBody=parameters.data(using: String.Encoding.utf8)
+    let task = URLSession.shared.dataTask(with: request){
+        (data,_,error) in
+        if let error = error {
+            print(error)           // Handle HTTP request error
+        }
+        else if let data = data {
+            print(String(data:data, encoding: .utf8) ?? " ")
+
+            // Handle HTTP request response
+            do{
+
+    let JsonData = try JSONDecoder().decode([UserModels].self, from: data)
+                SignupHandler(JsonData.first!,nil)
             }catch{
                 print("Signup")
                 print(error)}       }

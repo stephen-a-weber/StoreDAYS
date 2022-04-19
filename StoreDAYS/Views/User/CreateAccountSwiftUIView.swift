@@ -8,8 +8,12 @@ import SwiftUI
 
 struct CreateAccountSwiftUIView: View {
     @ObservedObject var data: Data
+    @State var CheckingoutLoggingIn = false
+
     struct LoginSessionView:View{
         @ObservedObject var data: Data
+        @State var CheckingoutLoggingIn = false
+        @Environment(\.presentationMode) var presentationMode
 
         @State var firstName = ""
         @State var lastName = ""
@@ -94,7 +98,27 @@ struct CreateAccountSwiftUIView: View {
                     Divider().frame(height: 1).background(Color(myColor))
                         .padding(.bottom)
                     
+                  
                     // MARK: BUTTONS
+                    if CheckingoutLoggingIn{
+                        Button(action: {
+                            animFlagLogin = initSession()
+                            if animFlagLogin{
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        }) {
+                            Text("CONTINUE")
+                                .fontWeight(.bold)
+                                .foregroundColor(Color(myColor))
+                                .frame( maxWidth: .infinity,  alignment: .center)
+                                .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
+                                .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
+                                                                                    lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
+
+                               
+                        }
+                        .padding(.bottom, 25.0)
+                    }else{
                     Button(action: {
                         animFlagLogin = initSession()
                     }) {
@@ -107,10 +131,14 @@ struct CreateAccountSwiftUIView: View {
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
 
                             .sheet(isPresented: $animFlagLogin, content: {
+                                
                                 InvoiceSwiftUIView(data: data)
+                                
                             })
                     }
                     .padding(.bottom, 25.0)
+                        
+                    }
                     
                 }.padding(.horizontal, 77.0)
             } // End Scrol
@@ -134,8 +162,7 @@ struct CreateAccountSwiftUIView: View {
                 print(" Data save ")
                 // Save User KeyChain
                 manageCreateAccount.saveUserKeyChain(email: email, password: password)
-                //  Insert user sqLite
-                manageCreateAccount.saveUserDB(userName: email, firstName: firstName, lastName: lastName, dateOfBirth: "01-01-1980", password: password, email: email)
+              
                 // Web Service AWS Insert user
                 manageCreateAccount.insertUserAWSService(userName: email, firstName: firstName, lastName: lastName, email: email, password: password)
                 dataValidate = true
@@ -146,17 +173,12 @@ struct CreateAccountSwiftUIView: View {
        
       
     }
-    struct CreateSessionView:View{
-        @ObservedObject var data: Data
-        var body: some View{
-            Text("Im Create account View")
-        }
-    }
     
     
     struct CreateAccountView:View{
         @ObservedObject var data: Data
         @State var typeLoginSession = true
+        @State var CheckingoutLoggingIn = false
         var body: some View{
             VStack{
                 //MARK: BUTTON
@@ -167,12 +189,9 @@ struct CreateAccountSwiftUIView: View {
                 }
                 .padding(0.0)
                 Spacer(minLength: 42)
+                //change the body since the other view wasn't doing anything
+                    LoginSessionView(data: data, CheckingoutLoggingIn: CheckingoutLoggingIn)
                 
-                if typeLoginSession == true {
-                    LoginSessionView(data: data)
-                }else{
-                    CreateSessionView(data:data)
-                }
             }
         }
     }

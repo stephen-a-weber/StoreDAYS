@@ -36,11 +36,6 @@ struct DashBoardSwiftUIView: View {
     }
 }
 
-func initData(){
-    var db: DBHelper = DBHelper()
-    var total =  db.getTotalItems()
-   // message = "Your Total is : \(total)"
-}
 
 struct DashBoardSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {

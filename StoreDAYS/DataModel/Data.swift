@@ -27,7 +27,7 @@ class Data: ObservableObject{
 //information to be kept during checkout
     @Published var CardInformation:PaymentsModels=PaymentsModels(ID: 0, CardNumber: "", CVC: "", Expiration: "", Name: "", User_ID: 0, Address_ID: 0)
     @Published var AddressInformation:AddressModels=AddressModels(ID: 0, Street: "", City: "", User_ID: 0, State: "", Zip: "")
-    @Published var UserInformation:UserModels=UserModels(ID: 0, UserName: "", FirstName: "", LastName: "", DateOfBirth: "", Password: "", Email: "", Admin: "")
+    @Published var UserInformation:UserModels=UserModels(ID: 0, UserName: "", FirstName: "", LastName: "", DateOfBirth: "", Password: "", Email: "", Admin: 0)
     @Published var ShippingInformation:ShippingModels=ShippingModels(ID: 0, ShippingType: "", Cost: 0.0, ETA: "", User_ID: 0, Status: "", Address_ID: 0)
     @Published var ItemedCart:[TheItemContainer]=[]
     @Published var AvaiableItems:[TheItemContainer]=[]

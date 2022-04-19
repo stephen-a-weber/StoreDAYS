@@ -15,7 +15,6 @@
 		22AABD0727FCC251004C6B30 /* VideoArkOfSuffering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AABD0627FCC251004C6B30 /* VideoArkOfSuffering.swift */; };
 		22DD029127F63C68004D0144 /* ManageUserFromAWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD029027F63C68004D0144 /* ManageUserFromAWS.swift */; };
 		22DD029327F644C0004D0144 /* CreateAccountSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */; };
-		22EBA8B127F8612B006BF6D3 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EBA8B027F8612B006BF6D3 /* DBHelper.swift */; };
 		22EDDAF227F52FE20075F49C /* LoginSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDDAF127F52FE20075F49C /* LoginSwiftUIView.swift */; };
 		22EE79B32800336B00BAE961 /* InvoiceSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE79B22800336B00BAE961 /* InvoiceSwiftUIView.swift */; };
 		22EE79B52800510000BAE961 /* TabDocumentsSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE79B42800510000BAE961 /* TabDocumentsSwiftUIView.swift */; };
@@ -53,6 +52,7 @@
 		84701DA72806199A00430964 /* DetailInvoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701DA62806199A00430964 /* DetailInvoiceView.swift */; };
 		84701DA92809B37B00430964 /* GuestBasicInfoForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701DA82809B37A00430964 /* GuestBasicInfoForm.swift */; };
 		84701DAB280E17B700430964 /* AccountTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701DAA280E17B600430964 /* AccountTab.swift */; };
+		84701DAD280EBBA500430964 /* MainScreenWithMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701DAC280EBBA500430964 /* MainScreenWithMenuView.swift */; };
 		84C8383127FE037E00815C63 /* AllModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383027FE037E00815C63 /* AllModels.swift */; };
 		84C8383627FE042300815C63 /* SwiftUIAPIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383527FE042300815C63 /* SwiftUIAPIView.swift */; };
 		84C8383827FE05A700815C63 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383727FE05A700815C63 /* UserData.swift */; };
@@ -94,7 +94,6 @@
 		22AABD0627FCC251004C6B30 /* VideoArkOfSuffering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoArkOfSuffering.swift; sourceTree = "<group>"; };
 		22DD029027F63C68004D0144 /* ManageUserFromAWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageUserFromAWS.swift; sourceTree = "<group>"; };
 		22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountSwiftUIView.swift; sourceTree = "<group>"; };
-		22EBA8B027F8612B006BF6D3 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		22EDDAF127F52FE20075F49C /* LoginSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSwiftUIView.swift; sourceTree = "<group>"; };
 		22EE79B22800336B00BAE961 /* InvoiceSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceSwiftUIView.swift; sourceTree = "<group>"; };
 		22EE79B42800510000BAE961 /* TabDocumentsSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabDocumentsSwiftUIView.swift; sourceTree = "<group>"; };
@@ -134,6 +133,7 @@
 		84701DA62806199A00430964 /* DetailInvoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInvoiceView.swift; sourceTree = "<group>"; };
 		84701DA82809B37A00430964 /* GuestBasicInfoForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestBasicInfoForm.swift; sourceTree = "<group>"; };
 		84701DAA280E17B600430964 /* AccountTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTab.swift; sourceTree = "<group>"; };
+		84701DAC280EBBA500430964 /* MainScreenWithMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenWithMenuView.swift; sourceTree = "<group>"; };
 		84C8383027FE037E00815C63 /* AllModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllModels.swift; sourceTree = "<group>"; };
 		84C8383527FE042300815C63 /* SwiftUIAPIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAPIView.swift; sourceTree = "<group>"; };
 		84C8383727FE05A700815C63 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -177,14 +177,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		22D41DF927FAF62C008F38B0 /* DBHelper */ = {
-			isa = PBXGroup;
-			children = (
-				22EBA8B027F8612B006BF6D3 /* DBHelper.swift */,
-			);
-			path = DBHelper;
-			sourceTree = "<group>";
-		};
 		22D41DFA27FAF698008F38B0 /* Users */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +293,7 @@
 				84701D8A27FE51E500430964 /* CartView.swift */,
 				84701D8C27FE574900430964 /* ViewCell.swift */,
 				84701D8E27FEA4D000430964 /* tabs.swift */,
+				84701DAC280EBBA500430964 /* MainScreenWithMenuView.swift */,
 			);
 			path = TestZone;
 			sourceTree = "<group>";
@@ -403,7 +396,6 @@
 			isa = PBXGroup;
 			children = (
 				7868E20628046B9C00FF7DF1 /* Product.swift */,
-				22D41DF927FAF62C008F38B0 /* DBHelper */,
 				22FFCD0A27F7C61A00B22DE3 /* KeyChain */,
 				D086231427F406A800BFE986 /* Data.swift */,
 				84C8383027FE037E00815C63 /* AllModels.swift */,
@@ -579,7 +571,6 @@
 				7868E1F628046AE500FF7DF1 /* DefaultPaymentMethodConvoy.swift in Sources */,
 				7868E20228046AF400FF7DF1 /* CSTabView.swift in Sources */,
 				84701DA52805D45100430964 /* CardBook.swift in Sources */,
-				22EBA8B127F8612B006BF6D3 /* DBHelper.swift in Sources */,
 				84701D8427FE391E00430964 /* Containers.swift in Sources */,
 				7868E1F928046AE500FF7DF1 /* PaymentButton.swift in Sources */,
 				7868E20528046AF400FF7DF1 /* T2View.swift in Sources */,
@@ -597,6 +588,7 @@
 				84701D8727FE511800430964 /* DetailView.swift in Sources */,
 				D086231327F3F77400BFE986 /* StoreSplashPage.swift in Sources */,
 				2208352427FDE6620025EE18 /* TabSwiftMoreUIView.swift in Sources */,
+				84701DAD280EBBA500430964 /* MainScreenWithMenuView.swift in Sources */,
 				223114B227FFA07900EF8AC9 /* LoginSessionViewSwiftUIView.swift in Sources */,
 				84C8383827FE05A700815C63 /* UserData.swift in Sources */,
 				D086231527F406A800BFE986 /* Data.swift in Sources */,

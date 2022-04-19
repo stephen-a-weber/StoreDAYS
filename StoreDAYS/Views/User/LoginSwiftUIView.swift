@@ -12,7 +12,7 @@ struct LoginSwiftUIView: View {
     // LOGIN     CREATE ACCOUNT
  
         @State var typeLoginSession = true
-  
+  @State var CheckingoutLoggingIn = false
         var body: some View{
             VStack{
                 Image("logo1").resizable().aspectRatio(contentMode: .fit)
@@ -46,9 +46,9 @@ struct LoginSwiftUIView: View {
                 
                 // Options LOGIN or CREATE ACCOUNT
                 if typeLoginSession == true {
-                    LoginSessionViewSwiftUIView(data: data)
+                    LoginSessionViewSwiftUIView(CheckingoutLoggingIn:CheckingoutLoggingIn, data: data)
                 }else{
-                    CreateAccountSwiftUIView(data: data)
+                    CreateAccountSwiftUIView(data: data,CheckingoutLoggingIn:CheckingoutLoggingIn)
                 }
             }
          

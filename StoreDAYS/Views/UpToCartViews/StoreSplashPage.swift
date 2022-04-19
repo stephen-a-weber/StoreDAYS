@@ -29,7 +29,7 @@ struct StoreSplashPage: View {
                 }
             /////IF YOU TAP ANYWHERE ON THE SCREEN IT TAKES YOU to the destination : TABBEDMAINVIEW()
             ///
-                NavigationLink("",  destination: tabs(data:data),isActive: $enterStore)
+                NavigationLink("",  destination: ContentView(data: data),isActive: $enterStore)
         Spacer()
             
             }

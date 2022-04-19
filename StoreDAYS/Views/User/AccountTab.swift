@@ -11,7 +11,6 @@ struct AccountTab: View {
     @ObservedObject var data: Data
     @State var IsloggedIn = false
     var body: some View {
-        NavigationView{
             VStack(alignment: .leading){
             if IsloggedIn{
                 Group{
@@ -46,26 +45,26 @@ struct AccountTab: View {
                             LoginSwiftUIView(data: data)
                         } label: {
                             Label("Login", systemImage: "person.circle.fill")
-                        }.padding(.top, 100)
-                        Spacer()
+                        }.isDetailLink(false)
+                        
+                Spacer()
 
                     }
            
             }
             .padding()
-            .edgesIgnoringSafeArea(.all)
-                .frame(maxWidth: .infinity,maxHeight:  .infinity, alignment: .leading)
+                .frame(maxWidth: .infinity,maxHeight:  .infinity, alignment: .trailing)
                 .background(Color(red: 38/255, green:38/255, blue: 38/255))
 
-
+                .onAppear{
+                    IsloggedIn=(Data.initdata.UserInformation.ID != 0)
+                }
             
-        }.onAppear{
-            IsloggedIn=(Data.initdata.UserInformation.ID != 0)
         }
 
         
         
-    }
+    
 }
 
 struct AccountTab_Previews: PreviewProvider {

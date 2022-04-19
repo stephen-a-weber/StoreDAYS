@@ -68,7 +68,7 @@ struct GuestBasicInfoForm: View {
             }
             Button {
                 if(!(FirstName==""||LastName==""||Email=="")){
-                Data.initdata.UserInformation=UserModels(ID: 0, UserName: "", FirstName: FirstName, LastName: LastName, DateOfBirth: "", Password: "123Password!", Email: Email, Admin: "")
+                Data.initdata.UserInformation=UserModels(ID: 0, UserName: "", FirstName: FirstName, LastName: LastName, DateOfBirth: "", Password: "123Password!", Email: Email, Admin: 0)
                 ShowingSheet.toggle()
                 }else{
                     dataValidate=false

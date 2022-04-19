@@ -69,8 +69,13 @@ struct CartView: View {
                     // so you can easily see what is in the cart
                     // add more or as the button is for go to purchase
                     NavigationLink {
+                        if data.UserInformation.ID==0{
+                            LoginSwiftUIView(data: data)}
+                        else{
+                            //choose the selector instead
+                        }
                         
-                        LoginSwiftUIView(data: Data())}
+                    }
                 label: {
                         Text("Continue To Payment")
                             .fontWeight(.bold)

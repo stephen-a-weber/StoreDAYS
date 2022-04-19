@@ -14,7 +14,7 @@ struct UserModels: Hashable, Codable{
     let DateOfBirth:String
     let Password:String
     let Email:String
-    let Admin:String
+    let Admin:Int
     
 }
 struct IDModel: Hashable, Codable{

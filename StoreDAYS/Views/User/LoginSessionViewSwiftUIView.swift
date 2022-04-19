@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct LoginSessionViewSwiftUIView: View {
-   
+    @State var CheckingoutLoggingIn = false
+    @Environment(\.presentationMode) var presentationMode
+
         @ObservedObject var data: Data
         @State var email = ""
         @State var password = ""
@@ -60,25 +62,27 @@ struct LoginSessionViewSwiftUIView: View {
                     //                        .padding(.bottom, 40.0)
                     // MARK: BUTTONS
                         .padding(.bottom, 25.0)
-                    Button(action: {
-                        animFlagLogin = initSession()
-                        
-                    }) {
-                        Text("CONTINUE")
-                            .fontWeight(.bold)
-                            .foregroundColor(Color(myColor))
-                            .frame( maxWidth: .infinity,  alignment: .center)
-                            .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
-                            .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
-                                                                                lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
-                        
-                            .sheet(isPresented: $animFlagLogin, content: {
-                                InvoiceSwiftUIView(data: data).environmentObject(CartManager())
-                            })
-                    }
-                    .padding(.bottom, 25.0)
                     
-                    Button(action: {
+                    
+                   if(CheckingoutLoggingIn){
+                       Button(action: {
+                           animFlagLogin = initSession()
+                           
+                       }) {
+                           Text("CONTINUE")
+                               .fontWeight(.bold)
+                               .foregroundColor(Color(myColor))
+                               .frame( maxWidth: .infinity,  alignment: .center)
+                               .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
+                               .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
+                                                                                   lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
+                           
+                               .sheet(isPresented: $animFlagLogin, content: {
+                                   InvoiceSwiftUIView(data: data).environmentObject(CartManager())
+                               })
+                       }
+                       .padding(.bottom, 25.0)
+                       Button(action: {
                         animFlag = continueGuest()
                     }) {
                         Text("CONTINUE AS GUEST")
@@ -98,7 +102,25 @@ struct LoginSessionViewSwiftUIView: View {
 //                                TabDocumentsSwiftUIView(data: data)
                             })
                     }
-                    .padding(.bottom, 20.0)
+                       .padding(.bottom, 20.0)}
+                    else{
+                           Button(action: {
+                               animFlagLogin = initSession()
+                               
+
+                           }) {
+                               Text("CONTINUE")
+                                   .fontWeight(.bold)
+                                   .foregroundColor(Color(myColor))
+                                   .frame( maxWidth: .infinity,  alignment: .center)
+                                   .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
+                                   .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
+                                                                                       lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
+                               
+                                   
+                           }
+                           .padding(.bottom, 25.0)
+                       }
                     Button(action: {
 	
                         animFlag2 = continueVideo()
@@ -138,7 +160,6 @@ struct LoginSessionViewSwiftUIView: View {
         
         //MARK: initSession
         func initSession() -> Bool {
-            var userFromAWS = ""
             var existUser = false
             if (email == "" || password == ""){
                 messajeValidate = "Please enter your email and password"
@@ -148,19 +169,18 @@ struct LoginSessionViewSwiftUIView: View {
                 // If credentials = OK
                 dataValidate = true
                 queue.maxConcurrentOperationCount = 1
-                userFromAWS = keyChainManage.ViewDataKeyChain(email: email)
-                if userFromAWS == ""{
-                    dataValidate = false
-                    messajeValidate = "User no exist"
-                    print("User no Exist")
-                    messajeValidate = "User no exist"
-                    existUser  = false
-                }else{
-                    print("Exist")
-                    appGetUserFromAWS.getUserAWSService(email: email, password: password)
-                    existUser = true
-                }
                 
+                POSTSignIn(Email: email, Password: password, SignupHandler: {
+                    GivenUser, error in
+                    DispatchQueue.main.sync {
+                        Data.initdata.UserInformation=GivenUser!
+
+                        data.UserInformation=GivenUser!
+                    }
+                })
+                existUser=(data.UserInformation.ID != 0)
+                if existUser && !CheckingoutLoggingIn{
+                    presentationMode.wrappedValue.dismiss()}
                 return existUser
             }
         }
