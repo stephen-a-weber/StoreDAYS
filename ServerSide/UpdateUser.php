@@ -27,7 +27,6 @@ require_once "config.php";
         $Admin=(int)$_POST['Admin'];}
 
       "UPDATE User set UserName = ?, FirstName = ?, LastName = ?, DateOfBirth = ?, Password = ?, Email = ? WHERE ID = ?";
-      $sql = "SELECT * FROM User WHERE Email = ? AND Password = ?";
       $stmt = $_SERVER['dbconnection']->prepare($sql);
       $stmt -> bind_param("ssssssi",$ID,$Password,$UserName,$FirstName,$LastName,$DateOfBirth,$Admin);
       $stmt->execute();
