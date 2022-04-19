@@ -8,7 +8,7 @@
 import SwiftUI
 class viewAddressModel: ObservableObject{
     @Published var Address :[AddressModels] = []
-    
+
     func loadAddresses(User_ID:Int){
         GETAddress(User_ID: User_ID, AddressCompletionHandler: { models, error in
             DispatchQueue.main.async{
@@ -18,6 +18,8 @@ class viewAddressModel: ObservableObject{
     
 }
 struct GetAndUseAddress: View {
+    @ObservedObject var data: Data
+
     @StateObject var Model=viewAddressModel()
     @State var refresh: Bool = false
 
@@ -75,6 +77,6 @@ struct GetAndUseAddress: View {
 
 struct GetAndUseAddress_Previews: PreviewProvider {
     static var previews: some View {
-        GetAndUseAddress()
+        GetAndUseAddress(data: Data())
     }
 }

@@ -73,18 +73,12 @@ class Data: ObservableObject{
             })}
         
     }
-    // Main Local data object called at runtime
-    struct Order :Hashable{
-        var name = ""
-        var price = ""
-    }
     // Below the item order as of april7th is an array of Orders from structure above. When one chooses
     // and fills cart this will be the data structure available automatically everywhere
     // where the data class above is listed as  @ObservedObject var data:data
     // data.order is then a normal array which can populate lists or
     // database structures for the invoices.
     //
-    @Published var order = [Order]()
     
     @Published var totalPrice : Double = 0.00
     @Published var shippingPrice : Double = 10.00
@@ -97,18 +91,6 @@ class Data: ObservableObject{
     // totalPrice string into a nice usable total.
     
     @Published var name = "STOREDAY!"
-    @Published var kitten : [Int] = [1,2,3,4,5,6,7,8,9,10]
-    @Published var kittenNames : [String] = ["kitten1","kitten2","kitten3","kitten4","kitten5","kitten6","kitten7","kitten8","kitten9","kitten10"]
-    @Published var kittenLitterCount = [ 5,3,6,2,2,5,4,6,3,4]
-    @Published var kittenPrice = ["$12.99","$15.99","$19.99","$14.99","$19.99","$14.99","$19.99","$14.99","$19.99","$14.99"]
-    
-    @Published var puppyNames : [String] = ["puppy1","puppy2","puppy3","puppy4","puppy5","puppy6","puppy7","puppy8","puppy9","puppy10"]
-    @Published var puppyLitterCount = [ 2,6,4,8,3,4,5,4,3,6]
-    @Published var puppyPrice = ["$100","$234","$267","$765","$333","$666","$546","$125","$212","$145"]
-    
-    @Published var exoticNames: [String] = ["animal1","animal2","animal3","animal4","animal5","animal6","animal7","animal8","animal9"]
-    @Published var exoticLitterCount = [2,2,2,3,2,1,2,1,1]
-    @Published var exoticPrice = ["$1200","$1100","$2300","$4500","$5200","$3666","$2567","$9765","$12000"]
     
     
    
@@ -130,14 +112,7 @@ class Data: ObservableObject{
         }
     }
     
-    
-    
-    func addToCart(item : String,price: String) {
-        let x = Order(name: item, price : price)
-        order.append(x)
-        
-    }
-  
+   
     func calculateTotalPrice() {
         print("Caculating for : \(Data.initdata.ItemedCart.description)")
         var dollars=0.0

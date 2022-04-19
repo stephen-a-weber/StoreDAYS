@@ -134,7 +134,7 @@ func GETReview(Items_ID:Int, ReviewCompletionHanlder:@escaping([ReviewModels]?,E
     
         //creating REQUEST URL with parameters in http body and the method define
         let paremeters="?Items_ID=\(Items_ID)"
-    var request=URLRequest(url: URL(string: (PaymentURL+paremeters))!)
+    var request=URLRequest(url: URL(string: (ReviewURL+paremeters))!)
     request.httpMethod="GET"
     // run network task
         let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
@@ -142,6 +142,7 @@ func GETReview(Items_ID:Int, ReviewCompletionHanlder:@escaping([ReviewModels]?,E
                         print("error")
                         return
                     }
+            print(String(data:data, encoding:.utf8))
                     //convert to json
                     do{
                         let JsonData = try JSONDecoder().decode([ReviewModels].self, from: data)
@@ -156,7 +157,7 @@ func PostReview(Model:ReviewModels){
     
     let parameters="Items_ID=\(Model.Items_ID)&Body=\(Model.Body)&Rate=\(Model.Rate)&=\(Model.Catagory_ID)&User_ID=\(Model.User_ID)"
     
-           var request = URLRequest(url: URL(string: PaymentURL)!)
+           var request = URLRequest(url: URL(string: ReviewURL)!)
            request.httpMethod="POST"
                request.httpBody=parameters.data(using: String.Encoding.utf8)
            let task = URLSession.shared.dataTask(with: request){

@@ -81,12 +81,12 @@ struct LastInsert: Hashable, Codable{
     let LAST_INSERT_ID:Int
 }
 struct ReviewModels: Hashable, Codable{
-    let ID:String
+    let ID:Int
     let Body:String
-    let User_ID:String
-    let Rate:String
-    let Items_ID:String
-    let Catagory_ID:String
+    let User_ID:Int
+    let Rate:Int
+    let Items_ID:Int
+    let Catagory_ID:Int
     
 }
 struct Invoices:Hashable{

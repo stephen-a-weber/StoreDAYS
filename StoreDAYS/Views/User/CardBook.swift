@@ -15,6 +15,7 @@ class viewCardModel: ObservableObject{
     }
 }
 struct CardBook: View {
+    @ObservedObject var data: Data
     @State var User_ID=2
     @StateObject var Model=viewCardModel()
     var body: some View {
@@ -83,6 +84,6 @@ struct CardBook: View {
 
 struct CardBook_Previews: PreviewProvider {
     static var previews: some View {
-        CardBook()
+        CardBook(data: Data())
     }
 }

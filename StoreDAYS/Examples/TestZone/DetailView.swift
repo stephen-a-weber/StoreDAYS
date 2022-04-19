@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct DetailView: View {
-    @ObservedObject var ItemedContainer : TheItemContainer = TheItemContainer(Item: ItemModels(ID: 2, Name: "demo", Description: "", Cost: 0.0, Catagory_ID: 0, Img: "", Availability: 1, Longitude: 0.0, Latitude: 0.0))
+    @State var isReviewing=false
+    @ObservedObject var ItemedContainer : TheItemContainer = TheItemContainer(Item: ItemModels(ID: 1, Name: "demo", Description: "", Cost: 0.0, Catagory_ID: 0, Img: "", Availability: 1, Longitude: 0.0, Latitude: 0.0))
     @ObservedObject var data: Data
     @State var isPurchased = false
     
@@ -33,31 +34,44 @@ struct DetailView: View {
                 ///
                
             
-            
-            Button("Adopt this Kitten"){
+            //make moduler sometime we just want to review the item
+           if(!isReviewing){ Button("Adopt this Kitten"){
                 isPurchased=true
-                data.addtoItemedCart(Item: ItemedContainer)         }
+                data.addtoItemedCart(Item: ItemedContainer)         }    .frame(width: 155.0, height: 60.0)
+
+               
+           }
+            
+            
+            //    if you choose from this detail view
+               // A notification is given to let you see some
+               // reaction.
+          List{ ForEach(ItemedContainer.Review, id:\.self){
+               GivenReview in
+               HStack{
+                   Text(GivenReview.Body)
+                   Text(String(GivenReview.Rate))
+               }
+          }}
+               if isPurchased {
+                   Text("Adding to Cart")
+                       .font(.title)
+                       .multilineTextAlignment(.center)
+                       .background(.yellow)
+                   Text("You will be very happy")
+                       .multilineTextAlignment(.center)
+                   Text("with this kitten")
+                       .fontWeight(.heavy)
+                       .multilineTextAlignment(.center)
+               }
+            }.onAppear{
+                ItemedContainer.load()
             }
-    .frame(width: 155.0, height: 60.0)
           
             
-         //    if you choose from this detail view
-            // A notification is given to let you see some
-            // reaction.
-            
-            if isPurchased {
-                Text("Adding to Cart")
-                    .font(.title)
-                    .multilineTextAlignment(.center)
-                    .background(.yellow)
-                Text("You will be very happy")
-                    .multilineTextAlignment(.center)
-                Text("with this kitten")
-                    .fontWeight(.heavy)
-                    .multilineTextAlignment(.center)
-            }
+       
         
-}
+    }
         
     }
 

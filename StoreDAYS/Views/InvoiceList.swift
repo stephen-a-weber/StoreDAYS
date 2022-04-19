@@ -42,7 +42,8 @@ class viewInvoiceListModel:ObservableObject{
     }
 }
 struct InvoiceList: View {
-    
+    @ObservedObject var data: Data
+
     @StateObject var Model=viewInvoiceListModel()
 
     var body: some View {
@@ -89,6 +90,6 @@ struct InvoiceList: View {
 
 struct InvoiceList_Previews: PreviewProvider {
     static var previews: some View {
-        InvoiceList()
+        InvoiceList(data: Data())
     }
 }

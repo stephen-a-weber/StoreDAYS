@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct StoreDAYSApp: App {
-    let persistenceController = PersistenceController.shared
     @StateObject var data = Data()
     //@StateObject var data = ItemContainer()
     @StateObject var userData = UserData()

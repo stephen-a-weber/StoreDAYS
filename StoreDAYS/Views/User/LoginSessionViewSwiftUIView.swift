@@ -98,10 +98,9 @@ struct LoginSessionViewSwiftUIView: View {
 //                                TabDocumentsSwiftUIView(data: data)
                             })
                     }
-                    .padding(.bottom, 220.0)
+                    .padding(.bottom, 20.0)
                     Button(action: {
-                        Data.initdata.calculateTotalPrice()
-
+	
                         animFlag2 = continueVideo()
                     }) {
                       
