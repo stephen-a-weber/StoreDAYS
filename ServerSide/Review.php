@@ -34,16 +34,16 @@ case "POST":
         $Catagory_ID=0;
         $Items_ID =0;
         //if post is set assign the Body
-        if(!empty($_GET['Body'])){
-          $Body=$_GET['Body'];
+        if(!empty($_POST['Body'])){
+          $Body=$_POST['Body'];
         }
         $Items_ID=0;
-        if(!empty($_GET['Items_ID'])){
-          $Items_ID =(int)$_GET['Items_ID'];
+        if(!empty($_POST['Items_ID'])){
+          $Items_ID =(int)$_POST['Items_ID'];
         }
         //if we are looking for a set of order for an invoice
-        if(!empty($_GET['Catagory_ID'])){
-          $Catagory_ID =(int)$_GET['Catagory_ID'];
+        if(!empty($_POST['Catagory_ID'])){
+          $Catagory_ID =(int)$_POST['Catagory_ID'];
         }
 
         $sql = "INSERT INTO Review (Body, User_ID, Rate, Items_ID, Catagory_ID) VALUES (?,?,?,?,?)        ";
@@ -59,7 +59,7 @@ case "GET":
   $var=0;
 //if we are looking for one order
   if(!empty($_GET['ID'])){
-    $sql="SELECT * FROM Orders WHERE ID = ?";
+    $sql="SELECT * FROM Review WHERE ID = ?";
     $var=(int)$_GET['ID'];
   }else
   if(!empty($_GET['Items_ID'])){

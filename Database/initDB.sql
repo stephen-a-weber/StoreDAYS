@@ -106,6 +106,7 @@ INSERT INTO Items (Name, Description, Cost, Catagory_ID, IMG, Availability, Long
 INSERT INTO Items (Name, Description, Cost, Catagory_ID, IMG, Availability, Longitude, Latitude ) VALUES ('Shaun','Turtle',46.20,3,'http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/img/animal9.jpeg',0,10.46, 77.23);
 
 -- Review
+INSERT INTO Review (Body, User_ID, Rate, Items_ID, Catagory_ID) VALUES ('yay',3,5,1,1);
 INSERT INTO Review (Body, User_ID, Rate, Items_ID, Catagory_ID) VALUES ('Best Pet Ever',3,5,10,1);
 INSERT INTO Review (Body, User_ID, Rate, Items_ID, Catagory_ID) VALUES ('Good timing',4,4,20,2);
 INSERT INTO Review (Body, User_ID, Rate, Items_ID, Catagory_ID) VALUES ('It was okay',2,3,29,3);

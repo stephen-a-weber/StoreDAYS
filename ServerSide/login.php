@@ -19,7 +19,7 @@ $Password = $_POST["Password"];
       $stmt->execute();
     $rows=$stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     if(empty($rows))
-    die("Invalid credentials");
+    die("[{\"ID\":0,\"UserName\":\"0\",\"FirstName\":\"0\",\"LastName\":\"0\",\"DateOfBirth\":\"0-0-0\",\"Password\":\"0!\",\"Email\":\"0@0.0\",\"Admin\":0}]");
       echo json_encode($rows);
     }else{
       die("Post was not met");
