@@ -89,7 +89,7 @@ extension PayTabView {
       }
 
       var walmartPayTab: some View {
-            T2View()
+            WalmartPayView()
             .tabItem {
                   Image("walmart")
                       .frame(width: 20.0, height: 20.0)

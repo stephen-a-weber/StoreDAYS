@@ -22,6 +22,7 @@
 		22FBF75C27FF318B009EAB92 /* coolAnimals.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 22FBF75B27FF318B009EAB92 /* coolAnimals.mp4 */; };
 		22FEA1AC27FCB9600007838E /* ManageCreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FEA1AB27FCB9600007838E /* ManageCreateAccount.swift */; };
 		22FFCD0C27F7C62E00B22DE3 /* KeyChainManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFCD0B27F7C62E00B22DE3 /* KeyChainManage.swift */; };
+		7842A2F7280F0EBE0006A4D0 /* WalmartPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7842A2F6280F0EBE0006A4D0 /* WalmartPayView.swift */; };
 		7868E1F228046AE500FF7DF1 /* PaymentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868E1E528046AE500FF7DF1 /* PaymentCard.swift */; };
 		7868E1F328046AE500FF7DF1 /* OtherPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868E1E628046AE500FF7DF1 /* OtherPay.swift */; };
 		7868E1F428046AE500FF7DF1 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868E1E828046AE500FF7DF1 /* CartManager.swift */; };
@@ -119,6 +120,7 @@
 		22FBF75B27FF318B009EAB92 /* coolAnimals.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = coolAnimals.mp4; sourceTree = "<group>"; };
 		22FEA1AB27FCB9600007838E /* ManageCreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageCreateAccount.swift; sourceTree = "<group>"; };
 		22FFCD0B27F7C62E00B22DE3 /* KeyChainManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManage.swift; sourceTree = "<group>"; };
+		7842A2F6280F0EBE0006A4D0 /* WalmartPayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalmartPayView.swift; sourceTree = "<group>"; };
 		7868E1E528046AE500FF7DF1 /* PaymentCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentCard.swift; sourceTree = "<group>"; };
 		7868E1E628046AE500FF7DF1 /* OtherPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherPay.swift; sourceTree = "<group>"; };
 		7868E1E828046AE500FF7DF1 /* CartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 			children = (
 				7868E1E528046AE500FF7DF1 /* PaymentCard.swift */,
 				7868E1E628046AE500FF7DF1 /* OtherPay.swift */,
+				7842A2F6280F0EBE0006A4D0 /* WalmartPayView.swift */,
 			);
 			path = "Other Payment Methods";
 			sourceTree = "<group>";
@@ -669,6 +672,7 @@
 				84C8383627FE042300815C63 /* SwiftUIAPIView.swift in Sources */,
 				2208352627FDE79B0025EE18 /* FeedbackSwiftUIView.swift in Sources */,
 				7868E20328046AF400FF7DF1 /* LocationAssistant.swift in Sources */,
+				7842A2F7280F0EBE0006A4D0 /* WalmartPayView.swift in Sources */,
 				D0E2B32B27F52F51007DABE6 /* TabbedMainView.swift in Sources */,
 				84701D9127FF4B3700430964 /* SwiftUIView.swift in Sources */,
 				84701D9F2804C99800430964 /* OrderListView.swift in Sources */,
