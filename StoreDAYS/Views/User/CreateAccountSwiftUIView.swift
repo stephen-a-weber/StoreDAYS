@@ -165,6 +165,16 @@ struct CreateAccountSwiftUIView: View {
               
                 // Web Service AWS Insert user
                 manageCreateAccount.insertUserAWSService(userName: email, firstName: firstName, lastName: lastName, email: email, password: password)
+                
+                POSTSignIn(Email: email, Password: password) { 
+                    GivenUser, error in
+                    DispatchQueue.main.sync {
+                        Data.initdata.UserInformation=GivenUser!
+                        data.UserInformation=GivenUser!
+                    }
+                }
+                if !CheckingoutLoggingIn{
+                    presentationMode.wrappedValue.dismiss()}
                 dataValidate = true
                 return true
             }

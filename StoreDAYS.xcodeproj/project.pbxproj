@@ -53,6 +53,7 @@
 		84701DA92809B37B00430964 /* GuestBasicInfoForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701DA82809B37A00430964 /* GuestBasicInfoForm.swift */; };
 		84701DAB280E17B700430964 /* AccountTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701DAA280E17B600430964 /* AccountTab.swift */; };
 		84701DAD280EBBA500430964 /* MainScreenWithMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701DAC280EBBA500430964 /* MainScreenWithMenuView.swift */; };
+		84701DAF280EF70300430964 /* UpdateUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701DAE280EF70200430964 /* UpdateUserInfo.swift */; };
 		84C8383127FE037E00815C63 /* AllModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383027FE037E00815C63 /* AllModels.swift */; };
 		84C8383627FE042300815C63 /* SwiftUIAPIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383527FE042300815C63 /* SwiftUIAPIView.swift */; };
 		84C8383827FE05A700815C63 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8383727FE05A700815C63 /* UserData.swift */; };
@@ -134,6 +135,7 @@
 		84701DA82809B37A00430964 /* GuestBasicInfoForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestBasicInfoForm.swift; sourceTree = "<group>"; };
 		84701DAA280E17B600430964 /* AccountTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTab.swift; sourceTree = "<group>"; };
 		84701DAC280EBBA500430964 /* MainScreenWithMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenWithMenuView.swift; sourceTree = "<group>"; };
+		84701DAE280EF70200430964 /* UpdateUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfo.swift; sourceTree = "<group>"; };
 		84C8383027FE037E00815C63 /* AllModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllModels.swift; sourceTree = "<group>"; };
 		84C8383527FE042300815C63 /* SwiftUIAPIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAPIView.swift; sourceTree = "<group>"; };
 		84C8383727FE05A700815C63 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				84701D9E2804C99700430964 /* OrderListView.swift */,
 				84701DA02805074600430964 /* InvoiceList.swift */,
 				84701DA62806199A00430964 /* DetailInvoiceView.swift */,
+				84701DAE280EF70200430964 /* UpdateUserInfo.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				22AABD0727FCC251004C6B30 /* VideoArkOfSuffering.swift in Sources */,
 				7868E20428046AF400FF7DF1 /* CustomAnnotationMapView.swift in Sources */,
 				84C8383627FE042300815C63 /* SwiftUIAPIView.swift in Sources */,
+				84701DAF280EF70300430964 /* UpdateUserInfo.swift in Sources */,
 				2208352627FDE79B0025EE18 /* FeedbackSwiftUIView.swift in Sources */,
 				7868E20328046AF400FF7DF1 /* LocationAssistant.swift in Sources */,
 				84701D9F2804C99800430964 /* OrderListView.swift in Sources */,

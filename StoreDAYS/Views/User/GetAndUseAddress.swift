@@ -19,7 +19,8 @@ class viewAddressModel: ObservableObject{
 }
 struct GetAndUseAddress: View {
     @ObservedObject var data: Data
-
+    @State var EditOrUse=false
+    @State var CartOrAccount=false
     @StateObject var Model=viewAddressModel()
     @State var refresh: Bool = false
 
@@ -28,33 +29,35 @@ struct GetAndUseAddress: View {
     }
     var body: some View {
         NavigationView{
-            List{
-                
-                ForEach(Model.Address, id: \.self){
-                    Address in
+Group{
+                List{
                     
-                    
-                    NavigationLink {
-                        MakeAddressView(data: Data(), ID:Address.ID, Street: Address.Street, City: Address.City, State: Address.State, Zip: Address.Zip, EditFlag: true)
-                    } label: {
-                        AddressCell(City: Address.City, Street: Address.Street, Zip: Address.Zip, State: Address.State)
-                    }
-                    .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
-                        Button{
-                            DeleteAddress(ID: Address.ID)
-                            Model.loadAddresses(User_ID: 2)
-                        }label:{Label("Delete", systemImage: "trash")}
-                        .tint(.red)
+                    ForEach(Model.Address, id: \.self){
+                        Address in
+                        
+                        
+                        NavigationLink {
+                            MakeAddressView(data: Data(), ID:Address.ID, Street: Address.Street, City: Address.City, State: Address.State, Zip: Address.Zip, EditFlag: true)
+                        } label: {
+                            AddressCell(City: Address.City, Street: Address.Street, Zip: Address.Zip, State: Address.State)
+                        }
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
+                            Button{
+                                DeleteAddress(ID: Address.ID)
+                                Model.loadAddresses(User_ID: 2)
+                            }label:{Label("Delete", systemImage: "trash")}
+                            .tint(.red)
 
-                    })
-                               
-                                          
-            }
+                        })
+                                   
+                                              
+                }
+                }
             }
             .padding(.trailing)
             
             .onAppear{
-                Model.loadAddresses(User_ID: 2)
+                Model.loadAddresses(User_ID: Data.initdata.UserInformation.ID)
             }
             .navigationTitle("Address Book")
             .toolbar {

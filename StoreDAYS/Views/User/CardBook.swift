@@ -10,13 +10,14 @@ class viewCardModel: ObservableObject{
     @Published var Cards:[PaymentsModels]=[]
     func loadCard(User_ID:Int){
         GETPaymentMethods(User_ID: User_ID) { Cards, error in
-            DispatchQueue.main.async{self.Cards=Cards!}
+            DispatchQueue.main.sync{self.Cards=Cards!}
         }
     }
 }
 struct CardBook: View {
+    @State var CartOrAccount=false
     @ObservedObject var data: Data
-    @State var User_ID=2
+    @State var User_ID=Data.initdata.UserInformation.ID
     @StateObject var Model=viewCardModel()
     var body: some View {
         NavigationView{
@@ -47,8 +48,9 @@ struct CardBook: View {
                            }
                            .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
                                Button{
+                                   
                                    DeleteCard(ID: Card.ID)
-                                   Model.loadCard(User_ID: 2)
+                                   Model.loadCard(User_ID: User_ID)
                                }label:{Label("Delete", systemImage: "trash")}
                                .tint(.red)
 
@@ -56,6 +58,11 @@ struct CardBook: View {
                                       
                                                  
                    }
+                       .onDelete(perform: { index in
+                       DeleteCard(ID: Model.Cards[index[index.startIndex]].ID)
+                           Model.Cards.remove(atOffsets: index)
+                           Model.loadCard(User_ID: User_ID)
+                       })
                    }
                    .padding(.trailing)
                    

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MakeAddressView: View {
     @ObservedObject var data: Data
-    @State var User_ID = 0
+    @State var User_ID = Data.initdata.UserInformation.ID
     @State var ID=0
     @State var Street=""
     @State var City=""
@@ -117,21 +117,21 @@ struct MakeAddressView: View {
         }
         
         let Address = AddressModels(ID: ID, Street: Street, City: City, User_ID: User_ID, State: State, Zip: Zip)
-        if !UseFlag{
+        if UseFlag{
             Data.initdata.AddressInformation=Address
             Data.initdata.addres="\(Address.Street), \(Address.City), \(Address.State) \(Address.Zip)"
-            
+            isPresented=true;
+
         }else{
         if !EditFlag{
             POSTNewAddress(Model: Address)}
         else {
             POSTUpdateAddress(Model: Address)
-            presentationMode.wrappedValue.dismiss()
-        }
             
         }
+            presentationMode.wrappedValue.dismiss()
+        }
         
-        isPresented=true;
         return true;
     }
 }

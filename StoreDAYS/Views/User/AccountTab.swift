@@ -35,7 +35,10 @@ struct AccountTab: View {
 
             }.padding(.top, 20)
                 if IsloggedIn{
-                Button("Logout", action: {IsloggedIn.toggle()}).padding(.top, 20)}
+                Button("Logout", action: {IsloggedIn.toggle()
+                    Data.initdata.UserInformation=UserModels(ID: 0, UserName: "", FirstName: "", LastName: "", DateOfBirth: "", Password: "", Email: "", Admin: 0)
+                    data.UserInformation=UserModels(ID: 0, UserName: "", FirstName: "", LastName: "", DateOfBirth: "", Password: "", Email: "", Admin: 0)
+                }).padding(.top, 20)}
                     
                     Spacer()
                 }

@@ -78,7 +78,7 @@ struct LoginSessionViewSwiftUIView: View {
                                                                                    lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                            
                                .sheet(isPresented: $animFlagLogin, content: {
-                                   InvoiceSwiftUIView(data: data).environmentObject(CartManager())
+                                   InvoiceSwiftUIView(data:data)
                                })
                        }
                        .padding(.bottom, 25.0)

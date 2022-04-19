@@ -61,7 +61,6 @@ struct CartView: View {
                     
             Spacer()
                Spacer()
-                    
                     // Near bottom there is a button here to
                     // take your cart over to checkout.
                     // currently this view is part of a
@@ -70,9 +69,10 @@ struct CartView: View {
                     // add more or as the button is for go to purchase
                     NavigationLink {
                         if data.UserInformation.ID==0{
-                            LoginSwiftUIView(data: data)}
+                            LoginSwiftUIView(data: data, CheckingoutLoggingIn: true)}
                         else{
                             //choose the selector instead
+                            
                         }
                         
                     }
