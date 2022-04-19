@@ -107,13 +107,13 @@ case "GET":
       $var=0;
     //if we are looking for one
       if(!empty($_GET['ID'])){
-        $sql=" UPDATE PaymentMethods SET User_ID =0  WHERE ID =?";
+        $sql=" UPDATE PaymentMethods SET User_ID =1  WHERE ID =?";
         $var=(int)$_GET['ID'];
       }
 
       //if we are looking for a set
      else if(!empty($_GET['User_ID'])){
-        $sql=" UPDATE PaymentMethods SET User_ID =0  WHERE User_ID =?";
+        $sql=" UPDATE PaymentMethods SET User_ID =1  WHERE User_ID =?";
         $var =(int)$_GET['User_ID'];
       } else
       die("Get wasn't define");
