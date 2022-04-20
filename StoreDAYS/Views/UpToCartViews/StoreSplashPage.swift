@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StoreSplashPage: View {
+    @Environment(\.presentationMode) var presentation
     @ObservedObject var data : Data
    @State private var enterStore = false
     ///// the data variable is not used currently on this page. The boolean enterStore is the required MVC bit to make a state

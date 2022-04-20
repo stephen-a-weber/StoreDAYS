@@ -7,13 +7,19 @@
 
 import SwiftUI
 struct CardBook: View {
+    @State var moveToNext = false
     @State var CartOrAccount=false
     @ObservedObject var data: Data
     @State var User_ID=Data.initdata.UserInformation.ID
     @StateObject var Model=viewCardModel()
     var body: some View {
         
-                 Group{  List{
+                 Group{
+                     NavigationLink(isActive:$moveToNext) {InvoiceSwiftUIView(LoggedIN:true,data:data)}label:{
+                         
+                        
+                     }.isDetailLink(false).hidden().zIndex(0)
+                     List{
                        
                        ForEach(Model.Cards, id: \.self){
                            Card in
@@ -39,29 +45,34 @@ struct CardBook: View {
                                }
                            }.isDetailLink(false)
                              
-                         }else{
-                               NavigationLink (destination:GetAndUseAddress(data:data)){
-                                   
-                                   Button{
-                                   data.CardInformation=Card
-                                   Data.initdata.CardInformation=Card
-                                   }label:{
-                                       HStack{
-                                           VStack{
-                                               Text("Name: \(Card.Name)")
-                                               HStack{
-                                                   Text("Expiration: \(Card.Expiration)")
-                                               Text("CVC:\(Card.CVC)")
-                                                 }
-                                               let last4=String(Card.CardNumber.prefix(4))
-                                           Text("Card Number:**** **** **** \(last4)")
-                                               
+                         }else
+                           {
+                             
+                             Button{
+                                 data.CardInformation=Card
+                                 Data.initdata.CardInformation=Card
+                                 moveToNext.toggle()
+                             }label:{
+                                 HStack{
+                                     VStack{
+                                         Text("Name: \(Card.Name)")
+                                         HStack{
+                                             Text("Expiration: \(Card.Expiration)")
+                                         Text("CVC:\(Card.CVC)")
                                            }
-                                           
-                                          
-                                       }
-                                   }
-                               }.isDetailLink(false)
+                                         let last4=String(Card.CardNumber.prefix(4))
+                                     Text("Card Number:**** **** **** \(last4)")
+                                         
+                                     }
+                                     
+                                    
+                                 }
+                             }
+                           
+                             
+                             
+                             
+                         
                            }
                       
                                       

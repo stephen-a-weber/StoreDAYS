@@ -14,9 +14,12 @@ class TheItemContainer:ObservableObject, Identifiable ,Equatable{
         return lhs.Item.ID==rhs.Item.ID
     }
     init(){
+        Item = ItemModels(ID: 0, Name: "", Description: "", Cost: 0.0, Catagory_ID: 0, Img: "", Availability: 0, Longitude: 0.0, Latitude: 0.0)
+        Review = [ReviewModels(ID: 0, Body: "No Body", User_ID: 0, Rate: 0, Items_ID: 1, Catagory_ID: 1)]
         }
     init(Item:ItemModels){
         self.Item=Item
+        Review = [ReviewModels(ID: 0, Body: "No Body", User_ID: 0, Rate: 0, Items_ID: 1, Catagory_ID: 1)]
     }
     init(Item:ItemModels,Reviews:[ReviewModels]){
         self.Item=Item
@@ -24,8 +27,8 @@ class TheItemContainer:ObservableObject, Identifiable ,Equatable{
     }
     @Published var location:Location=Location(name: "Item.Name", coordinate: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0), price: 0.0, Item:  ItemModels(ID: 0, Name: "", Description: "", Cost: 0.0, Catagory_ID: 0, Img: "", Availability: 0, Longitude: 0.0, Latitude: 0.0))
 
-    @Published var Review:[ReviewModels]=[ReviewModels(ID: 0, Body: "No Body", User_ID: 0, Rate: 0, Items_ID: 1, Catagory_ID: 1)]
-    @Published var Item: ItemModels = ItemModels(ID: 0, Name: "", Description: "", Cost: 0.0, Catagory_ID: 0, Img: "", Availability: 0, Longitude: 0.0, Latitude: 0.0)
+    @Published var Review:[ReviewModels]
+    @Published var Item: ItemModels
     @Published var id=UUID()
     func load(){
         self.location=Location(name: Item.Name, coordinate: CLLocationCoordinate2D(latitude: Item.Latitude, longitude: Item.Latitude), price: Item.Cost, Item: Item)
@@ -57,6 +60,7 @@ class viewInvoiceListModel:ObservableObject{
     @Published var Containers:[Invoices]=[]
     
     func loadOrdersIntoInvoice(){
+        Containers=[]
         for invoice in InvoicesModel{
             var InvoiceOrders=[Orders]()
             GETOrder(Invoice_ID: invoice.ID) { DataOrders, error in

@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct GetAndUseAddress: View {
+    @State var moveToNext = false
     @ObservedObject var data: Data
-    @State var EditOrUse=false
     @State var CartOrAccount=false
     @StateObject var Model=viewAddressModel()
-
     var body: some View {
-Group{
+Group{  NavigationLink(isActive:$moveToNext) {CardBook(CartOrAccount: true, data: data, User_ID: data.UserInformation.ID)}label:{
+    
+    
+}.isDetailLink(false).hidden().zIndex(0)
                 List{
                     
                     ForEach(Model.Address, id: \.self){
@@ -28,16 +30,15 @@ Group{
                         }.isDetailLink(false)
                             
                         }else{
-                           InvoiceSwiftUIView(data: data)
-                            NavigationLink (destination:CardBook(CartOrAccount: true, data: data, User_ID: data.UserInformation.ID)){
-                                
-                                Button{
-                                data.AddressInformation=Address
-                                Data.initdata.AddressInformation=Address
-                                }label:{
-                                    AddressCell(City: Address.City, Street: Address.Street, Zip: Address.Zip, State: Address.State)
-                                }
-                            }.isDetailLink(false)
+                            Button{
+                            data.AddressInformation=Address
+                            Data.initdata.AddressInformation=Address
+                                moveToNext.toggle()
+                            }label:{
+                                AddressCell(City: Address.City, Street: Address.Street, Zip: Address.Zip, State: Address.State)
+                            }
+                            
+                          
                         }
                        
                                    

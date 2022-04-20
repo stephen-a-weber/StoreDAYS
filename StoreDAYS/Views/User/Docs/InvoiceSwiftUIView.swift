@@ -8,7 +8,9 @@
 import SwiftUI
 //moved it outside of data to decouple it scope so its lets static
 struct InvoiceSwiftUIView: View {
-    
+    @State var  LoggedIN = false
+    @State var presenting = false
+
     func calculateTotalPrice() {
         print("Caculating for : \(Data.initdata.ItemedCart.description)")
         var dollars=0.0
@@ -26,10 +28,23 @@ struct InvoiceSwiftUIView: View {
         }
       
     
+       let date=Date()
+        var dateComponentadder = DateComponents()
         
         if dollars > 200 {
+            dateComponentadder.day=7
+            let futureDate = Calendar.current.date(byAdding: dateComponentadder, to: date) ?? Date()
+
+            let Shippment=ShippingModels(ID: 0, ShippingType: "Free", Cost: 0, ETA: DatetoString(day: futureDate), User_ID: Data.initdata.UserInformation.ID, Status: "Inprogress", Address_ID: 0)
+            data.ShippingInformation=Shippment
+            Data.initdata.ShippingInformation=Shippment
             dollars += 0
         }else{
+            dateComponentadder.day=14
+            let futureDate = Calendar.current.date(byAdding: dateComponentadder, to: date) ?? Date()
+            let Shippment=ShippingModels(ID: 0, ShippingType: "Standard", Cost: 10, ETA: DatetoString(day: futureDate), User_ID: Data.initdata.UserInformation.ID, Status: "Inprogress", Address_ID: 0)
+            data.ShippingInformation=Shippment
+            Data.initdata.ShippingInformation=Shippment
             dollars += 10
         }
     let total = dollars + (dollars * 0.07)
@@ -49,6 +64,8 @@ struct InvoiceSwiftUIView: View {
         TTL = round(TTL * 100) / 100
         
         totalInvoice =  total
+        Data.initdata.totalInvoice=totalInvoice
+        data.totalInvoice=totalInvoice
     }
     @State var message = ""
     @ObservedObject var data: Data
@@ -160,21 +177,30 @@ struct InvoiceSwiftUIView: View {
 
                     
                 Spacer()
-               
-                Text("Addres \(Data.initdata.addres)").foregroundColor(.black).font(.custom("Courier", fixedSize: 13))
+                                    Text("\(Data.initdata.AddressInformation.Street), \(Data.initdata.AddressInformation.City), \(Data.initdata.AddressInformation.State) \(Data.initdata.AddressInformation.Zip)").foregroundColor(.black).font(.custom("Courier", fixedSize: 13))
                   
-                    ZStack(alignment:.trailing){
-                        if  firstName.isEmpty {
-                            Text("Adress \(Data.initdata.addres)").font(.caption)
-                                .foregroundColor(.gray)
-                        }
-                        TextField("", text: $firstName)
-                    }
-                 
+                    Text("For: \(Data.initdata.UserInformation.FirstName) \(Data.initdata.UserInformation.LastName)")
+                    Text("Paying With \(Data.initdata.CardInformation.Name)")
                        
              
                 
                 Spacer()
+                    if LoggedIN{
+                        Button{
+                            DynamicCheckOut(data: data)
+                            presenting.toggle()
+                        }label: {
+                            Text("PAY")
+                                .fontWeight(.bold)
+                                .foregroundColor(Color(myColor))
+                                .frame( maxWidth: .infinity,  alignment: .center)
+                                .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
+                                .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
+                                                                                    lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
+                        }.fullScreenCover(isPresented: $presenting){
+                            ThankYouView(data: data)
+                        }
+                    }else{
                 Button(action: {
                     animFlag2 = true
                 }) {
@@ -189,7 +215,7 @@ struct InvoiceSwiftUIView: View {
                          .sheet(isPresented: $animFlag2, content: {
                              PayTabView(user: "davisgon@gmail.com")
                          })
-                }
+                }}
                 }
                 Spacer()
             }
@@ -197,6 +223,11 @@ struct InvoiceSwiftUIView: View {
         }.onAppear{
             calculateTotalPrice()
             Data.initdata.calculateTotalPrice()}
+        .onAppear {
+            print("User ID: \(Data.initdata.UserInformation.ID)")
+            print("Address ID: \(Data.initdata.AddressInformation.ID)")
+            print("Card ID: \(Data.initdata.CardInformation.ID)")
+        }
     }
     func continueVideo() -> Bool {
         return true

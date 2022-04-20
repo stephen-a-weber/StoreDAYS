@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+let OrderDetailURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/OrderDetail.php"
 let AddressURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Address.php"
 let ShippingURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Shipping.php"
 let PaymentURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Payment.php"
@@ -18,6 +19,7 @@ let ReviewURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreD
 let SearchUserURL = "http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/SearchUser.php"
 let SignUpURL="http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/Signup.php"
 let SignInURL="http://ec2-18-118-34-246.us-east-2.compute.amazonaws.com/StoreDAYS/ServerSide/login.php"
+
 func GETInvoice(User_ID:Int, InvoiceCompletionHandler:@escaping([InvoiceModels]?,Error?)->Void){
     
         //creating REQUEST URL with parameters in http body and the method define
@@ -337,9 +339,9 @@ func GETOrder(ID:Int, OrderCompletionHandler: @escaping(OrdersModels?,Error?)->V
             })
             task.resume()
 }
-func POSTNewInvoice(Model:InvoiceModels, OrderedItems:[TheItemContainer]){
+func POSTNewInvoice(Model:InvoiceModels, items:Data){
  
-
+    let OrderedItems = Data.initdata.ItemedCart
     let parameters="Sum=\(Model.Cost)&User_ID=\(Model.User_ID)&Shipping_ID=\(Model.Shipping_ID)&PaymentMethods_ID=\(Model.PaymentMethods_ID)"
     print(parameters)
     var request = URLRequest(url: URL(string: InvoiceURL)!)
@@ -352,7 +354,7 @@ func POSTNewInvoice(Model:InvoiceModels, OrderedItems:[TheItemContainer]){
                        // Handle HTTP request error
 print(error)                       } else if let data = data {
     print(String(data:data, encoding: .utf8) ?? " ")
-
+    print(OrderedItems.capacity)
     do{
         let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
         let ID=JsonData.first!.LAST_INSERT_ID
@@ -397,7 +399,6 @@ func GETSearchUser(Email:String, UserIDCompletionHandler:@escaping(Int?,Error?)-
 func DynamicCheckOut(data:Data){
     if (data.UserInformation.ID==0){
         GETSearchUser(Email: data.UserInformation.Email) { ID, error in
-            print(ID ?? 0)
             if(ID! == 0){
                 print("Doing NEW New")
                 POSTSignUp(Info: data.UserInformation) { GivenUserID, error in
@@ -415,7 +416,7 @@ func DynamicCheckOut(data:Data){
                                 GivenPaymentID, error in
                                 let InvoiceModel:InvoiceModels=InvoiceModels(ID: 0, Cost: Data.initdata.totalInvoice, User_ID: GivenUserID!, Shipping_ID: GivenShippingID!, PaymentMethods_ID:GivenPaymentID!)
                               
-                                POSTNewInvoice(Model: InvoiceModel, OrderedItems: data.ItemedCart)
+                                POSTNewInvoice(Model: InvoiceModel, items:data)
 
                             })
                         })
@@ -439,7 +440,7 @@ func DynamicCheckOut(data:Data){
                                 GivenShippingID, error in
                                 var InvoiceModel:InvoiceModels=InvoiceModels(ID: 0, Cost: 0.0, User_ID: ID!, Shipping_ID: 0, PaymentMethods_ID: 0)
                                     InvoiceModel=InvoiceModels(ID: 0, Cost: InvoiceModel.Cost, User_ID: InvoiceModel.User_ID, Shipping_ID: GivenShippingID!, PaymentMethods_ID: GivenPaymentID!)
-                                POSTNewInvoice(Model: InvoiceModel, OrderedItems: data.ItemedCart)
+                                POSTNewInvoice(Model: InvoiceModel, items: data)
 
                                 
                             })
@@ -456,13 +457,16 @@ func DynamicCheckOut(data:Data){
                     
         }
     }else{
-        var InvoiceModel:InvoiceModels=InvoiceModels(ID: 0, Cost: 0.0, User_ID: data.UserInformation.ID, Shipping_ID: 0, PaymentMethods_ID: data.CardInformation.ID)
+        var InvoiceModel:InvoiceModels=InvoiceModels(ID: 0, Cost:data.totalInvoice, User_ID: data.UserInformation.ID, Shipping_ID: 0, PaymentMethods_ID: data.CardInformation.ID)
         
         let ShippingModel=ShippingModels(ID: 0, ShippingType: data.ShippingInformation.ShippingType, Cost: data.ShippingInformation.Cost, ETA: data.ShippingInformation.ETA, User_ID: data.UserInformation.ID, Status: data.ShippingInformation.Status, Address_ID: data.AddressInformation.ID)
         POSTNewShipping(Model: ShippingModel, ShippingIDCompletionHandler: {
             GivenShippingID, error in
             DispatchQueue.main.sync {
+                print("inCART: \(data.ItemedCart.description)")
                 InvoiceModel=InvoiceModels(ID: 0, Cost: InvoiceModel.Cost, User_ID: InvoiceModel.User_ID, Shipping_ID: GivenShippingID!, PaymentMethods_ID: InvoiceModel.PaymentMethods_ID)
+                POSTNewInvoice(Model: InvoiceModel, items: data)
+
             }
         })
         
@@ -546,7 +550,7 @@ func POSTNewOrders(Item:ItemModels,InvoiceID:Int){
             do{
     let JsonData = try JSONDecoder().decode([LastInsert].self, from: data)
                 let ID=JsonData.first!.LAST_INSERT_ID
-                POSTOrderDetail(Items_ID: Item.ID, Order_ID: ID)
+                POSTOrderDetail(Items_ID: Item.ID, Orders_ID: ID)
             }catch{print(error)
                 print("NewOrder")
             }       }
@@ -554,10 +558,10 @@ func POSTNewOrders(Item:ItemModels,InvoiceID:Int){
     task.resume()
     }
 
-func POSTOrderDetail(Items_ID:Int,Order_ID:Int){
+func POSTOrderDetail(Items_ID:Int,Orders_ID:Int){
     
-    let parameters="Items_ID=\(Items_ID)&Order_ID=\(Order_ID)&Quantity=1"
-    var request = URLRequest(url: URL(string: OrdersURL)!)
+    let parameters="Items_ID=\(Items_ID)&Orders_ID=\(Orders_ID)&Quantity=1"
+    var request = URLRequest(url: URL(string: OrderDetailURL)!)
     request.httpMethod="POST"
         request.httpBody=parameters.data(using: String.Encoding.utf8)
     let task = URLSession.shared.dataTask(with: request){
@@ -588,7 +592,7 @@ func GETItems(Order_ID:Int,completion : @escaping (ItemModels?,Error?)->(Void)){
                 do{
                     let JsonData = try JSONDecoder().decode([ItemModels].self, from: data)
                     print(JsonData)
-                    completion(JsonData.first!,nil)
+                    completion(JsonData.first ?? ItemModels(ID: 0, Name: "Error", Description: "Error", Cost: 0, Catagory_ID: 0, Img: "Error", Availability: 0, Longitude: 0, Latitude: 0),nil)
 
                 }catch{
                     print(": In Items")
@@ -882,4 +886,34 @@ print(error)                       } else if let data = data {
     
     
 }
+ func isToDate(day: String)->Date{
+         let dateFormatter = DateFormatter()
+         dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+         dateFormatter.dateFormat = "yyyy-MM-dd"
+         return dateFormatter.date(from: day)!
+     }
+      func DatetoString(day: Date)->String{
+         let dateFormatter = DateFormatter()
+         dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+         dateFormatter.dateFormat = "yyyy-MM-dd"
+         return dateFormatter.string(from: day)
+     }
 
+     func formatDate(date: Date)->String {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat="MMMM dd yyyy"
+        return formatter.string(from: date)
+    
+    }
+    
+    
+func formatetoDate(s:String)->Date {
+        
+        print("format to date",s)
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat="MMMM dd, yyyy"
+        return formatter.date(from: s)!
+    
+    }

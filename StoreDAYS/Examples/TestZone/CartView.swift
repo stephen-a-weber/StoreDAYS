@@ -72,7 +72,7 @@ struct CartView: View {
                             LoginSwiftUIView(data: data, CheckingoutLoggingIn: true )}
                         else{
                             //choose the selector instead
-GetAndUseAddress(data: data,EditOrUse: true )
+GetAndUseAddress(data: data, CartOrAccount: true )
                         	
                         
                         }
