@@ -25,7 +25,9 @@ struct PayTabView: View {
       }
 
       @EnvironmentObject var cartManager: CartManager
-      @ObservedObject var cart = Data()
+      @EnvironmentObject var cart:Data
+
+//      @ObservedObject var cart = Data()
 
       @State var user: String = ""
       @State private var name: String = ""
@@ -200,7 +202,14 @@ var settleView: some View {
       }
       .font(.headline)
       .onAppear {
-            invoiceAmt  =  Double(cart.totalInvoice) ?? 0
+            let start = cart.totalInvoice.index(cart.totalInvoice.startIndex, offsetBy: 1)
+            let end = cart.totalInvoice.index(cart.totalInvoice.endIndex, offsetBy: 0)
+            let range = start..<end
+            let invAmtSubstring = cart.totalInvoice[range]
+            let invAmtString = String(invAmtSubstring)
+            print(invAmtString)
+            
+            invoiceAmt  =  Double(invAmtString) ?? 0
             invoiceAmtText = formatFunction(number: invoiceAmt)
             owedAmt = invoiceAmt
      }
