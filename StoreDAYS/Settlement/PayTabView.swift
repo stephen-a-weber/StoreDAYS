@@ -30,7 +30,7 @@ struct PayTabView: View {
       @State private var expiration: String = ""
       @State private var invoiceAmt: Double = 0.00
       @State private var owedAmt: Double = 0.00
-      @State private var settledAmt: Double = 0.00
+    @State private var settledAmt: Double = 0.00
       @State private var showingPopup: Bool = true
       @State private var selectedPayTab: Tabs = .otherPay
       

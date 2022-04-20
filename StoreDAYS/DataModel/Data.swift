@@ -101,6 +101,9 @@ enum sellingCategory {
     //
   //  @Published var order = [Order]()
     
+     
+     
+     
     @Published var totalPrice : String = "$0.00"
     @Published var shippingPrice : String = "$10.00"
     @Published var taxes         : String = "7%"

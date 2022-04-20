@@ -85,7 +85,7 @@ class PaymentHandler: NSObject {
         
         let orderAmt = PKPaymentSummaryItem(label: "Pet", amount: NSDecimalNumber(string: "9.99"), type: .final)
         let tax = PKPaymentSummaryItem(label: "Tax", amount: NSDecimalNumber(string: "1.00"), type: .final)
-        let afterTaxAmt = PKPaymentSummaryItem(label: "Total", amount: NSDecimalNumber(string: cart.totalInvoice), type: .final)
+        let afterTaxAmt = PKPaymentSummaryItem(label: "Total", amount: NSDecimalNumber(string: "0.00"), type: .final)
         paymentSummaryItems = [orderAmt, tax, afterTaxAmt]
         
         // Create a payment request.
