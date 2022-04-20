@@ -12,7 +12,7 @@ class Model: ObservableObject {
 
 
 struct PayTabView: View {
-
+    @EnvironmentObject var cart:Data
       @ObservedObject var model = Model()
       
       private enum Tabs {
@@ -24,7 +24,6 @@ struct PayTabView: View {
       }
 
       @EnvironmentObject var cartManager: CartManager
-      @ObservedObject var cart = Data()
 
       @State var user: String = ""
       @State private var name: String = ""
@@ -170,11 +169,11 @@ var settleView: some View {
             }
                               .padding()
             VStack(alignment: .trailing, spacing: 10) {
-                  Text(formatFunction(number: invoiceAmt))
+                Text( cart.totalInvoice)
                   Text(formatFunction(number: settledAmt))
                   Divider().background(Color.red)
                   Spacer()
-                  Text(formatFunction(number: owedAmt))
+                Text( cart.totalInvoice)
             }
             .padding()
       }
