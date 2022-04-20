@@ -20,7 +20,7 @@ struct CardBook: View {
     @State var User_ID=Data.initdata.UserInformation.ID
     @StateObject var Model=viewCardModel()
     var body: some View {
-        NavigationView{
+        
                  Group{  List{
                        
                        ForEach(Model.Cards, id: \.self){
@@ -99,7 +99,7 @@ struct CardBook: View {
 
                    }
 
-               }
+               
                
                
            }
