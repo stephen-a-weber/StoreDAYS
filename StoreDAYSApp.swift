@@ -17,11 +17,11 @@ struct StoreDAYSApp: App {
         WindowGroup {
           //  DetailInvoiceView(selfInvoice: InvoiceModels(ID: 2, Cost: "", User_ID: 2, Shipping_ID: 1, PaymentMethods_ID: 1))
         //    CardBook()
-              LoginSessionViewSwiftUIView(data: Data())
+           //   LoginSessionViewSwiftUIView(data: Data())
             //    CheckOutView(data:data)
           //    CreateAccountSwiftUIView(data: data)
        //     LoginSwiftUIView(data: data)
-//           StoreSplashPage(data:data)
+           StoreSplashPage(data:data)
         //    TabSwiftMoreUIView(data: data)
            // StoreView()
            // tabs(data: data)

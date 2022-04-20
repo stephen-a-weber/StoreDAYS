@@ -107,7 +107,7 @@ struct CreateAccountSwiftUIView: View {
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
 
                             .sheet(isPresented: $animFlagLogin, content: {
-                                InvoiceSwiftUIView(data: data)
+                                InvoiceSwiftUIView(data: data).environmentObject(CartManager())
                             })
                     }
                     .padding(.bottom, 25.0)
