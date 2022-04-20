@@ -9,8 +9,8 @@ if(!empty($_POST['ID'])){
 
 
     //initialize description in case one wasn't given
-    $Items_ID=" ";
-    $Orders_ID=" ";
+    $Items_ID=0;
+    $Orders_ID=0;
     $Quantity=0;
     //if post is set assign the description
     if(!empty($_POST['Items_ID'])){
@@ -24,13 +24,13 @@ if(!empty($_POST['ID'])){
     }
     $sql = "UPDATE Orders_Details set Items_ID = ?, Orders_ID = ?, Quantity = ? WHERE ID = ?    ";
     $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
-    $stmt -> bind_param("ssssi",$Items_ID,$Orders_ID,$Quantity,$Zip,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
+    $stmt -> bind_param("iiii",$Items_ID,$Orders_ID,$Quantity,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
     $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
 } else if (!empty($_POST['Items_ID'])) {
     //initialize description in case one wasn't given
-    $Items_ID=" ";
-    $Orders_ID=" ";
-    $Quantity=" ";
+    $Items_ID=0;
+    $Orders_ID=0;
+    $Quantity=0;
     //if post is set assign the description
     if(!empty($_POST['Items_ID'])){
       $Items_ID=$_POST['Items_ID'];
@@ -41,11 +41,10 @@ if(!empty($_POST['ID'])){
     if(!empty($_POST['Quantity'])){
       $Quantity =$_POST['Quantity'];
     }
-   
 
-    $sql = "INSERT INTO Orders_Details (Items_ID, Orders_ID, Items_ID, Quantity) VALUES (?,?,?,?)";
+    $sql = "INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (?,?,?)";
     $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
-    $stmt -> bind_param("ssiss",$Items_ID,$Orders_ID,$Items_ID,$Quantity)or die("Couldn't bind".htmlspecialchars($stmt->error));
+    $stmt -> bind_param("iii",$Items_ID,$Orders_ID,$Quantity)or die("Couldn't bind".htmlspecialchars($stmt->error));
     $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
     
 $sql="SELECT LAST_INSERT_ID() as LAST_INSERT_ID";
