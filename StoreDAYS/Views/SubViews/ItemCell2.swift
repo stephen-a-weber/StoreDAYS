@@ -11,7 +11,7 @@ import SwiftUI
 /// could have made an enum but this works too
 ///
 struct ItemCell2: View {
-    var puppyName = "fido"
+    var puppyName = "puppy2"
     var litter = 234
     var price = "$45000"
     ////  there are three variables grabbed from data and these three files for item cells
@@ -38,12 +38,16 @@ struct ItemCell2: View {
              
                  .resizable()
                  .frame(width: 100, height:100)
+                 
+                 .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
+                 .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                 
              Text("There are \(litter) left from this litter.")
              
              Spacer()
              Text(price)
                  .padding(.all, 10.0)
-             
+                 .shadow(radius:4)
              
          }
      }

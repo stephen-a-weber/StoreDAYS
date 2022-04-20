@@ -9,6 +9,8 @@ import SwiftUI
 
 struct StoreFront: View {
     @EnvironmentObject var data:Data
+    let firstColor = Color(#colorLiteral(red: 0.7621822953, green: 0.9807242751, blue: 0.9949712157, alpha: 1))
+    let secondColor = Color(#colorLiteral(red: 0.991283834, green: 0.8527922034, blue: 0.7683104873, alpha: 1))
     var body: some View {
         
         
@@ -24,6 +26,7 @@ struct StoreFront: View {
                         
                         label : {
                             ItemCell(kittenName: data.kittenViewOrders[item].pictureName,litter:data.kittenViewOrders[item].inventoryNumber,price:data.kittenViewOrders[item].price)
+                                .background((item % 2 == 0) ? firstColor : secondColor)
                         }
                        // This creates dynamical list with a ForEach
                         // this can refer to a data collection with nameData.indices
@@ -44,6 +47,7 @@ struct StoreFront: View {
                         // we can replace it with a complex cell view in another swiftui file
                         label : {
                             ItemCell2(puppyName: data.puppyViewOrders[item].pictureName,litter:data.puppyViewOrders[item].inventoryNumber,price:data.puppyViewOrders[item].price)
+                                .background((item % 2 == 0) ? firstColor : secondColor)
                         }
                         
                         
@@ -65,6 +69,7 @@ struct StoreFront: View {
                     NavigationLink {ExoticDetailView(index: item) }
                     label : {
                         ItemCell3(exoticName: data.exoticViewOrders[item].pictureName,exoticLitter:data.exoticViewOrders[item].inventoryNumber,exoticPrice:data.exoticViewOrders[item].price)
+                            .background((item % 2 == 0) ? firstColor : secondColor)
                     }
                     
                  

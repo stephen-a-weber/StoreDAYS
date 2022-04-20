@@ -35,12 +35,14 @@ struct ItemCell: View {
             
                 .resizable()
                 .frame(width: 100, height:100)
+                .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
+                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
             Text("There are \(litter) left from this litter.")
             
             Spacer()
             Text(price)
                 .padding(.all, 10.0)
-            
+                .shadow(radius:4)
             
         }
     }
