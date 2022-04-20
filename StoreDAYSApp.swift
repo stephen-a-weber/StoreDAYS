@@ -28,6 +28,7 @@ struct StoreDAYSApp: App {
                 //TabbedMainView(data:data)
                 //StoreSplashPage(data:data)
             hmm()
+                 
         }
        
         .onChange(of: scenePhase) { newScenePhase in

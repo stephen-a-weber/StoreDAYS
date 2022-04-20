@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginSwiftUIView: View {
-    @ObservedObject var data: Data
+
     // LOGIN     CREATE ACCOUNT
  
         @State var typeLoginSession = true
@@ -55,6 +55,6 @@ struct LoginSwiftUIView: View {
 
 struct LoginSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginSwiftUIView(data: Data())
+        LoginSwiftUIView()
     }
 }

@@ -116,7 +116,7 @@ struct InvoiceSwiftUIView: View {
                                                                             lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                     
                          .sheet(isPresented: $animFlag2, content: {
-                             LoginSwiftUIView(data:data)
+                      //       LoginSwiftUIView()
                          })
                 }
                 }
@@ -132,7 +132,6 @@ struct InvoiceSwiftUIView: View {
 
 struct InvoiceSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        InvoiceSwiftUIView( )
-            .environmentObject(Data())
+        InvoiceSwiftUIView()
     }
 }

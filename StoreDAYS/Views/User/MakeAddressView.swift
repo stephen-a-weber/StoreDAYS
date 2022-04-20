@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct MakeAddressView: View {
-    @ObservedObject var data: Data
+
     @State var User_ID = 0
     @State var ID=0
     @State var Street=""
@@ -118,6 +118,6 @@ struct MakeAddressView: View {
 
 struct MakeAddressView_Previews: PreviewProvider {
     static var previews: some View {
-        MakeAddressView(data:Data())
+        MakeAddressView()
     }
 }

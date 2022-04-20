@@ -41,10 +41,11 @@ struct StoreSplashPage: View {
         
             .onTapGesture(count: 1, perform: {withAnimation(.easeIn(duration:2)){
                 OH.toggle()
+                  
                 
             }})
             .ignoresSafeArea()
-        
+            .accessibilityIdentifier("SplashScreenPicture")
         
         
     }

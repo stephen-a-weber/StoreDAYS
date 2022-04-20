@@ -239,9 +239,9 @@ enum sellingCategory {
 
         }
         if dollars > 200 {
-            self.shippingPrice =  "$\(0.00)"
+            self.shippingPrice =  "$0.00"
         }else{
-            self.shippingPrice =  "$\(10.00)"
+            self.shippingPrice =  "$10.00"
         }
 
     }
@@ -260,13 +260,18 @@ enum sellingCategory {
             
         }
         tax = (dollars * 0.07)
+       
         var Tx = Double(tax.description) ?? 0
         Tx = round(Tx * 100) / 100
         
-     
-    print(Tx)
         
-            self.taxes =  "$\(Tx)"
+        //Proper way to convert from a double
+        // to currency in Swiftui
+        let r = NumberFormatter.localizedString(from:NSNumber(value:Tx),number:.currency)
+     
+    
+        
+            self.taxes =  "\(r)"
     }
     
     
@@ -285,13 +290,15 @@ enum sellingCategory {
             }
 
         }
-
-        if dollars > 200 {
-            dollars += 0
-        }else{
-            dollars += 10
-        }
         total = dollars + (dollars * 0.07)
+        if dollars > 200 {
+            total += 0
+            self.shippingPrice = "$0.00"
+        }else{
+            total += 10
+            self.shippingPrice = "$10.00"
+        }
+        
 
 
 
@@ -299,6 +306,17 @@ enum sellingCategory {
         var TTL = Double(total.description) ?? 0
         TTL = round(TTL * 100) / 100
 
-        self.totalInvoice =  "$\(TTL)"
+        //proper way to do this ensuring $.00 two places at zero
+        let r = NumberFormatter.localizedString(from:NSNumber(value:TTL),number:.currency)
+        print("HERE IS ",r)
+        self.totalInvoice =  "\(r)"
     }
+     
+     
+     func roundingAmount(amount: Double)->String {
+         //money rounding
+         let roundable = round(amount * 100) / 100
+         let answer = NumberFormatter.localizedString(from:NSNumber(value:roundable),number:.currency)
+         return answer
+     }
 }
