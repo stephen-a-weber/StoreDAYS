@@ -115,9 +115,9 @@ struct InvoiceSwiftUIView: View {
                         .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
                                                                             lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                     
-                         .sheet(isPresented: $animFlag2, content: {
-                      PayTabView()
-                         })
+                        .fullScreenCover(isPresented: $animFlag2) {
+                            PayTabView()
+                        }
                 }
                 }
                 Spacer()

@@ -4,6 +4,7 @@
 //
 import SwiftUI
 import PassKit
+import MapKit
 
 class Model: ObservableObject {
     @Published var invoiceAmount: Double = 0.0
@@ -12,7 +13,7 @@ class Model: ObservableObject {
 
 
 struct PayTabView: View {
-    @EnvironmentObject var cart:Data
+
       @ObservedObject var model = Model()
       
       private enum Tabs {
@@ -24,13 +25,15 @@ struct PayTabView: View {
       }
 
       @EnvironmentObject var cartManager: CartManager
+      @ObservedObject var cart = Data()
 
       @State var user: String = ""
       @State private var name: String = ""
       @State private var expiration: String = ""
       @State private var invoiceAmt: Double = 0.00
+      @State public var invoiceAmtText: String = ""
       @State private var owedAmt: Double = 0.00
-    @State private var settledAmt: Double = 0.00
+      @State private var settledAmt: Double = 0.00
       @State private var showingPopup: Bool = true
       @State private var selectedPayTab: Tabs = .otherPay
       
@@ -39,13 +42,28 @@ struct PayTabView: View {
       }
          var body: some View {
                VStack{
-                    Text("Settlement")
-                          .font(.title)
-                          .foregroundColor(.cyan)
-                          .padding()
+               NavigationView {
+//                    Text("Settlement")
+//                          .font(.title)
+//                          .foregroundColor(.cyan)
+//                          .padding()
                     settleView
-          }
-          
+                           .navigationTitle(Text("Settlement"))
+//                      VStack(alignment: .leading) {
+//                            Label("Primary", systemImage: "1.square.fill")
+//                           Label("Secondary", systemImage: "2.square.fill")
+//                        .foregroundStyle(.secondary)
+                       
+                  
+                           .toolbar {
+                                 NavigationLink {
+                                       CustomAnnotationMapView(region: MKCoordinateRegion(center: .init(latitude: 37.423720783586965,  longitude: -122.17071442989723),latitudinalMeters: 10000, longitudinalMeters: 10000))
+                                 } label: {
+                                       Label("Delivery Tracking", systemImage: "point.topleft.down.curvedto.point.filled.bottomright.up")
+                                 }
+                           }
+               }
+                     
           TabView(selection: $selectedPayTab) {
                   Group {
                     applePayTab
@@ -56,6 +74,7 @@ struct PayTabView: View {
           }
                 .accentColor(.cyan)
                 .statusBar(hidden: selectedPayTab == .otherPay)
+         }
       }
 }
 
@@ -75,6 +94,8 @@ extension PayTabView {
       PaymentButton(action: cartManager.pay)
           .padding()
           .padding(.top)
+//          .popupOverContext(style: .blur, content: popupMessage())
+
           .onDisappear {
               if cartManager.paymentSuccess {
                   cartManager.paymentSuccess = false
@@ -169,17 +190,18 @@ var settleView: some View {
             }
                               .padding()
             VStack(alignment: .trailing, spacing: 10) {
-                Text( cart.totalInvoice)
+                  Text(invoiceAmtText)
                   Text(formatFunction(number: settledAmt))
                   Divider().background(Color.red)
                   Spacer()
-                Text( cart.totalInvoice)
+                  Text(formatFunction(number: owedAmt))
             }
             .padding()
       }
       .font(.headline)
       .onAppear {
             invoiceAmt  =  Double(cart.totalInvoice) ?? 0
+            invoiceAmtText = formatFunction(number: invoiceAmt)
             owedAmt = invoiceAmt
      }
       .foregroundColor(.black)
