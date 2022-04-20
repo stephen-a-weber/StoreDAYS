@@ -24,7 +24,7 @@ if(!empty($_POST['ID'])){
     }
     $sql = "UPDATE Orders_Details set Items_ID = ?, Orders_ID = ?, Quantity = ? WHERE ID = ?    ";
     $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
-    $stmt -> bind_param("iiii",$Items_ID,$Orders_ID,$Quantity,$Zip,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
+    $stmt -> bind_param("iiii",$Items_ID,$Orders_ID,$Quantity,$ID)or die("Couldn't bind".htmlspecialchars($stmt->error));
     $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
 } else if (!empty($_POST['Items_ID'])) {
     //initialize description in case one wasn't given
@@ -45,7 +45,7 @@ if(!empty($_POST['ID'])){
 
     $sql = "INSERT INTO Orders_Details (Items_ID, Orders_ID, Quantity) VALUES (?,?,?)";
     $stmt = $_SERVER['dbconnection']->prepare($sql)or die("Couldn't prepare".htmlspecialchars($stmt->error));
-    $stmt -> bind_param("iii",$Items_ID,$Orders_ID,$Items_ID,$Quantity)or die("Couldn't bind".htmlspecialchars($stmt->error));
+    $stmt -> bind_param("iii",$Items_ID,$Orders_ID,$Quantity)or die("Couldn't bind".htmlspecialchars($stmt->error));
     $stmt->execute()or die("Couldn't excute".htmlspecialchars($stmt->error));
     
 $sql="SELECT LAST_INSERT_ID() as LAST_INSERT_ID";
