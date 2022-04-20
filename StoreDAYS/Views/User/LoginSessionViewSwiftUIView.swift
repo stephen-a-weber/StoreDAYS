@@ -67,7 +67,7 @@ struct LoginSessionViewSwiftUIView: View {
                    if(CheckingoutLoggingIn){
                     
 
-                       NavigationLink(isActive: $animFlag2) {CardBook(CartOrAccount: true, data: data).environmentObject(CartManager()) }label:{
+                       NavigationLink(isActive: $animFlag2) {GetAndUseAddress(data: data, CartOrAccount: true).environmentObject(CartManager()) }label:{
                                Button{animFlag2=initSession()}label:{Text("CONTINUE")
                                    .fontWeight(.bold)
                                    .foregroundColor(Color(myColor))
@@ -106,7 +106,6 @@ struct LoginSessionViewSwiftUIView: View {
                     else{
                            Button(action: {
                                animFlagLogin = initSession()
-                               
 
                            }) {
                                Text("CONTINUE")
@@ -116,11 +115,10 @@ struct LoginSessionViewSwiftUIView: View {
                                    .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
                                    .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
                                                                                        lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
-                               
                                    
-                           }
+}
                            .padding(.bottom, 25.0)
-                       }
+                    }
                     Button(action: {
 	
                         animFlag2 = continueVideo()

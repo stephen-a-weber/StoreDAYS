@@ -6,14 +6,6 @@
 //
 
 import SwiftUI
-class viewCardModel: ObservableObject{
-    @Published var Cards:[PaymentsModels]=[]
-    func loadCard(User_ID:Int){
-        GETPaymentMethods(User_ID: User_ID, PaymentCompletionHandler: { Cards, error in
-            DispatchQueue.main.sync{self.Cards=Cards!}
-        })
-    }
-}
 struct CardBook: View {
     @State var CartOrAccount=false
     @ObservedObject var data: Data

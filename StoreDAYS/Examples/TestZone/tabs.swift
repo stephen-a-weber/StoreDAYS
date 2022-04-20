@@ -51,6 +51,7 @@ struct ContentView: View {
                 ))
             
         }
+        
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
 
@@ -60,27 +61,30 @@ struct ContentView: View {
 struct tabs: View {
     @Binding var showMenu: Bool
     @ObservedObject var data : Data
-
+@State private var selectTab="APIVIEW"
     var body: some View {
-        TabView {
+        TabView (selection:$selectTab){
             
             SwiftUIAPIView(data:data).tabItem {
                 Label("animals",systemImage:"pawprint.fill")
-            }
+            }.tag("APIVIEW")
                    
             Tracking(data:data)
                 .tabItem{
                     Label("Locations", systemImage:"globe.americas.fill")
-                }
+                }.tag("Tracking")
             
             CartView(data: data)
                 .tabItem{
                    Label("Cart",systemImage:"cart.fill")
                        
                        }
+                .tag("Cart")
                 
                }
-               }    }
+               }
+    
+}
 
 
 struct tabs_Previews: PreviewProvider {

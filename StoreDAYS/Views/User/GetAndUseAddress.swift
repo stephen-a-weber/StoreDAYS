@@ -6,16 +6,7 @@
 //
 
 import SwiftUI
-class viewAddressModel: ObservableObject{
-    @Published var Address :[AddressModels] = []
 
-    func loadAddresses(User_ID:Int){
-        GETAddress(User_ID: User_ID, AddressCompletionHandler: { models, error in
-            DispatchQueue.main.sync{self.Address=models!}
-        })
-    }
-    
-}
 struct GetAndUseAddress: View {
     @ObservedObject var data: Data
     @State var EditOrUse=false

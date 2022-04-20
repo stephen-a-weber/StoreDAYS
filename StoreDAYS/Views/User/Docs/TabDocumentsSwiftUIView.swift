@@ -11,7 +11,7 @@ struct TabDocumentsSwiftUIView: View {
     @ObservedObject var data: Data
    
     var body: some View {
-        TabView {
+        NavigationView{TabView {
         
             
             InvoiceSwiftUIView(data: data).tabItem {
@@ -35,7 +35,7 @@ struct TabDocumentsSwiftUIView: View {
             
           
             
-        }
+        }}
     }
 }
 

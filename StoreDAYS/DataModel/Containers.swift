@@ -34,5 +34,56 @@ class TheItemContainer:ObservableObject, Identifiable ,Equatable{
         print(self.Review.capacity)
         }
     }
-    
+class viewAddressModel: ObservableObject{
+    @Published var Address :[AddressModels] = []
 
+    func loadAddresses(User_ID:Int){
+        GETAddress(User_ID: User_ID, AddressCompletionHandler: { models, error in
+            DispatchQueue.main.sync{self.Address=models!}
+        })
+    }
+    
+}
+class viewCardModel: ObservableObject{
+    @Published var Cards:[PaymentsModels]=[]
+    func loadCard(User_ID:Int){
+        GETPaymentMethods(User_ID: User_ID, PaymentCompletionHandler: { Cards, error in
+            DispatchQueue.main.sync{self.Cards=Cards!}
+        })
+    }
+}
+class viewInvoiceListModel:ObservableObject{
+    @Published var InvoicesModel :[InvoiceModels]=[]
+    @Published var Containers:[Invoices]=[]
+    
+    func loadOrdersIntoInvoice(){
+        for invoice in InvoicesModel{
+            var InvoiceOrders=[Orders]()
+            GETOrder(Invoice_ID: invoice.ID) { DataOrders, error in
+                for Order in DataOrders!{
+                    GETItems(Order_ID: Order.ID) { Items, error in
+                        InvoiceOrders.append(Orders(SelfOrder: Order, Items: Items!))
+                        
+                    }
+                }
+                
+                
+            }
+            DispatchQueue.main.async {
+                self.Containers.append(Invoices(SelfInvoice: invoice, Order:InvoiceOrders))
+            }
+        }
+    }
+    func loadInvoices(User_ID:Int){
+        GETInvoice(User_ID: User_ID, InvoiceCompletionHandler: { Invoices, error in
+            DispatchQueue.main.async {
+                self.InvoicesModel=Invoices!
+                self.loadOrdersIntoInvoice()
+            }
+        })
+    }
+    func load(User_ID:Int){
+        loadInvoices(User_ID: User_ID)
+        loadOrdersIntoInvoice()
+    }
+}

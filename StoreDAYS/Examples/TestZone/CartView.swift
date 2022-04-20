@@ -69,7 +69,7 @@ struct CartView: View {
                     // add more or as the button is for go to purchase
                     NavigationLink {
                         if data.UserInformation.ID==0{
-                            LoginSwiftUIView(data: data)}
+                            LoginSwiftUIView(data: data, CheckingoutLoggingIn: true )}
                         else{
                             //choose the selector instead
 GetAndUseAddress(data: data,EditOrUse: true )
