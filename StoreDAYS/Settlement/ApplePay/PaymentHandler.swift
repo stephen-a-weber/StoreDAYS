@@ -15,7 +15,9 @@ typealias PaymentCompletionHandler = (Bool) -> Void
 
 class PaymentHandler: NSObject {
       @ObservedObject var cart = Data()
-      @ObservedObject var model = Model()
+//      @ObservedObject var model = Model()
+//      @EnvironmentObject var cart:Data
+
       var paymentController: PKPaymentAuthorizationController?
     var paymentSummaryItems = [PKPaymentSummaryItem]()
     var paymentStatus = PKPaymentAuthorizationStatus.failure
@@ -85,7 +87,7 @@ class PaymentHandler: NSObject {
         
         let orderAmt = PKPaymentSummaryItem(label: "Pet", amount: NSDecimalNumber(string: "9.99"), type: .final)
         let tax = PKPaymentSummaryItem(label: "Tax", amount: NSDecimalNumber(string: "1.00"), type: .final)
-        let afterTaxAmt = PKPaymentSummaryItem(label: "Total", amount: NSDecimalNumber(string: cart.totalInvoice), type: .final)
+        let afterTaxAmt = PKPaymentSummaryItem(label: "Total", amount: NSDecimalNumber(value: CashiersData.invoiceCharged))
         paymentSummaryItems = [orderAmt, tax, afterTaxAmt]
         
         // Create a payment request.
@@ -138,9 +140,9 @@ extension PaymentHandler: PKPaymentAuthorizationControllerDelegate {
         completion(PKPaymentAuthorizationResult(status: status, errors: errors))
     }
     
-      func initializeViewAmount(_ view: PayTabView) {
-          view.model.invoiceAmount = 0
-      }
+//      func initializeViewAmount(_ view: PayTabView) {
+//          view.model.invoiceAmount = 0
+//      }
 
       func popupMessage() -> some View {
         return VStack {
@@ -161,11 +163,10 @@ extension PaymentHandler: PKPaymentAuthorizationControllerDelegate {
               if self.paymentStatus == .success {
                   if let completionHandler = self.completionHandler {
                       completionHandler(true)
-                        self.initializeViewAmount(PayTabView())
-                        PayTabView().model.invoiceAmount = 0.00
+//                        self.initializeViewAmount(PayTabView())
+//                        PayTabView().model.invoiceAmount = 0.00
 //                        PayTabView().updateSettlementDisplay(amount: 0.00)
                         self.popupMessage()
-//                        print("결제 완료! \(PayTabView().model.invoiceAmount)")
                   }
               } else {
                   if let completionHandler = self.completionHandler {

@@ -6,15 +6,9 @@ import SwiftUI
 import PassKit
 import MapKit
 
-class Model: ObservableObject {
-    @Published var invoiceAmount: Double = 0.0
-}
-
-
-
 struct PayTabView: View {
 
-      @ObservedObject var model = Model()
+//      @ObservedObject var model = Model()
       
       private enum Tabs {
             case applePay2, WalmartPay, otherPay
@@ -26,37 +20,24 @@ struct PayTabView: View {
 
       @EnvironmentObject var cartManager: CartManager
       @EnvironmentObject var cart:Data
-
-//      @ObservedObject var cart = Data()
-
       @State var user: String = ""
       @State private var name: String = ""
       @State private var expiration: String = ""
-      @State private var invoiceAmt: Double = 0.00
+      @State public var invoiceAmt: Double = 0.00
       @State public var invoiceAmtText: String = ""
       @State private var owedAmt: Double = 0.00
       @State private var settledAmt: Double = 0.00
       @State private var showingPopup: Bool = true
-      @State private var selectedPayTab: Tabs = .otherPay
+      @State private var selectedPayTab: Tabs = .applePay2
       
-      init() {
-            self.updateSettlementDisplay(amount: 50)
-      }
+//      init() {
+//            self.updateSettlementDisplay(amount: 50)
+//      }
          var body: some View {
                VStack{
                NavigationView {
-//                    Text("Settlement")
-//                          .font(.title)
-//                          .foregroundColor(.cyan)
-//                          .padding()
                     settleView
                            .navigationTitle(Text("Settlement"))
-//                      VStack(alignment: .leading) {
-//                            Label("Primary", systemImage: "1.square.fill")
-//                           Label("Secondary", systemImage: "2.square.fill")
-//                        .foregroundStyle(.secondary)
-                       
-                  
                            .toolbar {
                                  NavigationLink {
                                        CustomAnnotationMapView(region: MKCoordinateRegion(center: .init(latitude: 37.423720783586965,  longitude: -122.17071442989723),latitudinalMeters: 10000, longitudinalMeters: 10000))
@@ -180,6 +161,7 @@ extension PayTabView {
               action()
           }
       }
+
       
 var settleView: some View {
       HStack {
@@ -211,6 +193,9 @@ var settleView: some View {
             
             invoiceAmt  =  Double(invAmtString) ?? 0
             invoiceAmtText = formatFunction(number: invoiceAmt)
+            CashiersData.invoiceCharged = invoiceAmt
+//            model.invoiceAmount = invoiceAmt
+//            print("onAppear", model.invoiceAmount)
             owedAmt = invoiceAmt
      }
       .foregroundColor(.black)
@@ -222,13 +207,17 @@ var settleView: some View {
           )
 }
 
-      public func updateSettlementDisplay(amount: Double) {
-          DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-              DispatchQueue.main.async {
-                    self.invoiceAmt = model.invoiceAmount
-              }
-          }
+      class Cart: ObservableObject {
+            @Published var invoiceAmount = 0.00
       }
+
+//      public func updateSettlementDisplay(amount: Double) {
+//          DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//              DispatchQueue.main.async {
+//                    self.invoiceAmt = model.invoiceAmount
+//              }
+//          }
+//      }
 
 }
 
