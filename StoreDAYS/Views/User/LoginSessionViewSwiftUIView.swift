@@ -65,22 +65,22 @@ struct LoginSessionViewSwiftUIView: View {
                     
                     
                    if(CheckingoutLoggingIn){
-                       Button(action: {
-                           animFlagLogin = initSession()
+                    
+
+                       NavigationLink(isActive: $animFlag2) {CardBook(CartOrAccount: true, data: data).environmentObject(CartManager()) }label:{
+                               Button{animFlag2=initSession()}label:{Text("CONTINUE")
+                                   .fontWeight(.bold)
+                                   .foregroundColor(Color(myColor))
+                                   .frame( maxWidth: .infinity,  alignment: .center)
+                                   .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
+                                   .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
+                                                                                       lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
+                               }
+                           }.isDetailLink(false)
                            
-                       }) {
-                           Text("CONTINUE")
-                               .fontWeight(.bold)
-                               .foregroundColor(Color(myColor))
-                               .frame( maxWidth: .infinity,  alignment: .center)
-                               .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
-                               .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color(myColor),
-                                                                                   lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                            
-                               .sheet(isPresented: $animFlagLogin, content: {
-                                   InvoiceSwiftUIView(data:data)
-                               })
-                       }
+                               
+                       
                        .padding(.bottom, 25.0)
                        Button(action: {
                         animFlag = continueGuest()

@@ -9,9 +9,9 @@ import SwiftUI
 class viewCardModel: ObservableObject{
     @Published var Cards:[PaymentsModels]=[]
     func loadCard(User_ID:Int){
-        GETPaymentMethods(User_ID: User_ID) { Cards, error in
+        GETPaymentMethods(User_ID: User_ID, PaymentCompletionHandler: { Cards, error in
             DispatchQueue.main.sync{self.Cards=Cards!}
-        }
+        })
     }
 }
 struct CardBook: View {
@@ -21,13 +21,13 @@ struct CardBook: View {
     @StateObject var Model=viewCardModel()
     var body: some View {
         NavigationView{
-                   List{
+                 Group{  List{
                        
                        ForEach(Model.Cards, id: \.self){
                            Card in
                            
                           
-                           NavigationLink {
+                         if !CartOrAccount{  NavigationLink {
                               
                                OtherPay(degrees: 0, flipped: false, ID: Card.ID, User_ID: User_ID, UseEditFlag: false, cardNumber: Card.CardNumber, cardHolderName: Card.Name, expiration: Card.Expiration, cvv: String(Card.CVC))
                            } label: {
@@ -45,29 +45,47 @@ struct CardBook: View {
                                    
                                   
                                }
-                           }
-                           .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
-                               Button{
+                           }.isDetailLink(false)
+                             
+                         }else{
+                               NavigationLink (destination:GetAndUseAddress(data:data)){
                                    
-                                   DeleteCard(ID: Card.ID)
-                                   Model.loadCard(User_ID: User_ID)
-                               }label:{Label("Delete", systemImage: "trash")}
-                               .tint(.red)
-
-                           })
+                                   Button{
+                                   data.CardInformation=Card
+                                   Data.initdata.CardInformation=Card
+                                   }label:{
+                                       HStack{
+                                           VStack{
+                                               Text("Name: \(Card.Name)")
+                                               HStack{
+                                                   Text("Expiration: \(Card.Expiration)")
+                                               Text("CVC:\(Card.CVC)")
+                                                 }
+                                               let last4=String(Card.CardNumber.prefix(4))
+                                           Text("Card Number:**** **** **** \(last4)")
+                                               
+                                           }
+                                           
+                                          
+                                       }
+                                   }
+                               }.isDetailLink(false)
+                           }
+                      
                                       
                                                  
                    }
                        .onDelete(perform: { index in
-                       DeleteCard(ID: Model.Cards[index[index.startIndex]].ID)
+                       DeleteCard(ID:Model.Cards[index[index.startIndex]].ID)
                            Model.Cards.remove(atOffsets: index)
-                           Model.loadCard(User_ID: User_ID)
-                       })
+                           Model.loadCard(User_ID: Data.initdata.UserInformation.ID)
+                       }
+                       )
                    }
-                   .padding(.trailing)
+                   .padding(.trailing)}
                    
                    .onAppear{
-                       Model.loadCard(User_ID: 2)
+                       Model.loadCard(User_ID: Data.initdata.UserInformation.ID)
                    }
                    .navigationTitle("Card Book")
                    .toolbar {
@@ -75,7 +93,7 @@ struct CardBook: View {
                            NavigationLink {
                                OtherPay(degrees: 0, flipped: false, ID: 0, User_ID: User_ID, UseEditFlag: false, cardNumber: "", cardHolderName: "", expiration: "", cvv: "")                           } label: {
                                Image(systemName: "plus")
-                           }
+                           }.isDetailLink(false)
 
                        }
 

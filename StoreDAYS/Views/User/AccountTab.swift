@@ -19,21 +19,25 @@ struct AccountTab: View {
             } label: {
                 Label("Invoices",systemImage:"heart.text.square.fill")
 
-            }.padding(.top, 100)
+            }.isDetailLink(false)
+                        .padding(.top, 100)
             NavigationLink {
                 GetAndUseAddress(data:data)
 
             } label: {
                 Label("Locations", systemImage:"house.fill")
 
-            }.padding(.top, 20)
+            }.isDetailLink(false)
+                        .padding(.top, 20)
             NavigationLink {
                 CardBook(data: data)
 
             } label: {
                 Label("Cards",systemImage:"creditcard.fill")
 
-            }.padding(.top, 20)
+            }.isDetailLink(false)
+                        .padding(.top, 20)
+                    
                 if IsloggedIn{
                 Button("Logout", action: {IsloggedIn.toggle()
                     Data.initdata.UserInformation=UserModels(ID: 0, UserName: "", FirstName: "", LastName: "", DateOfBirth: "", Password: "", Email: "", Admin: 0)

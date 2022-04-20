@@ -84,7 +84,7 @@ struct GuestBasicInfoForm: View {
                                         lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                                             
                                                  
-            }.fullScreenCover(isPresented: $ShowingSheet){MakeAddressView(data: data)}
+            }.fullScreenCover(isPresented: $ShowingSheet){MakeAddressView(data: data,UseFlag:true )}
             
         }        .padding(.horizontal,77.0)
             .padding(.top,10)

@@ -11,8 +11,7 @@ class viewAddressModel: ObservableObject{
 
     func loadAddresses(User_ID:Int){
         GETAddress(User_ID: User_ID, AddressCompletionHandler: { models, error in
-            DispatchQueue.main.async{
-                self.Address=models!}
+            DispatchQueue.main.sync{self.Address=models!}
         })
     }
     
@@ -22,36 +21,42 @@ struct GetAndUseAddress: View {
     @State var EditOrUse=false
     @State var CartOrAccount=false
     @StateObject var Model=viewAddressModel()
-    @State var refresh: Bool = false
 
-    func update() {
-       refresh.toggle()
-    }
     var body: some View {
-        NavigationView{
 Group{
                 List{
                     
                     ForEach(Model.Address, id: \.self){
                         Address in
                         
-                        
+                        if(!CartOrAccount){
                         NavigationLink {
-                            MakeAddressView(data: Data(), ID:Address.ID, Street: Address.Street, City: Address.City, State: Address.State, Zip: Address.Zip, EditFlag: true)
+                            MakeAddressView(data: data, ID:Address.ID, Street: Address.Street, City: Address.City, State: Address.State, Zip: Address.Zip, EditFlag: true)
                         } label: {
                             AddressCell(City: Address.City, Street: Address.Street, Zip: Address.Zip, State: Address.State)
+                        }.isDetailLink(false)
+                            
+                        }else{
+                           InvoiceSwiftUIView(data: data)
+                            NavigationLink (destination:CardBook(CartOrAccount: true, data: data, User_ID: data.UserInformation.ID)){
+                                
+                                Button{
+                                data.AddressInformation=Address
+                                Data.initdata.AddressInformation=Address
+                                }label:{
+                                    AddressCell(City: Address.City, Street: Address.Street, Zip: Address.Zip, State: Address.State)
+                                }
+                            }.isDetailLink(false)
                         }
-                        .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
-                            Button{
-                                DeleteAddress(ID: Address.ID)
-                                Model.loadAddresses(User_ID: 2)
-                            }label:{Label("Delete", systemImage: "trash")}
-                            .tint(.red)
-
-                        })
+                       
                                    
                                               
-                }
+                    }.onDelete(perform: {index in
+                               
+                        DeleteAddress(ID:Model.Address[index[index.startIndex]].ID)
+                        Model.Address.remove(atOffsets: index)
+                               Model.loadAddresses(User_ID: Data.initdata.UserInformation.ID)}
+                    )
                 }
             }
             .padding(.trailing)
@@ -63,10 +68,10 @@ Group{
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing){
                     NavigationLink {
-                        MakeAddressView(data: Data(), User_ID: 2)
+                        MakeAddressView(data: data, User_ID: Data.initdata.UserInformation.ID)
                     } label: {
                         Image(systemName: "plus")
-                    }
+                    
 
                 }
 

@@ -854,7 +854,7 @@ let task = URLSession.shared.dataTask(with: request){
                    // Handle HTTP request error
 print(error)                       } else if let data = data {
                    // Handle HTTP request response
-                   print(String(data: data, encoding: .utf8)!)
+                   print(String(data: data, encoding: .utf8) ?? " ")
                }
 }
 task.resume()

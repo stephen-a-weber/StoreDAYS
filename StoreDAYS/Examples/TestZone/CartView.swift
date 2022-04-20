@@ -69,10 +69,12 @@ struct CartView: View {
                     // add more or as the button is for go to purchase
                     NavigationLink {
                         if data.UserInformation.ID==0{
-                            LoginSwiftUIView(data: data, CheckingoutLoggingIn: true)}
+                            LoginSwiftUIView(data: data)}
                         else{
                             //choose the selector instead
-                            
+GetAndUseAddress(data: data,EditOrUse: true )
+                        	
+                        
                         }
                         
                     }
@@ -83,7 +85,7 @@ struct CartView: View {
                             .frame( maxWidth: .infinity,  alignment: .center)
                             .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18 ))
                             .overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color("myBlue"),lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
-                }
+                }.isDetailLink(false)
                     Spacer()
               
                 
