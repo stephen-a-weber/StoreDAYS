@@ -8,21 +8,16 @@
 import SwiftUI
 
 struct InvoiceSwiftUIView: View {
+    @EnvironmentObject var data:Data
     @State var message = ""
-    @ObservedObject var data: Data
+   // @ObservedObject var data: Data
     @State var releaseDate = Date()
     @State var myColor = "myBlue"
     @State var animFlag2 = false
     @State var firstName = ""
     
-    
-    //       static let stackDateFormat: DateFormatter = {
-    //           let formatter = DateFormatter()
-    //           formatter.dateFormat = "E, dd MMM yyyy HH:mm:ss z"
-    //           return formatter
-    //       }()
-    
-    // *******
+ 
+  
     var body: some View {
         VStack {
             VStack{
@@ -47,9 +42,9 @@ struct InvoiceSwiftUIView: View {
             ScrollView{
                 Section("Detail") {
                     List {
-                        ForEach(data.order, id:\.self) { item in
+                        ForEach(data.cartOrders) { item in
                             HStack {
-                                Image(item.name)
+                                Image(item.pictureName)
                                     .resizable()
                                     .frame(width:100,height:100)
                                     .padding()
@@ -95,11 +90,11 @@ struct InvoiceSwiftUIView: View {
                 Text("Total     \(data.totalInvoice)").foregroundColor(.black).font(.custom("Courier", fixedSize: 24))
                 Spacer()
                
-                Text("Addres \(data.addres)").foregroundColor(.black).font(.custom("Courier", fixedSize: 13))
+                Text("Address \(data.address)").foregroundColor(.black).font(.custom("Courier", fixedSize: 13))
                   
                     ZStack(alignment:.trailing){
                         if  firstName.isEmpty {
-                            Text("Adress \(data.addres)").font(.caption)
+                            Text("Address \(data.address)").font(.caption)
                                 .foregroundColor(.gray)
                         }
                         TextField("", text: $firstName)
@@ -121,12 +116,12 @@ struct InvoiceSwiftUIView: View {
                                                                             lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                     
                          .sheet(isPresented: $animFlag2, content: {
-                             PayTabView()
+                      PayTabView()
                          })
                 }
                 }
                 Spacer()
-            }
+            }.padding(.all)
             
         }
     }
@@ -137,6 +132,6 @@ struct InvoiceSwiftUIView: View {
 
 struct InvoiceSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        InvoiceSwiftUIView(data: Data())
+        InvoiceSwiftUIView()
     }
 }

@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct StoreFront: View {
-    @ObservedObject var data : Data
+    @EnvironmentObject var data:Data
     var body: some View {
         
-      //  NavigationView {
+        
             List{
             Section("KITTENS") {
                 
                
-                ForEach (data.kittenNames.indices) { item in
+                ForEach (data.kittenViewOrders.indices ) { item in
                
-                    NavigationLink{  KittenDetailView(data: data, kittenName:data.kittenNames[item],kittenPrice:data.kittenPrice[item])  }
+                    NavigationLink{  KittenDetailView(index: item)  }
                         //put a detail view in for each item of each section
                         // with NavigationLink to KittenDetailView()
                         
                         label : {
-                            ItemCell(kittenName: data.kittenNames[item],litter:data.kittenLitterCount[item],price:data.kittenPrice[item])
+                            ItemCell(kittenName: data.kittenViewOrders[item].pictureName,litter:data.kittenViewOrders[item].inventoryNumber,price:data.kittenViewOrders[item].price)
                         }
                        // This creates dynamical list with a ForEach
                         // this can refer to a data collection with nameData.indices
@@ -33,9 +33,9 @@ struct StoreFront: View {
             }
             Section("PUPPIES") {
                  
-                ForEach (data.puppyNames.indices) { item in
+                ForEach (data.puppyViewOrders.indices) { item in
                         
-                    NavigationLink{ PuppyDetailView(data: data,puppyName:data.puppyNames[item],puppyPrice:data.puppyPrice[item])  }
+                    NavigationLink{ PuppyDetailView(index: item) }
                         // The NavigationLink works like a button , the closure above
                         // is the next view. called PuppyDetailView
                         //
@@ -43,7 +43,7 @@ struct StoreFront: View {
                         // in the {} of NavigationLink shows like protocol cell
                         // we can replace it with a complex cell view in another swiftui file
                         label : {
-                            ItemCell2(puppyName:data.puppyNames[item],litter:data.puppyLitterCount[item],price:data.puppyPrice[item])
+                            ItemCell2(puppyName: data.puppyViewOrders[item].pictureName,litter:data.puppyViewOrders[item].inventoryNumber,price:data.puppyViewOrders[item].price)
                         }
                         
                         
@@ -60,11 +60,11 @@ struct StoreFront: View {
                 // which if you tap on the row takes you to a Detailed View of the row chosen
                 // ExoticDetailView
                        
-                ForEach (data.exoticNames.indices) { item in
+                ForEach (data.exoticViewOrders.indices) { item in
                                 
-                    NavigationLink {ExoticDetailView(data: data,exoticName:data.exoticNames[item],exoticPrice:data.exoticPrice[item])   }
+                    NavigationLink {ExoticDetailView(index: item) }
                     label : {
-                        ItemCell3(exoticName:data.exoticNames[item],exoticLitter:data.exoticLitterCount[item],exoticPrice:data.exoticPrice[item])
+                        ItemCell3(exoticName: data.exoticViewOrders[item].pictureName,exoticLitter:data.exoticViewOrders[item].inventoryNumber,exoticPrice:data.exoticViewOrders[item].price)
                     }
                     
                  
@@ -79,11 +79,12 @@ struct StoreFront: View {
             
             .navigationBarTitleDisplayMode(.inline)
     }
-//}
-}
+ }
+ 
     
 struct StoreFront_Previews: PreviewProvider {
     static var previews: some View {
-        StoreFront(data: Data())
+        StoreFront()
+            .environmentObject(Data())
     }
 }

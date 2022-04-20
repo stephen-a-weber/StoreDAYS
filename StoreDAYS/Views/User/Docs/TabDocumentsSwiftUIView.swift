@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct TabDocumentsSwiftUIView: View {
-    @ObservedObject var data: Data
+    @EnvironmentObject var data:Data
    
     var body: some View {
         TabView {
         
             
-            InvoiceSwiftUIView(data: data).tabItem {
+            InvoiceSwiftUIView().tabItem {
                 
                 Image(systemName: "doc")
                 Text("Invoice")
@@ -28,7 +28,7 @@ struct TabDocumentsSwiftUIView: View {
                 
             }
             
-            Tracking(data:data)
+            Tracking()
                 .tabItem{
                     Label("Locations", systemImage:"globe.americas.fill")
                 }
@@ -41,6 +41,7 @@ struct TabDocumentsSwiftUIView: View {
 
 struct TabDocumentsSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        TabDocumentsSwiftUIView(data: Data())
+        TabDocumentsSwiftUIView()
+            .environmentObject(Data())
     }
 }

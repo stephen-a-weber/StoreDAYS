@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct KittenDetailView: View {
-    @ObservedObject var data : Data
+    @EnvironmentObject var data:Data
     var kittenName = "Bob"
     var kittenPrice = "$19.00"
+    var index = 0
     @State var isPurchased = false
     
     //// the data is from @StateObject data to keep a single instance incharge of the data of the app
@@ -22,7 +23,7 @@ struct KittenDetailView: View {
     var body: some View {
         
         VStack {
-        Image(kittenName)
+            Image(data.kittenViewOrders[index].pictureName)
             .resizable()
             .scaledToFit()
        
@@ -32,14 +33,28 @@ struct KittenDetailView: View {
                 ///
                
             
-           Text("\(kittenPrice)")
+            Text("\(data.kittenViewOrders[index].price)")
             Button("Adopt this Kitten") { if !isPurchased {
-                data.addToCart(item: kittenName,price:kittenPrice)
+                data.addToCart(item: data.kittenViewOrders[index])
         isPurchased.toggle()
             }}
-    .frame(width: 155.0, height: 60.0)
-            
+            .frame(width: 155.0, height: 60.0)
+            .cornerRadius(/*@START_MENU_TOKEN@*/12.0/*@END_MENU_TOKEN@*/)
+            .shadow(radius: /*@START_MENU_TOKEN@*/18/*@END_MENU_TOKEN@*/)
+            .border(/*@START_MENU_TOKEN@*/Color.blue/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/4/*@END_MENU_TOKEN@*/)
+            .hoverEffect(/*@START_MENU_TOKEN@*/.automatic/*@END_MENU_TOKEN@*/)
+            .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 0.568, saturation: 0.107, brightness: 0.926)/*@END_MENU_TOKEN@*/)
             Spacer()
+            Text("Born with the name: \(data.kittenViewOrders[index].name)")
+                .font(.title)
+                .fontWeight(.bold)
+                .shadow(color:.blue,radius:6)
+                .padding(.all)
+            Text(data.kittenViewOrders[index].description)
+                .font(.title)
+                .fontWeight(.bold)
+                .shadow(color:.blue,radius:6)
+                .padding(.all)
             Spacer()
             
             
@@ -69,6 +84,7 @@ struct KittenDetailView: View {
     
 struct KittenDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        KittenDetailView(data: Data(), kittenName:"kitten1")
+        KittenDetailView(index:0)
+            .environmentObject(Data())
     }
 }

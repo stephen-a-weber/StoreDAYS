@@ -7,10 +7,9 @@
 import SwiftUI
 
 struct CreateAccountSwiftUIView: View {
-    @ObservedObject var data: Data
+    @EnvironmentObject var data:Data
     struct LoginSessionView:View{
-        @ObservedObject var data: Data
-
+        @EnvironmentObject var data:Data
         @State var firstName = ""
         @State var lastName = ""
         @State var email = ""
@@ -107,7 +106,8 @@ struct CreateAccountSwiftUIView: View {
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
 
                             .sheet(isPresented: $animFlagLogin, content: {
-                                InvoiceSwiftUIView(data: data).environmentObject(CartManager())
+                                InvoiceSwiftUIView()
+                                    .environmentObject(CartManager())
                             })
                     }
                     .padding(.bottom, 25.0)
@@ -147,7 +147,7 @@ struct CreateAccountSwiftUIView: View {
       
     }
     struct CreateSessionView:View{
-        @ObservedObject var data: Data
+        @EnvironmentObject var data:Data
         var body: some View{
             Text("Im Create account View")
         }
@@ -155,7 +155,7 @@ struct CreateAccountSwiftUIView: View {
     
     
     struct CreateAccountView:View{
-        @ObservedObject var data: Data
+        @EnvironmentObject var data:Data
         @State var typeLoginSession = true
         var body: some View{
             VStack{
@@ -169,9 +169,9 @@ struct CreateAccountSwiftUIView: View {
                 Spacer(minLength: 42)
                 
                 if typeLoginSession == true {
-                    LoginSessionView(data: data)
+                    LoginSessionView()
                 }else{
-                    CreateSessionView(data:data)
+                    CreateSessionView()
                 }
             }
         }
@@ -182,7 +182,7 @@ struct CreateAccountSwiftUIView: View {
             Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 1.0)
             VStack{
                 
-                CreateAccountView(data: data)
+                CreateAccountView()
             }
         }
     }
@@ -190,6 +190,7 @@ struct CreateAccountSwiftUIView: View {
 
 struct CreateAccountSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateAccountSwiftUIView(data: Data())
+        CreateAccountSwiftUIView()
+            .environmentObject(Data())
     }
 }

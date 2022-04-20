@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct CheckOutView: View {
-    @ObservedObject var data: Data
+    @EnvironmentObject var data:Data
     
-    var totalPrice = "$0.01"
     
  
     
-    // Using the ObservedObject from the @StateObject from StoreDAYSApp
+    // from the @StateObject
     
     var body: some View {
-    //    NavigationView {
+    
             Section{
                 VStack {
                     
@@ -29,9 +28,9 @@ struct CheckOutView: View {
                     
             List {
                 
-                ForEach(data.order, id:\.self) { item in
+                ForEach(data.cartOrders) { item in
                     HStack {
-                        Image(item.name)
+                        Image(item.pictureName)
                             .resizable()
                             .frame(width:100,height:100)
                             .padding()
@@ -43,9 +42,9 @@ struct CheckOutView: View {
                         }
                     }
                 }
-                .onDelete(perform: remove)
-                .onAppear(perform: data.calculateTotalPrice)
-                Text("Total Price = \(data.totalPrice)")
+              .onDelete(perform: remove)
+                 .onAppear(perform: data.calculateTotalPrice)
+               
             }
                     
                // The List has a onDelete method which allows
@@ -62,9 +61,12 @@ struct CheckOutView: View {
                     // so you can easily see what is in the cart
                     // add more or as the button is for go to purchase
                     NavigationLink {
+                       // testPage()
+                         LoginSwiftUIView( )
                         
-                        LoginSwiftUIView(data: data)}
-                label: {
+                    }
+                label: { Text("Total : \(data.totalPrice)")
+                        .padding()
                         Text("Continue To Payment")
                             .fontWeight(.bold)
                             .foregroundColor(Color("myBlue"))
@@ -77,7 +79,7 @@ struct CheckOutView: View {
                 
                 
             
-        //        }
+               }
             }
             .navigationTitle("Your Future Friends :")
             .listStyle(InsetGroupedListStyle())
@@ -87,12 +89,15 @@ struct CheckOutView: View {
             
         }
         
-    }
+   
     
     // remove is a helper function used above to remove choses
     // from the cart and the global variables we are using under data
     func remove(at offsets: IndexSet) {
-        data.order.remove(atOffsets: offsets)
+         
+       data.cartOrders.remove(atOffsets: offsets)
+       
+        
     }
     
     
@@ -101,6 +106,7 @@ struct CheckOutView: View {
 
 struct CheckOutView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckOutView(data:Data())
+        CheckOutView()
+            .environmentObject(Data())
     }
 }

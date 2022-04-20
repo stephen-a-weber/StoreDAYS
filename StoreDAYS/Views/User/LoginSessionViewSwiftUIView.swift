@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginSessionViewSwiftUIView: View {
    
-        @ObservedObject var data: Data
+    @EnvironmentObject var data:Data
         @State var email = ""
         @State var password = ""
         @State var appGetUserFromAWS = ManageUserFromAWS()
@@ -73,7 +73,7 @@ struct LoginSessionViewSwiftUIView: View {
                                                                                 lineWidth: 3.0).shadow(color: .blue, radius: 6.0))
                         
                             .sheet(isPresented: $animFlagLogin, content: {
-                                InvoiceSwiftUIView(data: data).environmentObject(CartManager())
+                                InvoiceSwiftUIView().environmentObject(CartManager())
                             })
                     }
                     .padding(.bottom, 25.0)
@@ -91,7 +91,7 @@ struct LoginSessionViewSwiftUIView: View {
                         
                             .sheet(isPresented: $animFlag, content: {
                                 //  PayTabView()
-                                InvoiceSwiftUIView(data: data)
+                                InvoiceSwiftUIView()
                                     .environmentObject(CartManager())
 //                                TabDocumentsSwiftUIView(data: data)
                             })
@@ -173,6 +173,7 @@ struct LoginSessionViewSwiftUIView: View {
 
 struct LoginSessionViewSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginSessionViewSwiftUIView(data: Data())
+        LoginSessionViewSwiftUIView()
+            .environmentObject(Data())
     }
 }

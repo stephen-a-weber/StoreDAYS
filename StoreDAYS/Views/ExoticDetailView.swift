@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ExoticDetailView: View {
-    @ObservedObject var data: Data
+    @EnvironmentObject var data:Data
     @State var isPurchased = false
     var exoticName = "Bob"
     var exoticPrice="$45.00"
+    var index = 0
     //// the data is from @StateObject data to keep a single instance in charge of the data of the app
     /// Here there is a toggle isPurchased which is used if the button below is pressed to signify if this
     /// Particular animal is going to be chosen and added to the Cart
@@ -21,7 +22,7 @@ struct ExoticDetailView: View {
     var body: some View {
         
         VStack {
-        Image(exoticName)
+        Image(data.exoticViewOrders[index].pictureName)
             .resizable()
             .scaledToFit()
         
@@ -31,13 +32,28 @@ struct ExoticDetailView: View {
                 ///
                
             
-           Text("\(exoticPrice)")
+           Text("\(data.exoticViewOrders[index].price)")
             Button("Adopt this Wonderful Animal") { if !isPurchased {
-                data.addToCart(item: exoticName, price: exoticPrice)
+                data.addToCart(item: data.exoticViewOrders[index])
         isPurchased.toggle()
             }}
-    .frame(width: 155.0, height: 60.0)
+            .frame(width: 155.0, height: 60.0)
+            .cornerRadius(/*@START_MENU_TOKEN@*/12.0/*@END_MENU_TOKEN@*/)
+            .shadow(radius: /*@START_MENU_TOKEN@*/18/*@END_MENU_TOKEN@*/)
+            .border(/*@START_MENU_TOKEN@*/Color.blue/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/4/*@END_MENU_TOKEN@*/)
+            .hoverEffect(/*@START_MENU_TOKEN@*/.automatic/*@END_MENU_TOKEN@*/)
+            .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 0.568, saturation: 0.107, brightness: 0.926)/*@END_MENU_TOKEN@*/)
             Spacer()
+            Text("Born with the name: \(data.exoticViewOrders[index].name)")
+                .font(.title)
+                .fontWeight(.bold)
+                .shadow(color:.blue,radius:6)
+                .padding(.all)
+            Text(data.exoticViewOrders[index].description)
+                .font(.title)
+                .fontWeight(.bold)
+                .shadow(color:.blue,radius:6)
+                .padding(.all)
             Spacer()
             
             
@@ -71,6 +87,7 @@ struct ExoticDetailView: View {
 
 struct ExoticDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ExoticDetailView(data:Data(),exoticName: "animal1",exoticPrice:"$45.00")
+        ExoticDetailView()
+            .environmentObject(Data())
     }
 }
