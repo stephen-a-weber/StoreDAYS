@@ -13,6 +13,7 @@
 		223114B027FF88BE00EF8AC9 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223114AF27FF88BE00EF8AC9 /* WebViewModel.swift */; };
 		223114B227FFA07900EF8AC9 /* LoginSessionViewSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223114B127FFA07900EF8AC9 /* LoginSessionViewSwiftUIView.swift */; };
 		22AABD0727FCC251004C6B30 /* VideoArkOfSuffering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AABD0627FCC251004C6B30 /* VideoArkOfSuffering.swift */; };
+		22D5501C281158FB00A310E3 /* AddressSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5501B281158FB00A310E3 /* AddressSwiftUIView.swift */; };
 		22DD029127F63C68004D0144 /* ManageUserFromAWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD029027F63C68004D0144 /* ManageUserFromAWS.swift */; };
 		22DD029327F644C0004D0144 /* CreateAccountSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */; };
 		22EBA8B127F8612B006BF6D3 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EBA8B027F8612B006BF6D3 /* DBHelper.swift */; };
@@ -98,6 +99,7 @@
 		223114AF27FF88BE00EF8AC9 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		223114B127FFA07900EF8AC9 /* LoginSessionViewSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSessionViewSwiftUIView.swift; sourceTree = "<group>"; };
 		22AABD0627FCC251004C6B30 /* VideoArkOfSuffering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoArkOfSuffering.swift; sourceTree = "<group>"; };
+		22D5501B281158FB00A310E3 /* AddressSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSwiftUIView.swift; sourceTree = "<group>"; };
 		22DD029027F63C68004D0144 /* ManageUserFromAWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageUserFromAWS.swift; sourceTree = "<group>"; };
 		22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountSwiftUIView.swift; sourceTree = "<group>"; };
 		22EBA8B027F8612B006BF6D3 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				22AABD0627FCC251004C6B30 /* VideoArkOfSuffering.swift */,
 				D0A9E637281053E900121718 /* InvoiceSwiftUIView.swift */,
 				22DD029227F644C0004D0144 /* CreateAccountSwiftUIView.swift */,
+				22D5501B281158FB00A310E3 /* AddressSwiftUIView.swift */,
 				223114B127FFA07900EF8AC9 /* LoginSessionViewSwiftUIView.swift */,
 				22EBA8B427F86B04006BF6D3 /* V0.0 */,
 				84701D9C280480D700430964 /* AddressCell.swift */,
@@ -598,6 +601,7 @@
 				7842A2F7280F0EBE0006A4D0 /* WalmartPayView.swift in Sources */,
 				84701D9F2804C99800430964 /* OrderListView.swift in Sources */,
 				2208352427FDE6620025EE18 /* TabSwiftMoreUIView.swift in Sources */,
+				22D5501C281158FB00A310E3 /* AddressSwiftUIView.swift in Sources */,
 				78DF6C5D2810C94500AA27BF /* PayTabView.swift in Sources */,
 				78DF6C612810D95600AA27BF /* OrderCompletionMessage.swift in Sources */,
 				D08622DA27F3AC3A00BFE986 /* ContentView.swift in Sources */,

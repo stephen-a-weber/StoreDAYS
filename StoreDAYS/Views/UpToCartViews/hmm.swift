@@ -16,6 +16,7 @@ struct hmm: View {
             //Color.blue.zIndex(-1)
             if OH {
                 StoreSplashPage( )
+              //  LoginSwiftUIView()
                      
             }
             else {
