@@ -23,7 +23,6 @@
 		22FFCD0C27F7C62E00B22DE3 /* KeyChainManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFCD0B27F7C62E00B22DE3 /* KeyChainManage.swift */; };
 		7842A2F7280F0EBE0006A4D0 /* WalmartPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7842A2F6280F0EBE0006A4D0 /* WalmartPayView.swift */; };
 		784BE6D628109875000B453B /* LocationAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784BE6D228109875000B453B /* LocationAssistant.swift */; };
-		784BE6D728109875000B453B /* CSTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784BE6D328109875000B453B /* CSTabView.swift */; };
 		784BE6D828109875000B453B /* CustomAnnotationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784BE6D428109875000B453B /* CustomAnnotationMapView.swift */; };
 		7868E1F228046AE500FF7DF1 /* PaymentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868E1E528046AE500FF7DF1 /* PaymentCard.swift */; };
 		7868E1F328046AE500FF7DF1 /* OtherPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868E1E628046AE500FF7DF1 /* OtherPay.swift */; };
@@ -110,7 +109,6 @@
 		22FFCD0B27F7C62E00B22DE3 /* KeyChainManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManage.swift; sourceTree = "<group>"; };
 		7842A2F6280F0EBE0006A4D0 /* WalmartPayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalmartPayView.swift; sourceTree = "<group>"; };
 		784BE6D228109875000B453B /* LocationAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAssistant.swift; sourceTree = "<group>"; };
-		784BE6D328109875000B453B /* CSTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSTabView.swift; sourceTree = "<group>"; };
 		784BE6D428109875000B453B /* CustomAnnotationMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationMapView.swift; sourceTree = "<group>"; };
 		7868E1E528046AE500FF7DF1 /* PaymentCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentCard.swift; sourceTree = "<group>"; };
 		7868E1E628046AE500FF7DF1 /* OtherPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherPay.swift; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				784BE6D228109875000B453B /* LocationAssistant.swift */,
-				784BE6D328109875000B453B /* CSTabView.swift */,
 				784BE6D428109875000B453B /* CustomAnnotationMapView.swift */,
 			);
 			path = Tracker;
@@ -577,7 +574,6 @@
 				D0A9E6362810532A00121718 /* StoreDAYSApp.swift in Sources */,
 				84701D8027FE239A00430964 /* UtilityModelController.swift in Sources */,
 				22FFCD0C27F7C62E00B22DE3 /* KeyChainManage.swift in Sources */,
-				784BE6D728109875000B453B /* CSTabView.swift in Sources */,
 				22DD029127F63C68004D0144 /* ManageUserFromAWS.swift in Sources */,
 				D08622E427F3AC3C00BFE986 /* StoreDAYS.xcdatamodeld in Sources */,
 				84701D8227FE390900430964 /* Functions.swift in Sources */,
