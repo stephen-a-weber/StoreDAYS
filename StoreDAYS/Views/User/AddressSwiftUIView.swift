@@ -70,10 +70,10 @@ struct AddressSwiftUIView: View {
                     
                     
                     // MARK: Address
-                    Text("Adress").foregroundColor(Color(myColor))
+                    Text("Address").foregroundColor(Color(myColor))
                     ZStack(alignment:.leading){
                         if  adress.isEmpty {
-                            Text("Write your adress").font(.caption)
+                            Text("Write your address").font(.caption)
                                 .foregroundColor(.gray)
                         }
                         TextField("", text: $adress)
