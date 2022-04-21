@@ -25,7 +25,6 @@
 		784BE6D628109875000B453B /* LocationAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784BE6D228109875000B453B /* LocationAssistant.swift */; };
 		784BE6D728109875000B453B /* CSTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784BE6D328109875000B453B /* CSTabView.swift */; };
 		784BE6D828109875000B453B /* CustomAnnotationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784BE6D428109875000B453B /* CustomAnnotationMapView.swift */; };
-		784BE6D928109875000B453B /* T2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784BE6D528109875000B453B /* T2View.swift */; };
 		7868E1F228046AE500FF7DF1 /* PaymentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868E1E528046AE500FF7DF1 /* PaymentCard.swift */; };
 		7868E1F328046AE500FF7DF1 /* OtherPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868E1E628046AE500FF7DF1 /* OtherPay.swift */; };
 		7868E1F428046AE500FF7DF1 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868E1E828046AE500FF7DF1 /* CartManager.swift */; };
@@ -113,7 +112,6 @@
 		784BE6D228109875000B453B /* LocationAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAssistant.swift; sourceTree = "<group>"; };
 		784BE6D328109875000B453B /* CSTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSTabView.swift; sourceTree = "<group>"; };
 		784BE6D428109875000B453B /* CustomAnnotationMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationMapView.swift; sourceTree = "<group>"; };
-		784BE6D528109875000B453B /* T2View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T2View.swift; sourceTree = "<group>"; };
 		7868E1E528046AE500FF7DF1 /* PaymentCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentCard.swift; sourceTree = "<group>"; };
 		7868E1E628046AE500FF7DF1 /* OtherPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherPay.swift; sourceTree = "<group>"; };
 		7868E1E828046AE500FF7DF1 /* CartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
@@ -263,7 +261,6 @@
 				784BE6D228109875000B453B /* LocationAssistant.swift */,
 				784BE6D328109875000B453B /* CSTabView.swift */,
 				784BE6D428109875000B453B /* CustomAnnotationMapView.swift */,
-				784BE6D528109875000B453B /* T2View.swift */,
 			);
 			path = Tracker;
 			sourceTree = "<group>";
@@ -609,7 +606,6 @@
 				78DF6C612810D95600AA27BF /* OrderCompletionMessage.swift in Sources */,
 				D08622DA27F3AC3A00BFE986 /* ContentView.swift in Sources */,
 				D0E2B32627F5215E007DABE6 /* CreateAccountView.swift in Sources */,
-				784BE6D928109875000B453B /* T2View.swift in Sources */,
 				D0A9E633281052E900121718 /* Tracking.swift in Sources */,
 				D0A9E632281052E900121718 /* KittenDetailView.swift in Sources */,
 				223114B227FFA07900EF8AC9 /* LoginSessionViewSwiftUIView.swift in Sources */,
