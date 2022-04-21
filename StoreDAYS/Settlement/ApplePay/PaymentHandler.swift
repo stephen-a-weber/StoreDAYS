@@ -16,7 +16,6 @@ typealias PaymentCompletionHandler = (Bool) -> Void
 class PaymentHandler: NSObject {
       @ObservedObject var cart = Data()
 //      @ObservedObject var model = Model()
-//      @EnvironmentObject var cart:Data
 
       var paymentController: PKPaymentAuthorizationController?
     var paymentSummaryItems = [PKPaymentSummaryItem]()
@@ -144,18 +143,6 @@ extension PaymentHandler: PKPaymentAuthorizationControllerDelegate {
 //          view.model.invoiceAmount = 0
 //      }
 
-      func popupMessage() -> some View {
-        return VStack {
-          Text("")
-            .font(.title).bold().kerning(3)
-            .foregroundColor(Color.brown)
-            .padding()
-          
-          OrderCompletionMessage()
-        }
-      }
-
-
     func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
       // Dismiss the payment sheet
       controller.dismiss()  {
@@ -166,7 +153,7 @@ extension PaymentHandler: PKPaymentAuthorizationControllerDelegate {
 //                        self.initializeViewAmount(PayTabView())
 //                        PayTabView().model.invoiceAmount = 0.00
 //                        PayTabView().updateSettlementDisplay(amount: 0.00)
-                        self.popupMessage()
+                        PayTabView().popupMessage()
                   }
               } else {
                   if let completionHandler = self.completionHandler {

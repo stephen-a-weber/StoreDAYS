@@ -1,9 +1,8 @@
 //
-//  OrderCompletedMessage.swift
-//  FruitMart
+//  OrderCompletionMessage.swift
+//  StoreDAYS
 //
-//  Created by Giftbot on 2020/03/02.
-//  Copyright © 2020 Giftbot. All rights reserved.
+//  Created by Young Ju on 4/20/22.
 //
 
 import SwiftUI
@@ -16,14 +15,3 @@ struct OrderCompletionMessage: View {
       .kerning(2)
   }
 }
-
-
-// MARK: - Previews
-
-//struct OrderCompletedMessage_Previews: PreviewProvider {
-//  static var previews: some View {
-//    Color.primary.colorInvert()
-//      .popup(isPresented: .constant(true)) { OrderCompletedMessage() }
-//      .edgesIgnoringSafeArea(.vertical)
-//  }
-//}

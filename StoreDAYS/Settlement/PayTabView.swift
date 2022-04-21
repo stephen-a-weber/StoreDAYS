@@ -194,8 +194,6 @@ var settleView: some View {
             invoiceAmt  =  Double(invAmtString) ?? 0
             invoiceAmtText = formatFunction(number: invoiceAmt)
             CashiersData.invoiceCharged = invoiceAmt
-//            model.invoiceAmount = invoiceAmt
-//            print("onAppear", model.invoiceAmount)
             owedAmt = invoiceAmt
      }
       .foregroundColor(.black)
@@ -207,8 +205,15 @@ var settleView: some View {
           )
 }
 
-      class Cart: ObservableObject {
-            @Published var invoiceAmount = 0.00
+      public func popupMessage() -> some View {
+        return VStack {
+          Text("")
+            .font(.title).bold().kerning(3)
+            .foregroundColor(Color.brown)
+            .padding()
+          
+          OrderCompletionMessage()
+        }
       }
 
 //      public func updateSettlementDisplay(amount: Double) {
