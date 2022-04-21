@@ -103,13 +103,13 @@ case "GET":
       $var=0;
     //if we are looking for one
       if(!empty($_GET['ID'])){
-        $sql="DELETE FROM Address Where ID = ?";
+        $sql="UPDATE Address set User_ID = 2 Where ID = ?";
         $var=(int)$_GET['ID'];
       }
 
       //if we are looking for a set
      else if(!empty($_GET['User_ID'])){
-        $sql="DELETE FROM Address WHERE User_ID = ?";
+        $sql="UPDATE Address set User_ID = 2 Where User_ID = ?";
         $var =(int)$_GET['User_ID'];
       } else
       die("Delete wasn't define");
