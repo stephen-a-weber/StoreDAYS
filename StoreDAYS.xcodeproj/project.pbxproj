@@ -27,12 +27,12 @@
 		784BE6D828109875000B453B /* CustomAnnotationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784BE6D428109875000B453B /* CustomAnnotationMapView.swift */; };
 		7868E1F228046AE500FF7DF1 /* PaymentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868E1E528046AE500FF7DF1 /* PaymentCard.swift */; };
 		7868E1F328046AE500FF7DF1 /* OtherPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868E1E628046AE500FF7DF1 /* OtherPay.swift */; };
-		7868E1F428046AE500FF7DF1 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868E1E828046AE500FF7DF1 /* CartManager.swift */; };
 		7868E20728046B9C00FF7DF1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868E20628046B9C00FF7DF1 /* Product.swift */; };
+		78B3DE232811969800DB6394 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B3DE212811969800DB6394 /* CartManager.swift */; };
+		78B3DE242811969800DB6394 /* PaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B3DE222811969800DB6394 /* PaymentHandler.swift */; };
+		78B3DE26281196C400DB6394 /* PayTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B3DE25281196C400DB6394 /* PayTabView.swift */; };
+		78B3DE28281196D000DB6394 /* OrderCompletionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B3DE27281196D000DB6394 /* OrderCompletionMessage.swift */; };
 		78DF6C5B2810C90F00AA27BF /* CashiersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DF6C5A2810C90F00AA27BF /* CashiersData.swift */; };
-		78DF6C5D2810C94500AA27BF /* PayTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DF6C5C2810C94500AA27BF /* PayTabView.swift */; };
-		78DF6C5F2810C96400AA27BF /* PaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DF6C5E2810C96400AA27BF /* PaymentHandler.swift */; };
-		78DF6C612810D95600AA27BF /* OrderCompletionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DF6C602810D95600AA27BF /* OrderCompletionMessage.swift */; };
 		84701D7E27FE1F6600430964 /* StorePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D7D27FE1F6600430964 /* StorePlace.swift */; };
 		84701D8027FE239A00430964 /* UtilityModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D7F27FE239A00430964 /* UtilityModelController.swift */; };
 		84701D8227FE390900430964 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84701D8127FE390900430964 /* Functions.swift */; };
@@ -114,13 +114,13 @@
 		784BE6D428109875000B453B /* CustomAnnotationMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationMapView.swift; sourceTree = "<group>"; };
 		7868E1E528046AE500FF7DF1 /* PaymentCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentCard.swift; sourceTree = "<group>"; };
 		7868E1E628046AE500FF7DF1 /* OtherPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherPay.swift; sourceTree = "<group>"; };
-		7868E1E828046AE500FF7DF1 /* CartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		7868E20628046B9C00FF7DF1 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		7874922E2804707000C28ECC /* StoreDAYS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StoreDAYS.entitlements; sourceTree = "<group>"; };
+		78B3DE212811969800DB6394 /* CartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
+		78B3DE222811969800DB6394 /* PaymentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHandler.swift; sourceTree = "<group>"; };
+		78B3DE25281196C400DB6394 /* PayTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayTabView.swift; sourceTree = "<group>"; };
+		78B3DE27281196D000DB6394 /* OrderCompletionMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCompletionMessage.swift; sourceTree = "<group>"; };
 		78DF6C5A2810C90F00AA27BF /* CashiersData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashiersData.swift; sourceTree = "<group>"; };
-		78DF6C5C2810C94500AA27BF /* PayTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayTabView.swift; sourceTree = "<group>"; };
-		78DF6C5E2810C96400AA27BF /* PaymentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHandler.swift; sourceTree = "<group>"; };
-		78DF6C602810D95600AA27BF /* OrderCompletionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCompletionMessage.swift; sourceTree = "<group>"; };
 		84701D7D27FE1F6600430964 /* StorePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePlace.swift; sourceTree = "<group>"; };
 		84701D7F27FE239A00430964 /* UtilityModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityModelController.swift; sourceTree = "<group>"; };
 		84701D8127FE390900430964 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -268,11 +268,11 @@
 		7868E1E228046AE500FF7DF1 /* Settlement */ = {
 			isa = PBXGroup;
 			children = (
-				78DF6C5C2810C94500AA27BF /* PayTabView.swift */,
+				78B3DE25281196C400DB6394 /* PayTabView.swift */,
 				78DF6C5A2810C90F00AA27BF /* CashiersData.swift */,
-				78DF6C602810D95600AA27BF /* OrderCompletionMessage.swift */,
+				78B3DE27281196D000DB6394 /* OrderCompletionMessage.swift */,
 				7868E1E428046AE500FF7DF1 /* Other Payment Methods */,
-				7868E1E728046AE500FF7DF1 /* ApplePay */,
+				78B3DE202811969800DB6394 /* ApplePay */,
 			);
 			path = Settlement;
 			sourceTree = "<group>";
@@ -287,11 +287,11 @@
 			path = "Other Payment Methods";
 			sourceTree = "<group>";
 		};
-		7868E1E728046AE500FF7DF1 /* ApplePay */ = {
+		78B3DE202811969800DB6394 /* ApplePay */ = {
 			isa = PBXGroup;
 			children = (
-				78DF6C5E2810C96400AA27BF /* PaymentHandler.swift */,
-				7868E1E828046AE500FF7DF1 /* CartManager.swift */,
+				78B3DE212811969800DB6394 /* CartManager.swift */,
+				78B3DE222811969800DB6394 /* PaymentHandler.swift */,
 			);
 			path = ApplePay;
 			sourceTree = "<group>";
@@ -559,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78B3DE232811969800DB6394 /* CartManager.swift in Sources */,
 				D0A9E627281052E900121718 /* ExoticDetailView.swift in Sources */,
 				22EDDAF227F52FE20075F49C /* LoginSwiftUIView.swift in Sources */,
 				D0A9E634281052E900121718 /* WorldDetailView.swift in Sources */,
@@ -568,10 +569,11 @@
 				84C8383127FE037E00815C63 /* AllModels.swift in Sources */,
 				22EE79B52800510000BAE961 /* TabDocumentsSwiftUIView.swift in Sources */,
 				D0A9E6152810528100121718 /* Data.swift in Sources */,
-				7868E1F428046AE500FF7DF1 /* CartManager.swift in Sources */,
 				84701D7E27FE1F6600430964 /* StorePlace.swift in Sources */,
+				78B3DE26281196C400DB6394 /* PayTabView.swift in Sources */,
 				D0A9E62C281052E900121718 /* slidingDoor.swift in Sources */,
 				D0A9E62E281052E900121718 /* ItemCell2.swift in Sources */,
+				78B3DE28281196D000DB6394 /* OrderCompletionMessage.swift in Sources */,
 				22FEA1AC27FCB9600007838E /* ManageCreateAccount.swift in Sources */,
 				7868E1F328046AE500FF7DF1 /* OtherPay.swift in Sources */,
 				D0A9E6362810532A00121718 /* StoreDAYSApp.swift in Sources */,
@@ -590,7 +592,7 @@
 				84701D8427FE391E00430964 /* Containers.swift in Sources */,
 				784BE6D828109875000B453B /* CustomAnnotationMapView.swift in Sources */,
 				84C8382F27FE036100815C63 /* Account.swift in Sources */,
-				78DF6C5F2810C96400AA27BF /* PaymentHandler.swift in Sources */,
+				78B3DE242811969800DB6394 /* PaymentHandler.swift in Sources */,
 				784BE6D628109875000B453B /* LocationAssistant.swift in Sources */,
 				D0A9E628281052E900121718 /* StoreSplashPage.swift in Sources */,
 				7868E1F228046AE500FF7DF1 /* PaymentCard.swift in Sources */,
@@ -602,8 +604,6 @@
 				84701D9F2804C99800430964 /* OrderListView.swift in Sources */,
 				2208352427FDE6620025EE18 /* TabSwiftMoreUIView.swift in Sources */,
 				22D5501C281158FB00A310E3 /* AddressSwiftUIView.swift in Sources */,
-				78DF6C5D2810C94500AA27BF /* PayTabView.swift in Sources */,
-				78DF6C612810D95600AA27BF /* OrderCompletionMessage.swift in Sources */,
 				D08622DA27F3AC3A00BFE986 /* ContentView.swift in Sources */,
 				D0E2B32627F5215E007DABE6 /* CreateAccountView.swift in Sources */,
 				D0A9E633281052E900121718 /* Tracking.swift in Sources */,

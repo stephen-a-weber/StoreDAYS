@@ -13,7 +13,7 @@ import SwiftUI
 
 typealias PaymentCompletionHandler = (Bool) -> Void
 
-class PaymentHandler: NSObject {
+class PaymentHandler: NSObject, ObservableObject {
       @ObservedObject var cart = Data()
 //      @ObservedObject var model = Model()
 
@@ -29,19 +29,20 @@ class PaymentHandler: NSObject {
         .visa
     ]
 
-//    class func applePayStatus() -> (canMakePayments: Bool, canSetupCards: Bool) {
-//        return (PKPaymentAuthorizationController.canMakePayments(),
-//                PKPaymentAuthorizationController.canMakePayments(usingNetworks: supportedNetworks))
-//          let result = PaymentHandler.applePayStatus()
-//          var button: UIButton?
-//
-//          if result.canMakePayments {
-//              button = PKPaymentButton(paymentButtonType: .book, paymentButtonStyle: .black)
-//              button?.addTarget(self, action: #selector(startPayment(total:completion:)), for: .touchUpInside)
-//          } else if result.canSetupCards {
-//              button = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .black)
-//              button?.addTarget(self, action: #selector(startPayment(total:completion:)), for: .touchUpInside)
-//          }
+    class func applePayStatus() -> (canMakePayments: Bool, canSetupCards: Bool) {
+        return (PKPaymentAuthorizationController.canMakePayments(),
+                PKPaymentAuthorizationController.canMakePayments(usingNetworks: supportedNetworks))
+          let result = PaymentHandler.applePayStatus()
+          var button: UIButton?
+
+          if result.canMakePayments {
+              button = PKPaymentButton(paymentButtonType: .book, paymentButtonStyle: .black)
+              button?.addTarget(self, action: #selector(startPayment(total:completion:)), for: .touchUpInside)
+          } else if result.canSetupCards {
+              button = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .black)
+              button?.addTarget(self, action: #selector(startPayment(total:completion:)), for: .touchUpInside)
+          }
+    }
 //
 ////          if let applePayButton = button {
 ////              let constraints = [
@@ -80,8 +81,6 @@ class PaymentHandler: NSObject {
     }
     
       @objc func startPayment(total: Int,  completion: @escaping PaymentCompletionHandler) {
-            //func startPayment(products: [Product], total: Int,  completion: @escaping PaymentCompletionHandler) {
-
         completionHandler = completion
         
         let orderAmt = PKPaymentSummaryItem(label: "Pet", amount: NSDecimalNumber(string: "9.99"), type: .final)
@@ -154,6 +153,7 @@ extension PaymentHandler: PKPaymentAuthorizationControllerDelegate {
 //                        PayTabView().model.invoiceAmount = 0.00
 //                        PayTabView().updateSettlementDisplay(amount: 0.00)
                         PayTabView().popupMessage()
+                        PayTabView().isPresented = true
                   }
               } else {
                   if let completionHandler = self.completionHandler {

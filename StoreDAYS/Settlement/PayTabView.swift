@@ -29,6 +29,8 @@ struct PayTabView: View {
       @State private var settledAmt: Double = 0.00
       @State private var showingPopup: Bool = true
       @State private var selectedPayTab: Tabs = .applePay2
+      @State var isPresented = false
+
       
 //      init() {
 //            self.updateSettlementDisplay(amount: 50)
@@ -49,8 +51,8 @@ struct PayTabView: View {
                      
           TabView(selection: $selectedPayTab) {
                   Group {
+                   walmartPayTab
                     applePayTab
-                    walmartPayTab
                     otherPayTab
                   }
                   .accentColor(.primary)
@@ -58,7 +60,12 @@ struct PayTabView: View {
                 .accentColor(.cyan)
                 .statusBar(hidden: selectedPayTab == .otherPay)
          }
-      }
+//      .popup(isPresented: $isPresented) {
+//          BottomPopupView {
+//              NamePopupView(isPresented: $isPresented)
+//          }
+//      }
+         }
 }
 
 extension Formatter {
@@ -73,24 +80,22 @@ extension Formatter {
 
 extension PayTabView {
       var applePayTab: some View {
-
+            ZStack {
+            if cartManager.paymentSuccess {
+                  popupMessage()
+             } else {
       PaymentButton(action: cartManager.pay)
           .padding()
           .padding(.top)
-//          .popupOverContext(style: .blur, content: popupMessage())
-
-          .onDisappear {
-              if cartManager.paymentSuccess {
-                  cartManager.paymentSuccess = false
-              }
-          }
             .tabItem {
                   Image("applepay")
                       .frame(width: 20.0, height: 20.0)
                   Label("Apple Pay", image: "applepay")
             }
       }
-
+                  Spacer()
+      }
+      }
       var walmartPayTab: some View {
             WalmartPayView()
             .tabItem {
