@@ -19,8 +19,7 @@ struct AccountTab: View {
             } label: {
                 Label("Invoices",systemImage:"heart.text.square.fill")
 
-            }.isDetailLink(false)
-                        .padding(.top, 100)
+            }.isDetailLink(false).padding(.top, 100)
             NavigationLink {
                 GetAndUseAddress(data:data)
 

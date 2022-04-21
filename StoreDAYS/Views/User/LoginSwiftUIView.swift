@@ -37,6 +37,7 @@ struct LoginSwiftUIView: View {
                     Spacer()
                     
                 }.onAppear{
+                    print("checking out is \(CheckingoutLoggingIn)")
                     print("firstname:\(Data.initdata.UserInformation.FirstName)")
                     print("State:\(Data.initdata.AddressInformation.State)")
                     print("items\(Data.initdata.ItemedCart.description)")

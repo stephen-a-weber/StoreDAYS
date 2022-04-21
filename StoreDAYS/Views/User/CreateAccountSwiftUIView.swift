@@ -23,6 +23,8 @@ struct CreateAccountSwiftUIView: View {
         @State var myColor = "myBlue"
         @State var dataValidate = true
         @State var animFlagLogin = false
+        @State var animFlagLogin2 = false
+
         @State var messageValidateData = "Please enter your data"
         @State var manageCreateAccount = ManageCreateAccount()
         
@@ -100,10 +102,10 @@ struct CreateAccountSwiftUIView: View {
                     
                   
                     // MARK: BUTTONS
-                    if CheckingoutLoggingIn{
+                    if !CheckingoutLoggingIn{
                         Button(action: {
-                            animFlagLogin = initSession()
-                            if animFlagLogin{
+                            animFlagLogin2 = initSession()
+                            if animFlagLogin2{
                                 presentationMode.wrappedValue.dismiss()
                             }
                         }) {
@@ -132,9 +134,7 @@ struct CreateAccountSwiftUIView: View {
 
                             .sheet(isPresented: $animFlagLogin, content: {
                                 
-                                InvoiceSwiftUIView(data: data)
-                                
-                            })
+GetAndUseAddress( data: data, CartOrAccount: true)                            })
                     }
                     .padding(.bottom, 25.0)
                         
@@ -153,6 +153,7 @@ struct CreateAccountSwiftUIView: View {
                 dataValidate = false
                 return false
             }else{
+                
                 // Call Functions ManageCreateAccount // Controllers files
                 print(!manageCreateAccount.validatePass(pass1: password, pass2: passwordConfirm))
                 if  !manageCreateAccount.validatePass(pass1: password, pass2: passwordConfirm){
@@ -165,14 +166,16 @@ struct CreateAccountSwiftUIView: View {
               
                 // Web Service AWS Insert user
                 manageCreateAccount.insertUserAWSService(userName: email, firstName: firstName, lastName: lastName, email: email, password: password)
-                
-                POSTSignIn(Email: email, Password: password) { 
-                    GivenUser, error in
-                    DispatchQueue.main.sync {
-                        Data.initdata.UserInformation=GivenUser!
-                        data.UserInformation=GivenUser!
-                    }
-                }
+                let Model = UserModels(ID: 0, UserName: "", FirstName: firstName, LastName: lastName, DateOfBirth: "", Password: password, Email: email, Admin: 0)
+                data.UserInformation=Model
+                Data.initdata.UserInformation=Model
+                POSTSignUp(Info: Model, SignupHandler: {
+                    GivenID, Error in
+                    DispatchQueue.main.sync
+                    {   data.UserInformation.ID=GivenID!
+                    Data.initdata.UserInformation.ID=GivenID!}
+                })
+               
                 if !CheckingoutLoggingIn{
                     presentationMode.wrappedValue.dismiss()}
                 dataValidate = true

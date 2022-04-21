@@ -106,6 +106,8 @@ struct LoginSessionViewSwiftUIView: View {
                     else{
                            Button(action: {
                                animFlagLogin = initSession()
+                               if animFlagLogin{
+                                   presentationMode.wrappedValue.dismiss()}
 
                            }) {
                                Text("CONTINUE")
@@ -177,8 +179,7 @@ struct LoginSessionViewSwiftUIView: View {
                     }
                 })
                 existUser=(data.UserInformation.ID != 0)
-                if existUser && !CheckingoutLoggingIn{
-                    presentationMode.wrappedValue.dismiss()}
+              
                 return existUser
             }
         }

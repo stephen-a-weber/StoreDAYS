@@ -45,7 +45,7 @@ struct InvoiceList: View {
                             .tint(.green)
                         }
                     }
-                }            .onAppear{Model.loadInvoices(User_ID: 2)}
+            }            .onAppear{Model.loadInvoices(User_ID: Data.initdata.UserInformation.ID)}
                 .navigationTitle("Invoice Orders")
             }
         
