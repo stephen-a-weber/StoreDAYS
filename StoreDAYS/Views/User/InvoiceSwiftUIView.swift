@@ -26,6 +26,7 @@ struct InvoiceSwiftUIView: View {
                     VStack{
                         Image("invoice").resizable().frame(width: 150, height: 100, alignment: .leading)
                         Text(releaseDate, format: Date.FormatStyle().year().month().day().weekday())
+                        Text("Customer: \(data.customer)").foregroundColor(.black).font(.custom("Courier", fixedSize: 12))
                     }
                     VStack{
                         Text("# NUMBER       A- 75423137" ).foregroundColor(.black).font(.custom("Courier", fixedSize: 25))
@@ -92,14 +93,14 @@ struct InvoiceSwiftUIView: View {
                
                 Text("Address \(data.address)").foregroundColor(.black).font(.custom("Courier", fixedSize: 13))
                   
-                    ZStack(alignment:.trailing){
-                        if  firstName.isEmpty {
-                            Text("Address \(data.address)").font(.caption)
-                                .foregroundColor(.gray)
-                        }
-                        TextField("", text: $firstName)
-                    }
-                 
+//                    ZStack(alignment:.trailing){
+//                        if  firstName.isEmpty {
+//                            Text("Address \(data.address)").font(.caption)
+//                                .foregroundColor(.gray)
+//                        }
+//                        TextField("", text: $firstName)
+//                    }
+//
                        
              
                 

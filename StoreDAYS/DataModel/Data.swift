@@ -109,6 +109,7 @@ enum sellingCategory {
     @Published var taxes         : String = "7%"
     @Published var totalInvoice   : String = "00.00"
     @Published var address         : String = ""
+     @Published var customer         : String = ""
     //Currently the last Function in this file is called calculateTotalPrice()
     // It uses the correct formatting principles to convert from a string like "$45.78"
     // keeping .currency or two decimal places. It finally changes the above

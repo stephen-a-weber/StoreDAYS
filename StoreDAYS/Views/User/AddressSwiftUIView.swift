@@ -145,6 +145,7 @@ struct AddressSwiftUIView: View {
             }else{
                
                 print(" Data save ")
+                data.customer = firstName
                 data.address = "\(adress) - \(stateC) \(zipCode)"
                 dataValidate = true
                 return true
